@@ -485,122 +485,122 @@ namespace RE
 		std::uint16_t                                           padBDE;                                       // BDE
 #else
 		// members VR
-		mutable BSSpinLock                                   questTargetsLock;                 // 3D8
-		std::uint64_t                                        unk3E0;                           // 3E0
-		std::uint64_t                                        unk3E8;                           // 3E8
-		NiPointer<NiNode>                                    PlayerWorldNode;                  // 3F0
-		NiPointer<NiNode>                                    FollowNode;                       // 3F8
-		NiPointer<NiNode>                                    FollowOffset;                     // 400
-		NiPointer<NiNode>                                    HeightOffsetNode;                 // 408
-		NiPointer<NiNode>                                    SnapWalkOffsetNode;               // 410
-		NiPointer<NiNode>                                    RoomNode;                         // 418
-		NiPointer<NiNode>                                    BlackSphere;                      // 420
-		NiPointer<NiNode>                                    uiNode;                           // 428
-		NiPointer<BSTriShape>                                InWorldUIQuadGeo;                 // 430
-		NiPointer<NiNode>                                    UIPointerNode;                    // 438
-		NiPointer<BSTriShape>                                UIPointerGeo;                     // 440
-		NiPointer<NiNode>                                    DialogueUINode;                   // 448
-		NiPointer<NiNode>                                    TeleportDestinationPreview;       // 450
-		NiPointer<NiNode>                                    TeleportDestinationFail;          // 458
-		NiPointer<NiNode>                                    TeleportSprintPreview;            // 460
-		NiPointer<NiNode>                                    SpellOrigin;                      // 468
-		NiPointer<NiNode>                                    SpellDestination;                 // 470
-		NiPointer<NiNode>                                    ArrowOrigin;                      // 478
-		NiPointer<NiNode>                                    ArrowDestination;                 // 480
-		NiPointer<NiNode>                                    QuestMarker;                      // 488
-		NiPointer<NiNode>                                    LeftWandNode;                     // 490
-		NiPointer<NiNode>                                    LeftWandShakeNode;                // 498
-		NiPointer<NiNode>                                    LeftValveIndexControllerNode;     // 4A0
-		NiPointer<NiNode>                                    unkNode4A8;                       // 4A8
-		NiPointer<NiNode>                                    LeftWeaponOffsetNode;             // 4B0
-		NiPointer<NiNode>                                    LeftCrossbowOffsetNode;           // 4B8
-		NiPointer<NiNode>                                    LeftMeleeWeaponOffsetNode;        // 4C0
-		NiPointer<NiNode>                                    LeftStaffWeaponOffsetNode;        // 4C8
-		NiPointer<NiNode>                                    LeftShieldOffsetNode;             // 4D0
-		NiPointer<NiNode>                                    RightShieldOffsetNode;            // 4D8
-		NiPointer<NiNode>                                    SecondaryMagicOffsetNode;         // 4E0
-		NiPointer<NiNode>                                    SecondaryMagicAimNode;            // 4E8
-		NiPointer<NiNode>                                    SecondaryStaffMagicOffsetNode;    // 4F0
-		NiPointer<NiNode>                                    RightWandNode;                    // 4F8
-		NiPointer<NiNode>                                    RightWandShakeNode;               // 500
-		NiPointer<NiNode>                                    RightValveIndexControllerNode;    // 508
-		NiPointer<NiNode>                                    unkNode510;                       // 510
-		NiPointer<NiNode>                                    RightWeaponOffsetNode;            // 518
-		NiPointer<NiNode>                                    RightCrossbowOffsetNode;          // 520
-		NiPointer<NiNode>                                    RightMeleeWeaponOffsetNode;       // 528
-		NiPointer<NiNode>                                    RightStaffWeaponOffsetNode;       // 530
-		NiPointer<NiNode>                                    PrimaryMagicOffsetNode;           // 538
-		NiPointer<NiNode>                                    PrimaryMagicAimNode;              // 540
-		NiPointer<NiNode>                                    PrimaryStaffMagicOffsetNode;      // 548
-		std::uint64_t                                        unk550;                           // 550
-		NiPointer<NiBillboardNode>                           CrosshairParent;                  // 558
-		NiPointer<NiBillboardNode>                           CrosshairSecondaryParent;         // 560
-		NiPointer<NiBillboardNode>                           TargetLockParent;                 // 568
-		NiPointer<NiNode>                                    unkNode570;                       // 570
-		NiPointer<NiNode>                                    LastSyncPos;                      // 578
-		NiPointer<NiNode>                                    UprightHmdNode;                   // 580
-		NiPointer<NiNode>                                    MapMarkers3D;                     // 588
-		NiPointer<NiNode>                                    NPCLHnd;                          // 590
-		NiPointer<NiNode>                                    NPCRHnd;                          // 598
-		NiPointer<NiNode>                                    NPCLClv;                          // 5A0
-		NiPointer<NiNode>                                    NPCRClv;                          // 5A8
-		std::uint32_t                                        unk5B0;                           // 5B0
-		std::uint32_t                                        unk5B4;                           // 5B4
-		std::uint64_t                                        unk5B8;                           // 5B8
-		std::uint64_t                                        unk5C0;                           // 5C0
-		NiPointer<NiNode>                                    BowAimNode;                       // 5C8
-		NiPointer<NiNode>                                    BowRotationNode;                  // 5D0
-		NiPointer<NiNode>                                    ArrowSnapNode;                    // 5D8
-		NiPointer<BSFadeNode>                                ArrowNode;                        // 5E0
-		NiPointer<BSFadeNode>                                ArrowFireNode;                    // 5E8
-		std::uint64_t                                        unk5F0;                           // 5F0
-		NiPointer<NiNode>                                    ArrowHoldOffsetNode;              // 5F8
-		NiPointer<NiNode>                                    ArrowHoldNode;                    // 600
-		std::uint64_t                                        unk608;                           // 608
-		float                                                unkFloat610;                      // 610
-		std::uint32_t                                        unk614;                           // 614
-		std::uint64_t                                        unk618;                           // 618
-		std::uint64_t                                        unk620;                           // 620
-		std::uint64_t                                        unk628;                           // 628
-		std::uint64_t                                        unk630;                           // 630
-		void*                                                QuestMarkerBillBoardsNodeArray;   // 638    TODO - Make into proper data structure
-		void*                                                TeleportNodeArray;                // 640    TODO - Make into proper data structure
-		void*                                                QuestMarkerBillBoardsNodeArray2;  // 648    TODO - Make into proper data structure -> points to same place as QuestMarkerBillBoardsNodeArray
-		std::uint64_t                                        unk650;                           // 650
-		void*                                                TeleportNodeArray2;               // 658    TODO - Make into proper data structure -> points to same place as TeleportNodeArray
-		void*                                                QuestMarkerBillBoardsNodeArray3;  // 660    TODO - Make into proper data structure -> points to same place as QuestMarkerBillBoardsNodeArray
-		std::uint64_t                                        unk668;                           // 668
-		float                                                unkFloat670;                      // 670
-		std::uint32_t                                        unk674;                           // 674
-		void*                                                TeleportNodeArray3;               // 678    TODO - Make into proper data structure
-		std::uint64_t                                        unk680;                           // 680
-		std::uint64_t                                        unk688;                           // 688
-		std::uint64_t                                        unk690;                           // 690
-		std::uint64_t                                        unk698;                           // 698
-		std::uint64_t                                        unk6A0;                           // 6A0
-		std::uint64_t                                        unk6A8[0x65];                     // 6A8
-		BSTHashMap<const TESFaction*, CrimeGoldStruct>       crimeGoldMap;                     // 9D0
-		BSTHashMap<const TESFaction*, StolenItemValueStruct> stolenItemValueMap;               // A00
-		std::uint64_t                                        unkA30[0xe];                      // A30
-		BSTArray<PerkRankData*>								 addedPerks;						// AA0 these 3 here gotta be fixed - guessed based on ae8
-		BSTArray<BGSPerk*>									 perks;								// AB8 guess
-		BSTArray<BGSPerk*>								     standingStonePerks;				// AD0 guess
-		BSTArray<ObjectRefHandle>                            currentMapMarkers;                 // AE8 confirmed
-		std::uint64_t                                        unkB00[0x10];                      // B00
-		std::uint64_t unkB80;                                                                       // B80
-		std::uint64_t unkMessageArrayPtr;                                                           // B88
-		std::uint64_t unkB90;                                                                       // B90
-		std::uint64_t unkB98;                                                                       // B98
-		std::uint64_t unkBA0;                                                                       // BA0
-		std::uint64_t unkBA8;                                                                       // BA8
-		std::uint64_t unkBB0[0x25];                                                                 // BB0
-		std::uint64_t imageSpaceModifierAnims1;                                                     // CD8 - Wrong Datatype from Below
-		std::uint64_t imageSpaceModifierAnims2;                                                     // CE0 - Wrong Datatype from below
-		std::uint64_t unkCE8[0x34];                                                                 // CE8
-		std::uint32_t padE90;                                                                       // E88
-		ActorHandle   actorDoingPlayerCommand;                                                      // E8C
-		std::uint64_t unkE90;                                                                       // E90
-		std::uint64_t unkE98[0x27];                                                                 // E98
+		mutable BSSpinLock                                   questTargetsLock;                      // 3D8
+		std::uint64_t                                        unk3E0;                                // 3E0
+		std::uint64_t                                        unk3E8;                                // 3E8
+		NiPointer<NiNode>                                    PlayerWorldNode;                       // 3F0
+		NiPointer<NiNode>                                    FollowNode;                            // 3F8
+		NiPointer<NiNode>                                    FollowOffset;                          // 400
+		NiPointer<NiNode>                                    HeightOffsetNode;                      // 408
+		NiPointer<NiNode>                                    SnapWalkOffsetNode;                    // 410
+		NiPointer<NiNode>                                    RoomNode;                              // 418
+		NiPointer<NiNode>                                    BlackSphere;                           // 420
+		NiPointer<NiNode>                                    uiNode;                                // 428
+		NiPointer<BSTriShape>                                InWorldUIQuadGeo;                      // 430
+		NiPointer<NiNode>                                    UIPointerNode;                         // 438
+		NiPointer<BSTriShape>                                UIPointerGeo;                          // 440
+		NiPointer<NiNode>                                    DialogueUINode;                        // 448
+		NiPointer<NiNode>                                    TeleportDestinationPreview;            // 450
+		NiPointer<NiNode>                                    TeleportDestinationFail;               // 458
+		NiPointer<NiNode>                                    TeleportSprintPreview;                 // 460
+		NiPointer<NiNode>                                    SpellOrigin;                           // 468
+		NiPointer<NiNode>                                    SpellDestination;                      // 470
+		NiPointer<NiNode>                                    ArrowOrigin;                           // 478
+		NiPointer<NiNode>                                    ArrowDestination;                      // 480
+		NiPointer<NiNode>                                    QuestMarker;                           // 488
+		NiPointer<NiNode>                                    LeftWandNode;                          // 490
+		NiPointer<NiNode>                                    LeftWandShakeNode;                     // 498
+		NiPointer<NiNode>                                    LeftValveIndexControllerNode;          // 4A0
+		NiPointer<NiNode>                                    unkNode4A8;                            // 4A8
+		NiPointer<NiNode>                                    LeftWeaponOffsetNode;                  // 4B0
+		NiPointer<NiNode>                                    LeftCrossbowOffsetNode;                // 4B8
+		NiPointer<NiNode>                                    LeftMeleeWeaponOffsetNode;             // 4C0
+		NiPointer<NiNode>                                    LeftStaffWeaponOffsetNode;             // 4C8
+		NiPointer<NiNode>                                    LeftShieldOffsetNode;                  // 4D0
+		NiPointer<NiNode>                                    RightShieldOffsetNode;                 // 4D8
+		NiPointer<NiNode>                                    SecondaryMagicOffsetNode;              // 4E0
+		NiPointer<NiNode>                                    SecondaryMagicAimNode;                 // 4E8
+		NiPointer<NiNode>                                    SecondaryStaffMagicOffsetNode;         // 4F0
+		NiPointer<NiNode>                                    RightWandNode;                         // 4F8
+		NiPointer<NiNode>                                    RightWandShakeNode;                    // 500
+		NiPointer<NiNode>                                    RightValveIndexControllerNode;         // 508
+		NiPointer<NiNode>                                    unkNode510;                            // 510
+		NiPointer<NiNode>                                    RightWeaponOffsetNode;                 // 518
+		NiPointer<NiNode>                                    RightCrossbowOffsetNode;               // 520
+		NiPointer<NiNode>                                    RightMeleeWeaponOffsetNode;            // 528
+		NiPointer<NiNode>                                    RightStaffWeaponOffsetNode;            // 530
+		NiPointer<NiNode>                                    PrimaryMagicOffsetNode;                // 538
+		NiPointer<NiNode>                                    PrimaryMagicAimNode;                   // 540
+		NiPointer<NiNode>                                    PrimaryStaffMagicOffsetNode;           // 548
+		std::uint64_t                                        unk550;                                // 550
+		NiPointer<NiBillboardNode>                           CrosshairParent;                       // 558
+		NiPointer<NiBillboardNode>                           CrosshairSecondaryParent;              // 560
+		NiPointer<NiBillboardNode>                           TargetLockParent;                      // 568
+		NiPointer<NiNode>                                    unkNode570;                            // 570
+		NiPointer<NiNode>                                    LastSyncPos;                           // 578
+		NiPointer<NiNode>                                    UprightHmdNode;                        // 580
+		NiPointer<NiNode>                                    MapMarkers3D;                          // 588
+		NiPointer<NiNode>                                    NPCLHnd;                               // 590
+		NiPointer<NiNode>                                    NPCRHnd;                               // 598
+		NiPointer<NiNode>                                    NPCLClv;                               // 5A0
+		NiPointer<NiNode>                                    NPCRClv;                               // 5A8
+		std::uint32_t                                        unk5B0;                                // 5B0
+		std::uint32_t                                        unk5B4;                                // 5B4
+		std::uint64_t                                        unk5B8;                                // 5B8
+		std::uint64_t                                        unk5C0;                                // 5C0
+		NiPointer<NiNode>                                    BowAimNode;                            // 5C8
+		NiPointer<NiNode>                                    BowRotationNode;                       // 5D0
+		NiPointer<NiNode>                                    ArrowSnapNode;                         // 5D8
+		NiPointer<BSFadeNode>                                ArrowNode;                             // 5E0
+		NiPointer<BSFadeNode>                                ArrowFireNode;                         // 5E8
+		std::uint64_t                                        unk5F0;                                // 5F0
+		NiPointer<NiNode>                                    ArrowHoldOffsetNode;                   // 5F8
+		NiPointer<NiNode>                                    ArrowHoldNode;                         // 600
+		std::uint64_t                                        unk608;                                // 608
+		float                                                unkFloat610;                           // 610
+		std::uint32_t                                        unk614;                                // 614
+		std::uint64_t                                        unk618;                                // 618
+		std::uint64_t                                        unk620;                                // 620
+		std::uint64_t                                        unk628;                                // 628
+		std::uint64_t                                        unk630;                                // 630
+		void*                                                QuestMarkerBillBoardsNodeArray;        // 638    TODO - Make into proper data structure
+		void*                                                TeleportNodeArray;                     // 640    TODO - Make into proper data structure
+		void*                                                QuestMarkerBillBoardsNodeArray2;       // 648    TODO - Make into proper data structure -> points to same place as QuestMarkerBillBoardsNodeArray
+		std::uint64_t                                        unk650;                                // 650
+		void*                                                TeleportNodeArray2;                    // 658    TODO - Make into proper data structure -> points to same place as TeleportNodeArray
+		void*                                                QuestMarkerBillBoardsNodeArray3;       // 660    TODO - Make into proper data structure -> points to same place as QuestMarkerBillBoardsNodeArray
+		std::uint64_t                                        unk668;                                // 668
+		float                                                unkFloat670;                           // 670
+		std::uint32_t                                        unk674;                                // 674
+		void*                                                TeleportNodeArray3;                    // 678    TODO - Make into proper data structure
+		std::uint64_t                                        unk680;                                // 680
+		std::uint64_t                                        unk688;                                // 688
+		std::uint64_t                                        unk690;                                // 690
+		std::uint64_t                                        unk698;                                // 698
+		std::uint64_t                                        unk6A0;                                // 6A0
+		std::uint64_t                                        unk6A8[0x65];                          // 6A8
+		BSTHashMap<const TESFaction*, CrimeGoldStruct>       crimeGoldMap;                          // 9D0
+		BSTHashMap<const TESFaction*, StolenItemValueStruct> stolenItemValueMap;                    // A00
+		std::uint64_t                                        unkA30[0xe];                           // A30
+		BSTArray<PerkRankData*>                              addedPerks;                            // AA0 these 3 here gotta be fixed - guessed based on ae8
+		BSTArray<BGSPerk*>                                   perks;                                 // AB8 guess
+		BSTArray<BGSPerk*>                                   standingStonePerks;                    // AD0 guess
+		BSTArray<ObjectRefHandle>                            currentMapMarkers;                     // AE8 confirmed
+		std::uint64_t                                        unkB00[0x10];                          // B00
+		std::uint64_t                                        unkB80;                                // B80
+		std::uint64_t                                        unkMessageArrayPtr;                    // B88
+		std::uint64_t                                        unkB90;                                // B90
+		std::uint64_t                                        unkB98;                                // B98
+		std::uint64_t                                        unkBA0;                                // BA0
+		std::uint64_t                                        unkBA8;                                // BA8
+		std::uint64_t                                        unkBB0[0x25];                          // BB0
+		std::uint64_t                                        imageSpaceModifierAnims1;              // CD8 - Wrong Datatype from Below
+		std::uint64_t                                        imageSpaceModifierAnims2;              // CE0 - Wrong Datatype from below
+		std::uint64_t                                        unkCE8[0x34];                          // CE8
+		std::uint32_t                                        padE90;                                // E88
+		ActorHandle                                          actorDoingPlayerCommand;               // E8C
+		std::uint64_t                                        unkE90;                                // E90
+		std::uint64_t                                        unkE98[0x27];                          // E98
 																									//		BSTSmallArray<hkRefPtr<bhkMouseSpringAction>, 4>		grabSpring;                                   // F00    // not used in vr as far as i can tell   F08??????
 		float                                         grabDistance;                                 // FD0
 		float                                         unkFloatFD4;                                  // FD4
