@@ -3356,4 +3356,6 @@ namespace RE
 	inline constexpr REL::Offset RTTI_Json__BuiltStyledStreamWriter(0x01F81828);
 	inline constexpr REL::Offset RTTI_BSSocket(0x01F81860);
 	inline constexpr REL::Offset RTTI_BSSocketServer(0x01F81880);
+	inline constexpr REL::ID     RTTI___FastTravelConfirmCallback(static_cast<std::uint64_t>(688993));
+
 }
