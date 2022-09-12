@@ -581,16 +581,12 @@ namespace RE
 		std::uint64_t                                        unk6A8[0x65];                     // 6A8
 		BSTHashMap<const TESFaction*, CrimeGoldStruct>       crimeGoldMap;                     // 9D0
 		BSTHashMap<const TESFaction*, StolenItemValueStruct> stolenItemValueMap;               // A00
-		std::uint64_t                                        unkA30[0x11];                     // A30
-		void*                                                perkArray;                        // AB8
-		std::uint64_t                                        unk6C0[0x14];                     // AC0
-		//BSTArray<PerkRankData*>								addedPerks;									  // B60
-		//BSTArray<BGSPerk*>									perks;										  // B68
-		//BSTArray<BGSPerk*>									standingStonePerks;							  // B70
-		std::uint64_t addedPerks;                                                                   // B60 // these 3 here gotta be fixed
-		std::uint64_t perks;                                                                        // B68
-		std::uint64_t standingStonePerks;                                                           // B70
-		std::uint64_t unkB78;                                                                       // B78
+		std::uint64_t                                        unkA30[0xe];                      // A30
+		BSTArray<PerkRankData*>								 addedPerks;						// AA0 these 3 here gotta be fixed - guessed based on ae8
+		BSTArray<BGSPerk*>									 perks;								// AB8 guess
+		BSTArray<BGSPerk*>								     standingStonePerks;				// AD0 guess
+		BSTArray<ObjectRefHandle>                            currentMapMarkers;                 // AE8 confirmed
+		std::uint64_t                                        unkB00[0x10];                      // B00
 		std::uint64_t unkB80;                                                                       // B80
 		std::uint64_t unkMessageArrayPtr;                                                           // B88
 		std::uint64_t unkB90;                                                                       // B90
