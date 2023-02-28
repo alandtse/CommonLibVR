@@ -313,9 +313,9 @@ namespace RE
 		// override
 #ifdef SKYRIMVR
 		void AttachWeapon(RE::TESObjectWEAP* a_weapon, bool attachToShieldHand) override;  // 82
-		void RemoveWeapon(BIPED_OBJECT equipIndex);                                        // 83
+		void RemoveWeapon(BIPED_OBJECT equipIndex) override;                                        // 83
 #else
-		void RemoveWeapon(BIPED_OBJECT equipIndex);  // 82
+		void RemoveWeapon(BIPED_OBJECT equipIndex) override;  // 82
 #endif
 
 
