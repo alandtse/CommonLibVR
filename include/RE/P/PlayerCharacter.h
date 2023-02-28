@@ -16,6 +16,7 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTMap.h"
 #include "RE/P/PositionPlayerEvent.h"
+#include "RE/T/TESObjectWEAP.h"
 
 namespace RE
 {
@@ -197,23 +198,45 @@ namespace RE
 			kEverModded = 1 << 3,
 			kServingJailTime = 1 << 4
 		};
+
+		struct VRGrabHand
+		{
+			enum : std::uint32_t
+			{
+				kLeft,
+				kRight,
+				kGamepad,
+
+				kTotal
+			};
+		};
+
 		struct VRGrabData
 		{
 		public:
 			// members
 			BSTSmallArray<hkRefPtr<bhkMouseSpringAction>, 4> grabSpring;        // 00
-			ObjectRefHandle                                  grabbedObject;     // 30 - Used for LookupReferenceByHandle
+			ObjectRefHandle                                  grabbedObject;     // 30
 			float                                            grabObjectWeight;  // 34
-			std::uint32_t                                    unk38;             // 38 - Is 2 during telekinesis
+			GrabbingType                                     grabType;          // 38
 			float                                            grabDistance;      // 3C
-			std::uint64_t                                    unk40;             // 40
+			std::double_t                                    unk40;             // 40 - 0x40 and below for havok stuff
 			std::uint64_t                                    unk48;             // 48
-			std::uint64_t                                    unk50;             // 50
+			std::double_t                                    unk50;             // 50
 			std::uint64_t                                    unk58;             // 58
 			std::uint32_t                                    unk60;             // 60
-			std::uint32_t                                    unk64;             // 64
+			std::uint32_t                                    unk64Flags;             // 64
 		};
 		static_assert(sizeof(VRGrabData) == 0x68);
+
+		struct QueuedWeapon
+		{
+		public:
+			// members
+			TESObjectWEAP* rightHandWeapon;  // 00 - These may be main/off hand weapon for VR?
+			TESObjectWEAP* leftHandWeapon;   // 08
+		};
+		static_assert(sizeof(QueuedWeapon) == 0x10);
 
 		struct Data928
 		{
@@ -287,6 +310,16 @@ namespace RE
 
 		~PlayerCharacter() override;  // 000
 
+		// override
+#ifdef SKYRIMVR
+		void AttachWeapon(RE::TESObjectWEAP* a_weapon, bool attachToShieldHand) override;  // 82
+		void RemoveWeapon(BIPED_OBJECT equipIndex);                                        // 83
+#else
+		void RemoveWeapon(BIPED_OBJECT equipIndex);  // 82
+#endif
+
+
+
 		// add
 		virtual void          Unk_12A(void);                                                   // 12A
 		virtual std::uint32_t GetViolentCrimeGoldValue(const TESFaction* a_faction) const;     // 12B
@@ -312,13 +345,15 @@ namespace RE
 		TintMask*            GetOverlayTintMask(TintMask* a_original);
 		BSTArray<TintMask*>& GetTintList();
 		TintMask*            GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
+		void                 StartGrabObject();
+#else
+		void StartGrabObject(VRGrabHand a_hand);
 #endif
 		bool HasActorDoingCommand() const;
 		bool IsGrabbing() const;
 		void PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void SetAIDriven(bool a_enable);
 		void SetEscaping(bool a_flag, bool a_escaped);
-		void StartGrabObject();
 		void UpdateCrosshairs();
 
 		template <class T>
@@ -554,7 +589,7 @@ namespace RE
 		NiPointer<NiBillboardNode>                           CrosshairParent;                       // 558
 		NiPointer<NiBillboardNode>                           CrosshairSecondaryParent;              // 560
 		NiPointer<NiBillboardNode>                           TargetLockParent;                      // 568
-		NiPointer<NiNode>                                    unkNode570;                            // 570
+		NiPointer<NiNode>                                    GamepadNode;                            // 570
 		NiPointer<NiNode>                                    LastSyncPos;                           // 578
 		NiPointer<NiNode>                                    UprightHmdNode;                        // 580
 		NiPointer<NiNode>                                    MapMarkers3D;                          // 588
@@ -628,22 +663,34 @@ namespace RE
 		TESWorldSpace*                                       cachedWorldSpace;                      // C18
 		NiPoint3                                             exteriorPosition;                      // C20
 		std::uint32_t                                        unkC2C;                                // C2C
-		std::uint64_t                                        unkC20[0x15];                          // C30
-		std::uint64_t                                        imageSpaceModifierAnims1;              // CD8 - Wrong Datatype from Below
-		std::uint64_t                                        imageSpaceModifierAnims2;              // CE0 - Wrong Datatype from below
-		std::uint64_t                                        unkCE8[0x5];                           // CE8
+		std::uint64_t                                        unkC30[0xB];                           // C30
+		std::uint32_t                                        unkC88;                                // C88
+		BSSoundHandle                                        magicFailureSound;                     // C8C
+		std::uint64_t                                        unkC98[0x5];                           // C98
+		std::int32_t                                         numberofStealWarnings;                 // CC0
+		float                                                stealWarningTimer;                     // CC4
+		std::uint32_t                                        numberofPickpocketWarnings;            // CC8 - Guess
+		float                                                pickPocketWarningTimer;                // CCC
+		std::uint64_t                                        unkCD0;                                // CD0
+		ImageSpaceModifierInstanceDOF*                       ironsightsDOFInstance;                 // CD8
+		ImageSpaceModifierInstanceDOF*                       vatsDOFInstance;                       // CE0
+		ImageSpaceModifierInstanceDOF*                       dynamicDOFInstance;                    // CE8
+		float                                                dynamicDOFFocusTime;                   // CF0
+		bool                                                 dynamicDOFFocused;                     // CF4
+		NiPoint3                                             dynamicDOFLastAngle;                   // CF8
+		NiPoint3                                             dynamicDOFLastPosition;                // D04
 		TESFaction*                                          currentPrisonFaction;                  // D10
 		std::int32_t                                         jailSentence;                          // D18
 		std::int32_t                                         unkD1C;                                // D18
-		std::uint64_t                                        unkD20[0x16];                          // D20
-		std::uint32_t                                        unkDD0;                                // DD0
+		std::uint64_t                                        unkD20;                                // D20
+		QueuedWeapon                                         queuedWeaponAttachs[WEAPON_TYPE::kTotal];  // D28 - Extremely short lived
+		std::uint64_t                                        unkDC8;                                // DC8
+		RefHandle                                            forceActivateRef;                      // DD0
 		PlayerActionObject                                   playerActionObjects[0xF];              // DD4
 		PLAYER_ACTION                                        mostRecentAction;                      // E88
 		ActorHandle                                          actorDoingPlayerCommand;               // E8C
 		std::uint64_t                                        unkE90;                                // E90
-		VRGrabData                                           grabbedObjectData[0x2];                // E98 - Minimal 0x2, may be 0x3? 0x68 size confirmed
-		std::uint64_t                                        unkF00[0xD];                           // F00 - Maybe part of VRGrabData array?
-																									//		BSTSmallArray<hkRefPtr<bhkMouseSpringAction>, 4>		grabSpring;                                   // F00    // not used in vr as far as i can tell   F08??????
+		VRGrabData                                           grabbedObjectData[VRGrabHand::kTotal]; // E98 - 
 		float                                         unkFD0;                                       // FD0 - Not grabDistance as expected in SE
 		float                                         unkFloatFD4;                                  // FD4
 		std::uint64_t                                 unkFD8;                                       // FD8
@@ -652,9 +699,9 @@ namespace RE
 		BSTSmartPointer<BipedAnim>                    largeBiped;                                   // FE8
 		NiPointer<NiNode>                             firstPerson3D;                                // FF0
 		float                                         eyeHeight;                                    // FF8
-		float                                         powerAttackTimer;                             // FFC
+		float                                         greetTimer;                                   // FFC
 		float                                         encumberedTimer;                              // 1000
-		float                                         unknownTimer;                                 // 1004
+		float                                         powerAttackTimer;                             // 1004
 		std::int32_t                                  hoursToSleep;                                 // 1008
 		std::int32_t                                  amountStolenSold;                             // 100C
 		std::uint32_t                                 valueStolen;                                  // 1010
@@ -716,11 +763,14 @@ namespace RE
 		TESRace*                                      charGenRace;                                  // 1230
 		TESRace*                                      race2;                                        // 1238
 		std::uint64_t                                 unk1240[0x12];                                // 1240
-		std::uint8_t                                  pad12D0;                                      // 12D0
+		std::uint8_t                                  unkBD8;                                       // 12D0
 		std::uint8_t                                  flags;                                        // 12D1  -- TODO MAP THESE FLAGS OUT
 		std::uint8_t                                  pad12D2;                                      // 12D2
-		stl::enumeration<FlagBDB, std::uint8_t>       unk12D3;                                      // 12D3 - Guessed from address SkyrimVR.exe+6F68E0+A03 vs SkyrimSE.exe+6CFEF0+8F8
-		std::uint32_t                                 unk12D4;                                      // 12D4
+		stl::enumeration<FlagBDB, std::uint8_t>       unkBDB;                                      // 12D3 - Guessed from address SkyrimVR.exe+6F68E0+A03 vs SkyrimSE.exe+6CFEF0+8F8
+		std::uint8_t                                  unk12D4;                                      // 12D4
+		stl::enumeration<FlagBDD, std::uint8_t>       unkBDD;                                      // 12D5
+		std::uint8_t                                  unk12D6;                                      // 12D6
+		std::uint8_t                                  unk12D7;                                      // 12D7
 #endif
 
 	private:

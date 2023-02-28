@@ -39,19 +39,25 @@ namespace RE
 		kPeriodicSawtooth = 3
 	};
 
-	enum class WEAPON_TYPE
+	struct WeaponTypes
 	{
-		kHandToHandMelee = 0,
-		kOneHandSword = 1,
-		kOneHandDagger = 2,
-		kOneHandAxe = 3,
-		kOneHandMace = 4,
-		kTwoHandSword = 5,
-		kTwoHandAxe = 6,
-		kBow = 7,
-		kStaff = 8,
-		kCrossbow = 9
+		enum WEAPON_TYPE : std::uint32_t
+		{
+			kHandToHandMelee = 0,
+			kOneHandSword = 1,
+			kOneHandDagger = 2,
+			kOneHandAxe = 3,
+			kOneHandMace = 4,
+			kTwoHandSword = 5,
+			kTwoHandAxe = 6,
+			kBow = 7,
+			kStaff = 8,
+			kCrossbow = 9,
+
+			kTotal = 10
+		};
 	};
+	using WEAPON_TYPE = WeaponTypes::WEAPON_TYPE;
 
 	class TESObjectWEAP :
 		public TESBoundObject,             // 000

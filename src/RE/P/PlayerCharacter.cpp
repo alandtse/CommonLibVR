@@ -130,6 +130,11 @@ namespace RE
 #ifndef SKYRIMVR
 		return static_cast<bool>(grabbedObject);
 #else
+		for (auto& grabData : grabbedObjectData) {
+			if (grabData.grabbedObject) {
+				return true;
+			}
+		}
 		return false;
 #endif
 	}
@@ -154,13 +159,22 @@ namespace RE
 		REL::Relocation<func_t> func{ RELOCATION_ID(39574, 40660) };
 		return func(this, a_flag, a_escaped);
 	}
-
+#ifndef SKYRIMVR
 	void PlayerCharacter::StartGrabObject()
 	{
 		using func_t = decltype(&PlayerCharacter::StartGrabObject);
 		REL::Relocation<func_t> func{ Offset::PlayerCharacter::StartGrabObject };
 		return func(this);
 	}
+
+#else
+	void PlayerCharacter::StartGrabObject(VRGrabHand a_hand)
+	{
+		using func_t = decltype(&PlayerCharacter::StartGrabObject);
+		REL::Relocation<func_t> func{ Offset::PlayerCharacter::StartGrabObject };
+		return func(this, a_hand);
+	}
+#endif
 
 	void PlayerCharacter::UpdateCrosshairs()
 	{
