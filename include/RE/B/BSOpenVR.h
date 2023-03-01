@@ -7,6 +7,7 @@
 
 namespace RE
 {
+#ifdef SKYRIMVR
 	class BSOpenVR : public BSVRInterface
 	{
 	public:
@@ -82,4 +83,5 @@ namespace RE
 		std::uint64_t    unk400;     // 400
 	};
 	static_assert(sizeof(BSOpenVR) == 0x408);
+#endif
 }

@@ -4,6 +4,7 @@
 
 namespace RE
 {
+#ifdef SKYRIMVR
 	struct VROverlayChange;
 	struct VRDeviceConnetionChange;
 	struct VRResetHMDHeight;
@@ -71,4 +72,5 @@ namespace RE
 		std::uint64_t unk200;     // 200
 	};
 	static_assert(sizeof(BSVRInterface) == 0x208);
+#endif
 }
