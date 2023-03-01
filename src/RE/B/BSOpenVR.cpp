@@ -4,7 +4,8 @@
 
 namespace RE
 {
-	BSOpenVR* BSOpenVR::GetSingleton() {
+	BSOpenVR* BSOpenVR::GetSingleton()
+	{
 		REL::Relocation<BSOpenVR**> singleton{ Offset::BSOpenVR::Singleton };
 		return *singleton;
 	}

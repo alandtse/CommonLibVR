@@ -345,11 +345,11 @@ set(SOURCES
 	include/RE/B/BSTriShape.h
 	include/RE/B/BSUIMessageData.h
 	include/RE/B/BSUIScaleformData.h
+	include/RE/B/BSVRInterface.h
 	include/RE/B/BSValueNode.h
 	include/RE/B/BSVirtualKeyboardDevice.h
 	include/RE/B/BSVisit.h
 	include/RE/B/BSVolumetricLightingRenderData.h
-	include/RE/B/BSVRInterface.h
 	include/RE/B/BSWaterShaderMaterial.h
 	include/RE/B/BSWaterShaderProperty.h
 	include/RE/B/BSWin32GamepadDevice.h
