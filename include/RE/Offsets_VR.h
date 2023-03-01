@@ -179,6 +179,11 @@ namespace RE
 			inline constexpr REL::Offset CreateMaterial(static_cast<std::uint64_t>(0x130EAD0));
 		}
 
+		namespace BSOpenVR
+		{
+			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FEB9B0));
+		}
+
 		namespace BSPointerHandleManager
 		{
 			inline constexpr REL::Offset HandleEntries(static_cast<std::uint64_t>(0x1F89660));
