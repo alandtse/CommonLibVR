@@ -10,6 +10,7 @@
 #include "RE/B/BSTTuple.h"
 #include "RE/C/Character.h"
 #include "RE/C/Crime.h"
+#include "RE/C/CrosshairPickData.h"
 #include "RE/F/FormTypes.h"
 #include "RE/H/hkRefPtr.h"
 #include "RE/N/NiPoint3.h"
@@ -197,18 +198,6 @@ namespace RE
 			kDragonRideTargetLocked = 1 << 2,
 			kEverModded = 1 << 3,
 			kServingJailTime = 1 << 4
-		};
-
-		struct VRGrabHand
-		{
-			enum : std::uint32_t
-			{
-				kLeft,
-				kRight,
-				kGamepad,
-
-				kTotal
-			};
 		};
 
 		struct VRGrabData
@@ -656,17 +645,20 @@ namespace RE
 		BSTArray<BGSInstancedQuestObjective>                 objectives;                            // B70
 		std::uint64_t                                        unkMessageArrayPtr;                    // B88
 		std::uint64_t                                        unkB90;                                // B90
-		std::uint64_t                                        unkB98;                                // B98
+		std::uint32_t                                        unkB98;                                // B98
+		std::uint32_t                                        unkB9C;                                // B9C
 		std::uint64_t                                        unkBA0;                                // BA0
 		std::uint64_t                                        unkBA8;                                // BA8
 		std::uint64_t                                        unkBB0[0xD];                           // BB0
 		TESWorldSpace*                                       cachedWorldSpace;                      // C18
 		NiPoint3                                             exteriorPosition;                      // C20
 		std::uint32_t                                        unkC2C;                                // C2C
-		std::uint64_t                                        unkC30[0xB];                           // C30
-		std::uint32_t                                        unkC88;                                // C88
+		std::uint64_t                                        unkC30[0xA];                           // C30
+		BSSoundHandle										 unkC80;								// C80
 		BSSoundHandle                                        magicFailureSound;                     // C8C
-		std::uint64_t                                        unkC98[0x5];                           // C98
+		BSSoundHandle                                        unkC98;								// C98
+		std::uint32_t                                        unkCA4;								// CA4
+		std::uint64_t                                        unkCA8[0x3];                           // CA0
 		std::int32_t                                         numberofStealWarnings;                 // CC0
 		float                                                stealWarningTimer;                     // CC4
 		std::uint32_t                                        numberofPickpocketWarnings;            // CC8 - Guess
