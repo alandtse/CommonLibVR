@@ -18,6 +18,7 @@
 #include "RE/N/NiTMap.h"
 #include "RE/P/PositionPlayerEvent.h"
 #include "RE/T/TESObjectWEAP.h"
+#include "RE/T/TESQuest.h"
 
 namespace RE
 {
@@ -115,13 +116,30 @@ namespace RE
 		std::int64_t   arrivalFuncData;   // 30
 		RefHandle      furnitureRef;      // 38
 		RefHandle      fastTravelMarker;  // 3C
-		bool           resetWeather;      // 40
-		bool           allowAutoSave;     // 41
-		bool           isValid;           // 42
-		std::uint8_t   pad43;             // 43
-		std::uint32_t  pad44;             // 44
+#ifndef SKYRIMVR
+		bool          resetWeather;   // 40
+		bool          allowAutoSave;  // 41
+		bool          isValid;        // 42
+		std::uint8_t  pad43;          // 43
+		std::uint32_t pad44;          // 44
+#else
+		float         unk_40;         // 40 - New in VR, always 0.0 in vanilla
+		std::uint8_t  unk44;          // 44 
+		bool          resetWeather;   // 45
+		std::uint8_t  allowAutoSave;  // 46
+		bool          isValid;        // 47
+		std::uint8_t  unk48;          // 48
+		std::uint8_t  unk49;          // 49
+		std::uint8_t  unk4A;          // 4A
+		std::uint8_t  unk4B;          // 4B
+		std::uint32_t unk4C;          // 4C
+#endif
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(PLAYER_TARGET_LOC) == 0x48);
+#else
+	static_assert(sizeof(PLAYER_TARGET_LOC) == 0x50);
+#endif
 
 	struct PlayerActionObject
 	{
@@ -525,7 +543,7 @@ namespace RE
 		std::uint16_t                                           padBDE;                                       // BDE
 #else
 		// members VR
-		mutable BSSpinLock                                   questTargetsLock;                             // 3D8
+		std::uint64_t									     unk3D8;                                       // 3D8
 		std::uint64_t                                        unk3E0;                                       // 3E0
 		std::uint64_t                                        unk3E8;                                       // 3E8
 		NiPointer<NiNode>                                    PlayerWorldNode;                              // 3F0
@@ -623,10 +641,13 @@ namespace RE
 		std::uint32_t                                        isRightHandMainHand;                          // 6D4 - Determined from Settings->VR->MainHand setting
 		std::uint32_t                                        isLeftHandMainHand;                           // 6D8 - Determined from Settings->VR->MainHand setting
 		std::uint32_t                                        unk6DC;                                       // 6DC
-		std::uint64_t                                        unk6F0[0x5E];                                 // 6F0
+		std::uint64_t                                        unk6F0[0x5D];                                 // 6F0
+		mutable BSSpinLock                                   questTargetsLock;                             // 9C8 - Confirmed in ConsoleFunc__Handler::ShowQuestTargets_14032A200
 		BSTHashMap<const TESFaction*, CrimeGoldStruct>       crimeGoldMap;                                 // 9D0
 		BSTHashMap<const TESFaction*, StolenItemValueStruct> stolenItemValueMap;                           // A00
-		std::uint64_t                                        unkA30[0x7];                                  // A30
+		ObjectRefHandle                                      commandWaitMarker;							   // A30
+		std::uint32_t                                        unkA34;									   // A34
+		BSTHashMap<const TESFaction*, FriendshipFactionsStruct> factionOwnerFriendsMap;					   // A38
 		NiPoint3                                             lastKnownGoodPosition;                        // A68
 		NiPoint3                                             bulletAutoAim;                                // A74 - Guessed from 12D3, confirmed is NiPoint3
 		NiPoint3                                             cachedVelocity;                               // A80
@@ -638,30 +659,31 @@ namespace RE
 		BSTArray<ObjectRefHandle>                            currentMapMarkers;                            // AE8 confirmed
 		BSTArray<BSTTuple<NiPoint3, AITimeStamp>>            velocityArray;                                // B00
 		BSTArray<ProjectileHandle>                           runesCast;                                    // B18
-		std::uint64_t                                        unkB20[0x6];                                  // B20
+		BSTArray<void*>										 imageSpaceModifierAnims1;                     // B30
+		BSTArray<void*>										 imageSpaceModifierAnims2;                     // B48
 		BSSimpleList<TESQuestStageItem*>                     questLog;                                     // B60
 		BSTArray<BGSInstancedQuestObjective>                 objectives;                                   // B70
-		std::uint64_t                                        unkMessageArrayPtr;                           // B88
-		std::uint64_t                                        unkB90;                                       // B90
-		std::uint32_t                                        unkB98;                                       // B98
-		std::uint32_t                                        unkB9C;                                       // B9C
-		std::uint64_t                                        unkBA0;                                       // BA0
-		std::uint64_t                                        unkBA8;                                       // BA8
-		std::uint64_t                                        unkBB0[0xD];                                  // BB0
+		BSTHashMap<TESQuest*, BSTArray<TESQuestTarget*>*>    questTargets;                                 // B88
+		BSTHashMap<UnkKey, UnkValue>                         currentSayOnceInfosMap;                       // BB8
+		BSSimpleList<ObjectRefHandle>                        droppedRefList;                               // BE8
+		NiTMap<std::uint32_t, std::uint8_t>                  randomDoorSpaceMap;                           // BF8
 		TESWorldSpace*                                       cachedWorldSpace;                             // C18
 		NiPoint3                                             exteriorPosition;                             // C20
 		std::uint32_t                                        unkC2C;                                       // C2C
-		std::uint64_t                                        unkC30[0xA];                                  // C30
+		PLAYER_TARGET_LOC                                    queuedTargetLoc;                              // C30
 		BSSoundHandle                                        unkC80;                                       // C80
 		BSSoundHandle                                        magicFailureSound;                            // C8C
 		BSSoundHandle                                        unkC98;                                       // C98
 		std::uint32_t                                        unkCA4;                                       // CA4
-		std::uint64_t                                        unkCA8[0x3];                                  // CA0
+		DialoguePackage*									 closestConversation;                          // CA8
+		std::uint64_t                                        unkCB0;									   // CB0
+		DialoguePackage*								     aiConversationRunning;                        // CB8
 		std::int32_t                                         numberofStealWarnings;                        // CC0
 		float                                                stealWarningTimer;                            // CC4
 		std::uint32_t                                        numberofPickpocketWarnings;                   // CC8 - Guess
 		float                                                pickPocketWarningTimer;                       // CCC
-		std::uint64_t                                        unkCD0;                                       // CD0
+		AITimeStamp                                          warnToLeaveTimeStamp;                         // CD0
+		std::uint32_t                                        unkCD4;                                       // CD4
 		ImageSpaceModifierInstanceDOF*                       ironsightsDOFInstance;                        // CD8
 		ImageSpaceModifierInstanceDOF*                       vatsDOFInstance;                              // CE0
 		ImageSpaceModifierInstanceDOF*                       dynamicDOFInstance;                           // CE8
@@ -674,7 +696,8 @@ namespace RE
 		std::int32_t                                         unkD1C;                                       // D18
 		std::uint64_t                                        unkD20;                                       // D20
 		QueuedWeapon                                         queuedWeaponAttachs[WEAPON_TYPE::kTotal];     // D28 - Weapons attach to PlayerCharacter on next frame
-		std::uint64_t                                        unkDC8;                                       // DC8
+		std::uint32_t                                        vampireFeedDetection;                         // DC8
+		std::uint32_t                                        mapMarkerIterator;                            // DCC
 		RefHandle                                            forceActivateRef;                             // DD0
 		PlayerActionObject                                   playerActionObjects[0xF];                     // DD4
 		PLAYER_ACTION                                        mostRecentAction;                             // E88
@@ -738,10 +761,12 @@ namespace RE
 		BGSLocation*                                         currentLocation;                              // 11C8
 		AITimeStamp                                          cachedVelocityTimeStamp;                      // 11D0
 		float                                                telekinesisDistance;                          // 11D4
-		std::uint64_t                                        unk11D8[0x3];                                 // 11D8
+		float                                                commandTimer;                                 // 11D8
+		std::uint32_t                                        unk11DC;                                      // 11DC
+		std::uint64_t                                        unk11E0[0x2];                                 // 11E0
 		std::uint32_t                                        unk11F0;                                      // 11F0
 		std::int32_t                                         difficulty;                                   // 11F4
-		std::uint32_t                                        unkAFC;                                       // 11F8
+		std::uint32_t                                        assumedIdentity;                              // 11F8
 		std::int8_t                                          murder;                                       // 11FC
 		std::int8_t                                          perkCount;                                    // 11FD
 		stl::enumeration<ByCharGenFlag, std::uint8_t>        byCharGenFlag;                                // 11FE
@@ -755,9 +780,9 @@ namespace RE
 		std::uint64_t                                        unk1240[0x12];                                // 1240
 		std::uint8_t                                         unkBD8;                                       // 12D0
 		std::uint8_t                                         flags;                                        // 12D1  -- TODO MAP THESE FLAGS OUT
-		std::uint8_t                                         pad12D2;                                      // 12D2
+		std::uint8_t                                         unkBDA;                                       // 12D2
 		stl::enumeration<FlagBDB, std::uint8_t>              unkBDB;                                       // 12D3 - Guessed from address SkyrimVR.exe+6F68E0+A03 vs SkyrimSE.exe+6CFEF0+8F8
-		std::uint8_t                                         unk12D4;                                      // 12D4
+		stl::enumeration<FlagBDC, std::uint8_t>              unk12D4;                                                   // 12D4
 		stl::enumeration<FlagBDD, std::uint8_t>              unkBDD;                                       // 12D5
 		std::uint8_t                                         unk12D6;                                      // 12D6
 		std::uint8_t                                         unk12D7;                                      // 12D7
