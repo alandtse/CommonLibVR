@@ -10,6 +10,7 @@
 #include "RE/B/BSTTuple.h"
 #include "RE/C/Character.h"
 #include "RE/C/Crime.h"
+#include "RE/C/CrosshairPickData.h"
 #include "RE/F/FormTypes.h"
 #include "RE/H/hkRefPtr.h"
 #include "RE/N/NiPoint3.h"
@@ -197,18 +198,6 @@ namespace RE
 			kDragonRideTargetLocked = 1 << 2,
 			kEverModded = 1 << 3,
 			kServingJailTime = 1 << 4
-		};
-
-		struct VRGrabHand
-		{
-			enum : std::uint32_t
-			{
-				kLeft,
-				kRight,
-				kHeadset,  // Can be kGamepad when in gamepad mode
-
-				kTotal
-			};
 		};
 
 		struct VRGrabData
