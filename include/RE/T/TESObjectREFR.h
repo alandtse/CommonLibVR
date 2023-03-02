@@ -321,9 +321,9 @@ namespace RE
 		virtual const BSTSmartPointer<BipedAnim>& GetBiped2() const;                                                                                                                                                                                           // 7F
 		virtual const BSTSmartPointer<BipedAnim>& GetCurrentBiped() const;                                                                                                                                                                                     // 80 - { return GetBiped2(); }
 		virtual void                              SetBiped(const BSTSmartPointer<BipedAnim>& a_biped);                                                                                                                                                         // 81 - { return; }
-		virtual void                              RemoveWeapon(BIPED_OBJECT equipIndex);                                                                                                                                                                       // 82 - { return; }
-		virtual void                              Unk_83(void);                                                                                                                                                                                                // 83 - { return; }
 #ifndef SKYRIMVR
+		virtual void                RemoveWeapon(BIPED_OBJECT equipIndex);                                                // 82 - { return; }
+		virtual void                Unk_83(void);                                                                         // 83 - { return; }
 		virtual void                SetObjectReference(TESBoundObject* a_object);                                         // 84 - sets flag 24 if the object has destructibles
 		virtual void                MoveHavok(bool a_forceRec);                                                           // 85
 		virtual void                GetLinearVelocity(NiPoint3& a_velocity) const;                                        // 86
@@ -355,7 +355,9 @@ namespace RE
 		virtual bool                Unk_A0(NiAVObject* a_node, float& a_angleX, float& a_angleZ, NiPoint3& a_pos) const;  // A0
 		virtual void                UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object);                          // A1 - { return; }
 #else
-		virtual void                Unk_84(void);                                                                         // 84 - sets flag 24 if the object has destructibles
+		virtual void                AttachWeapon(RE::TESObjectWEAP* a_weapon, bool attachToShieldHand);                   // 82 - Virtual in VR, non-virtual in SE/AE. Shield hand may be just left hand?
+		virtual void                RemoveWeapon(BIPED_OBJECT equipIndex);                                                // 83 - { return; }
+		virtual void                Unk_83(void);                                                                         // 84 - sets flag 24 if the object has destructibles
 		virtual void                SetObjectReference(TESBoundObject* a_object);                                         // 85
 		virtual void                MoveHavok(bool a_forceRec);                                                           // 86
 		virtual void                GetLinearVelocity(NiPoint3& a_velocity) const;                                        // 87 - { return; }

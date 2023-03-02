@@ -316,8 +316,9 @@ namespace RE
 		bool                    ShouldSaveAnimationOnSaving() const override;                                                                                                                                                                         // 07B
 		bool                    ShouldPerformRevert() const override;                                                                                                                                                                                 // 07C
 		void                    UpdateAnimation(float a_delta) override;                                                                                                                                                                              // 07D
-		void                    RemoveWeapon(BIPED_OBJECT equipIndex) override;                                                                                                                                                                       // 082
+
 #ifndef SKYRIMVR
+		void     RemoveWeapon(BIPED_OBJECT equipIndex) override;                                                // 082
 		void     SetObjectReference(TESBoundObject* a_object) override;                                         // 084
 		void     MoveHavok(bool a_forceRec) override;                                                           // 085
 		void     GetLinearVelocity(NiPoint3& a_velocity) const override;                                        // 086
@@ -339,6 +340,7 @@ namespace RE
 		TESAmmo* GetCurrentAmmo() const override;                                                               // 09E
 		void     UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object) override;                          // 0A1
 #else
+		void                            RemoveWeapon(BIPED_OBJECT equipIndex) override;                                                                                                                                  // 083
 		void                            SetObjectReference(TESBoundObject* a_object) override;                                                                                                                           // 085
 		void                            MoveHavok(bool a_forceRec) override;                                                                                                                                             // 086
 		void                            GetLinearVelocity(NiPoint3& a_velocity) const override;                                                                                                                          // 087
