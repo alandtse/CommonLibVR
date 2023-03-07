@@ -42,8 +42,10 @@ namespace RE
 	inline constexpr REL::Offset RTTI_EffectSetting(0x01ED7418);
 	inline constexpr REL::Offset RTTI_EnchantmentItem(0x01ED76E0);
 	inline constexpr REL::Offset RTTI_IngredientItem(0x01ED77B8);
+	inline constexpr REL::Offset RTTI_BSModelDB__DBTraits(0x01F651D8);
 	inline constexpr REL::Offset RTTI_BSModelDB__QueuedHandles(0x01ED7910);
 	inline constexpr REL::Offset RTTI_TESModelDB__TESQueuedHandles(0x01ED7A20);
+	inline constexpr REL::Offset RTTI_TESModelDB____TESProcessor(0x01EDAFB0);
 	inline constexpr REL::Offset RTTI_MagicItem(0x01ED6D88);
 	inline constexpr REL::Offset RTTI_AnimationSystemUtils__TESModelAndAnimationHandles(0x01ED7A60);
 	inline constexpr REL::Offset RTTI_MagicItem__PreloadableVisitor(0x01ED7B20);
