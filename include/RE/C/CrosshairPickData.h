@@ -11,7 +11,7 @@ namespace RE
 
 	struct VRControls
 	{
-		enum VR_DEVICE: std::uint32_t
+		enum VR_DEVICE : std::uint32_t
 		{
 			kLeftController,
 			kRightController,
@@ -46,21 +46,21 @@ namespace RE
 		std::uint8_t                     unk35;           // 35
 		std::uint16_t                    unk36;           // 36
 #else
-		std::uint32_t                    pad00;                               // 00
-		ObjectRefHandle                  target[VR_DEVICE::kTotal];           // 04
-		ObjectRefHandle                  targetActor[VR_DEVICE::kTotal];      // 10
-		ObjectRefHandle                  unk1C[VR_DEVICE::kTotal];            // 1C
-		NiPoint3                         collisionPoint[VR_DEVICE::kTotal];   // 28
-		std::uint32_t                    pad4C;                               // 4C
-		std::uint64_t                    unk50[VR_DEVICE::kTotal];            // 50
-		float                            unk68;                               // 68
-		float                            unk6C;                               // 68
-		std::uint32_t                    unk70;                               // 70
-		std::uint32_t                    unk74;                               // 74
-		NiPointer<bhkSimpleShapePhantom> unk78;                               // 78
-		std::uint32_t                    unk80;                               // 80
-		std::uint16_t                    unk84;                               // 84
-		std::byte                        unk86;                               // 86
+		std::uint32_t                    pad00;                              // 00
+		ObjectRefHandle                  target[VR_DEVICE::kTotal];          // 04
+		ObjectRefHandle                  targetActor[VR_DEVICE::kTotal];     // 10
+		ObjectRefHandle                  unk1C[VR_DEVICE::kTotal];           // 1C
+		NiPoint3                         collisionPoint[VR_DEVICE::kTotal];  // 28
+		std::uint32_t                    pad4C;                              // 4C
+		std::uint64_t                    unk50[VR_DEVICE::kTotal];           // 50
+		float                            unk68;                              // 68
+		float                            unk6C;                              // 68
+		std::uint32_t                    unk70;                              // 70
+		std::uint32_t                    unk74;                              // 74
+		NiPointer<bhkSimpleShapePhantom> unk78;                              // 78
+		std::uint32_t                    unk80;                              // 80
+		std::uint16_t                    unk84;                              // 84
+		std::byte                        unk86;                              // 86
 #endif
 	};
 #ifndef SKYRIMVR
