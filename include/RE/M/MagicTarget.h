@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BSContainer.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTList.h"
@@ -35,14 +36,10 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_MagicTarget__ForEachActiveEffectVisitor;
 
-			virtual ~ForEachActiveEffectVisitor() = default;  // 00
+			virtual ~ForEachActiveEffectVisitor(){};  // 00
 
 			// add
-#ifndef SKYRIMVR
-			virtual bool Accept(ActiveEffect* a_effect) = 0;  // 01
-#else
-			virtual RE::BSContainer::ForEachResult Visit(ActiveEffect* effect) = 0;
-#endif
+			virtual BSContainer::ForEachResult Visit(ActiveEffect* effect) = 0;  // 01
 		};
 		static_assert(sizeof(ForEachActiveEffectVisitor) == 0x8);
 
@@ -94,6 +91,7 @@ namespace RE
 		void DispelEffectsWithArchetype(Archetype a_type, bool a_force);
 		bool HasEffectWithArchetype(Archetype a_type);
 		bool HasMagicEffect(EffectSetting* a_effect);
+		void VisitEffects(ForEachActiveEffectVisitor& visitor);
 
 #ifdef SKYRIMVR
 		//VR requires a visitor to access all items
