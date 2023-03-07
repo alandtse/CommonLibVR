@@ -3361,4 +3361,6 @@ namespace RE
 	inline constexpr REL::ID     RTTI___FastTravelConfirmCallback(static_cast<std::uint64_t>(688993));
 	inline constexpr REL::ID     RTTI_BSScript____VMTypeResolveFunctor(static_cast<std::uint64_t>(691839));
 	inline constexpr REL::ID     RTTI_BGSLoadFormData(static_cast<std::uint64_t>(684848));
+	inline constexpr REL::ID     RTTI_BSModelDB__DBTraits(static_cast<std::uint64_t>(690665));
+	inline constexpr REL::ID     RTTI_TESModelDB____TESProcessor(static_cast<std::uint64_t>(684859));
 }

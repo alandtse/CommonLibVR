@@ -39,7 +39,7 @@ namespace RE
 			virtual ~ForEachActiveEffectVisitor(){};  // 00
 
 			// add
-			virtual BSContainer::ForEachResult Visit(ActiveEffect* effect) = 0;  // 01
+			virtual BSContainer::ForEachResult Accept(ActiveEffect* a_effect) = 0;  // 01
 		};
 		static_assert(sizeof(ForEachActiveEffectVisitor) == 0x8);
 
@@ -101,7 +101,7 @@ namespace RE
 			GetEffectCount() :
 				m_count(0) {}
 
-			virtual BSContainer::ForEachResult Visit(ActiveEffect* /*effect*/) override  // suppress c4100 error
+			virtual BSContainer::ForEachResult Accept(ActiveEffect* /*effect*/) override  // suppress c4100 error
 			{
 				m_count++;
 				return BSContainer::ForEachResult::kContinue;
@@ -119,7 +119,7 @@ namespace RE
 			GetNthEffect(std::uint32_t n) :
 				m_result(nullptr), m_n(n), m_count(0) {}
 
-			virtual BSContainer::ForEachResult Visit(ActiveEffect* effect) override
+			virtual BSContainer::ForEachResult Accept(ActiveEffect* effect) override
 			{
 				if (m_count == m_n) {
 					m_result = effect;
@@ -143,7 +143,7 @@ namespace RE
 			EffectVisitor(std::function<BSContainer::ForEachResult(ActiveEffect*)> func) :
 				m_functor(func) {}
 
-			virtual BSContainer::ForEachResult Visit(ActiveEffect* effect) override
+			virtual BSContainer::ForEachResult Accept(ActiveEffect* effect) override
 			{
 				return m_functor(effect);
 			}

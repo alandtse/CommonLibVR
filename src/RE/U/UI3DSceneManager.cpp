@@ -8,6 +8,7 @@ namespace RE
 		return *singleton;
 	}
 
+#ifndef SKYRIMVR
 	void UI3DSceneManager::AttachChild(NiAVObject* a_obj)
 	{
 		AttachChild(a_obj, currentlightScheme);
@@ -26,6 +27,7 @@ namespace RE
 		REL::Relocation<func_t> func{ RELOCATION_ID(51861, 52733) };
 		return func(this, a_obj);
 	}
+#endif
 
 	void UI3DSceneManager::SetCameraFOV(float a_fov)
 	{
