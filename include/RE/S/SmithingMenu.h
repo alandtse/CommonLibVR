@@ -31,6 +31,24 @@ namespace RE
 			};
 			static_assert(sizeof(SmithingConfirmCallback) == 0x18);
 
+			struct SmithingItemEntry
+			{
+				// members
+				TESForm*                item;                 // 00
+				std::int64_t            unk08;                // 08
+				BGSConstructibleObject* constructibleObject;  // 10
+				float                   unk18;                // 18 - Health of item?
+				float                   unk1C;                // 1C - kSmithing actor value?
+				int                     unk20;                // 20
+				int                     unk24;                // 24
+				std::byte               unk28;                // 28
+				std::byte               unk29;                // 29
+				std::byte               unk2A;                // 2A
+				std::byte               pad2B;                // 2B
+				std::uint32_t           pad2C;                // 2C
+			};
+			static_assert(sizeof(SmithingItemEntry) == 0x30);
+
 			~SmithingMenu() override;  // 00
 
 			// override (CraftingSubMenu)
@@ -39,7 +57,7 @@ namespace RE
 			void Unk_05(void) override;                        // 05
 
 			// members
-			BSTArray<void*>              unk100;        // 100
+			BSTArray<SmithingItemEntry>  unk100;        // 100
 			BSTHashMap<UnkKey, UnkValue> unk118;        // 118 - constructibleObject map?
 			NiPointer<TESObjectREFR>     furnitureRef;  // 148
 			std::uint32_t                unk150;        // 150

@@ -67,14 +67,17 @@ namespace RE
 		return func(this, a_form);
 	}
 
+#ifndef SKYRIMVR
 	NiPointer<TESObjectREFR> PlayerCharacter::GetGrabbedRef()
 	{
-#ifndef SKYRIMVR
 		return grabbedObject.get();
-#else
-		return nullptr;  // Not sure this exists anymore in VR. will need to hunt
-#endif
 	}
+#else
+	NiPointer<TESObjectREFR> PlayerCharacter::GetGrabbedRef(VR_DEVICE a_device)
+	{
+		return grabbedObjectData[a_device].grabbedObject.get();
+	}
+#endif
 
 	std::int32_t PlayerCharacter::GetItemCount(TESBoundObject* a_object)
 	{
@@ -139,6 +142,13 @@ namespace RE
 #endif
 	}
 
+#ifdef SKYRIMVR
+	bool PlayerCharacter::IsGrabbingWithDevice(VR_DEVICE a_device) const
+	{
+		return static_cast<bool>(grabbedObjectData[a_device].grabbedObject);
+	}
+#endif
+
 	void PlayerCharacter::PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType)
 	{
 		using func_t = decltype(&PlayerCharacter::PlayPickupEvent);
@@ -168,11 +178,11 @@ namespace RE
 	}
 
 #else
-	void PlayerCharacter::StartGrabObject(VRGrabHand a_hand)
+	void PlayerCharacter::StartGrabObject(VR_DEVICE a_device)
 	{
 		using func_t = decltype(&PlayerCharacter::StartGrabObject);
 		REL::Relocation<func_t> func{ Offset::PlayerCharacter::StartGrabObject };
-		return func(this, a_hand);
+		return func(this, a_device);
 	}
 #endif
 

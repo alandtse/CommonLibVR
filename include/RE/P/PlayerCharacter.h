@@ -186,38 +186,6 @@ namespace RE
 			kHandsBound = 1 << 2
 		};
 
-		enum class FlagBD9
-		{
-			kNone = 0,
-			kIsSleeping = 1 << 2,
-			kGreetingPlayer = 1 << 6
-		};
-
-		enum class FlagBDB
-		{
-			kNone = 0,
-			kIsInThirdPersonMode = 1 << 0,
-			kIsInCombat = 1 << 5
-		};
-
-		enum class FlagBDC
-		{
-			kNone = 0,
-			kHealthTutorialShown = 1 << 3,
-			kMagickaTutorialShown = 1 << 4,
-			kStaminaTutorialShown = 1 << 5,
-			kGoToJailQueued = 1 << 6
-		};
-
-		enum class FlagBDD
-		{
-			kNone = 0,
-			kSprinting = 1 << 0,
-			kDragonRideTargetLocked = 1 << 2,
-			kEverModded = 1 << 3,
-			kServingJailTime = 1 << 4
-		};
-
 		struct VRGrabData
 		{
 		public:
@@ -235,6 +203,80 @@ namespace RE
 			std::uint32_t                                    unk64Flags;        // 64
 		};
 		static_assert(sizeof(VRGrabData) == 0x68);
+
+		struct PlayerFlags
+		{
+			// members
+			bool unk0_0: 1;                         // 0:0
+			bool fastTraveling: 1;                  // 0:1 - Set and cleared in the same fast travel function
+			bool overAutoAimTarget: 1;              // 0:2 - Crosshair over hostile actor AND equipped WEAPON_TYPE bow, staff, or crossbow, must have weapon out to be accurate
+			bool unk0_3: 1;                         // 0:3 - Set when going to prison, and on game launch
+			bool unk0_4: 1;                         // 0:4
+			bool hasQueuedEquipAnim: 1;             // 0:5 - Set true in `OnItemEquipped` if a_playAnim && isPaused, false once out of menu
+			bool escaping: 1;                       // 0:6 - Is Escaping from jail
+			bool unk0_7: 1;                         // 0:7
+			bool unk1_0: 1;                         // 1:0
+			bool unk1_1: 1;                         // 1:1
+			bool sleeping: 1;                       // 1:2
+			bool unk1_3: 1;                         // 1:3
+			bool unk1_4: 1;                         // 1:4
+			bool unk1_5: 1;                         // 1:5
+			bool greetingPlayer: 1;                 // 1:6 - NPC greeting player
+			bool unk1_7: 1;                         // 1:7
+			bool unk2_0: 1;                         // 2:0
+			bool aiControlledToPos: 1;              // 2:1 - Guess from FO4, confirmed aiControlled related
+			bool aiControlledFromPos: 1;            // 2:2 - Guess from FO4, confirmed aiControlled related
+			bool aiControlledPackage: 1;            // 2:3 - Guess from FO4, confirmed aiControlled related
+			bool returnToLastKnownGoodPosition: 1;  // 2:4 - return to lastKnownGoodPosition on next Update
+			bool isBeingChased: 1;                  // 2:5 - unused along with chaseTimer
+			bool unk2_6: 1;                         // 2:6
+			bool unk2_7: 1;                         // 2:7
+			bool isInThirdPersonMode: 1;            // 3:0
+			bool unk3_1: 1;                         // 3:1
+			bool unk3_2: 1;                         // 3:2
+			bool unk3_3: 1;                         // 3:3
+			bool target3DDistant: 1;                // 3:4 - Distance from object in crosshair > 1000
+			bool isInCombat: 1;                     // 3:5
+			bool attemptedYieldInCurrentCombat: 1;  // 3:6 - Set when yielding to guard for arrest dialogue, prevents multiple arrest dialogues
+			bool unk3_7: 1;                         // 3:7
+			bool unk4_0: 1;                         // 4:0
+			bool shouldUpdateCrosshair: 1;          // 4:1 - If forced off without letting Skyrim update this, crosshair UI won't update,
+			bool unk4_2: 1;                         // 4:2
+			bool healthTutorialShown: 1;            // 4:3
+			bool magickaTutorialShown: 1;           // 4:4
+			bool staminaTutorialShown: 1;           // 4:5
+			bool goToJailQueued: 1;                 // 4:6 - Briefly set
+			bool unk4_7: 1;                         // 4:7
+			bool isSprinting: 1;                    // 5:0
+			bool unk5_1: 1;                         // 5:1
+			bool dragonRideTargetLocked: 1;         // 5:2
+			bool everModded: 1;                     // 5:3
+			bool servingJailTime: 1;                // 5:4 - Briefly set
+			bool unk5_5: 1;                         // 5:5
+			bool unk5_6: 1;                         // 5:6
+			bool unk5_7: 1;                         // 5:7
+#ifndef SKYRIMVR
+			std::uint16_t pad6;  // 6
+#else
+			bool unk6_0: 1;                                   // 6:0
+			bool unk6_1: 1;                                   // 6:1
+			bool unk6_2: 1;                                   // 6:2
+			bool unk6_3: 1;                                   // 6:3
+			bool unk6_4: 1;                                   // 6:4
+			bool unk6_5: 1;                                   // 6:5
+			bool unk6_6: 1;                                   // 6:6
+			bool unk6_7: 1;                                   // 6:7
+			bool unk7_0: 1;                                   // 7:0
+			bool unk7_1: 1;                                   // 7:1
+			bool unk7_2: 1;                                   // 7:2
+			bool unk7_3: 1;                                   // 7:3
+			bool unk7_4: 1;                                   // 7:4
+			bool unk7_5: 1;                                   // 7:5
+			bool unk7_6: 1;                                   // 7:6
+			bool unk7_7: 1;                                   // 7:7
+#endif
+		};
+		static_assert(sizeof(PlayerFlags) == 0x8);
 
 		struct QueuedWeapon
 		{
@@ -256,6 +298,17 @@ namespace RE
 			std::uint64_t      unk40;  // 40
 		};
 		static_assert(sizeof(Data928) == 0x48);
+
+		struct PreTransformationData
+		{
+		public:
+			// members
+			MagicItem*      storedSelectedSpells[4];    // 00
+			TESRace*        storedRace;                 // 20
+			TESForm*        storedSelectedPower;        // 28
+			TESBoundObject* storedLastOneHandItems[2];  // 30
+		};
+		static_assert(sizeof(PreTransformationData) == 0x40);
 
 		struct PlayerSkills
 		{
@@ -334,25 +387,27 @@ namespace RE
 
 		static PlayerCharacter* GetSingleton();
 
-		void                     ActivatePickRef();
-		void                     AddPlayerAddItemEvent(TESObject* a_object, TESForm* a_owner, TESObjectREFR* a_container, AQUIRE_TYPE a_type);
-		void                     AddSkillExperience(ActorValue a_skill, float a_experience);
-		bool                     AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer = true);
-		bool                     CenterOnCell(const char* a_cellName);
-		bool                     CenterOnCell(RE::TESObjectCELL* a_cell);
-		NiPointer<Actor>         GetActorDoingPlayerCommand() const;
-		float                    GetArmorValue(InventoryEntryData* a_form);
-		float                    GetDamage(InventoryEntryData* a_form);
-		NiPointer<TESObjectREFR> GetGrabbedRef();
-		std::int32_t             GetItemCount(TESBoundObject* a_object);
-		std::uint32_t            GetNumTints(std::uint32_t a_tintType);
+		void             ActivatePickRef();
+		void             AddPlayerAddItemEvent(TESObject* a_object, TESForm* a_owner, TESObjectREFR* a_container, AQUIRE_TYPE a_type);
+		void             AddSkillExperience(ActorValue a_skill, float a_experience);
+		bool             AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer = true);
+		bool             CenterOnCell(const char* a_cellName);
+		bool             CenterOnCell(RE::TESObjectCELL* a_cell);
+		NiPointer<Actor> GetActorDoingPlayerCommand() const;
+		float            GetArmorValue(InventoryEntryData* a_form);
+		float            GetDamage(InventoryEntryData* a_form);
+		std::int32_t     GetItemCount(TESBoundObject* a_object);
+		std::uint32_t    GetNumTints(std::uint32_t a_tintType);
 #ifndef SKYRIMVR
-		TintMask*            GetOverlayTintMask(TintMask* a_original);
-		BSTArray<TintMask*>& GetTintList();
-		TintMask*            GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
-		void                 StartGrabObject();
+		TintMask*                GetOverlayTintMask(TintMask* a_original);
+		BSTArray<TintMask*>&     GetTintList();
+		TintMask*                GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
+		void                     StartGrabObject();
+		NiPointer<TESObjectREFR> GetGrabbedRef();
 #else
-		void StartGrabObject(VRGrabHand a_hand);
+		void StartGrabObject(VR_DEVICE a_device);
+		NiPointer<TESObjectREFR> GetGrabbedRef(VR_DEVICE a_device);
+		bool IsGrabbingWithDevice(VR_DEVICE a_device) const;
 #endif
 		bool HasActorDoingCommand() const;
 		bool IsGrabbing() const;
@@ -405,9 +460,9 @@ namespace RE
 		NiPoint3                                                exteriorPosition;                             // 630
 		std::uint32_t                                           unk63C;                                       // 63C
 		PLAYER_TARGET_LOC                                       queuedTargetLoc;                              // 640
-		BSSoundHandle                                           unk688;                                       // 688
+		BSSoundHandle                                           unusedSound;                                  // 688 - Only place it is set is an unused function
 		BSSoundHandle                                           magicFailureSound;                            // 694
-		BSSoundHandle                                           unk6A0;                                       // 6A0
+		BSSoundHandle                                           shoutFailureSound;                            // 6A0
 		std::uint32_t                                           pad6AC;                                       // 6AC
 		DialoguePackage*                                        closestConversation;                          // 6B0
 		std::uint32_t                                           unk6B8;                                       // 6B8
@@ -445,7 +500,7 @@ namespace RE
 		float                                                   grabDistance;                                 // 8D0
 		float                                                   unk8D4;                                       // 8D4
 		std::uint64_t                                           unk8D8;                                       // 8D8
-		std::uint32_t                                           unk8E0;                                       // 8E0
+		std::uint32_t                                           unk8E0;                                       // 8E0 - Unused?
 		std::uint32_t                                           sleepSeconds;                                 // 8E4
 		BSTSmartPointer<BipedAnim>                              largeBiped;                                   // 8E8
 		NiPointer<NiNode>                                       firstPerson3D;                                // 8F0
@@ -465,7 +520,7 @@ namespace RE
 		std::uint32_t                                           skillTrainingsThisLevel;                      // 930
 		std::uint32_t                                           unk934;                                       // 934
 		TESClass*                                               defaultClass;                                 // 938
-		std::uint64_t                                           unk940;                                       // 940
+		std::uint64_t                                           unk940;                                       // 940 - Unused?
 		std::uint32_t                                           crimeCounts[PackageNS::CRIME_TYPES::kTotal];  // 948
 		std::uint32_t                                           unk964;                                       // 964
 		AlchemyItem*                                            pendingPoison;                                // 968
@@ -495,7 +550,7 @@ namespace RE
 		float                                                   chaseTimer;                                   // A14
 		float                                                   drawSheatheSafetyTimer;                       // A18
 		std::uint32_t                                           unkA1C;                                       // A1C
-		std::uint8_t                                            unkA20[0xA0];                                 // A20
+		std::uint8_t                                            unkA20[0xA0];                                 // A20 - Unused?
 		std::uint32_t                                           unkAC0;                                       // AC0
 		std::uint32_t                                           unkAC4;                                       // AC4
 		BGSLocation*                                            currentLocation;                              // AC8
@@ -531,16 +586,10 @@ namespace RE
 		std::int32_t                                            unkB88;                                       // B88
 		std::uint32_t                                           padB8C;                                       // B8C
 		std::uint64_t                                           unkB90;                                       // B90
-		std::uint64_t                                           unkB98;                                       // B98
+		TESBoundObject*                                         unkB98;                                       // B98 - Set/Cleared in SmithingMenuEntry, may be used to test for enchantment?
 		BSTSmallArray<void*, 4>                                 unkBA0;                                       // BA0
-		std::uint64_t                                           unkBD0;                                       // BD0
-		std::uint8_t                                            unkBD8;                                       // BD8
-		stl::enumeration<FlagBD9, std::uint8_t>                 unkBD9;                                       // BD9
-		std::uint8_t                                            unkBDA;                                       // BDA
-		stl::enumeration<FlagBDB, std::uint8_t>                 unkBDB;                                       // BDB
-		stl::enumeration<FlagBDC, std::uint8_t>                 unkBDC;                                       // BDC
-		stl::enumeration<FlagBDD, std::uint8_t>                 unkBDD;                                       // BDD
-		std::uint16_t                                           padBDE;                                       // BDE
+		PreTransformationData*                                  preTransformationData;                        // BD0 - Stores equipped data when transforming to vampire/werewolf, cleared when transforming back to human
+		PlayerFlags                                             playerFlags;                                  // BD8
 #else
 		// members VR
 		std::uint64_t unk3D8;                                                            // 3D8
@@ -671,9 +720,9 @@ namespace RE
 		NiPoint3 exteriorPosition;                                                       // C20
 		std::uint32_t unkC2C;                                                            // C2C
 		PLAYER_TARGET_LOC queuedTargetLoc;                                               // C30
-		BSSoundHandle unkC80;                                                            // C80
+		BSSoundHandle unusedSound;                                                       // C80 - Only place it is set is an unused function
 		BSSoundHandle magicFailureSound;                                                 // C8C
-		BSSoundHandle unkC98;                                                            // C98
+		BSSoundHandle shoutFailureSound;                                                 // C98
 		std::uint32_t unkCA4;                                                            // CA4
 		DialoguePackage* closestConversation;                                            // CA8
 		std::uint64_t unkCB0;                                                            // CB0
@@ -703,7 +752,7 @@ namespace RE
 		PLAYER_ACTION mostRecentAction;                                                  // E88
 		ActorHandle actorDoingPlayerCommand;                                             // E8C
 		std::uint64_t unkE90;                                                            // E90
-		VRGrabData grabbedObjectData[VRGrabHand::kTotal];                                // E98 -
+		VRGrabData grabbedObjectData[VR_DEVICE::kTotal];                                 // E98 -
 		float unkFD0;                                                                    // FD0 - Not grabDistance as expected in SE
 		float unkFloatFD4;                                                               // FD4
 		std::uint64_t unkFD8;                                                            // FD8
@@ -757,7 +806,9 @@ namespace RE
 		float chaseTimer;                                                                // 1114
 		float drawSheatheSafetyTimer;                                                    // 1118
 		std::uint32_t unk111C;                                                           // 111C
-		std::uint64_t unk1120[0x15];                                                     // 1120
+		std::uint8_t unk1120[0xA0];                                                      // 1120 - Unused?
+		std::uint32_t unkAC0;                                                            // 11C0
+		std::uint32_t unkAC4;                                                            // 11C4
 		BGSLocation* currentLocation;                                                    // 11C8
 		AITimeStamp cachedVelocityTimeStamp;                                             // 11D0
 		float telekinesisDistance;                                                       // 11D4
@@ -766,7 +817,7 @@ namespace RE
 		std::uint64_t unk11E0[0x2];                                                      // 11E0
 		std::uint32_t unk11F0;                                                           // 11F0
 		std::int32_t difficulty;                                                         // 11F4
-		std::uint32_t assumedIdentity;                                                   // 11F8
+		ActorHandle assumedIdentity;                                                     // 11F8
 		std::int8_t murder;                                                              // 11FC
 		std::int8_t perkCount;                                                           // 11FD
 		stl::enumeration<ByCharGenFlag, std::uint8_t> byCharGenFlag;                     // 11FE
@@ -777,15 +828,9 @@ namespace RE
 		BGSTextureSet* complexion;                                                       // 1228
 		TESRace* charGenRace;                                                            // 1230
 		TESRace* race2;                                                                  // 1238
-		std::uint64_t unk1240[0x12];                                                     // 1240
-		std::uint8_t unkBD8;                                                             // 12D0
-		std::uint8_t flags;                                                              // 12D1  -- TODO MAP THESE FLAGS OUT
-		std::uint8_t unkBDA;                                                             // 12D2
-		stl::enumeration<FlagBDB, std::uint8_t> unkBDB;                                  // 12D3 - Guessed from address SkyrimVR.exe+6F68E0+A03 vs SkyrimSE.exe+6CFEF0+8F8
-		stl::enumeration<FlagBDC, std::uint8_t> unk12D4;                                 // 12D4
-		stl::enumeration<FlagBDD, std::uint8_t> unkBDD;                                  // 12D5
-		std::uint8_t unk12D6;                                                            // 12D6
-		std::uint8_t unk12D7;                                                            // 12D7
+		std::uint64_t unk1240[0x11];                                                     // 1240
+		PreTransformationData* preTransformationData;                                    // 12C8 - Stores equipped data when transforming to vampire/werewolf, cleared when transforming back to human
+		PlayerFlags playerFlags;                                                         // 12D0
 #endif
 
 	private:
