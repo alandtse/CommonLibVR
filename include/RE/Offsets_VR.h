@@ -220,6 +220,7 @@ namespace RE
 
 		namespace BSScaleformTranslator
 		{
+			inline constexpr REL::ID     GetCachedString(static_cast<std::uint64_t>(67844));
 			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x1866FA0));
 		}
 
@@ -332,6 +333,15 @@ namespace RE
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2F8AAA0));
 		}
 
+		namespace CraftingSubMenus
+		{
+			namespace EnchantConstructMenu
+			{
+				inline constexpr REL::ID RenameItem(static_cast<std::uint64_t>(50530));
+				inline constexpr REL::ID UpdateInterface(static_cast<std::uint64_t>(50567));
+			}
+		}
+
 		namespace CRC32Calculator
 		{
 			inline constexpr REL::Offset SizeOf32(static_cast<std::uint64_t>(0xC41370));
@@ -382,6 +392,7 @@ namespace RE
 		namespace ExtraDataList
 		{
 			inline constexpr REL::Offset Add(static_cast<std::uint64_t>(0x142140));
+			inline constexpr REL::ID     SetCount(static_cast<std::uint64_t>(11471));
 			inline constexpr REL::Offset SetExtraFlags(static_cast<std::uint64_t>(0x136360));
 			inline constexpr REL::Offset SetInventoryChanges(static_cast<std::uint64_t>(0x11FBA0));
 		}
@@ -472,6 +483,26 @@ namespace RE
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2F8A780));
 		}
 
+		namespace GASActionBufferData
+		{
+			inline constexpr std::uint64_t Vtbl(0x186c990);
+		}
+
+		namespace GASDoAction
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(291613));
+		}
+
+		namespace GASDoInitAction
+		{
+			inline constexpr std::uint64_t Vtbl(0x186cfa0);
+		}
+
+		namespace GFxInitImportActions
+		{
+			inline constexpr std::uint64_t Vtbl(0x188c9a8);
+		}
+
 		namespace GFxLoader
 		{
 			inline constexpr REL::Offset CreateMovie(static_cast<std::uint64_t>(0xF38CA0));
@@ -489,7 +520,9 @@ namespace RE
 				inline constexpr REL::Offset AttachMovie(static_cast<std::uint64_t>(0xF24EF0));
 				inline constexpr REL::Offset DeleteMember(static_cast<std::uint64_t>(0xF25FE0));
 				inline constexpr REL::Offset GetArraySize(static_cast<std::uint64_t>(0xF26720));
+				inline constexpr REL::ID     GetCxform(static_cast<std::uint64_t>(80215));
 				inline constexpr REL::Offset GetDisplayInfo(static_cast<std::uint64_t>(0xF26770));
+				inline constexpr REL::ID     GetDisplayMatrix(static_cast<std::uint64_t>(80217));
 				inline constexpr REL::Offset GetElement(static_cast<std::uint64_t>(0xF26A80));
 				inline constexpr REL::Offset GetMember(static_cast<std::uint64_t>(0xF26CA0));
 				inline constexpr REL::Offset GotoAndPlay(static_cast<std::uint64_t>(0xF270C0));
@@ -500,10 +533,13 @@ namespace RE
 				inline constexpr REL::Offset PushBack(static_cast<std::uint64_t>(0xF27E50));
 				inline constexpr REL::Offset RemoveElements(static_cast<std::uint64_t>(0xF28210));
 				inline constexpr REL::Offset SetArraySize(static_cast<std::uint64_t>(0xF28870));
+				inline constexpr REL::ID     SetCxform(static_cast<std::uint64_t>(80262));
 				inline constexpr REL::Offset SetDisplayInfo(static_cast<std::uint64_t>(0xF28900));
+				inline constexpr REL::ID     SetDisplayMatrix(static_cast<std::uint64_t>(80264));
 				inline constexpr REL::Offset SetElement(static_cast<std::uint64_t>(0xF294B0));
 				inline constexpr REL::Offset SetMember(static_cast<std::uint64_t>(0xF296F0));
 				inline constexpr REL::Offset SetText(static_cast<std::uint64_t>(0xF29840));
+				inline constexpr REL::ID     VisitMembers(static_cast<std::uint64_t>(80279));
 			}
 		}
 
@@ -757,6 +793,11 @@ namespace RE
 			inline constexpr REL::Offset CreateDeepCopy(static_cast<std::uint64_t>(0xC97A60));
 		}
 
+		namespace NiPoint3
+		{
+			inline constexpr REL::ID Zero(static_cast<std::uint64_t>(523887));
+		}
+
 		namespace NiRefObject
 		{
 			inline constexpr REL::Offset TotalObjectCount(static_cast<std::uint64_t>(0x316AD20));
@@ -822,6 +863,16 @@ namespace RE
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x1F831B0));
 			inline constexpr REL::Offset ClearCachedFactionFightReactions(static_cast<std::uint64_t>(0x705B00));
 			inline constexpr REL::Offset StopCombatAndAlarmOnActor(static_cast<std::uint64_t>(0x700330));
+		}
+
+		namespace RaceSexMenu
+		{
+			inline constexpr REL::ID ChangeName(static_cast<std::uint64_t>(51540));
+		}
+
+		namespace ReferenceEffectController
+		{
+			inline constexpr REL::ID Start(static_cast<std::uint64_t>(33961));
 		}
 
 		namespace ReadyWeaponHandler

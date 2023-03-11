@@ -52,9 +52,9 @@ namespace RE
 			~SmithingMenu() override;  // 00
 
 			// override (CraftingSubMenu)
-			void Accept(CallbackProcessor* a_cbReg) override;  // 01
-			void Unk_02(void) override;                        // 02
-			void Unk_05(void) override;                        // 05
+			void Accept(CallbackProcessor* a_cbReg) override;          // 01
+			void Unk_02(void) override;                                // 02
+			bool ProcessUserEvent(BSFixedString* a_control) override;  // 05
 
 			// members
 			BSTArray<SmithingItemEntry>  unk100;        // 100
