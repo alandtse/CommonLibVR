@@ -32,6 +32,8 @@ git checkout vr
 
 # Install dependencies (may be skipped if cmake integrated with vcpkg)
 vcpkg install
+git submodule init
+git submodule update
 
 # Skyrim SE
 cmake --preset vs2022-windows-vcpkg
