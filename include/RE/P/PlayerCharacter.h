@@ -52,6 +52,11 @@ namespace RE
 	struct PositionPlayerEvent;
 	struct TESQuestStageItem;
 	struct TESTrackedStatsEvent;
+#ifdef SKYRIMVR
+	struct VRDeviceConnectionChange;
+	struct VROverlayChange;
+	struct VRResetHMDHeight;
+#endif
 
 	enum class PLAYER_ACTION
 	{
@@ -153,7 +158,8 @@ namespace RE
 	static_assert(sizeof(PlayerActionObject) == 0xC);
 
 	class PlayerCharacter :
-		public Character,                            // 000
+		public Character,  // 000
+#ifndef SKYRIMVR
 		public BSTEventSource<BGSActorCellEvent>,    // 2D0
 		public BSTEventSource<BGSActorDeathEvent>,   // 328
 		public BSTEventSource<PositionPlayerEvent>,  // 380
@@ -161,6 +167,18 @@ namespace RE
 		public BSTEventSink<MenuModeChangeEvent>,    // 2B8
 		public BSTEventSink<UserEventEnabledEvent>,  // 2C0
 		public BSTEventSink<TESTrackedStatsEvent>    // 2C8
+#else
+		public BSTEventSource<BGSActorCellEvent>,             // 2E8
+		public BSTEventSource<BGSActorDeathEvent>,            // 340
+		public BSTEventSource<PositionPlayerEvent>,           // 398
+		public BSTEventSink<MenuOpenCloseEvent>,              // 2B0
+		public BSTEventSink<MenuModeChangeEvent>,             // 2B8
+		public BSTEventSink<UserEventEnabledEvent>,           // 2C0
+		public BSTEventSink<TESTrackedStatsEvent>,            // 2C8
+		public BSTEventSink<VROverlayChange>,                 // 2D0
+		public BSTEventSink<VRDeviceConnectionChange>,        // 2D8
+		public BSTEventSink<VRResetHMDHeight>                 // 2E0
+#endif
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_PlayerCharacter;
@@ -615,9 +633,6 @@ namespace RE
 		PlayerFlags                                             playerFlags;                                  // BD8
 #else
 		// members VR
-		std::uint64_t unk3D8;                                                            // 3D8
-		std::uint64_t unk3E0;                                                            // 3E0
-		std::uint64_t unk3E8;                                                            // 3E8
 		NiPointer<NiNode> PlayerWorldNode;                                               // 3F0
 		NiPointer<NiNode> FollowNode;                                                    // 3F8
 		NiPointer<NiNode> FollowOffset;                                                  // 400

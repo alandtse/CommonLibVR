@@ -1,13 +1,14 @@
 #pragma once
 
-#include "RE/B/BSTArray.h"
-#include "RE/B/BSTHashMap.h"
-#include "RE/B/BSVRInterface.h"
-#include "RE/N/NiNode.h"
+#ifdef SKYRIMVR
+#	include "RE/B/BSTArray.h"
+#	include "RE/B/BSTHashMap.h"
+#	include "RE/B/BSVRInterface.h"
+#	include "RE/N/NiNode.h"
 
 namespace RE
 {
-#ifdef SKYRIMVR
+
 	class BSOpenVR : public BSVRInterface
 	{
 	public:
@@ -28,59 +29,52 @@ namespace RE
 		static_assert(sizeof(Unk238) == 0x40);
 
 		// override
-		void Unk_00(void) override;  // 00
-		void Unk_01(void) override;  // 01
-		void Unk_02(void) override;  // 02
-		void Unk_03(void) override;  // 03
-		void Unk_04(void) override;  // 04
-		void Unk_05(void) override;  // 05
-		void Unk_06(void) override;  // 06
-		void Unk_07(void) override;  // 07
-		void Unk_08(void) override;  // 08
-		void Unk_09(void) override;  // 09
-		void Unk_0A(void) override;  // 0A
-		void Unk_0B(void) override;  // 0B
-		void Unk_0C(void) override;  // 0C
-		void Unk_0D(void) override;  // 0D
-		void Unk_0E(void) override;  // 0E
-		void Unk_0F(void) override;  // 0F
-		void Unk_10(void) override;  // 10
-		void Unk_11(void) override;  // 11
-		void Unk_12(void) override;  // 12
-		void Unk_13(void) override;  // 13
-		void Unk_14(void) override;  // 14
-		void Unk_15(void) override;  // 15
-		void Unk_16(void) override;  // 16
-		void Unk_17(void) override;  // 17
+		void                     InitializeVR() override;                                                                                             // 00
+		void                     ShutdownVR() override;                                                                                               // 01
+		void                     PostPresentHandoff() override;                                                                                       // 02
+		void                     Submit(void* a_directXTextureHandle) override;                                                                       // 03 - SubmitForEye, except the logic runs for both eyes
+		void                     SubmitForEye(vr::EVREye a_eye, void* a_directXTextureHandle) override;                                               // 04
+		void                     SetTrackingSpaceAsStanding() override;                                                                               // 05 - { VR_GetIVRCompositor_140C57880()->SetTrackingSpace(TrackingUniverseStanding) }
+		void                     SetTrackingSpaceAsSeated() override;                                                                                 // 06 - { VR_GetIVRCompositor_140C57880()->SetTrackingSpace(TrackingUniverseSeated) }
+		void                     Unk_07(void) override;                                                                                               // 07
+		void                     GetProjectionRaw(vr::EVREye a_eEye, float* a_pfLeft, float* a_pfRight, float* a_pfTop, float* a_pfBottom) override;  // 08
+		void                     Unk_09(NiTransform* a_unk, std::uint32_t a_unk1) override;                                                           // 09
+		void                     Unk_0A(void) override;                                                                                               // 0A
+		void                     Unk_0B(void) override;                                                                                               // 0B - Process VR events?
+		vr::TrackedDeviceIndex_t GetTrackedDeviceIndexForHMD() override;                                                                              // 0C - { return vr::k_unTrackedDeviceIndex_Hmd; }
+		vr::TrackedDeviceIndex_t GetTrackedDeviceIndexForHand(bool getRightHand) override;                                                            // 0D - { return vrSystem->GetTrackedDeviceIndexForControllerRole(isRightHand + 1); } Can return invalid role if not 0 or 1
+		void                     Unk_0E(void) override;                                                                                               // 0E - Trigger haptics for hand for X millseconds?
+		void                     Unk_0F(void) override;                                                                                               // 0F
+		void                     Unk_10(void) override;                                                                                               // 10
+		void                     Unk_11(void) override;                                                                                               // 11 - { return 0; }
+		void                     Unk_12(void) override;                                                                                               // 12
+		void                     Unk_13() override;                                                                                                   // 13
+		void                     Unk_14(void) override;                                                                                               // 14
+		void                     Unk_15(void) override;                                                                                               // 15 - { return 0; }
+		HMDDeviceType            GetHMDDeviceType() override;                                                                                         // 16 - { return hmdDeviceType; }
+		void                     Unk_17(void) override;                                                                                               // 17
 
 		static BSOpenVR* GetSingleton();
 
+		static vr::IVRCompositor*   GetIVRCompositor();
+		static vr::IVROverlay*      GetIVROverlay(Unk190* a_unk190);
+		static vr::IVRRenderModels* GetIVRRenderModels();
+		static vr::IVRSettings*     GetIVRSettings();
+		static vr::IVRSystem*       GetIVRSystem();
+
 		// members
-		std::uint64_t    unk208;     // 208 - Gets set to HookVRSystem, outside of SkyrimVR
-		std::uint64_t    unk210;     // 210
-		std::uint64_t    unk218;     // 218
-		std::uint64_t    unk220;     // 220
-		std::uint64_t    unk228;     // 228
-		NiSourceTexture* unk230;     // 230
-		Unk238           unk238[4];  // 238
-		std::uint64_t    unk338;     // 380
-		std::uint64_t    unk340[9];  // 340
-		NiNode*          unk388;     // 388
-		NiNode*          unk390;     // 390
-		std::uint64_t    unk398;     // 398
-		std::uint64_t    unk3A0;     // 3A0
-		std::uint64_t    unk3A8;     // 3A8
-		std::uint64_t    unk3B0;     // 3B0
-		std::uint64_t    unk3B8;     // 3B8
-		std::uint64_t    unk3C0;     // 3C0
-		std::uint64_t    unk3C8;     // 3C8
-		std::uint64_t    unk3D0;     // 3D0
-		std::uint64_t    unk3D8;     // 3D8
-		std::uint64_t    unk3E0;     // 3E0
-		std::uint64_t    unk3E8;     // 3E8
-		std::uint64_t    unk3F0;     // 3F0
-		std::uint64_t    unk3F8;     // 3F8
-		std::uint64_t    unk400;     // 400
+		vr::IVRSystem*   vrSystem;       // 208
+		void*            unk210;         // 210
+		std::uint64_t    unk218;         // 218
+		std::uint64_t    unk220;         // 220
+		std::uint64_t    unk228;         // 228
+		NiSourceTexture* unk230;         // 230 - name is SIMPLE_NORMAL_MAP
+		Unk238           unk238[4];      // 238
+		std::uint64_t    unk338;         // 380
+		std::uint64_t    unk340[9];      // 340
+		NiNode*          unk388[2];      // 388
+		HMDDeviceType    hmdDeviceType;  // 398 - Set by comparing TrackedSystemName to "lighthouse", "oculus" and "holographic". Defaults to "lighthouse" if none match
+		NiTransform      unk39C[2];      // 39C
 	};
 	static_assert(sizeof(BSOpenVR) == 0x408);
 #endif

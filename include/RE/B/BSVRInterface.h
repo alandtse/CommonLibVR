@@ -1,75 +1,98 @@
 #pragma once
 
-#include "RE/B/BSTEvent.h"
+#ifdef SKYRIMVR
+
+#	include "RE/B/BSTEvent.h"
+#	include "RE/N/NiTransform.h"
+#	include "openvr.h"
 
 namespace RE
 {
-#ifdef SKYRIMVR
 	struct VROverlayChange;
-	struct VRDeviceConnetionChange;
+	struct VRDeviceConnectionChange;
 	struct VRResetHMDHeight;
 
 	class BSVRInterface :
-		public BSTEventSource<VROverlayChange>,          // 08
-		public BSTEventSource<VRDeviceConnetionChange>,  // 60
-		public BSTEventSource<VRResetHMDHeight>          // B8
+		public BSTEventSource<VROverlayChange>,           // 08
+		public BSTEventSource<VRDeviceConnectionChange>,  // 60
+		public BSTEventSource<VRResetHMDHeight>           // B8
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSVRInterface;
 
+		enum class HMDDeviceType : std::uint32_t
+		{
+			kLighthouse,   // used for sDriverVive:VR?
+			kOculus,       // used for sDriverOculus:VR?
+			kHolographics  // used for sDriverWindowsMR:VR?
+		};
+
+		struct Unk190
+		{
+			// members
+			std::uint64_t   unk00;       // 00
+			std::uint64_t   unk08;       // 08
+			std::uint64_t   unk10;       // 10
+			std::uint64_t   unk18;       // 18
+			vr::IVROverlay* ivrOverlay;  // 20
+			std::uint64_t   unk28;       // 28
+			std::uint64_t   unk30;       // 30
+			std::uint64_t   unk38;       // 38
+			std::uint64_t   unk40;       // 40
+			std::uint64_t   unk48;       // 48
+			std::uint64_t   unk50;       // 50
+			std::uint64_t   unk58;       // 58
+			std::uint64_t   unk60;       // 60
+		};
+		static_assert(sizeof(Unk190) == 0x68);
+
 		// add
-		virtual void Unk_00(void);  // 00
-		virtual void Unk_01(void);  // 01
-		virtual void Unk_02(void);  // 02
-		virtual void Unk_03(void);  // 03
-		virtual void Unk_04(void);  // 04
-		virtual void Unk_05(void);  // 05
-		virtual void Unk_06(void);  // 06
-		virtual void Unk_07(void);  // 07
-		virtual void Unk_08(void);  // 08
-		virtual void Unk_09(void);  // 09
-		virtual void Unk_0A(void);  // 0A
-		virtual void Unk_0B(void);  // 0B
-		virtual void Unk_0C(void);  // 0C
-		virtual void Unk_0D(void);  // 0D
-		virtual void Unk_0E(void);  // 0E
-		virtual void Unk_0F(void);  // 0F
-		virtual void Unk_10(void);  // 10
-		virtual void Unk_11(void);  // 11
-		virtual void Unk_12(void);  // 12
-		virtual void Unk_13(void);  // 13
-		virtual void Unk_14(void);  // 14
-		virtual void Unk_15(void);  // 15
-		virtual void Unk_16(void);  // 16
-		virtual void Unk_17(void);  // 17
+		virtual void                     InitializeVR();                                                                                   // 00
+		virtual void                     ShutdownVR();                                                                                     // 01
+		virtual void                     PostPresentHandoff();                                                                                     // 02
+		virtual void                     Submit(void* a_directXTextureHandle);                                                             // 03
+		virtual void                     SubmitForEye(vr::EVREye, void* a_directXTextureHandle);                                           // 04
+		virtual void                     SetTrackingSpaceAsStanding();                                                                     // 05
+		virtual void                     SetTrackingSpaceAsSeated();                                                                       // 06
+		virtual void                     Unk_07(void);                                                                                     // 07
+		virtual void                     GetProjectionRaw(vr::EVREye eEye, float* pfLeft, float* pfRight, float* pfTop, float* pfBottom);  // 08
+		virtual void                     Unk_09(NiTransform* a_unk, std::uint32_t a_unk1);                                                      // 09
+		virtual void                     Unk_0A(void);                                                                                     // 0A
+		virtual void                     Unk_0B(void);                                                                                     // 0B
+		virtual vr::TrackedDeviceIndex_t GetTrackedDeviceIndexForHMD();                                                                    // 0C
+		virtual vr::TrackedDeviceIndex_t GetTrackedDeviceIndexForHand(bool getRightHand);                                                  // 0D
+		virtual void                     Unk_0E(void);                                                                                     // 0E
+		virtual void                     Unk_0F(void);                                                                                     // 0F
+		virtual void                     Unk_10(void);                                                                                     // 10
+		virtual void                     Unk_11(void);                                                                                     // 11
+		virtual void                     Unk_12(void);                                                                                     // 12
+		virtual void                     Unk_13(void);                                                                                     // 13
+		virtual void                     Unk_14(void);                                                                                     // 14
+		virtual void                     Unk_15(void);                                                                                     // 15
+		virtual HMDDeviceType            GetHMDDeviceType();                                                                               // 16
+		virtual void                     Unk_17(void);                                                                                     // 17
 
 		// members
-		std::uint8_t  unk110;     // 110
-		std::uint64_t unk118;     // 118
-		std::uint64_t unk120;     // 120
-		std::uint64_t unk128[2];  // 128
-		std::uint64_t unk138[2];  // 138
-		std::uint32_t unk148;     // 148
-		std::uint32_t unk14C[4];  // 14C
-		std::uint32_t unk15C[4];  // 15C
-		std::uint32_t unk16C[4];  // 16C
-		std::uint32_t unk17C;     // 17C
-		std::uint64_t unk180[2];  // 180
-		std::uint64_t unk190;     // 190
-		std::uint64_t unk198;     // 198
-		std::uint64_t unk1A0;     // 1A0
-		std::uint64_t unk1A8;     // 1A8
-		std::uint64_t unk1B0;     // 1B0
-		std::uint64_t unk1B8;     // 1B8
-		std::uint64_t unk1C0;     // 1C0
-		std::uint64_t unk1C8;     // 1C8
-		std::uint64_t unk1D0;     // 1D0
-		std::uint64_t unk1D8;     // 1D8
-		std::uint64_t unk1E0;     // 1E0
-		std::uint64_t unk1E8;     // 1E8
-		std::uint64_t unk1F0;     // 1F0
-		std::uint64_t unk1F8;     // 1F8
-		std::uint64_t unk200;     // 200
+		std::uint8_t          unk110;      // 110
+		void*                 unk118;      // 118
+		std::uint64_t         unk120;      // 120
+		NiTransform           unk128;      // 128
+		NiTransform           unk15C;      // 15C
+		Unk190*               unk190;      // 190
+		std::uint64_t         unk198;      // 198
+		std::uint64_t         unk1A0;      // 1A0
+		std::uint64_t         unk1A8;      // 1A8
+		vr::IVROverlay*       ivrOverlay;  // 1B0
+		std::uint64_t         unk1B8;      // 1B8
+		std::uint64_t         unk1C0;      // 1C0
+		std::uint64_t         unk1C8;      // 1C8
+		std::uint64_t         unk1D0;      // 1D0
+		std::uint64_t         unk1D8;      // 1D8
+		std::uint64_t         unk1E0;      // 1E0
+		std::uint64_t         unk1E8;      // 1E8
+		std::uint64_t         unk1F0;      // 1F0
+		vr::VROverlayHandle_t unk1F8;      // 1F8 - current overlay handle?
+		std::byte             unk200;      // 200
 	};
 	static_assert(sizeof(BSVRInterface) == 0x208);
 #endif
