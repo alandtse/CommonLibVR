@@ -7,7 +7,7 @@ namespace RE
 	{
 	public:
 		// members
-		std::byte unk00; // 00
+		std::byte unk00;  // 00
 	};
 	static_assert(sizeof(VROverlayChange) == 0x1);
 #endif

@@ -8,7 +8,6 @@
 
 namespace RE
 {
-
 	class BSOpenVR : public BSVRInterface
 	{
 	public:

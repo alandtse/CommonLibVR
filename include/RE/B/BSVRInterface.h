@@ -49,14 +49,14 @@ namespace RE
 		// add
 		virtual void                     InitializeVR();                                                                                   // 00
 		virtual void                     ShutdownVR();                                                                                     // 01
-		virtual void                     PostPresentHandoff();                                                                                     // 02
+		virtual void                     PostPresentHandoff();                                                                             // 02
 		virtual void                     Submit(void* a_directXTextureHandle);                                                             // 03
 		virtual void                     SubmitForEye(vr::EVREye, void* a_directXTextureHandle);                                           // 04
 		virtual void                     SetTrackingSpaceAsStanding();                                                                     // 05
 		virtual void                     SetTrackingSpaceAsSeated();                                                                       // 06
 		virtual void                     Unk_07(void);                                                                                     // 07
 		virtual void                     GetProjectionRaw(vr::EVREye eEye, float* pfLeft, float* pfRight, float* pfTop, float* pfBottom);  // 08
-		virtual void                     Unk_09(NiTransform* a_unk, std::uint32_t a_unk1);                                                      // 09
+		virtual void                     Unk_09(NiTransform* a_unk, std::uint32_t a_unk1);                                                 // 09
 		virtual void                     Unk_0A(void);                                                                                     // 0A
 		virtual void                     Unk_0B(void);                                                                                     // 0B
 		virtual vr::TrackedDeviceIndex_t GetTrackedDeviceIndexForHMD();                                                                    // 0C

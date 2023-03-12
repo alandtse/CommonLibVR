@@ -1511,6 +1511,9 @@ set(SOURCES
 	include/RE/U/UserEvents.h
 	include/RE/V/VATS.h
 	include/RE/V/VDescTable.h
+	include/RE/V/VRDeviceConnectionChange.h
+	include/RE/V/VROverlayChange.h
+	include/RE/V/VRResetHMDHeight.h
 	include/RE/V/ValueModifierEffect.h
 	include/RE/V/Variable.h
 	include/RE/V/VertexDesc.h
