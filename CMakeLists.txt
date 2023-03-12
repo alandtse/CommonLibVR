@@ -93,12 +93,24 @@ if (MSVC)
 	)
 endif()
 
-target_include_directories(
+if (NOT BUILD_SKYRIMVR)
+	target_include_directories(
 	"${PROJECT_NAME}"
 	PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
+else()
+	set(OPENVR_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/extern/openvr/headers)
+	target_include_directories(
+	"${PROJECT_NAME}"
+	PUBLIC
+		"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+		"$<BUILD_INTERFACE:${OPENVR_INCLUDE_DIR}>"
+	)
+endif()
+
 
 target_link_libraries(
 	"${PROJECT_NAME}"
