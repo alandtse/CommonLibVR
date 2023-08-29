@@ -28,13 +28,13 @@ namespace RE
 		hkVector4      characterGravity;  // B0
 		std::uint64_t  userData;          // C0
 		std::uint64_t  padC8;             // C8
-	};
+    };
 	static_assert(sizeof(hkpCharacterInput) == 0xD0);
 
 	struct hkpCharacterOutput
 	{
 		hkVector4 velocity;  // 00
-	};
+    };
 	static_assert(sizeof(hkpCharacterOutput) == 0x10);
 
 	class hkpCharacterContext : public hkReferencedObject
@@ -62,6 +62,8 @@ namespace RE
 		float                                          maxLinearAcceleration;  // 2C
 		float                                          maxLinearVelocity;      // 30
 		float                                          gain;                   // 34
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(hkpCharacterContext) == 0x38);
 }

@@ -24,7 +24,7 @@ namespace RE
 		};
 
 		stl::enumeration<Flag, std::uint8_t> flags;  // 0
-	};
+    };
 	static_assert(sizeof(CONT_DATA) == 0x1);
 
 	class TESObjectCONT :
@@ -78,7 +78,9 @@ namespace RE
 		std::uint32_t           padBC;       // BC
 		BGSSoundDescriptorForm* openSound;   // C0 - SNAM
 		BGSSoundDescriptorForm* closeSound;  // C8 - QNAM
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(offsetof(TESObjectCONT, data) == 0xB9);
 	static_assert(sizeof(TESObjectCONT) == 0xD0);

@@ -9,11 +9,11 @@ namespace RE
 
 	enum class OBJECT_TYPE
 	{
-	};
+    };
 
 	enum class OBJECT_CATEGORY_TYPE
 	{
-	};
+    };
 
 	class IFormFactory
 	{
@@ -40,6 +40,6 @@ namespace RE
 		static ConcreteFormFactory<T, T::FORMTYPE>* GetConcreteFormFactoryByType();
 
 		TESForm* Create();
-	};
+    };
 	static_assert(sizeof(IFormFactory) == 0x8);
 }

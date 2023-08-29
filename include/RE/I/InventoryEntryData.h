@@ -78,6 +78,8 @@ namespace RE
 
 			return false;
 		}
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(InventoryEntryData) == 0x18);
 }

@@ -8,5 +8,5 @@ namespace RE
 		kOrbis = 1,
 
 		kTotal
-	};
+    };
 }

@@ -41,7 +41,9 @@ namespace RE
 
 		// members
 		stl::enumeration<EventType, std::uint32_t> type;  // 0
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(GFxEvent) == 0x4);
 
 	class GFxMouseEvent : public GFxEvent
@@ -80,7 +82,9 @@ namespace RE
 		float         scrollDelta;  // 0C
 		std::uint32_t button;       // 10
 		std::uint32_t mouseIndex;   // 14
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(GFxMouseEvent) == 0x18);
 
 	class GFxKeyEvent : public GFxEvent
@@ -119,6 +123,8 @@ namespace RE
 		GFxSpecialKeysState specialKeyState;  // 10
 		std::uint8_t        keyboardIndex;    // 11
 		std::uint16_t       pad12;            // 12
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(GFxKeyEvent) == 0x14);
 }

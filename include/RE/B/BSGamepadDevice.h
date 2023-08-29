@@ -43,6 +43,8 @@ namespace RE
 
 	protected:
 		BSGamepadDevice();
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(BSGamepadDevice) == 0xD0);
 }

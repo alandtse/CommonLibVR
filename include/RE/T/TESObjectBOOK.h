@@ -48,7 +48,7 @@ namespace RE
 		std::uint16_t                        pad02;    // 02
 		std::uint32_t                        pad04;    // 04
 		Teaches                              teaches;  // 08
-	};
+    };
 	static_assert(sizeof(OBJ_BOOK) == 0x10);
 
 	class TESObjectBOOK :
@@ -116,6 +116,8 @@ namespace RE
 		OBJ_BOOK       data;                 // 110 - DATA
 		TESObjectSTAT* inventoryModel;       // 120 - INAM
 		TESDescription itemCardDescription;  // 128 - CNAM
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESObjectBOOK) == 0x138);
 }

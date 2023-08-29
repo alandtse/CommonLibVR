@@ -46,5 +46,5 @@ namespace RE
 		kTotal,
 
 		kAll = static_cast<std::underlying_type_t<hkpShapeType>>(-1)
-	};
+    };
 }

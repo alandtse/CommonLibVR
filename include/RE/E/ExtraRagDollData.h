@@ -12,7 +12,7 @@ namespace RE
 		std::uint16_t pad02;    // 02
 		NiPoint3      bonePos;  // 04
 		NiPoint3      boneRot;  // 10
-	};
+    };
 	static_assert(sizeof(RagDollBone) == 0x1C);
 
 	struct RagDollData
@@ -24,7 +24,7 @@ namespace RE
 		RagDollBone*  bones;      // 08
 		NiPoint3      bip01Rot;   // 10
 		std::uint32_t pad1C;      // 1C
-	};
+    };
 	static_assert(sizeof(RagDollData) == 0x20);
 
 	class ExtraRagDollData : public BSExtraData
@@ -41,6 +41,8 @@ namespace RE
 
 		// members
 		RagDollData* ragDollData;  // 10
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(ExtraRagDollData) == 0x18);
 }

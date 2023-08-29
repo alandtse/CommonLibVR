@@ -10,7 +10,7 @@ namespace RE
 	{
 		std::int32_t friction;     // 0
 		std::int32_t restitution;  // 4
-	};
+    };
 	static_assert(sizeof(TEXTURE_HAVOK_DATA) == 0x8);
 
 	class TESLandTexture : public TESForm
@@ -46,6 +46,8 @@ namespace RE
 		std::uint16_t           pad3A;               // 3A
 		std::int32_t            shaderTextureIndex;  // 3C - INAM
 		BSSimpleList<TESGrass*> textureGrassList;    // 40 - GNAM
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESLandTexture) == 0x50);
 }

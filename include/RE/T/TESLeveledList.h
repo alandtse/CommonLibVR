@@ -21,7 +21,7 @@ namespace RE
 		std::uint16_t       level;      // 0A - ~LVLO
 		std::uint32_t       pad0C;      // 0C
 		ContainerItemExtra* itemExtra;  // 10 - COED
-	};
+    };
 	static_assert(sizeof(LEVELED_OBJECT) == 0x18);
 
 	struct CALCED_OBJECT
@@ -33,7 +33,7 @@ namespace RE
 		std::uint16_t      pad0A;          // 08
 		std::uint32_t      pad0C;          // 0C
 		ContainerItemExtra containerItem;  // 10
-	};
+    };
 	static_assert(sizeof(CALCED_OBJECT) == 0x28);
 
 	class TESLeveledList : public BaseFormComponent
@@ -74,6 +74,8 @@ namespace RE
 		std::uint32_t               pad14;         // 14
 		void*                       unk18;         // 18
 		TESGlobal*                  chanceGlobal;  // 20 - LVLG
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESLeveledList) == 0x28);
 }

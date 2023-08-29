@@ -20,7 +20,9 @@ namespace RE
 	class TESFileArray : public BSStaticArray<TESFile*>
 	{
 	public:
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESFileArray) == 0x10);
 
 	class TESFileContainer
@@ -28,7 +30,9 @@ namespace RE
 	public:
 		// members
 		TESFileArray* array;  // 0
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESFileContainer) == 0x8);
 
 	class TESForm : public BaseFormComponent
@@ -359,6 +363,8 @@ namespace RE
 		stl::enumeration<FormType, std::uint8_t>        formType;         // 1A
 		std::uint8_t                                    pad1B;            // 1B
 		std::uint32_t                                   pad1C;            // 1C
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESForm) == 0x20);
 }

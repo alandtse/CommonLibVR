@@ -43,21 +43,21 @@ namespace RE
 		kSkipRenderDuringFreezeFrameScreenshot = 1 << 25,
 		kLargeScaleformRenderCacheMode = 1 << 26,
 		kUsesMovementToDirection = 1 << 27
-	};
+    };
 
 	enum class UI_MESSAGE_RESULTS
 	{
 		kHandled = 0,
 		kIgnore = 1,
 		kPassOn = 2
-	};
+    };
 
 #ifdef SKYRIMVR
 	enum class UI_MENU_Unk09
 	{
 		kNone = static_cast<std::underlying_type_t<UI_MENU_Unk09>>(-1),  // Entire enum needs more REing
 
-	};
+    };
 #endif
 
 	class IMenu : public FxDelegateHandler
@@ -132,7 +132,9 @@ namespace RE
 		std::byte                                      unk34{ 1 };
 		BSFixedString                                  menuName{ "N/A" };  // 38
 #endif
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(IMenu) == 0x30);
 #else

@@ -73,6 +73,8 @@ namespace RE
 		std::uint16_t                                     unk301D6;           // 301D6
 		BSTArray<void*>                                   unk301D8;           // 301D8
 		std::uint64_t                                     unk301F0;           // 301F0
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(BSCullingProcess) == 0x301F8);
 }

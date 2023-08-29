@@ -350,6 +350,8 @@ namespace RE
 		BSTArray<BSFixedString>                        phonemeTargets;                                 // 460 - PHTN
 		BGSMovementType*                               baseMoveTypes[MovementTypes::kTotal];           // 478 - WKMV / RNMV / WMMV / FLMV / SNMV / SPMV
 		FaceRelatedData*                               faceRelatedData[SEXES::kTotal];                 // 4A8
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(TESRace) == 0x4B8);
 }

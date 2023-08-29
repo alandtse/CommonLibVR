@@ -40,7 +40,9 @@ namespace RE
 		float         maxFarNearRatio;   // 170
 		NiRect<float> port;              // 174
 		float         lodAdjust;         // 184
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(NiCamera) == 0x188);
 #else
 		float           worldToCam[4][4];  // 138
@@ -54,7 +56,9 @@ namespace RE
 		float           maxFarNearRatio;   // 1EC
 		NiRect<float>   port;              // 1F0
 		float           lodAdjust;         // 200
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(NiCamera) == 0x208);
 #endif
 

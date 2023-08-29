@@ -15,7 +15,7 @@ namespace RE
 		std::int32_t  hash;      // 14
 		std::uint32_t size;      // 18
 		std::uint32_t pad1C;     // 1C
-	};
+    };
 
 	class GASStringManager : public GRefCountBase<GASStringManager, GFxStatMovieViews::kGFxStatMV_ActionScript_Mem>
 	{
@@ -32,6 +32,8 @@ namespace RE
 		std::uint64_t          unk40;  // 40
 		std::uint64_t          unk48;  // 48
 		std::uint64_t          unk50;  // 50
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(GASStringManager) == 0x58);
 }

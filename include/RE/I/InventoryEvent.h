@@ -7,5 +7,5 @@ namespace RE
 		kWeaponChanged = 0,
 		kDraw,
 		kSheath,
-	};
+    };
 }

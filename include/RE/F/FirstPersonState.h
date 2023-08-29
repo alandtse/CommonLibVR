@@ -50,6 +50,8 @@ namespace RE
 		bool          cameraPitchOverride;      // 85
 		std::uint16_t unk86;                    // 86
 		std::uint64_t unk88;                    // 88
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(FirstPersonState) == 0x90);
 }

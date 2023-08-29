@@ -63,7 +63,9 @@ namespace RE
 
 	protected:
 		NiNode* Ctor(std::uint16_t a_arrBufLen);
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(NiNode) == 0x128);
 #else

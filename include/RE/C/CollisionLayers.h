@@ -51,5 +51,5 @@ namespace RE
 		kUnused1 = 44,
 		kSpellExplosion = 45,
 		kDroppingPick = 46
-	};
+    };
 }

@@ -654,6 +654,8 @@ namespace RE
 #ifndef SKYRIM_SUPPORT_AE
 		std::uint32_t padCEC;  // CEC
 #endif
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(BGSDefaultObjectManager) == 0xCF0);

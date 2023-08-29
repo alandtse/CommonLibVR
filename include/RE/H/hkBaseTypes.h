@@ -9,7 +9,7 @@ namespace RE
 	{
 		kSuccess = 0,
 		kFailure = 1
-	};
+    };
 
 	// 16-bit float with 7-bit precision
 	class hkHalf
@@ -27,7 +27,9 @@ namespace RE
 
 		// members
 		std::int16_t _value;  // 0
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(hkHalf) == 0x2);
 
 	// 8-bit float ranging [0.01, 1000000.0]
@@ -37,6 +39,8 @@ namespace RE
 	public:
 		// members
 		std::uint8_t value;  // 0
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(hkUFloat8) == 0x1);
 }

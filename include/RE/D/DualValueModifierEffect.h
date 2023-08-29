@@ -28,6 +28,8 @@ namespace RE
 		// members
 		ActorValue secondaryActorValue;  // 98
 		float      secondaryAVWeight;    // 9C
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(DualValueModifierEffect) == 0xA0);
 }

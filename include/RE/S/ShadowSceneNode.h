@@ -96,7 +96,9 @@ namespace RE
 		std::uint8_t  pad301;  // 301
 		std::uint16_t pad302;  // 302
 		float         unk304;  // 304
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(ShadowSceneNode) == 0x308);
 #else

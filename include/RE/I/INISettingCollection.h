@@ -22,6 +22,8 @@ namespace RE
 		static INISettingCollection* GetSingleton();
 
 		Setting* GetSetting(std::string_view a_name);
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(INISettingCollection) == 0x128);
 }

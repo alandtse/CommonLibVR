@@ -34,6 +34,6 @@ namespace RE
 
 		// members
 		hkQuadReal mask;  // 00
-	};
+    };
 	static_assert(sizeof(hkVector4Comparison) == 0x10);
 }

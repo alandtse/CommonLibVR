@@ -23,7 +23,9 @@ namespace RE
 
 		// members
 		bool unk01;  // 01
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(ActorEquipManager) == 0x2);
 #endif

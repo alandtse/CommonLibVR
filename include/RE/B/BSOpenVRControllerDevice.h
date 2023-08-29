@@ -41,7 +41,9 @@ namespace RE
 		std::uint32_t unk144;       // 144
 		std::uint32_t unk148;       // 148
 		std::uint32_t unk14C;       // 14C
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(BSOpenVRControllerDevice) == 0x150);
 }
 #endif

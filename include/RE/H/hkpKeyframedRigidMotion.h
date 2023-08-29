@@ -40,13 +40,17 @@ namespace RE
 			hkVector4 centerOfMassInWorld = motionState.sweptTransform.centerOfMass1;
 			return linearVelocity + angularVelocity.Cross(a_point - centerOfMassInWorld);
 		}
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(hkpKeyframedRigidMotion) == 0x140);
 
 	class hkpMaxSizeMotion : public hkpKeyframedRigidMotion
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpMaxSizeMotion;
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(hkpMaxSizeMotion) == 0x140);
 }

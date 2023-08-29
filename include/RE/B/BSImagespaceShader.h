@@ -46,6 +46,8 @@ namespace RE
 		std::uint64_t unk190;  // 190
 		std::uint64_t unk198;  // 198
 		std::uint64_t unk1A0;  // 1A0
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(BSImagespaceShader) == 0x1A8);
 }

@@ -42,7 +42,9 @@ namespace RE
 		std::uint8_t    unk81;            // 81
 		std::uint16_t   pad82;            // 82
 		std::uint32_t   pad84;            // 84
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(InventoryMenu) == 0x88);
 #else

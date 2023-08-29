@@ -38,7 +38,7 @@ namespace RE
 		GFxValue      _values[SIZE + 1];  // 08 - includes response data
 		std::uint32_t _index;             // ??
 		std::uint32_t _pad;               // ??
-	};
+    };
 	static_assert(sizeof(FxResponseArgs<1>) == 0x40);
 
 	template <std::size_t N>
@@ -142,7 +142,7 @@ namespace RE
 
 	private:
 		container_type _args;
-	};
+    };
 
 	template <std::size_t N>
 	FxResponseArgsEx(const std::array<GFxValue, N>&) -> FxResponseArgsEx<N>;

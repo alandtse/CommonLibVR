@@ -153,7 +153,9 @@ namespace RE
 		{
 			GetEventSource<T>()->SendEvent(a_event);
 		}
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(ScriptEventSourceHolder) == 0x1290);
 #else

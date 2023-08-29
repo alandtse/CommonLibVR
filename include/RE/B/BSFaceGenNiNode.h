@@ -36,6 +36,8 @@ namespace RE
 		std::uint16_t                     flags;          // 160
 		std::uint16_t                     pad162;         // 162
 		std::uint32_t                     pad164;         // 164
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSFaceGenNiNode) == 0x168);
 #else
@@ -47,6 +49,8 @@ namespace RE
 		std::uint16_t                     flags;          // 188
 		std::uint16_t                     pad18A;         // 18A
 		std::uint32_t                     pad18C;         // 18C
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSFaceGenNiNode) == 0x190);
 #endif

@@ -92,5 +92,7 @@ namespace RE
 		// members
 		C first;   // 00
 		U second;  // ??
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 }

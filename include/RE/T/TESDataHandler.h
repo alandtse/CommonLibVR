@@ -24,7 +24,7 @@ namespace RE
 	public:
 		// members
 		std::uint8_t pad0;  // 0
-	};
+    };
 	static_assert(sizeof(TESObjectList) == 0x1);
 
 	struct TESFileCollection
@@ -33,7 +33,7 @@ namespace RE
 		// members
 		BSTArray<TESFile*> files;       // 00
 		BSTArray<TESFile*> smallFiles;  // 18
-	};
+    };
 	static_assert(sizeof(TESFileCollection) == 0x30);
 
 	class TESDataHandler : public BSTSingletonSDM<TESDataHandler>
@@ -117,7 +117,9 @@ namespace RE
 		TESRegionDataManager* regionDataManager;  // 1580
 		InventoryChanges*     merchantInventory;  // 1588
 #endif
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(TESDataHandler) == 0xDC0);
 #else

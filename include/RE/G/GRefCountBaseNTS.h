@@ -15,5 +15,7 @@ namespace RE
 		};
 
 		GRefCountBaseNTS() = default;
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 }

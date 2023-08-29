@@ -28,7 +28,9 @@ namespace RE
 		float        unk24;               // 24
 		float        logicalWidth;        // 28
 		std::int32_t cursorDisplayCount;  // 2C
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(MenuCursor) == 0x30);
 #else

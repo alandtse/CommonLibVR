@@ -88,6 +88,8 @@ namespace RE
 		bool                         unkBB;                 // BB
 		std::uint16_t                padBC;                 // BC
 		BSTArray<TESTopic*>          unkC0;                 // C0
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(MenuTopicManager) == 0xD8);
 }

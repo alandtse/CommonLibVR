@@ -38,6 +38,8 @@ namespace RE
 		stl::enumeration<Flag, std::uint16_t> flags;         // 20
 		std::uint16_t                         id;            // 22
 		std::uint32_t                         pad24;         // 24
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(BGSEntryPointFunctionDataActivateChoice) == 0x28);
 }

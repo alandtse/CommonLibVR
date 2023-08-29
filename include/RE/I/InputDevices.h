@@ -17,6 +17,8 @@ namespace RE
 #endif
 			kTotal
 		};
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	using INPUT_DEVICE = INPUT_DEVICES::INPUT_DEVICE;
 }

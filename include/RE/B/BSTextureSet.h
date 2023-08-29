@@ -49,6 +49,8 @@ namespace RE
 		virtual const char* GetTexturePath(Texture a_texture) = 0;                             // 25
 		virtual void        SetTexture(Texture a_texture, NiSourceTexture* a_srcTexture) = 0;  // 26
 		virtual void        SetTexturePath(Texture a_texture, const char* a_path) = 0;         // 27
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(BSTextureSet) == 0x10);
 }

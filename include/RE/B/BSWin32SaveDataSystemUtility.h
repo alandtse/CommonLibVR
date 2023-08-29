@@ -23,6 +23,8 @@ namespace RE
 		void    Unk_11(void) override;                                                                                // 11 - { return; }
 
 		static BSWin32SaveDataSystemUtility* GetSingleton();
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(BSWin32SaveDataSystemUtility) == 0x228);
 }

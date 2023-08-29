@@ -171,7 +171,9 @@ namespace RE
 		// members
 		first_type  first;   // 00
 		second_type second;  // ??
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 
 	template <class T1, class T2>
 	[[nodiscard]] auto make_pair(T1&& a_first, T2&& a_second)

@@ -12,5 +12,5 @@ namespace RE
 		kHappy = 5,
 		kSurprise = 6,
 		kPuzzled = 7,
-	};
+    };
 }

@@ -21,6 +21,8 @@ namespace RE
 		BSTHashMap<FormID, FormID> unk30;  // 30
 		std::uint32_t              unk60;  // 60
 		std::uint32_t              pad64;  // 64
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BGSSaveLoadFormIDMap) == 0x68);
 
@@ -31,6 +33,8 @@ namespace RE
 		BSTHashMap<FormID, FormID>                 unk00;  // 00
 		BSTHashMap<FormID, BSTArray<FormID>>       unk30;  // 30
 		BSTHashMap<FormID, BGSCellFormIDArrayMap*> unk60;  // 60
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BGSSaveLoadReferencesMap) == 0x90);
 
@@ -41,6 +45,8 @@ namespace RE
 		BSTHashMap<TESFile*, BGSConstructFormsInFileMap*> unk00;     // 00
 		BSTArray<void*>                                   unk30[3];  // 30
 		std::uint32_t                                     unk78;     // 78
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BGSConstructFormsInAllFilesMap) == 0x80);
 
@@ -49,6 +55,8 @@ namespace RE
 	public:
 		// members
 		BSTHashMap<TESForm*, BGSLoadGameSubBuffer> queuedSubBuffers[3];  // 00
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BGSSaveLoadQueuedSubBufferMap) == 0x90);
 
@@ -88,6 +96,8 @@ namespace RE
 		std::uint64_t                          unk338;               // 338
 		stl::enumeration<Flags, std::uint32_t> flags;                // 340
 		std::uint8_t                           currentMinorVersion;  // 344
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BGSSaveLoadGame) == 0x348);
 }

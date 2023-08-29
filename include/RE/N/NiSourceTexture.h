@@ -41,6 +41,8 @@ namespace RE
 		std::uint8_t         pad51;            // 51
 		std::uint16_t        pad52;            // 52
 		std::uint32_t        pad54;            // 54
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(NiSourceTexture) == 0x58);
 }

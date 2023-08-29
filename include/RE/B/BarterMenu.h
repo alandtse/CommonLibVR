@@ -46,7 +46,9 @@ namespace RE
 		bool            pcControlsReady;  // A4
 		std::uint8_t    padA5;            // A5
 		std::uint16_t   padA6;            // A6
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(BarterMenu) == 0xA8);
 #else

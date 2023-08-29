@@ -12,7 +12,7 @@ namespace RE
 		std::uint64_t unk10;  // 10
 		std::uint64_t unk18;  // 18
 		std::uint64_t unk20;  // 20
-	};
+    };
 	static_assert(sizeof(PatrolRefData) == 0x28);
 
 	class ExtraPatrolRefData : public BSExtraData
@@ -29,6 +29,8 @@ namespace RE
 
 		// members
 		PatrolRefData* patrolData;  // 10
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(ExtraPatrolRefData) == 0x18);
 }

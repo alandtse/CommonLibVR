@@ -20,7 +20,7 @@ namespace RE
 		std::uint32_t                 pad24;             // 24
 		BGSLightingTemplate*          lightingTemplate;  // 28
 		TESImageSpace*                imageSpace;        // 30
-	};
+    };
 	static_assert(sizeof(RoomRefData) == 0x38);
 
 	class ExtraRoomRefData : public BSExtraData
@@ -37,6 +37,8 @@ namespace RE
 
 		// members
 		RoomRefData* data;  // 10
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(ExtraRoomRefData) == 0x18);
 }

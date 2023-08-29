@@ -39,7 +39,9 @@ namespace RE
 		float                       materialScale;             // 1CC
 		float                       normalDampener;            // 1D0
 		std::uint32_t               unk1D4;                    // 1D4
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(BSMultiIndexTriShape) == 0x1D8);
 #else

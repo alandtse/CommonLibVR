@@ -48,11 +48,15 @@ namespace RE
 		void*                      skinToWorldWorldToSkinMatrix;  // 58
 #ifndef SKYRIMVR
 		WinAPI::CRITICAL_SECTION lock;  // 60
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(NiSkinInstance) == 0x88);
 #else
 		std::uint64_t unk60;  // 60 - no lock in VR
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(NiSkinInstance) == 0x68);
 #endif
 }

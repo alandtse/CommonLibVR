@@ -25,7 +25,9 @@ namespace RE
 		RE::NiPoint3  coords;  // 20
 		std::uint16_t unk2c;   // 2c
 #endif
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(FastTravelConfirmCallback) ==
 #ifndef SKYRIMVR
 				  0x20

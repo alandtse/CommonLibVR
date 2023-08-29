@@ -9,7 +9,7 @@ namespace RE
 	{
 		std::uint32_t refID;          // 0
 		float         activateDelay;  // 4
-	};
+    };
 	static_assert(sizeof(ActivateParentID) == 0x8);
 
 	class ExtraMissingRefIDs : public BSExtraData
@@ -28,6 +28,8 @@ namespace RE
 		std::uint32_t     numIDs;  // 18
 		std::uint32_t     unk1C;   // 1C
 		std::uint64_t     unk20;   // 20
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(ExtraMissingRefIDs) == 0x28);
 }

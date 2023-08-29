@@ -14,7 +14,9 @@ namespace RE
 		constexpr static std::string_view MENU_NAME = "SafeZoneMenu";
 
 		~SafeZoneMenu() override;  // 00
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(SafeZoneMenu) == 0x30);
 #else

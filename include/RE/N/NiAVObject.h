@@ -35,7 +35,9 @@ namespace RE
 
 		float                                 time;   // 0
 		stl::enumeration<Flag, std::uint32_t> flags;  // 4
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(NiUpdateData) == 0x8);
 
 	class PerformOpFunc
@@ -45,7 +47,9 @@ namespace RE
 
 		// add
 		virtual bool operator()(NiAVObject* a_object);  // 01
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(PerformOpFunc) == 0x8);
 
 	class NiAVObject : public NiObjectNET
@@ -160,7 +164,9 @@ namespace RE
 		std::uint8_t                          flags02;                  // 109
 		std::uint16_t                         unk10A;                   // 10A
 		std::uint32_t                         pad10C;                   // 10C
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(NiAVObject) == 0x110);
 #else
 		NiNode*                               parent;                   // 030
@@ -184,7 +190,9 @@ namespace RE
 		std::uint64_t                         unk128;                   // 128
 		std::uint32_t                         unk130;                   // 130
 		std::uint32_t                         unk134;                   // 134
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(NiAVObject) == 0x138);
 #endif
 }

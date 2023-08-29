@@ -23,5 +23,5 @@ namespace RE
 		kEscapeJail = 25,                                             // ESIA
 		Arrest = 28,                                                  // ARRT
 		kCastMagic = 29                                               // CAST
-	};
+    };
 }

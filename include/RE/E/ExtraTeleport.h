@@ -15,7 +15,7 @@ namespace RE
 		std::int8_t     flags;       // 1C
 		std::uint8_t    pad1D;       // 1D
 		std::uint16_t   pad1E;       // 1E
-	};
+    };
 	static_assert(sizeof(DoorTeleportData) == 0x20);
 
 	class ExtraTeleport : public BSExtraData
@@ -32,6 +32,8 @@ namespace RE
 
 		// members
 		DoorTeleportData* teleportData;  // 10
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(ExtraTeleport) == 0x18);
 }

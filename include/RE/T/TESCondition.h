@@ -22,7 +22,7 @@ namespace RE
 		kPackData = 6,
 		kEventData = 7,
 		kCommandTarget = 8
-	};
+    };
 
 	struct FUNCTION_DATA
 	{
@@ -891,7 +891,7 @@ namespace RE
 		std::uint16_t                               pad02;      // 02
 		std::uint32_t                               pad04;      // 04
 		void*                                       params[2];  // 08
-	};
+    };
 	static_assert(sizeof(FUNCTION_DATA) == 0x18);
 
 	struct CONDITION_ITEM_DATA
@@ -945,7 +945,7 @@ namespace RE
 		stl::enumeration<CONDITIONITEMOBJECT, std::uint8_t> object;           // 31
 		std::uint16_t                                       pad32;            // 32
 		std::uint32_t                                       pad34;            // 34
-	};
+    };
 	static_assert(sizeof(CONDITION_ITEM_DATA) == 0x30);
 
 	struct ConditionCheckParams
@@ -969,7 +969,7 @@ namespace RE
 		void*               unk20;            // 20
 		bool                unk28;            // 28
 		BGSPackageDataList* packageDataList;  // 30
-	};
+    };
 	static_assert(sizeof(ConditionCheckParams) == 0x38);
 
 	struct TESConditionItem  // CTDA
@@ -985,7 +985,7 @@ namespace RE
 		// members
 		TESConditionItem*   next;  // 00
 		CONDITION_ITEM_DATA data;  // 08
-	};
+    };
 	static_assert(sizeof(TESConditionItem) == 0x38);
 
 	class TESCondition
@@ -1003,6 +1003,8 @@ namespace RE
 
 		// members
 		TESConditionItem* head;  // 0
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESCondition) == 0x8);
 }

@@ -15,7 +15,9 @@ namespace RE
 		std::uint16_t unk18;       // 18
 		std::uint16_t unk1A;       // 1A
 		std::uint32_t pad1C;       // 1C
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(NiParticleInfo) == 0x20);
 
 	class NiPSysData : public NiParticlesData
@@ -45,6 +47,8 @@ namespace RE
 		std::uint16_t   addedParticleCount;  // A0
 		std::uint16_t   addedParticlesBase;  // A0
 		std::uint32_t   padA4;               // A4
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(NiPSysData) == 0xA8);
 }

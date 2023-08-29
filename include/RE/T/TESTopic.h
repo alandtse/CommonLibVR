@@ -126,7 +126,7 @@ namespace RE
 		stl::enumeration<TopicFlag, std::uint8_t>     topicFlags;  // 0
 		stl::enumeration<DIALOGUE_TYPE, std::uint8_t> type;        // 1
 		stl::enumeration<Subtype, std::uint16_t>      subtype;     // 2
-	};
+    };
 	static_assert(sizeof(DIALOGUE_DATA) == 0x4);
 
 	class TESTopic :
@@ -172,6 +172,8 @@ namespace RE
 		std::uint32_t      numTopicInfos;            // 50 - TIFC
 		std::uint32_t      firstFileOffset;          // 54
 		BSFixedString      formEditorID;             // 58
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESTopic) == 0x60);
 }

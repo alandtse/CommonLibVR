@@ -85,7 +85,9 @@ namespace RE
 			}
 			return buttonEvent;
 		}
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(ButtonEvent) == 0x30);
 #else

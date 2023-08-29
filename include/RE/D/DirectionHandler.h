@@ -23,6 +23,8 @@ namespace RE
 		std::uint64_t unk20;               // 20
 		std::uint32_t unk28;               // 28
 		std::uint32_t unk2C;               // 2C
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(DirectionHandler) == 0x30);
 }

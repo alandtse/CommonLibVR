@@ -74,6 +74,8 @@ namespace RE
 		bool          applyOffsets;           // E1
 		std::uint16_t unkE2;                  // E2
 		std::uint32_t unkE4;                  // E4
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(ThirdPersonState) == 0xE8);
 }

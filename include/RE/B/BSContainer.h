@@ -6,5 +6,5 @@ namespace RE::BSContainer
 	{
 		kStop = 0,
 		kContinue = 1
-	};
+    };
 }

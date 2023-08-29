@@ -58,6 +58,8 @@ namespace RE
 		virtual TESCombatStyle*    GetCombatStyle();                               // 54 - { return 0; }
 		virtual void               SetCombatStyle(TESCombatStyle* a_combatStyle);  // 55 - { return; }
 		virtual TESForm*           GetAsForm();                                    // 56 - { return this; }
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESActorBase) == 0x150);
 }

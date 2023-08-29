@@ -26,7 +26,7 @@ namespace RE
 		float leafFlexibility;    // 24
 		float leafAmplitude;      // 28
 		float leafFrequency;      // 2C
-	};
+    };
 	static_assert(sizeof(OBJ_TREE) == 0x30);
 
 	struct BoneData
@@ -34,7 +34,7 @@ namespace RE
 		NiMatrix3     localBoneRotation;             // 00
 		NiPoint3      worldBoneDir;                  // 24
 		std::uint32_t parentWorldBoneRotationIndex;  // 30
-	};
+    };
 	static_assert(sizeof(BoneData) == 0x34);
 
 	struct BaseTreeData : public BSIntrusiveRefCounted
@@ -42,7 +42,7 @@ namespace RE
 		std::uint32_t       pad04;                     // 04
 		BSTArray<BoneData>  branchBoneData;            // 08
 		BSTArray<NiMatrix3> parentWorldBoneRotations;  // 20
-	};
+    };
 	static_assert(sizeof(BaseTreeData) == 0x38);
 
 	class TESObjectTREE :
@@ -93,6 +93,8 @@ namespace RE
 		BaseTreeData*                               baseData;  // B8
 		stl::enumeration<etTreeType, std::uint32_t> type;      // C0
 		std::uint32_t                               padC4;     // C4
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESObjectTREE) == 0xC8);
 }

@@ -111,7 +111,9 @@ namespace RE
 #endif
 		InputEvent* queueHead;  // 380
 		InputEvent* queueTail;  // 388
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(BSInputEventQueue) == 0x390);
 #else

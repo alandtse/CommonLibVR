@@ -55,7 +55,7 @@ namespace RE
 		// members
 		hkStepInfo    stepInfo;    // 000
 		hkpSolverInfo solverInfo;  // 010
-	};
+    };
 	static_assert(sizeof(hkpWorldDynamicsStepInfo) == 0x140);
 
 	class hkpWorld : public hkReferencedObject
@@ -201,6 +201,8 @@ namespace RE
 		std::uint16_t                                                         pad422;                                                     // 422
 		std::uint32_t                                                         pad424;                                                     // 424
 		std::uint64_t                                                         pad428;                                                     // 428
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(hkpWorld) == 0x430);
 }

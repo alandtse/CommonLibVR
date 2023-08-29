@@ -9,7 +9,7 @@ namespace RE
 	struct PortalLinkedRefData
 	{
 		ObjectRefHandle linkedRefs[2];  // 0
-	};
+    };
 	static_assert(sizeof(PortalLinkedRefData) == 0x8);
 
 	class ExtraPortalRefData : public BSExtraData
@@ -26,6 +26,8 @@ namespace RE
 
 		// members
 		PortalLinkedRefData* data;  // 10
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(ExtraPortalRefData) == 0x18);
 }

@@ -20,6 +20,8 @@ namespace RE
 
 		// members
 		BSFixedString heard;  // 28
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(KinectEvent) == 0x30);
 }

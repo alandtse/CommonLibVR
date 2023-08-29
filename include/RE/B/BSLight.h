@@ -72,6 +72,8 @@ namespace RE
 		std::uint64_t          unk128;          // 128
 		NiPointer<NiAVObject>  objectNode;      // 130
 		BSLensFlareRenderData* lensFlareData;   // 138
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(BSLight) == 0x140);
 }

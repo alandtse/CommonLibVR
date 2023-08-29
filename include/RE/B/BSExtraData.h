@@ -30,7 +30,9 @@ namespace RE
 
 		// members
 		BSExtraData* next;  // 08
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(BSExtraData) == 0x10);
 
 	template <class T>

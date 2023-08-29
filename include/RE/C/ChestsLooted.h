@@ -15,6 +15,8 @@ namespace RE
 
 		static BSTEventSource<Event>* GetEventSource();
 		static void                   SendEvent();
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(std::is_empty_v<ChestsLooted>);
 }

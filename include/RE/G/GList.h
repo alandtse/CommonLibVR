@@ -19,7 +19,7 @@ namespace RE
 
 		GListNode<T>* prev;  // 00
 		GListNode<T>* next;  // 08
-	};
+    };
 	static_assert(sizeof(GListNode<void*>) == 0x10);
 
 	// circular doubly-linked list
@@ -326,6 +326,8 @@ namespace RE
 	protected:
 		// members
 		GListNode<value_type> _root;  // 00
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(GList<void*>) == 0x10);
 }

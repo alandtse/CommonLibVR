@@ -363,5 +363,5 @@ namespace RE
 		kUnkBD,                    // 0xBD
 		kUnkBE,                    // 0xBE
 		kUnkBF                     // 0xBF
-	};
+    };
 }

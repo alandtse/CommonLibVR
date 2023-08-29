@@ -23,6 +23,8 @@ namespace RE
 
 	protected:
 		BSWin32VirtualKeyboardDevice();
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(BSWin32VirtualKeyboardDevice) == 0x70);
 }

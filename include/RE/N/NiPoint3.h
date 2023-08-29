@@ -44,6 +44,8 @@ namespace RE
 		float x{ 0.0F };  // 0
 		float y{ 0.0F };  // 4
 		float z{ 0.0F };  // 8
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(NiPoint3) == 0xC);
 }

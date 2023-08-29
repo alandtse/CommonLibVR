@@ -27,7 +27,7 @@ namespace RE
 
 		// members
 		stl::enumeration<Flag, std::uint32_t> flags;  // 0
-	};
+    };
 	static_assert(sizeof(OBJ_LAND) == 0x4);
 
 	struct CHAR_NORM
@@ -37,7 +37,7 @@ namespace RE
 		std::int8_t x;  // 0
 		std::int8_t y;  // 1
 		std::int8_t z;  // 2
-	};
+    };
 	static_assert(sizeof(CHAR_NORM) == 0x3);
 
 	class TESObjectLAND :
@@ -99,6 +99,8 @@ namespace RE
 		TESObjectCELL*        parentCell;      // 30
 		NiPointer<QueuedFile> queuedTextures;  // 38
 		LoadedLandData*       loadedData;      // 40
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESObjectLAND) == 0x48);
 }

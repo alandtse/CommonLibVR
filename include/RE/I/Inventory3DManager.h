@@ -24,7 +24,7 @@ namespace RE
 		TESBoundObject*       modelObj;  // 08
 		NiPointer<NiAVObject> spModel;   // 10
 		std::uint64_t         unk18;     // 18
-	};
+    };
 	static_assert(sizeof(LoadedInventoryModel) == 0x20);
 
 	class Inventory3DManager :
@@ -60,7 +60,9 @@ namespace RE
 		std::uint8_t                                  unk15A;         // 15A
 		std::uint8_t                                  pad15B;         // 15B
 		std::uint32_t                                 pad15C;         // 15C
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIM_SUPPORT_AE
 #	ifndef SKYRIMVR
 	static_assert(sizeof(Inventory3DManager) == 0x160);

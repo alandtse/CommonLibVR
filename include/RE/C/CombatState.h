@@ -19,7 +19,7 @@ namespace RE
 		BGSWorldLocation loc;        // 00
 		AITimeStamp      timestamp;  // 18
 		std::uint32_t    pad20;      // 20
-	};
+    };
 	static_assert(sizeof(UnreachableLocation) == 0x20);
 
 	class CombatState
@@ -60,6 +60,8 @@ namespace RE
 		AITimer                           strengthUpdateTimer;          // A4
 		AITimer                           threatRatioUpdateTimer;       // AC
 		AITimer                           threatUpdateTimer;            // B4
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(CombatState) == 0xC0);
 }

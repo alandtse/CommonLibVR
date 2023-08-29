@@ -35,7 +35,7 @@ namespace RE
 
 		stl::enumeration<TOPIC_INFO_FLAGS, std::uint16_t> flags;           // 0
 		std::uint16_t                                     timeUntilReset;  // 2 - reset hours as a std::uint16_t
-	};
+    };
 	static_assert(sizeof(TOPIC_INFO_DATA) == 0x4);
 
 	class TESTopicInfo : public TESForm
@@ -141,6 +141,8 @@ namespace RE
 		TOPIC_INFO_DATA                            data;           // 3C - ENAM
 		std::uint32_t                              fileOffset;     // 40
 		std::uint32_t                              pad44;          // 44
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESTopicInfo) == 0x48);
 }

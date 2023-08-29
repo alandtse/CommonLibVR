@@ -25,7 +25,7 @@ namespace RE
 
 		// members
 		std::uint32_t pad0C;  // 0C
-	};
+    };
 	//static_assert(sizeof(IHandlerFunctor) == 0x10);
 
 	class Actor;
@@ -37,7 +37,7 @@ namespace RE
 	{
 	public:
 		virtual ~HandlerCreationMissPolicy();  // 00
-	};
+    };
 	//static_assert(sizeof(HandlerCreationMissPolicy) == 0x8);
 
 	template <class T, class Key>
@@ -45,7 +45,7 @@ namespace RE
 	{
 	public:
 		virtual ~NoInitializationPolicy();  // 00
-	};
+    };
 	//static_assert(sizeof(NoInitializationPolicy) == 0x8);
 
 	class HandlerDictionary :
@@ -57,6 +57,8 @@ namespace RE
 	{
 	public:
 		static HandlerDictionary* GetSingleton();
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(HandlerDictionary) == 0x50);
 }

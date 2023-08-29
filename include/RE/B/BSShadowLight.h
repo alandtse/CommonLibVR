@@ -64,6 +64,8 @@ namespace RE
 		std::uint8_t    pad559;           // 559
 		std::uint8_t    pad55A;           // 55A
 		std::uint32_t   pad55B;           // 55B
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(BSShadowLight) == 0x560);
 }

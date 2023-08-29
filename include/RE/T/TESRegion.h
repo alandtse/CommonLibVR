@@ -16,14 +16,14 @@ namespace RE
 		bool                         unk11;           // 11
 		std::uint16_t                pad12;           // 12
 		std::uint32_t                pad14;           // 14
-	};
+    };
 	static_assert(sizeof(TESRegionDataList) == 0x18);
 
 	class TESRegionPoint
 	{
 	public:
 		NiPoint2 point;  // 00
-	};
+    };
 	static_assert(sizeof(TESRegionPoint) == 0x8);
 
 	class TESRegionPointList : public BSSimpleList<TESRegionPoint*>  // RPLD
@@ -46,7 +46,9 @@ namespace RE
 		std::uint32_t distanceInsideAtMax;  // 2C - RPLI
 		std::uint32_t count;                // 30
 		std::uint32_t pad34;                // 34
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESRegionPointList) == 0x38);
 
 	class TESRegion : public TESForm
@@ -83,6 +85,8 @@ namespace RE
 		TESWeather*                        currentWeather;  // 38
 		NiColor                            emittanceColor;  // 40
 		std::uint32_t                      pad4C;           // 4C
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESRegion) == 0x50);
 }

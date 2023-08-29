@@ -511,6 +511,7 @@ namespace RE
 		InventoryChanges* MakeInventoryChanges();
 		void              MoveTo_Impl(const ObjectRefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, const NiPoint3& a_position, const NiPoint3& a_rotation);
 		void              PlayAnimation_Impl(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4 = false);
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(TESObjectREFR) == 0x98);

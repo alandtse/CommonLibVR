@@ -37,6 +37,8 @@ namespace RE
 		NiColor*      unk88;  // 88
 		std::uint64_t unk90;  // 90
 		std::uint64_t unk98;  // 98
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(BSEffectShaderProperty) == 0xA0);
 }

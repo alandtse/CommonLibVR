@@ -13,7 +13,7 @@ namespace RE
 		TESTopicInfo* info;       // 00
 		std::int32_t  dateStamp;  // 08
 		float         hourStamp;  // 0C
-	};
+    };
 	static_assert(sizeof(SayOnceTopicInfos) == 0x10);
 
 	class ExtraSayTopicInfoOnceADay : public BSExtraData
@@ -29,6 +29,8 @@ namespace RE
 
 		// members
 		BSSimpleList<SayOnceTopicInfos*>* saidOnceTopicInfos;  // 10
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(ExtraSayTopicInfoOnceADay) == 0x18);
 }

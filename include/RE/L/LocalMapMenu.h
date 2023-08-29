@@ -107,7 +107,9 @@ namespace RE
 		std::uint32_t unk30478;  // 30478
 		std::uint32_t pad3047C;  // 3047C
 #endif
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(LocalMapMenu) == 0x30400);
 #else

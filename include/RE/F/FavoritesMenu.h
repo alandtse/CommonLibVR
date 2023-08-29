@@ -46,7 +46,9 @@ namespace RE
 		bool            pcControlsReady;  // 72
 		bool            isVampire;        // 73
 		std::uint32_t   pad74;            // 74
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(FavoritesMenu) == 0x78);
 #else

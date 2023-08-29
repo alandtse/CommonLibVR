@@ -37,7 +37,9 @@ namespace RE
 		std::uint8_t    pad79;            // 79
 		std::uint16_t   pad7A;            // 7A
 		std::uint32_t   pad7C;            // 7C
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(GiftMenu) == 0x80);
 #else

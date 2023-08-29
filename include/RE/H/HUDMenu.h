@@ -59,7 +59,9 @@ namespace RE
 		ShoutMeter*          shout;    // 70
 		GFxValue             root;     // 78 - kDisplayObject - "_level0.HUDMovieBaseInstance"
 		std::uint64_t        unk90;    // 90
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(HUDMenu) == 0x98);
 #else
 	class HUDMenu :
@@ -102,7 +104,9 @@ namespace RE
 		ShoutMeter*          shout;    // A0
 		GFxValue             root;     // A8 - kDisplayObject - "_level0.HUDMovieBaseInstance"
 		std::uint64_t        unk90;    // C0
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(HUDMenu) == 0xC8);
 #endif
 }

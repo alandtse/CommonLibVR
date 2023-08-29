@@ -67,7 +67,9 @@ namespace RE
 		std::int8_t   unk17A;       // 17A
 		std::uint16_t unk17C;       // 17C
 #endif
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(BSFadeNode) == 0x158);
 #else

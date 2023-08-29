@@ -9,5 +9,5 @@ namespace RE
 		kBounce = 2,
 		kImpale = 3,
 		kStick = 4
-	};
+    };
 }

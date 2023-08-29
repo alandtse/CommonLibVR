@@ -74,7 +74,7 @@ namespace RE
 		stl::enumeration<TEMPLATE_USE_FLAG, std::uint16_t> templateUseFlags;  // 12
 		std::int16_t                                       healthOffset;      // 14
 		std::int16_t                                       bleedoutOverride;  // 16
-	};
+    };
 	static_assert(sizeof(ACTOR_BASE_DATA) == 0x18);
 
 	class TESActorBaseData : public BaseFormComponent  // ACBS
@@ -128,6 +128,8 @@ namespace RE
 		TESForm*               baseTemplateForm;  // 30 - TPLT
 		TESForm**              templateForms;     // 38
 		BSTArray<FACTION_RANK> factions;          // 40
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESActorBaseData) == 0x58);
 }

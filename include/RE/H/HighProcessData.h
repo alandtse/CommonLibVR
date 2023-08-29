@@ -378,6 +378,8 @@ namespace RE
 		bool                                                  aggroRadiusStarted;                        // 472
 		std::uint8_t                                          pad473;                                    // 473
 		std::uint32_t                                         pad474;                                    // 474
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(HighProcessData) == 0x478);
 }

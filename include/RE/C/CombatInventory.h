@@ -24,7 +24,7 @@ namespace RE
 		float                                    optimalRange;  // 20
 		float                                    minRange;      // 24
 		float                                    score;         // 28
-	};
+    };
 	static_assert(sizeof(CombatEquipment) == 0x30);
 
 	struct CombatEquippedItem
@@ -33,7 +33,7 @@ namespace RE
 		// members
 		NiPointer<CombatInventoryItem> item;       // 00
 		AITimeStamp                    equipTime;  // 08
-	};
+    };
 	static_assert(sizeof(CombatEquippedItem) == 0x10);
 
 	class CombatInventory
@@ -69,6 +69,8 @@ namespace RE
 		float                                    optimalRange;              // 1BC
 		float                                    minimumRange;              // 1C0
 		bool                                     dirty;                     // 1C4
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(CombatInventory) == 0x1C8);
 }

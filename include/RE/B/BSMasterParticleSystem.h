@@ -36,7 +36,9 @@ namespace RE
 		std::uint16_t                   maxParticlesPerFrame;  // 164
 		bool                            destroyWhenNotInUse;   // 166
 		std::uint8_t                    pad167;                // 167
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(BSMasterParticleSystem) == 0x168);
 #else

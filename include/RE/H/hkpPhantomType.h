@@ -19,5 +19,5 @@ namespace RE
 		kUser9,
 
 		kTotal
-	};
+    };
 }

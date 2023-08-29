@@ -18,7 +18,7 @@ namespace RE
 
 		// members
 		stl::enumeration<Flag, std::uint8_t> flags;  // 0
-	};
+    };
 	static_assert(sizeof(VOICE_TYPE_DATA) == 0x1);
 
 	class BGSVoiceType : public TESForm
@@ -50,6 +50,8 @@ namespace RE
 		std::uint16_t   pad22;         // 22
 		std::uint16_t   pad24;         // 24
 		BSString        formEditorID;  // 28 - EDID
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(BGSVoiceType) == 0x38);
 }

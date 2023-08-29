@@ -18,7 +18,7 @@ namespace RE
 		std::int8_t  detectionSoundValue;        // 6
 		std::uint8_t pad07;                      // 7
 		float        weaponAdjust;               // 8
-	};
+    };
 	static_assert(sizeof(OBJ_ARMA) == 0xC);
 
 	class TESObjectARMA :
@@ -61,6 +61,8 @@ namespace RE
 		BSTArray<TESRace*>  additionalRaces;                      // 150 - MODL
 		BGSFootstepSet*     footstepSet;                          // 168 - SNDD
 		BGSArtObject*       artObject;                            // 170 - ONAM
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESObjectARMA) == 0x178);
 }

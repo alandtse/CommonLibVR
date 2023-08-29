@@ -283,7 +283,9 @@ namespace RE
 		bool                                   unk1D0;             // 1D0
 		bool                                   unk1D1;             // 1D0
 		char                                   unk1D2[6];          // 1D2
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(Projectile) == 0x1D8);
 #else

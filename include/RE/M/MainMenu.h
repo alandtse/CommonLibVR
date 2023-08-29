@@ -57,7 +57,9 @@ namespace RE
 		std::uint8_t               unk6D;  // 6D
 		std::uint8_t               unk6E;  // 6E
 		std::uint8_t               pad6F;  // 6F
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(MainMenu) == 0x70);
 #else

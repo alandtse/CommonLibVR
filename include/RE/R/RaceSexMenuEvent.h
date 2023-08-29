@@ -9,5 +9,7 @@ namespace RE
 		{
 		public:
 		};
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 }

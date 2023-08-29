@@ -45,7 +45,9 @@ namespace RE
 		bool          waitingToInitialize3D;  // 1DC
 		std::uint8_t  unk1DD;                 // 1DD
 		std::uint16_t unk1DE;                 // 1DE
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(MissileProjectile) == 0x1E0);
 #else

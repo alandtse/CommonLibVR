@@ -32,7 +32,7 @@ namespace RE
 		std::uint8_t                         pa09;        // 09
 		std::uint16_t                        pa0A;        // 0A
 		float                                damage;      // 0C
-	};
+    };
 	static_assert(sizeof(AMMO_DATA) == 0x10);
 
 	class TESAmmo :
@@ -86,7 +86,9 @@ namespace RE
 		// members
 		AMMO_DATA     data;       // 110 - DATA
 		BSFixedString shortDesc;  // 120 - ONAM
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(TESAmmo) == 0x128);
 #else

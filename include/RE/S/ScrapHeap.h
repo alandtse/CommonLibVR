@@ -65,6 +65,6 @@ namespace RE
 		std::uint32_t freeSmallBlocks{ 0 };       // 80
 		std::uint32_t totalAllocatedBlocks{ 0 };  // 84
 		std::uint32_t pmpBarrier{ 0 };            // 88
-	};
+    };
 	static_assert(sizeof(ScrapHeap) == 0x90);
 }

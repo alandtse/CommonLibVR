@@ -12,7 +12,7 @@ namespace RE
 		TESForm*       form;           // 00
 		std::int32_t   reaction;       // 08
 		FIGHT_REACTION fightReaction;  // 0C
-	};
+    };
 	static_assert(sizeof(GROUP_REACTION) == 0x10);
 
 	class TESReactionForm : public BaseFormComponent
@@ -33,6 +33,8 @@ namespace RE
 		std::uint8_t                             pad19;          // 19
 		std::uint16_t                            pad1A;          // 1A
 		std::uint32_t                            pad1C;          // 1C
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(TESReactionForm) == 0x20);
 }

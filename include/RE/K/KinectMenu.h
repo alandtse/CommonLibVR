@@ -29,7 +29,9 @@ namespace RE
 
 		// members
 		GFxValue root;  // 38 - "Menu_mc"
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(KinectMenu) == 0x50);
 #else

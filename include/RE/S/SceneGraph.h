@@ -24,7 +24,9 @@ namespace RE
 		bool          useCustomFar;        // 149
 		std::uint16_t pad14A;              // 14A
 		std::uint32_t pad14C;              // 14C
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 #ifndef SKYRIMVR
 	static_assert(sizeof(SceneGraph) == 0x150);
 #else

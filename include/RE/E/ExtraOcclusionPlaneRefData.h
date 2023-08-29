@@ -9,7 +9,7 @@ namespace RE
 	struct OcclusionPlaneLinkedRefData
 	{
 		ObjectRefHandle linkedRefs[4];  // 00
-	};
+    };
 	static_assert(sizeof(OcclusionPlaneLinkedRefData) == 0x10);
 
 	class ExtraOcclusionPlaneRefData : public BSExtraData
@@ -26,6 +26,8 @@ namespace RE
 
 		// members
 		OcclusionPlaneLinkedRefData* data;  // 10
-	};
+    private:
+         KEEP_FOR_RE()
+    };
 	static_assert(sizeof(ExtraOcclusionPlaneRefData) == 0x18);
 }
