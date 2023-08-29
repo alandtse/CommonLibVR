@@ -717,6 +717,15 @@ namespace REL
 
 #include "REL/Relocation.h"
 
+#ifdef _DEBUG
+// Generates a concrete function to force the class to be included in the PDB when loading types from PDB for IDA/Ghidra
+#	define KEEP_FOR_RE() \
+		void REdebug(){};
+#else
+// Generates a concrete function to help with RE, does nothing on release builds
+#	define KEEP_FOR_RE()
+#endif
+
 #ifndef SKYRIMVR
 #	include "RE/Offsets.h"
 #	include "RE/Offsets_NiRTTI.h"
