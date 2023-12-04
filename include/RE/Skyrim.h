@@ -99,6 +99,7 @@
 #include "RE/B/BGSEntryPointFunctionData.h"
 #include "RE/B/BGSEntryPointFunctionDataActivateChoice.h"
 #include "RE/B/BGSEntryPointFunctionDataOneValue.h"
+#include "RE/B/BGSEntryPointFunctionDataSpellItem.h"
 #include "RE/B/BGSEntryPointFunctionDataText.h"
 #include "RE/B/BGSEntryPointPerkEntry.h"
 #include "RE/B/BGSEquipSlot.h"
