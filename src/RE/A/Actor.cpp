@@ -559,6 +559,13 @@ namespace RE
 		return func(this);
 	}
 
+	float Actor::GetTotalCarryWeight()
+	{
+		using func_t = decltype(&Actor::GetTotalCarryWeight);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36456, 37452) };
+		return func(this);
+	}
+
 	TESFaction* Actor::GetVendorFaction()
 	{
 		if (!vendorFaction) {
@@ -931,6 +938,13 @@ namespace RE
 	void Actor::RemoveExtraArrows3D()
 	{
 		extraList.RemoveByType(ExtraDataType::kAttachedArrows3D);
+	}
+
+	void Actor::RemoveFromFaction(RE::TESFaction* a_faction)
+	{
+		using func_t = decltype(&Actor::RemoveFromFaction);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36680, 37688) };
+		return func(this, a_faction);
 	}
 
 	bool Actor::RemoveSpell(SpellItem* a_spell)

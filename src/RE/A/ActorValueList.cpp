@@ -7,8 +7,8 @@ namespace RE
 	ActorValueInfo* ActorValueList::GetActorValue(ActorValue a_actorValue) const
 	{
 		return a_actorValue < ActorValue::kTotal ?
-                   actorValues[stl::to_underlying(a_actorValue)] :
-                   nullptr;
+		           actorValues[stl::to_underlying(a_actorValue)] :
+		           nullptr;
 	}
 
 	ActorValue ActorValueList::LookupActorValueByName(std::string_view a_enumName) const

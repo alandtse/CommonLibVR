@@ -708,6 +708,7 @@ namespace RE
 		[[nodiscard]] TESObjectARMO* GetSkin() const;
 		[[nodiscard]] TESObjectARMO* GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot, bool a_noInit = false);
 		[[nodiscard]] SOUL_LEVEL     GetSoulSize() const;
+		float                        GetTotalCarryWeight();
 		TESFaction*                  GetVendorFaction();
 		const TESFaction*            GetVendorFaction() const;
 		float                        GetVoiceRecoveryTime();
@@ -760,6 +761,7 @@ namespace RE
 		void                         RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
 		void                         RemoveCastScroll(SpellItem* a_spell, MagicSystem::CastingSource a_source);
 		void                         RemoveExtraArrows3D();
+		void                         RemoveFromFaction(TESFaction* a_faction);
 		void                         RemoveOutfitItems(BGSOutfit* a_outfit);
 		bool                         RemoveSpell(SpellItem* a_spell);
 		std::int32_t                 RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);

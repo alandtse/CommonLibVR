@@ -41,10 +41,10 @@ namespace RE
 	{
 	public:
 		// members
-		bool          dirty;  // 0
-		std::uint8_t  pad1;   // 1
-		std::uint16_t pad2;   // 2
-		float         value;  // 4
+		float         value;    // 0
+		bool          invalid;  // 4
+		std::uint8_t  pad5;     // 5
+		std::uint16_t pad6;     // 6
 	};
 	static_assert(sizeof(CachedValueData) == 0x8);
 
@@ -80,20 +80,20 @@ namespace RE
 			kOwnerIsInCombatantFaction = 1 << 3
 		};
 
-		float                                         cachedRadius;              // 00
-		float                                         cachedWidth;               // 04
-		float                                         cachedLength;              // 08
-		float                                         cachedForwardLength;       // 0C
-		float                                         cachedDPS;                 // 10
-		float                                         cachedEyeLevel;            // 14
-		float                                         cachedWalkSpeed;           // 18
-		float                                         cachedRunSpeed;            // 1C
-		float                                         cachedJogSpeed;            // 20
-		float                                         cachedFastWalkSpeed;       // 24
-		stl::enumeration<BooleanValue, std::uint32_t> booleanValues;             // 28
-		stl::enumeration<Flags, std::uint32_t>        flags;                     // 2C
-		BSTArray<CachedValueData>                     actorValueCache;           // 30
-		BSTArray<CachedValueData>                     permanentActorValueCache;  // 48
+		float                                         cachedRadius;         // 00
+		float                                         cachedWidth;          // 04
+		float                                         cachedLength;         // 08
+		float                                         cachedForwardLength;  // 0C
+		float                                         cachedDPS;            // 10
+		float                                         cachedEyeLevel;       // 14
+		float                                         cachedWalkSpeed;      // 18
+		float                                         cachedRunSpeed;       // 1C
+		float                                         cachedJogSpeed;       // 20
+		float                                         cachedFastWalkSpeed;  // 24
+		stl::enumeration<BooleanValue, std::uint32_t> booleanValues;        // 28
+		stl::enumeration<Flags, std::uint32_t>        flags;                // 2C
+		BSTArray<CachedValueData>                     actorValueCache;      // 30
+		BSTArray<CachedValueData>                     maxActorValueCache;   // 48
 	};
 	static_assert(sizeof(CachedValues) == 0x60);
 

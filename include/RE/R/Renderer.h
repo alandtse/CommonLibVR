@@ -39,25 +39,23 @@ namespace RE
 		{
 		public:
 			// members
-			std::uint32_t        uiAdapter;          // 0000
-			std::uint32_t        unk04;              // 0004 - refreshRate?
-			std::uint32_t        unk08;              // 0008
-			std::uint32_t        unk0C;              // 000C
-			std::uint32_t        unk10;              // 0010
-			std::uint32_t        unk14;              // 0014
-			std::uint32_t        unk18;              // 0018
-			std::uint32_t        unk1C;              // 001C
-			bool                 fullScreen;         // 0020
-			bool                 borderlessDisplay;  // 0021
-			bool                 readOnlyDepth;      // 0022
-			std::uint8_t         unk23;              // 0023
-			std::uint8_t         unk24;              // 0024
-			std::uint32_t        unk28;              // 0028
-			std::uint32_t        unk30;              // 0030
-			std::uint32_t        presentInterval;    // 0034
-			ID3D11Device*        forwarder;          // 0038
-			ID3D11DeviceContext* context;            // 0040
-			RendererWindow       renderWindows[32];  // 0048
+			std::uint32_t                     uiAdapter;                  // 0000
+			DirectX::DXGI_RATIONAL            desiredRefreshRate;         // 0004 - refreshRate?
+			DirectX::DXGI_RATIONAL            actualRefreshRate;          // 000C
+			DirectX::DXGI_MODE_SCALING        scaleMode;                  // 0014
+			DirectX::DXGI_MODE_SCANLINE_ORDER scanlineOrdering;           // 0018
+			std::uint32_t                     isNotWindowed;              // 001C
+			bool                              fullScreen;                 // 0020
+			bool                              borderlessDisplay;          // 0021
+			bool                              readOnlyDepth;              // 0022
+			bool                              instantiated;               // 0023
+			bool                              requestedWindowSizeChange;  // 0024
+			std::uint32_t                     newWidth;                   // 0028
+			std::uint32_t                     newHeight;                  // 002C
+			std::uint32_t                     presentInterval;            // 0030
+			ID3D11Device*                     forwarder;                  // 0038
+			ID3D11DeviceContext*              context;                    // 0040
+			RendererWindow                    renderWindows[32];          // 0048
 #ifndef SKYRIMVR
 			RenderTargetData renderTargets[RENDER_TARGET::kTOTAL];               // 0A48
 			DepthStencilData depthStencils[RENDER_TARGET_DEPTHSTENCIL::kTOTAL];  // 1FA8
@@ -84,14 +82,70 @@ namespace RE
 		static_assert(offsetof(RendererData, lock) == 0x2EE8);
 #endif
 
+		struct RendererInitOSData
+		{
+			WinAPI::HWND      hwnd;                // 00
+			WinAPI::HINSTANCE instance;            // 08
+			WinAPI::WNDPROC   windowProcFunction;  // 10
+			WinAPI::HICON     icon;                // 18
+			const char*       className;           // 20
+			uint32_t          adapter;             // 28
+			uint32_t          unk2C;               // 2C
+		};
+		static_assert(sizeof(RendererInitOSData) == 0x30);
+
+		struct ScreenSize
+		{
+			uint32_t width;   // 00
+			uint32_t height;  // 04
+		};
+		static_assert(sizeof(ScreenSize) == 0x8);
+
+		struct ApplicationWindowProperties
+		{
+			ScreenSize screenSize;        // 00
+			int        windowX;           // 08
+			int        windowY;           // 0C
+			int        refreshRate;       // 10
+			int        presentInterval;   // 14
+			bool       appFullScreen;     // 18
+			bool       borderlessWindow;  // 19
+			bool       vsync;             // 1A
+		};
+		static_assert(sizeof(ApplicationWindowProperties) == 0x1C);
+
 		class Renderer
 		{
 		public:
 			[[nodiscard]] static Renderer* GetSingleton() noexcept;
 
+			void CreateSwapChain(WinAPI::HWND* window, bool setCurrent);
+			void KillWindow(std::uint32_t windowID);
+			void Lock();
+			void Unlock();
+			void ResizeWindow(std::uint32_t windowID, std::uint32_t width, std::uint32_t height, bool fullscreen, bool borderless);
+			void RequestWindowResize(std::uint32_t width, std::uint32_t height);
+			void SetWindowPosition(std::uint32_t windowID, std::int32_t x, std::int32_t y);
+			void SetWindowActiveState(bool show);
+			void WindowSizeChanged(std::uint32_t windowID);
+			void ResetWindow(std::uint32_t windowID);
+			void UpdateViewPort(std::uint32_t a_unk, std::uint32_t b_unk, bool c_unk);
+
 			[[nodiscard]] NiTexture::RendererData* CreateRenderTexture(std::uint32_t a_width, std::uint32_t a_height);
 			void                                   SaveRenderTargetToFile(RENDER_TARGET a_renderTarget, const char* a_filePath, TextureFileFormat a_textureFileFormat);
 
+			[[nodiscard]] static RendererData*   GetRendererData();
+			[[nodiscard]] static ScreenSize      GetScreenSize();
+			[[nodiscard]] static ID3D11Device*   GetDevice();
+			[[nodiscard]] static RendererWindow* GetCurrentRenderWindow();
+
+		private:
+			void Begin(std::uint32_t windowID);
+			void Init(RendererInitOSData* a_data, ApplicationWindowProperties* windowProps, WinAPI::HWND window);
+			void End();
+			void Shutdown();
+
+		public:
 			// members
 			std::uint64_t unk00;  // 00
 			std::uint64_t unk08;  // 08

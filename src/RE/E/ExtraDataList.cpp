@@ -278,8 +278,8 @@ namespace RE
 		auto xTeleport = GetByType<ExtraTeleport>();
 
 		return xTeleport && xTeleport->teleportData ?
-                   xTeleport->teleportData->linkedDoor :
-                   ObjectRefHandle();
+		           xTeleport->teleportData->linkedDoor :
+		           ObjectRefHandle();
 	}
 
 	bool ExtraDataList::GetWorn() const

@@ -141,7 +141,7 @@ namespace RE
 			inline float softLight(float a_src, float a_dest)
 			{
 				return (a_src < 0.5f) ? a_dest - (1.0f - 2.0f * a_src) * a_dest * (1.0f - a_dest) : (a_dest < 0.25f) ? a_dest + (2.0f * a_src - 1.0f) * a_dest * ((16.0f * a_dest - 12.0f) * a_dest + 3.0f) :
-                                                                                                                       a_dest + (2.0f * a_src - 1.0f) * (sqrt(a_dest) - a_dest);
+				                                                                                                       a_dest + (2.0f * a_src - 1.0f) * (sqrt(a_dest) - a_dest);
 			}
 
 			inline NiColor softLight(const NiColor& a_src, const NiColor& a_dest)
@@ -177,7 +177,7 @@ namespace RE
 			inline float pinLight(float a_src, float a_dest)
 			{
 				return (2.0f * a_src - 1.0f > a_dest) ? 2.0f * a_src - 1.0f : (a_src < 0.5f * a_dest) ? 2.0f * a_src :
-                                                                                                        a_dest;
+				                                                                                        a_dest;
 			}
 
 			inline NiColor pinLight(const NiColor& a_src, const NiColor& a_dest)

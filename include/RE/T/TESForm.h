@@ -355,6 +355,8 @@ namespace RE
 		[[nodiscard]] bool IsSoulGem() const noexcept { return Is(FormType::SoulGem); }
 		[[nodiscard]] bool IsWeapon() const noexcept { return Is(FormType::Weapon); }
 
+		void SetPlayerKnows(bool a_known);
+
 		// members
 		TESFileContainer                                sourceFiles;      // 08
 		std::uint32_t                                   formFlags;        // 10
