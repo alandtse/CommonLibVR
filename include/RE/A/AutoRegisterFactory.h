@@ -9,7 +9,7 @@ namespace RE
 	public:
 		static_assert(sizeof(AutoRegisterFactory) == 0x8);
 		virtual ~AutoRegisterFactory();  // 00
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 }

@@ -30,7 +30,7 @@ namespace RE
 		stl::enumeration<Flag, std::uint8_t> flags;                    // 2
 		std::uint8_t                         animationGroupSelection;  // 3
 		std::uint16_t                        replayDelay;              // 4
-    };
+	};
 	static_assert(sizeof(IDLE_DATA) == 0x6);
 
 	class TESIdleForm : public TESForm
@@ -77,8 +77,8 @@ namespace RE
 		BSFixedString animFileName;   // 48 - DNAM
 		BSFixedString animEventName;  // 50 - ENAM
 		BSString      formEditorID;   // 58 - EDID
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESIdleForm) == 0x68);
 }

@@ -21,7 +21,7 @@ namespace RE
 		BGSMaterialObject*                    materialObj;             // 08
 		stl::enumeration<Flag, std::uint32_t> flags;                   // 10
 		std::uint32_t                         pad14;                   // 14
-    };
+	};
 	static_assert(sizeof(TESObjectSTATData) == 0x18);
 
 	class TESObjectSTAT :
@@ -70,8 +70,8 @@ namespace RE
 
 		// members
 		TESObjectSTATData data;  // 68 - DNAM
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESObjectSTAT) == 0x80);
 }

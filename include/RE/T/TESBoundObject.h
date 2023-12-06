@@ -17,9 +17,9 @@ namespace RE
 		std::int16_t x;  // 0
 		std::int16_t y;  // 2
 		std::int16_t z;  // 4
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(NiNPShortPoint3) == 0x6);
 
 	class TESBoundObject : public TESObject
@@ -61,8 +61,8 @@ namespace RE
 		// members
 		BOUND_DATA    boundData;  // 20 - OBND
 		std::uint32_t pad2C;      // 2C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESBoundObject) == 0x30);
 }

@@ -50,9 +50,9 @@ namespace RE
 		std::uint8_t   pad1E1;               // 1E1
 		std::uint16_t  pad1E2;               // 1E2
 		std::uint32_t  pad1E4;               // 1E4
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(GrenadeProjectile) == 0x1E8);
 #else

@@ -18,8 +18,8 @@ namespace RE
 
 		// members
 		std::uint64_t unk10;  // 10
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(ExtraShouldWear) == 0x18);
 }

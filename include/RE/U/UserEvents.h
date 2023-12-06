@@ -170,8 +170,8 @@ namespace RE
 		BSFixedString localMap;           // 328 - "LocalMap"
 		BSFixedString localMapMoveMode;   // 330 - "LocalMapMoveMode"
 		BSFixedString itemZoom;           // 338 - "Item Zoom"
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(UserEvents) == 0x340);
 }

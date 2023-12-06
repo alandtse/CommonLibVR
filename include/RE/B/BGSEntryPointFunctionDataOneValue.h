@@ -18,8 +18,8 @@ namespace RE
 		// members
 		float         data;   // 08 - DATA
 		std::uint32_t pad0C;  // 0C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BGSEntryPointFunctionDataOneValue) == 0x10);
 }

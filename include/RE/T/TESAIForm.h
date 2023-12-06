@@ -14,7 +14,7 @@ namespace RE
 		kAggressive = 1,
 		kVeryAggressive = 2,
 		kFrenzied = 3
-    };
+	};
 
 	struct ACTOR_AGGRO_RADIUS
 	{
@@ -26,14 +26,14 @@ namespace RE
 
 			kTotal
 		};
-    };
+	};
 
 	enum class ACTOR_ASSISTANCE
 	{
 		kHelpsNobody = 0,
 		kHelpsAllies = 1,
 		kHelpsFriends = 2
-    };
+	};
 
 	enum class ACTOR_CONFIDENCE
 	{
@@ -42,7 +42,7 @@ namespace RE
 		kAverage = 2,
 		kBrave = 3,
 		kFoolhardy = 4
-    };
+	};
 
 	enum class ACTOR_MOOD
 	{
@@ -54,7 +54,7 @@ namespace RE
 		kSurprised = 5,
 		kPuzzled = 6,
 		kDisgusted = 7
-    };
+	};
 
 	enum class ACTOR_MORALITY
 	{
@@ -62,7 +62,7 @@ namespace RE
 		kViolenceAgainstEnemy = 1,
 		kPropertyCrimeOnly = 2,
 		kNoCrime = 3
-    };
+	};
 
 	struct AIDATA_GAME
 	{
@@ -103,7 +103,7 @@ namespace RE
 		bool          padA_6: 1;                                // A - 6
 		bool          padA_7: 1;                                // A - 7
 		std::uint8_t  padB;                                     // B
-    };
+	};
 	static_assert(sizeof(AIDATA_GAME) == 0xC);
 
 	struct PackageList
@@ -111,7 +111,7 @@ namespace RE
 	public:
 		// members
 		BSSimpleList<TESPackage*> packages;  // 00
-    };
+	};
 	static_assert(sizeof(PackageList) == 0x10);
 
 	class TESAIForm : public BaseFormComponent
@@ -141,8 +141,8 @@ namespace RE
 		// members
 		AIDATA_GAME aiData;      // 08 - AIDT
 		PackageList aiPackages;  // 18 - PKID
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESAIForm) == 0x28);
 }

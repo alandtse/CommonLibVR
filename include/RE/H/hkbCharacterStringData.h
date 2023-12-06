@@ -34,8 +34,8 @@ namespace RE
 		hkStringPtr                       rigName;                             // A8
 		hkStringPtr                       ragdollName;                         // B0
 		hkStringPtr                       behaviorFilename;                    // B8
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(hkbCharacterStringData) == 0xC0);
 }

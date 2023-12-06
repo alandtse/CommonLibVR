@@ -25,8 +25,8 @@ namespace RE
 
 		// members
 		BSFixedString textureName;  // 08 - ICON
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESTexture) == 0x10);
 }

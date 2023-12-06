@@ -29,9 +29,9 @@ namespace RE
 		TESImageSpaceModifier* blurEffect;  // 10
 		std::uint32_t          blurCount;   // 18
 		std::uint32_t          pad1C;       // 1C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(UIBlurManager) == 0x20);
 #endif

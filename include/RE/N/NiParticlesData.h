@@ -53,8 +53,8 @@ namespace RE
 		std::uint8_t  unk89;                   // 89
 		std::uint16_t pad8A;                   // 8A
 		std::uint32_t pad8C;                   // 8C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(NiParticlesData) == 0x90);
 }

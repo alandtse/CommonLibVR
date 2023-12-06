@@ -37,8 +37,8 @@ namespace RE
 		std::int16_t     verticalDirection;  // 4C
 		bool             useRunSpeed;        // 4E
 		bool             lockToZPlane;       // 4F
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(FreeCameraState) == 0x50);
 }

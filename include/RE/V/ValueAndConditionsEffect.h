@@ -22,8 +22,8 @@ namespace RE
 
 		// members
 		ActorValue actorValue;  // 98
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(ValueAndConditionsEffect) == 0xA0);
 }

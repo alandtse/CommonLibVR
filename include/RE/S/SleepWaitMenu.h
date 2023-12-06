@@ -29,9 +29,9 @@ namespace RE
 		std::uint8_t  unk51;  // 51
 		std::uint16_t pad52;  // 52
 		std::uint32_t pad54;  // 54
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(SleepWaitMenu) == 0x58);
 #else

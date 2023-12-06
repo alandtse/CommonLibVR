@@ -31,8 +31,8 @@ namespace RE
 
 		// add
 		virtual void Accept(CallbackProcessor* a_cbReg) = 0;  // 01
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(FxDelegateHandler) == 0x10);
 }

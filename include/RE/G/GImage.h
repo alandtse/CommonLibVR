@@ -11,8 +11,8 @@ namespace RE
 	{
 	public:
 		~GImage() override;  // 00
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(GImage) == 0x48);
 }

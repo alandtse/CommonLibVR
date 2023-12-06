@@ -31,8 +31,8 @@ namespace RE
 		// members
 		stl::enumeration<Flag, std::uint32_t> flags;  // 10
 		std::uint32_t                         pad14;  // 14
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(ExtraFlags) == 0x18);
 }

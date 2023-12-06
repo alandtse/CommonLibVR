@@ -17,8 +17,8 @@ namespace RE
 		// members
 		std::uint32_t                 pad00;        // 00
 		DirectInput8::IDirectInput8A* diInterface;  // 08
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BSDirectInputManager) == 0x10);
 }

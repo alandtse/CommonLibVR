@@ -19,8 +19,8 @@ namespace RE
 		// members
 		std::int32_t  value;  // 08
 		std::uint32_t pad0C;  // 0C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESValueForm) == 0x10);
 }

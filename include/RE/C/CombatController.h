@@ -62,9 +62,9 @@ namespace RE
 		std::int32_t                            unkC4;                   // C4
 		NiPointer<Actor>                        cachedAttacker;          // C8 - attackerHandle
 		NiPointer<Actor>                        cachedTarget;            // D0 - targetHandle
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(CombatController) == 0xD8);
 #else

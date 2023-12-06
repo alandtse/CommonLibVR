@@ -34,8 +34,8 @@ namespace RE
 		BGSSoundDescriptorForm* loopingSound;  // 30 - SNAM
 		TESRegion*              soundRegion;   // 38 - RDAT - interiors only
 		BGSReverbParameters*    reverbType;    // 40 - BNAM
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BGSAcousticSpace) == 0x48);
 }

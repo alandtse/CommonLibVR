@@ -48,8 +48,8 @@ namespace RE
 		std::uint32_t         collisionFilter;  // A8
 		std::uint32_t         unkAC;            // AC
 		NiPointer<NiAVObject> followNode;       // B0
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BSTerrainEffect) == 0xB8);
 }

@@ -234,8 +234,8 @@ namespace RE
 		bool                                 usesLDR;             // 210
 		bool                                 unk211;              // 211
 		std::uint64_t                        unk218;              // 218
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(ImageSpaceManager) == 0x220);
 }

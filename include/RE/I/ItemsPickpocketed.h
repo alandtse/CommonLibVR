@@ -18,7 +18,8 @@ namespace RE
 
 		static BSTEventSource<Event>* GetEventSource();
 		static void                   SendEvent(std::int32_t a_numItems);
-    private:
-         KEEP_FOR_RE()
-    };
+
+	private:
+		KEEP_FOR_RE()
+	};
 }

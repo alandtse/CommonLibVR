@@ -25,9 +25,9 @@ namespace RE
 		std::uint32_t unk60;  // 60 - Flags of some kind?
 		std::uint32_t unk64;  // 64 - padding?
 		void*         unk68;  // 68
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(WSActivateRollover) == 0x70);
 }
 

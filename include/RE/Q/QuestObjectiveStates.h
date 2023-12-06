@@ -10,5 +10,5 @@ namespace RE
 		kCompletedDisplayed = 3,
 		kFailed = 4,
 		kFailedDisplayed = 5
-    };
+	};
 }

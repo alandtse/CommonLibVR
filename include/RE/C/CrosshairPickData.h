@@ -19,7 +19,7 @@ namespace RE
 
 			kTotal
 		};
-    };
+	};
 	using VR_DEVICE = VRControls::VR_DEVICE;
 
 	class CrosshairPickData
@@ -62,9 +62,9 @@ namespace RE
 		std::uint16_t                    unk84;                              // 84
 		std::byte                        unk86;                              // 86
 #endif
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(CrosshairPickData) == 0x38);
 #else

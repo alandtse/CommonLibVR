@@ -20,8 +20,8 @@ namespace RE
 
 		// members
 		TESImageSpaceModifier* imageSpaceModifying;  // 08 - MNAM
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESImageSpaceModifiableForm) == 0x10);
 }

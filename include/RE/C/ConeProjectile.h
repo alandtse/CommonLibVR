@@ -59,9 +59,9 @@ namespace RE
 		std::uint32_t            pad1F4;                        // 1F4
 		hkRefPtr<hkpSphereShape> collisionShape;                // 1F8
 		BSTArray<void*>          collisions;                    // 200
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(ConeProjectile) == 0x218);
 #else

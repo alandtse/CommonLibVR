@@ -26,8 +26,8 @@ namespace RE
 
 		// members
 		hkpWorldRayCastOutput rayHit;  // 10
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(hkpClosestRayHitCollector) == 0x70);
 }

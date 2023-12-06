@@ -22,9 +22,9 @@ namespace RE
 
 		// members
 		GFxValue root;  // 30 - "Menu_mc"
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(TutorialMenu) == 0x48);
 #else

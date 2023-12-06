@@ -16,7 +16,7 @@ namespace RE
 
 		BSFixedString                        menu;  // 00
 		stl::enumeration<Mode, std::uint8_t> mode;  // 08
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 }

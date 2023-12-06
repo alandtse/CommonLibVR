@@ -49,8 +49,8 @@ namespace RE
 		std::uint8_t                                  pad05;          // 05
 		std::uint16_t                                 pad06;          // 06
 		stl::enumeration<AssumedState, std::uint32_t> state;          // 08
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BSSoundHandle) == 0xC);
 }

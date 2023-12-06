@@ -35,8 +35,9 @@ namespace RE
 			ptr->Release();
 			return ptr;
 		}
-    private:
-         KEEP_FOR_RE()
-    };
+
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(GFxStateBag) == 0x8);
 }

@@ -11,9 +11,9 @@ namespace RE
 		T top;     // ??
 		T right;   // ??
 		T bottom;  // ??
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 
 	using GRectF = GRect<float>;
 	static_assert(sizeof(GRectF) == 0x10);

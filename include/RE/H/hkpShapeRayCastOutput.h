@@ -33,6 +33,6 @@ namespace RE
 		std::int32_t  shapeKeyIndex{ 0 };                                     // 40
 		std::uint32_t pad44;                                                  // 44
 		std::uint64_t pad48;                                                  // 48
-    };
+	};
 	static_assert(sizeof(hkpShapeRayCastOutput) == 0x50);
 }

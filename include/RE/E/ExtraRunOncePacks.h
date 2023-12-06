@@ -13,7 +13,7 @@ namespace RE
 		std::uint8_t  pad09;    // 09
 		std::uint16_t pad0A;    // 0A
 		std::uint32_t pad0C;    // 0C
-    };
+	};
 	static_assert(sizeof(RunOncePackage) == 0x10);
 
 	class ExtraRunOncePacks : public BSExtraData
@@ -29,8 +29,8 @@ namespace RE
 
 		// members
 		BSSimpleList<RunOncePackage*>* packages;  // 10
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(ExtraRunOncePacks) == 0x18);
 }

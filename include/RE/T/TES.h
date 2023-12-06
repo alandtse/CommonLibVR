@@ -159,8 +159,8 @@ namespace RE
 		std::uint64_t                                       unk2A0;                     // 2A0
 		NavMeshInfoMap*                                     unk2A8;                     // 2A8
 		std::uint64_t                                       unk2B0;                     // 2B0
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TES) == 0x2B8);
 }

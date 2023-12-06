@@ -81,7 +81,8 @@ namespace RE
 
 			return nullptr;
 		}
-    private:
-         KEEP_FOR_RE()
-    };
+
+	private:
+		KEEP_FOR_RE()
+	};
 }

@@ -17,7 +17,7 @@ namespace RE
 		float unarmedScoreMult;    // 1C
 		float staffScoreMult;      // 20
 		float avoidThreatChance;   // 24
-    };
+	};
 	static_assert(sizeof(CombatStyleGeneralData) == 0x28);
 
 	struct CombatStyleMeleeData  // CSME
@@ -30,7 +30,7 @@ namespace RE
 		float bashAttackMult;                // 14
 		float bashPowerAttackMult;           // 18
 		float specialAttackMult;             // 1C
-    };
+	};
 	static_assert(sizeof(CombatStyleMeleeData) == 0x20);
 
 	struct CombatStyleCloseRangeData  // CSCR
@@ -39,13 +39,13 @@ namespace RE
 		float fallbackMult;       // 04
 		float flankDistanceMult;  // 08
 		float stalkTimeMult;      // 0C
-    };
+	};
 	static_assert(sizeof(CombatStyleCloseRangeData) == 0x10);
 
 	struct CombatStyleLongRangeData  // CSLR
 	{
 		float strafeMult;  // 0
-    };
+	};
 	static_assert(sizeof(CombatStyleLongRangeData) == 0x4);
 
 	struct CombatStyleFlightData  // CSFL
@@ -58,7 +58,7 @@ namespace RE
 		float perchAttackChance;     // 14
 		float perchAttackTimeMult;   // 18
 		float flyingAttackChance;    // 1C
-    };
+	};
 	static_assert(sizeof(CombatStyleFlightData) == 0x20);
 
 	class TESCombatStyle : public TESForm
@@ -100,8 +100,8 @@ namespace RE
 		CombatStyleLongRangeData              longRangeData;   // 78 - CSLR
 		CombatStyleFlightData                 flightData;      // 7C - CSFL
 		stl::enumeration<FLAG, std::uint32_t> flags;           // 9C - DATA
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESCombatStyle) == 0xA0);
 }

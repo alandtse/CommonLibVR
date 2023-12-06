@@ -10,8 +10,8 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_bhkContactListener;
 
 		~bhkContactListener() override;  // 04
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(bhkContactListener) == 0x8);
 }

@@ -14,8 +14,8 @@ namespace RE
 		// override (bhkCharacterState)
 		hkpCharacterStateType GetType() const override;  // 03 - { return kSwimming; }
 		void                  Unk_08(void) override;     // 08
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(bhkCharacterStateSwimming) == 0x10);
 }

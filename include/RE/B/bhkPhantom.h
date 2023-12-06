@@ -18,8 +18,8 @@ namespace RE
 
 		// members
 		std::uint64_t unk28;  // 28
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(bhkPhantom) == 0x30);
 }

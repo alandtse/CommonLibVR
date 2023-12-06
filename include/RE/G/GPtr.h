@@ -197,9 +197,9 @@ namespace RE
 
 		// members
 		element_type* _ptr;  // 0
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	//static_assert(sizeof(GPtr<void*>) == 0x8);
 
 	template <class T, class... Args>

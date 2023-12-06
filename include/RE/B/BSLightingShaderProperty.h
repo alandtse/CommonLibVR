@@ -75,8 +75,8 @@ namespace RE
 		std::uint8_t    pad159;             // 159
 		std::uint16_t   pad15A;             // 15A
 		std::uint32_t   pad15C;             // 15C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BSLightingShaderProperty) == 0x160);
 }

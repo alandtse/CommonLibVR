@@ -141,8 +141,9 @@ namespace RE
 		virtual GFxResource*                         GetResource(const char* a_exportName) const = 0;                                                                // 1B
 
 		GFxMovieView* CreateInstance(bool a_initFirstFrame = true, UPInt a_memoryArena = 0);
-    private:
-         KEEP_FOR_RE()
-    };
+
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(GFxMovieDef) == 0x20);
 }

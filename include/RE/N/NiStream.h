@@ -20,7 +20,7 @@ namespace RE
 		char          processScript[64];  // 44
 		char          exportScript[64];   // 84
 		std::uint32_t padC4;              // C4
-    };
+	};
 	static_assert(sizeof(BSStreamHeader) == 0xC8);
 
 	class NiStream
@@ -91,8 +91,8 @@ namespace RE
 		std::uint32_t                                 lastError;                           // 410
 		char                                          lastErrorMessage[WinAPI::MAX_PATH];  // 414
 		char                                          filePath[WinAPI::MAX_PATH];          // 518
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(NiStream) == 0x620);
 }

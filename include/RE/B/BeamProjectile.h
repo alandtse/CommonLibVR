@@ -47,9 +47,9 @@ namespace RE
 
 		// members
 		std::uint64_t unk238;  // 238
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(BeamProjectile) == 0x240);
 #else

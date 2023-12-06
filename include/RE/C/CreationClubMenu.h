@@ -43,9 +43,9 @@ namespace RE
 		// members
 		BSScaleformExternalTexture background;  // 58
 		BSScaleformExternalTexture details;     // 70
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(CreationClubMenu) == 0x88);
 }
 

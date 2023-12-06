@@ -15,7 +15,7 @@ namespace RE
 		BSString        subtitle;        // 08
 		float           targetDistance;  // 18
 		bool            forceDisplay;    // 1C
-    };
+	};
 	static_assert(sizeof(SubtitleInfo) == 0x20);
 
 	class SubtitleManager : public BSTSingletonSDM<SubtitleManager>
@@ -41,8 +41,8 @@ namespace RE
 		BSTArray<SubtitleInfo> subtitles;       // 18
 		mutable BSSpinLock     lock;            // 20
 		ObjectRefHandle        currentSpeaker;  // 28
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(SubtitleManager) == 0x30);
 }

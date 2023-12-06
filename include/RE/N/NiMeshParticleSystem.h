@@ -34,9 +34,9 @@ namespace RE
 		bool          updateControllers;  // 19C
 		std::uint8_t  pad19D;             // 19D
 		std::uint16_t pad19E;             // 19E
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(NiMeshParticleSystem) == 0x1A0);
 #else

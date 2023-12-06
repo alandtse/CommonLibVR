@@ -20,7 +20,7 @@ namespace RE
 		std::int8_t    nextUID;   // 12 - XNAM
 		std::uint8_t   pad13;     // 13
 		std::uint32_t  pad14;     // 14
-    };
+	};
 	static_assert(sizeof(BGSPackageDataList) == 0x18);
 
 	struct BGSPackageDataNameMap : public BSIntrusiveRefCounted
@@ -48,7 +48,7 @@ namespace RE
 		// members
 		std::uint32_t         pad04;    // 04
 		BSTArray<NameMapData> nameMap;  // 08
-    };
+	};
 	static_assert(sizeof(BGSPackageDataNameMap) == 0x20);
 
 	class TESCustomPackageData : public TESPackageData
@@ -73,8 +73,8 @@ namespace RE
 		bool                                   alwaysRecheckConditions;  // 3A
 		std::uint8_t                           pad3B;                    // 3B
 		std::uint32_t                          pad3C;                    // 3C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESCustomPackageData) == 0x40);
 }

@@ -32,8 +32,8 @@ namespace RE
 		};
 
 		virtual ~AttackAnimationArrayMap();  // 00
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(AttackAnimationArrayMap) == 0x40);
 }

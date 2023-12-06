@@ -34,7 +34,8 @@ namespace RE
 			kNextAvail,
 			kOriginal = 65535
 		};
-    private:
-         KEEP_FOR_RE()
-    };
+
+	private:
+		KEEP_FOR_RE()
+	};
 }

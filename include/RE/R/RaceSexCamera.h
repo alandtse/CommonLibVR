@@ -22,9 +22,9 @@ namespace RE
 		std::uint64_t unk40;  // 40
 		std::uint64_t unk48;  // 48
 		std::uint64_t unk50;  // 50
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(RaceSexCamera) == 0x58);
 }
 

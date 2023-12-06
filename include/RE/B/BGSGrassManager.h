@@ -42,8 +42,8 @@ namespace RE
 		std::uint32_t           unk7C;                   // 7C
 		std::uint64_t           unk80;                   // 80
 		bool                    enableGrass;             // 88
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BGSGrassManager) == 0x90);
 }

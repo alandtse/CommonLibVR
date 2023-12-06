@@ -34,7 +34,7 @@ namespace RE
 		kPortalStrict = 1 << 13,
 
 		kType = kSpotlight | kSpotShadow | kHemiShadow | kOmniShadow
-    };
+	};
 
 	struct OBJ_LIGH  // DATA
 	{
@@ -50,7 +50,7 @@ namespace RE
 		float                                            flickerPeriodRecip;         // 1C - CK value * 100
 		float                                            flickerIntensityAmplitude;  // 20
 		float                                            flickerMovementAmplitude;   // 24
-    };
+	};
 	static_assert(sizeof(OBJ_LIGH) == 0x28);
 
 	class TESObjectLIGH :
@@ -108,8 +108,8 @@ namespace RE
 		NiColor                 emittanceColor;  // 118
 		std::uint32_t           pad124;          // 124
 		BGSLensFlare*           lensFlare;       // 128
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESObjectLIGH) == 0x130);
 }

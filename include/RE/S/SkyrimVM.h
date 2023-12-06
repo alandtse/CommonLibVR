@@ -300,9 +300,9 @@ namespace RE
 		std::uint32_t                                                         lastVMStackDumpTime;          // 895C
 		mutable BSSpinLock                                                    InventoryEventFilterMapLock;  // 8960
 		BSTHashMap<VMHandle, InventoryEventFilterLists*>                      InventoryEventFilterMap;      // 8968 - AddInventoryEventFilter()
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(SkyrimVM) == 0x8978);
 #else

@@ -17,7 +17,7 @@ namespace RE
 		kAlignedFree = 10,
 		kExternalAlloc = 11,
 		kExternalFree = 12
-    };
+	};
 
 	class NiAllocator
 	{
@@ -36,8 +36,8 @@ namespace RE
 		virtual void  Initialize() = 0;                                                                                                                                                                                                                                 // 07
 		virtual void  Shutdown() = 0;                                                                                                                                                                                                                                   // 08
 		virtual bool  VerifyAddress(const void* a_memory) = 0;                                                                                                                                                                                                          // 09
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(NiAllocator) == 0x8);
 }

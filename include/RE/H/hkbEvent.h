@@ -10,8 +10,8 @@ namespace RE
 	public:
 		// members
 		hkRefVariant sender;  // 10
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(hkbEvent) == 0x18);
 }

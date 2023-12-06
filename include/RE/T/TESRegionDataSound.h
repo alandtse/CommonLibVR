@@ -48,8 +48,8 @@ namespace RE
 		// members
 		BGSMusicType*    music;   // 10 - RDMO
 		BSTArray<Sound*> sounds;  // 18 - RDSA
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESRegionDataSound) == 0x30);
 }

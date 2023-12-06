@@ -13,7 +13,7 @@ namespace RE
 		TESForm* locationForm;  // 00
 		NiPoint3 locPt;         // 08
 		float    zRot;          // 14
-    };
+	};
 	static_assert(sizeof(WORLD_LOCATION) == 0x18);
 
 	class ExtraPackageStartLocation : public BSExtraData
@@ -30,8 +30,8 @@ namespace RE
 
 		// members
 		WORLD_LOCATION worldLoc;  // 10
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(ExtraPackageStartLocation) == 0x28);
 }

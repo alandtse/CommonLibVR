@@ -14,9 +14,9 @@ namespace RE
 		virtual void Unk_01(void);  // 01
 
 		virtual ~IMapCameraCallbacks();  // 02
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(IMapCameraCallbacks) == 0x8);
 }
 

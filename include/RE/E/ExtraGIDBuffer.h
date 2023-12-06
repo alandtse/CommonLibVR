@@ -18,8 +18,8 @@ namespace RE
 
 		// members
 		std::int8_t* buffer;  // 10
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(ExtraGIDBuffer) == 0x18);
 }

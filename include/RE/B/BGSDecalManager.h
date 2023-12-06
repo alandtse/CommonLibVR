@@ -36,8 +36,8 @@ namespace RE
 		NiPointer<NiCamera>                  camera;                      // 78
 		NiPointer<BSShaderAccumulator>       shaderAccumulator;           // 80
 		std::uint32_t                        unk88;                       // 88
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BGSDecalManager) == 0x90);
 };

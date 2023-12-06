@@ -77,7 +77,7 @@ namespace RE
 		std::uint32_t                         voicePoints;           // 1C
 		AttributeWeights                      attributeWeights;      // 20
 		std::uint8_t                          pad23;                 // 23
-    };
+	};
 	static_assert(sizeof(CLASS_DATA) == 0x24);
 
 	class TESClass :
@@ -117,8 +117,8 @@ namespace RE
 		// members
 		CLASS_DATA    data;   // 50 - DATA
 		std::uint32_t pad74;  // 74
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESClass) == 0x78);
 }

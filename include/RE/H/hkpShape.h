@@ -117,8 +117,8 @@ namespace RE
 		bhkShape*     userData;  // 10
 		hkpShapeType  type;      // 18
 		std::uint32_t pad1C;     // 1C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(hkpShape) == 0x20);
 }

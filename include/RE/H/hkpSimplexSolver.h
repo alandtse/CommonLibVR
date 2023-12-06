@@ -15,7 +15,7 @@ namespace RE
 		std::int32_t  priority;                 // 30
 		std::uint32_t pad34;                    // 34
 		std::uint64_t pad38;                    // 38
-    };
+	};
 	static_assert(sizeof(hkpSurfaceConstraintInfo) == 0x40);
 
 	struct hkpSimplexSolverInput
@@ -30,6 +30,6 @@ namespace RE
 		std::int32_t              numConstraints;      // 50
 		std::uint32_t             pad54;               // 54
 		std::uint64_t             pad58;               // 58
-    };
+	};
 	static_assert(sizeof(hkpSimplexSolverInput) == 0x60);
 }

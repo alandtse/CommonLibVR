@@ -77,9 +77,9 @@ namespace RE
 		float                                  damage;            // 134
 		float                                  unk138;            // 138
 		stl::enumeration<Flags, std::uint32_t> flags;             // 13C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(Explosion) == 0x140);
 #else

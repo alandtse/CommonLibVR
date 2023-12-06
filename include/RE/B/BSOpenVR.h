@@ -74,9 +74,9 @@ namespace RE
 		RE::NiPointer<NiNode>          unk388[2];              // 388
 		HMDDeviceType                  hmdDeviceType;          // 398 - Set by comparing TrackedSystemName to "lighthouse", "oculus" and "holographic". Defaults to "lighthouse" if none match
 		NiTransform                    eyeToHeadTransform[2];  // 39C - 0 is left eye, 1 is right eye
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BSOpenVR) == 0x408);
 #endif
 }

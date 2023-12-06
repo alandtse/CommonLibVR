@@ -20,7 +20,7 @@ namespace RE
 		kNotEqual,
 		kGreaterEqual,
 		kAlways
-    };
+	};
 
 	struct EffectShaderData  // DATA
 	{
@@ -175,7 +175,7 @@ namespace RE
 		float fillTextureEffectTextureScaleV;  // 198
 
 		std::uint32_t sceneGraphEmitDepthLimit;  // 19C - unused
-    };
+	};
 	static_assert(sizeof(EffectShaderData) == 0x1A0);
 
 	class TESEffectShader : public TESForm
@@ -210,8 +210,8 @@ namespace RE
 		TESTexture       particlePaletteTexture;  // 200 - NAM9
 		void*            unk210;                  // 210 - smart ptr
 		void*            unk218;                  // 218 - smart ptr
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESEffectShader) == 0x220);
 }

@@ -25,7 +25,7 @@ namespace RE
 	public:
 		// members
 		BSTArray<void*>* unk00[8];  // 00
-    };
+	};
 	static_assert(sizeof(CreatureSounds) == 0x40);
 
 	class TESNPC :
@@ -299,8 +299,9 @@ namespace RE
 
 	private:
 		void CopyPerkRankArray(const std::vector<PerkRankData>& a_copiedData);
-    private:
-         KEEP_FOR_RE()
-    };
+
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESNPC) == 0x268);
 }

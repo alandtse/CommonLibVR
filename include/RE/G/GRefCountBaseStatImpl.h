@@ -13,5 +13,5 @@ namespace RE
 	{
 	public:
 		GFC_MEMORY_REDEFINE_NEW_IMPL(Base, GFC_REFCOUNTALLOC_CHECK_DELETE, StatType);
-    };
+	};
 }

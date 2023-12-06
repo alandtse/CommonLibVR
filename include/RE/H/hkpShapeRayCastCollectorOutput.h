@@ -23,6 +23,6 @@ namespace RE
 		std::int32_t extraInfo{ -1 };                   // 14
 		hkpShapeKey  shapeKey{ HK_INVALID_SHAPE_KEY };  // 18
 		std::int32_t pad1C{ 0 };                        // 1C
-    };
+	};
 	static_assert(sizeof(hkpShapeRayCastCollectorOutput) == 0x20);
 }

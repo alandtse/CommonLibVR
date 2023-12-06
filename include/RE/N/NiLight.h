@@ -26,9 +26,9 @@ namespace RE
 		NiPoint3      radius;   // 128
 		float         fade;     // 134
 		std::uint32_t unk138;   // 138
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(NiLight) == 0x140);
 #else

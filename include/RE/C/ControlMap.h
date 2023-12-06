@@ -101,9 +101,9 @@ namespace RE
 		bool                                             ignoreActivateDisabledEvents;        // 122
 		std::uint8_t                                     pad123;                              // 123
 		stl::enumeration<PC_GAMEPAD_TYPE, std::uint32_t> gamePadMapType;                      // 124
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(ControlMap) == 0x128);
 #endif

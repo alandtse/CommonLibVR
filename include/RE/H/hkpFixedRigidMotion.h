@@ -19,8 +19,8 @@ namespace RE
 
 		// add
 		virtual void GetPositionAndVelocities(hkpMotion* a_motionOut);  // 1C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(hkpFixedRigidMotion) == 0x140);
 }

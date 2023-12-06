@@ -9,5 +9,5 @@ namespace RE
 		kSilent = 2,
 		kVeryLoud = 3,
 		kQuiet = 4
-    };
+	};
 }

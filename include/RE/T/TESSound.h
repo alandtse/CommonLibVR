@@ -33,8 +33,8 @@ namespace RE
 
 		// members
 		BGSSoundDescriptorForm* descriptor;  // 30 - SDSC
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESSound) == 0x38);
 }

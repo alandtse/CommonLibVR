@@ -6,7 +6,7 @@ namespace RE
 	class BGSTypedItem : public Parent
 	{
 	public:
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 }

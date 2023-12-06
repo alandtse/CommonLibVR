@@ -30,8 +30,8 @@ namespace RE
 
 		// override (TESObjectMISC)
 		bool Load(TESFile* a_mod) override;  // 06
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BGSApparatus) == 0x120);
 }

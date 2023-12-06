@@ -33,9 +33,10 @@ namespace RE
 	protected:
 		friend class BSInputDeviceFactory;
 		BSPCGamepadDeviceHandler();
-    private:
-         KEEP_FOR_RE()
-    };
+
+	private:
+		KEEP_FOR_RE()
+	};
 #ifdef SKYRIMVR
 	static_assert(sizeof(BSPCGamepadDeviceHandler) == 0x18);
 #else

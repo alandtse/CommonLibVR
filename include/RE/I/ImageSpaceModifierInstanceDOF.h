@@ -26,8 +26,8 @@ namespace RE
 
 		// members
 		ImageSpaceModData data;  // 30
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(ImageSpaceModifierInstanceDOF) == 0x78);
 }

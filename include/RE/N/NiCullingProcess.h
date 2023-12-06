@@ -83,8 +83,8 @@ namespace RE
 		std::uint8_t    unk121;                     // 121
 		std::uint16_t   pad122;                     // 122
 		std::uint32_t   pad124;                     // 124
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(NiCullingProcess) == 0x128);
 }

@@ -22,8 +22,8 @@ namespace RE
 		float scale3D;            // 48
 		float refScale;           // 4C
 		float scaleAnimDuration;  // 50
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BSSimpleScaleController) == 0x58);
 }

@@ -18,8 +18,8 @@ namespace RE
 
 		// members
 		BSFixedString text;  // 08
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BGSEntryPointFunctionDataText) == 0x10);
 }

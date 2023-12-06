@@ -15,9 +15,9 @@ namespace RE
 		// members
 		T x;  // 00
 		T y;  // ??
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 
 	using GPointF = GPoint<float>;
 	static_assert(sizeof(GPointF) == 0x8);

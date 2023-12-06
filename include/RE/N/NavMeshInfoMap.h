@@ -56,9 +56,9 @@ namespace RE
 		std::uint8_t                                         padE9;             // E9
 		std::uint16_t                                        padEA;             // EA
 		std::uint32_t                                        padEC;             // EC
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(NavMeshInfoMap) == 0xF0);
 #endif

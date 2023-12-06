@@ -26,7 +26,7 @@ namespace RE
 		std::uint32_t       pad04;      // 04
 		TESBoundObject*     obj;        // 08 - ~CNTO
 		ContainerItemExtra* itemExtra;  // 10 - COED
-    };
+	};
 	static_assert(sizeof(ContainerObject) == 0x18);
 
 	class TESContainer : public BaseFormComponent
@@ -67,8 +67,9 @@ namespace RE
 
 	private:
 		void CopyObjectList(const std::vector<ContainerObject*>& a_copiedData);
-    private:
-         KEEP_FOR_RE()
-    };
+
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESContainer) == 0x18);
 }

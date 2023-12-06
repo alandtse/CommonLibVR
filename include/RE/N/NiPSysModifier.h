@@ -58,8 +58,8 @@ namespace RE
 		std::uint8_t                           pad29;   // 29
 		std::uint16_t                          pad2A;   // 29
 		std::uint32_t                          pad2C;   // 29
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(NiPSysModifier) == 0x30);
 }

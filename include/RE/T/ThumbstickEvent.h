@@ -44,8 +44,8 @@ namespace RE
 		// members
 		float xValue;  // 28
 		float yValue;  // 2C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(ThumbstickEvent) == 0x30);
 }

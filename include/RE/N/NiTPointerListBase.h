@@ -8,7 +8,7 @@ namespace RE
 	class NiTPointerListBase : public NiTListBase<Allocator, T>
 	{
 	public:
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 }

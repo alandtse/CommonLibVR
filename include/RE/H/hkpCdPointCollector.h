@@ -19,8 +19,8 @@ namespace RE
 		// members
 		float         earlyOutDistance;  // 08
 		std::uint32_t pad0C;             // 0C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(hkpCdPointCollector) == 0x10);
 }

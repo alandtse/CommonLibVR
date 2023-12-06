@@ -67,8 +67,8 @@ namespace RE
 		float                                         maxParticleRatio;  // 24
 		TextureAnimInfo*                              textureAnims;      // 28
 		ParticleData                                  instanceData[78];  // 30
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BSParticleShaderEmitter) == 0xED0);
 }

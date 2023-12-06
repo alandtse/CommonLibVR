@@ -25,8 +25,8 @@ namespace RE
 		std::uint32_t collisionFilter;  // 38
 		std::uint32_t unk3C;            // 3C
 		BSFixedString nodeName;         // 40
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(RefAttachTechniqueInput) == 0x48);
 }

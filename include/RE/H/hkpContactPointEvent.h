@@ -46,8 +46,8 @@ namespace RE
 		float*                     rotateNormal;                    // 48
 		hkpShapeKey*               shapeKeyStorage;                 // 50
 		hkpVelocityAccumulator*    accumulators[2];                 // 58
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(hkpContactPointEvent) == 0x68);
 }

@@ -33,8 +33,8 @@ namespace RE
 
 		// members
 		BSFixedString formEditorID;  // 20
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BGSKeyword) == 0x28);
 }

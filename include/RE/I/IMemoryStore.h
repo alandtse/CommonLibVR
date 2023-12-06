@@ -18,6 +18,6 @@ namespace RE
 
 		void* AllocateAlign(std::size_t a_size, std::uint32_t a_alignment);
 		void  DeallocateAlign(void*& a_freeBlock);
-    };
+	};
 	static_assert(sizeof(IMemoryStore) == 0x8);
 }

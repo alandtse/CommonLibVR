@@ -57,9 +57,9 @@ namespace RE
 		std::uint16_t               extraDataSize;  // 28
 		std::uint16_t               maxSize;        // 2A
 		std::uint32_t               pad2C;          // 2C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(NiObjectNET) == 0x30);
 
 	template <class T>

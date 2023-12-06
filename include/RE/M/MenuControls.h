@@ -74,9 +74,9 @@ namespace RE
 		bool                        remapMode;             // 82
 		std::uint8_t                unk83;                 // 83
 		std::uint32_t               unk84;                 // 84
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(offsetof(MenuControls, handlers) == 0x18);
 	static_assert(offsetof(MenuControls, remapMode) == 0x82);
 	static_assert(sizeof(MenuControls) == 0x88);

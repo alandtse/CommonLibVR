@@ -47,9 +47,9 @@ namespace RE
 		std::uint8_t  pad99;          // 99 VR 79
 		std::uint16_t pad9A;          // 9A VR 7A
 		std::uint32_t pad9C;          // 9C VA 7C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(BSDismemberSkinInstance) == 0xA0);
 #else

@@ -19,7 +19,8 @@ namespace RE
 
 		static BSTEventSource<Event>* GetEventSource();
 		static void                   SendEvent(SpellItem* a_spell);
-    private:
-         KEEP_FOR_RE()
-    };
+
+	private:
+		KEEP_FOR_RE()
+	};
 }

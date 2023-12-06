@@ -230,8 +230,8 @@ namespace RE
 		BSShaderPropertyLightData*                           lightData;            // 70
 		BSShaderMaterial*                                    material;             // 78
 		std::uint64_t                                        unk80;                // 80
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BSShaderProperty) == 0x88);
 }

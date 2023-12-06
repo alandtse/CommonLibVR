@@ -23,8 +23,8 @@ namespace RE
 
 		// members
 		TESBoundObject* menuDispObject;  // 08 - MDOB
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(BGSMenuDisplayObject) == 0x10);
 }

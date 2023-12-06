@@ -39,8 +39,8 @@ namespace RE
 		bool                                      isGood;           // 44
 		std::uint8_t                              pad45;            // 45
 		std::uint16_t                             pad46;            // 46
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(NiFile) == 0x48);
 }

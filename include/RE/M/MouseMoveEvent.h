@@ -27,8 +27,8 @@ namespace RE
 		// members
 		std::int32_t mouseInputX;  // 28
 		std::int32_t mouseInputY;  // 2C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(MouseMoveEvent) == 0x30);
 }

@@ -23,8 +23,8 @@ namespace RE
 		// members
 		GPtr<GFxFunctionHandler> handler;   // 68
 		void*                    userData;  // 70
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(GASUserDefinedFunctionObject) == 0x78);
 }

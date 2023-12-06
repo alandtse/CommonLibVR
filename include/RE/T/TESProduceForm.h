@@ -19,7 +19,7 @@ namespace RE
 
 			kTotal,
 		};
-    };
+	};
 
 	class TESProduceForm : public BaseFormComponent
 	{
@@ -38,8 +38,8 @@ namespace RE
 		TESBoundObject*         produceItem;                    // 10 - PFIG
 		std::int8_t             produceChance[SEASON::kTotal];  // 18 - PFPC
 		std::uint32_t           pad1C;                          // 1C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(TESProduceForm) == 0x20);
 }

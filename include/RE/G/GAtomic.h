@@ -26,9 +26,9 @@ namespace RE
 
 		// members
 		WinAPI::CRITICAL_SECTION cs;  // 00
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(GLock) == 0x28);
 
 	template <class T>
@@ -37,13 +37,13 @@ namespace RE
 	public:
 		// members
 		volatile T value;  // 0
-    };
+	};
 	//static_assert(sizeof(GAtomicValueBase<std::int32_t>) == 0x4);
 
 	template <class T>
 	class GAtomicInt : public GAtomicValueBase<T>  // 0
 	{
 	public:
-    };
+	};
 	//static_assert(sizeof(GAtomicInt<std::int32_t>) == 0x4);
 }

@@ -33,9 +33,9 @@ namespace RE
 		std::uint32_t   unk190;  // 190
 		std::uint32_t   unk194;  // 194
 		std::uint32_t   unk198;  // 198
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(BSMultiStreamInstanceTriShape) == 0x1A0);
 #else

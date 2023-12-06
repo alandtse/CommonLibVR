@@ -65,9 +65,9 @@ namespace RE
 		// add
 		virtual void Unk_128(void);  // 128
 		virtual void Unk_129(void);  // 129 - { return 1; }
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(Character) == 0x2B0);
 #else

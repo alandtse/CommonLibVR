@@ -10,5 +10,5 @@ namespace RE
 		kCommon = 3,
 		kGreater = 4,
 		kGrand = 5
-    };
+	};
 }

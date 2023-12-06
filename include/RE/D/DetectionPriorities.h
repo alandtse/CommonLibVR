@@ -10,5 +10,5 @@ namespace RE
 		kNormal = 3,
 		kHigh = 4,
 		kCritical = 5
-    };
+	};
 }

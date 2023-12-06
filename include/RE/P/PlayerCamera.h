@@ -37,7 +37,7 @@ namespace RE
 #endif
 			kTotal
 		};
-    };
+	};
 	using CameraState = CameraStates::CameraState;
 
 	class PlayerCamera :
@@ -102,8 +102,8 @@ namespace RE
 
 	private:
 		bool QCameraEquals(CameraState a_cameraState) const;
-         KEEP_FOR_RE()
-    };
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(PlayerCamera) == 0x168);
 #else

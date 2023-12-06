@@ -154,8 +154,8 @@ namespace RE
 		std::int32_t                 effectLoadedCount;          // 188
 		std::int32_t                 associatedItemLoadedCount;  // 18C
 		TESCondition                 conditions;                 // 190
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(EffectSetting) == 0x198);
 }

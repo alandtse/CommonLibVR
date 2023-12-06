@@ -53,9 +53,9 @@ namespace RE
 		bool                                      isWorldspace;   // 192
 		std::uint8_t                              pad193;         // 192
 		std::uint32_t                             pad194;         // 194
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(NiParticleSystem) == 0x198);
 #else

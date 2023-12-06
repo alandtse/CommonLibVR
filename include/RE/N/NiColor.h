@@ -269,9 +269,9 @@ namespace RE
 		float red;    // 0
 		float green;  // 4
 		float blue;   // 8
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(NiColor) == 0xC);
 
 	class NiColorA
@@ -408,9 +408,9 @@ namespace RE
 		float green;  // 04
 		float blue;   // 08
 		float alpha;  // 0C
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(NiColorA) == 0x10);
 
 	constexpr NiColor& NiColor::operator=(const NiColorA& a_rhs) noexcept

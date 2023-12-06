@@ -59,9 +59,9 @@ namespace RE
 		uint64_t                                               userData;              // 58
 		hkConstraintInternal*                                  internal;              // 60
 		uint32_t                                               uid;                   // 68
-    private:
-         KEEP_FOR_RE()
-    };
+	private:
+		KEEP_FOR_RE()
+	};
 	static_assert(sizeof(hkpConstraintInstance) == 0x70);
 
 	struct hkConstraintInternal
@@ -80,6 +80,6 @@ namespace RE
 		hkpConstraintRuntime*                                                     runtime;             // 30
 		uint16_t                                                                  runtimeSize;         // 38
 		hkObjectIndex                                                             slaveIndex;          // 3A
-    };
+	};
 	static_assert(sizeof(hkConstraintInternal) == 0x40);
 }

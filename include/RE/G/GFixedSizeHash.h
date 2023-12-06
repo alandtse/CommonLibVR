@@ -21,6 +21,6 @@ namespace RE
 		{
 			return SDBM_Hash(&a_data, sizeof(T));
 		}
-    };
+	};
 	static_assert(sizeof(GFixedSizeHash<void*>) == 0x1);
 }
