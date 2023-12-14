@@ -116,6 +116,7 @@ namespace RE
 			}
 			return nullptr;
 		}
+		return nullptr;
 	}
 
 	const TESFile* TESDataHandler::LookupLoadedModByIndex(std::uint8_t a_index)
@@ -194,6 +195,7 @@ namespace RE
 				}
 			}
 		}
+		return nullptr;
 #endif
 	}
 
