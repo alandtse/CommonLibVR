@@ -721,6 +721,7 @@ set(SOURCES
 	include/RE/F/FavoritesMenu.h
 	include/RE/F/FightReactions.h
 	include/RE/F/FileID.h
+	include/RE/F/FindMaxMagnitudeVisitor.h
 	include/RE/F/FirstPersonState.h
 	include/RE/F/FixedStrings.h
 	include/RE/F/FlameProjectile.h
@@ -1784,6 +1785,7 @@ set(SOURCES
 	src/RE/E/ExtraSoul.cpp
 	src/RE/E/ExtraTextDisplayData.cpp
 	src/RE/E/ExtraUniqueID.cpp
+	src/RE/F/FindMaxMagnitudeVisitor.cpp
 	src/RE/F/FormTypes.cpp
 	src/RE/F/FxDelegate.cpp
 	src/RE/F/FxDelegateArgs.cpp
