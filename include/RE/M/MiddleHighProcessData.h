@@ -199,7 +199,7 @@ namespace RE
 		float                                          unk2B0;                      // 2B0
 		float                                          bleedoutRate;                // 2B4
 		float                                          unk2B8;                      // 2B8
-		float                                          unk2BC;                      // 2BC
+		float                                          maximumWardPower;            // 2BC
 		float                                          unk2C0;                      // 2C0
 		float                                          torchEvaluationTimer;        // 2C4
 		float                                          alphaMult;                   // 2C8
