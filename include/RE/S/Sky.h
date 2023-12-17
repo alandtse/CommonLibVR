@@ -137,6 +137,8 @@ namespace RE
 		BSTArray<NiPointer<NiTexture>>         storedCloudTextures;             // 280
 		BSTArray<NiPointer<NiTexture>>         storedWorldMapCloudTextures;     // 298
 		BSTArray<SkyStaticRefData>             skyStaticRefData;                // 2B0
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(Sky) == 0x2C8);
 }

@@ -21,6 +21,12 @@ namespace RE
 		bool          triggerReleaseEvent;  // 11
 		std::uint16_t pad12;                // 12
 		std::uint32_t pad14;                // 14
+	private:
+		KEEP_FOR_RE()
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(HeldStateHandler) == 0x18);
+#else
+	static_assert(sizeof(HeldStateHandler) == 0x30);
+#endif
 }

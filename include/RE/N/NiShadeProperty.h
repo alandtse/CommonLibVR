@@ -26,6 +26,8 @@ namespace RE
 		virtual bool SetupGeometry(BSGeometry* a_geometry);        // 27 - { return 1; }
 		virtual bool FinishSetupGeometry(BSGeometry* a_geometry);  // 28 - { return 1; }
 		virtual void Unk_29(void);                                 // 29 - { return; }
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(NiShadeProperty) == 0x30);
 }

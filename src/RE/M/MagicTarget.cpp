@@ -15,18 +15,14 @@ namespace RE
 
 	void MagicTarget::DispelEffectsWithArchetype(Archetype a_type, bool a_force)
 	{
-		const auto effects = GetActiveEffectList();
-		if (!effects) {
-			return;
-		}
-
 		std::vector<RE::ActiveEffect*> queued;
-		for (const auto& effect : *effects) {
+		VisitActiveEffects([&](ActiveEffect* effect) {
 			const auto setting = effect ? effect->GetBaseObject() : nullptr;
 			if (setting && setting->HasArchetype(a_type)) {
 				queued.push_back(effect);
 			}
-		}
+			return BSContainer::ForEachResult::kContinue;
+		});
 
 		for (const auto& effect : queued) {
 			effect->Dispel(a_force);

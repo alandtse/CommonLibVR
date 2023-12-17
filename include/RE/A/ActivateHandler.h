@@ -23,6 +23,12 @@ namespace RE
 		bool          heldButtonActionSuccess;  // 1A
 		bool          disabled;                 // 1B
 		std::uint32_t unk1C;                    // 1C
+	private:
+		KEEP_FOR_RE()
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(ActivateHandler) == 0x20);
+#else
+	static_assert(sizeof(ActivateHandler) == 0x38);
+#endif
 }

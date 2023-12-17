@@ -61,6 +61,8 @@ namespace RE
 		bool                                 isNote;     // 95
 		std::uint8_t                         unk96;      // 96
 		std::uint8_t                         pad97;      // 97
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(BookMenu) == 0x98);

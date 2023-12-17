@@ -39,7 +39,7 @@ namespace RE
 	class TESDataHandler : public BSTSingletonSDM<TESDataHandler>
 	{
 	public:
-		static TESDataHandler* GetSingleton();
+		static TESDataHandler* GetSingleton(bool a_VRESL = true);
 
 		bool AddFormToDataHandler(TESForm* a_form);
 
@@ -117,6 +117,8 @@ namespace RE
 		TESRegionDataManager* regionDataManager;  // 1580
 		InventoryChanges*     merchantInventory;  // 1588
 #endif
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(TESDataHandler) == 0xDC0);

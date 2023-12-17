@@ -58,6 +58,8 @@ namespace RE
 		NiPointer<NiLight>                     light;           // C0
 		BSSoundHandle                          sound;           // C8
 		stl::enumeration<Flags, std::uint32_t> flags;           // D4
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(Hazard) == 0xD8);

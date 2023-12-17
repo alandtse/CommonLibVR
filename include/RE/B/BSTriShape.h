@@ -26,6 +26,8 @@ namespace RE
 		std::uint16_t triangleCount;  // 158 VR 198
 		std::uint16_t vertexCount;    // 15A VR 19A
 		std::uint32_t pad15C;         // 15C VR 19C
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(BSTriShape) == 0x160);

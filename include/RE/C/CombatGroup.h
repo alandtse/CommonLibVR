@@ -41,6 +41,8 @@ namespace RE
 		ActorHandle                            attackedMember;      // A0
 		std::uint16_t                          attackerCount;       // A4
 		stl::enumeration<Flags, std::uint16_t> flags;               // A6
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(CombatTarget) == 0xA8);
 
@@ -51,6 +53,8 @@ namespace RE
 		ActorHandle memberHandle;              // 00
 		float       groupStrengthUpdateTimer;  // 04
 		float       threatValue;               // 08
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(CombatMember) == 0x0C);
 
@@ -106,6 +110,8 @@ namespace RE
 		std::uint8_t                   unk15E;                       // 15E
 		std::uint8_t                   unk15F;                       // 15F
 		mutable BSReadWriteLock        lock;                         // 160
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(CombatGroup) == 0x168);
 }

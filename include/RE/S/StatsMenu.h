@@ -143,6 +143,8 @@ namespace RE
 		std::uint8_t              unk321;                  // 321
 		std::uint16_t             unk322;                  // 322
 		std::uint32_t             unk324;                  // 324
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(StatsMenu) == 0x328);

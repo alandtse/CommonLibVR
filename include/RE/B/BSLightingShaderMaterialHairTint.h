@@ -34,6 +34,9 @@ namespace RE
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;
+
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSLightingShaderMaterialHairTint) == 0xB0);
 }

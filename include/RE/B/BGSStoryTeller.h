@@ -43,6 +43,8 @@ namespace RE
 		std::uint16_t                                                                padA2;                     // A2
 		std::uint32_t                                                                padA4;                     // A4
 		BSTHashMap<std::uint32_t, BSTArray<BSTTuple<std::uint32_t, std::uint32_t>>*> questStageWaitMap;         // A8
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(BGSStoryTeller) == 0xD8);

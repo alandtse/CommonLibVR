@@ -42,6 +42,8 @@ namespace RE
 		NiPointer<BSMultiBound>           multiBound;     // 128 VR 150
 		BSCullingProcess::BSCPCullingType cullingMode;    // 130 VR 158
 		float                             lastAccumTime;  // 134 VR 15C
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(BSMultiBoundNode) == 0x138);

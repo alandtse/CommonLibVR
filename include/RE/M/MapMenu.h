@@ -54,29 +54,28 @@ namespace RE
 		}
 
 		// members
-		BSTSmartPointer<MapMoveHandler> moveHandler;   // 00040
-		BSTSmartPointer<MapLookHandler> lookHandler;   // 00048
-		BSTSmartPointer<MapZoomHandler> zoomHandler;   // 00050
-		ObjectRefHandle                 mapMarker;     // 00058
-		LocalMapMenu                    localMapMenu;  // 00060
-		RefHandle                       unk30460;      // 30460
-		std::uint32_t                   unk30464;      // 30464
-		std::uint32_t                   unk30468;      // 30468
-		std::uint32_t                   unk3046C;      // 3046C
-		BSTArray<void*>                 unk30470;      // 30470
-		BSTArray<void*>                 unk30488;      // 30488
-		MapCamera                       camera;        // 304A0
-		std::uint64_t                   unk30530;      // 30530
-		TESWorldSpace*                  worldSpace;    // 30538
-		GFxValue                        unk30540;      // 30540
-		std::uint64_t                   unk30558;      // 30558
-		std::uint64_t                   unk30560;      // 30560
-		std::uint64_t                   unk30568;      // 30568
-		std::uint32_t                   unk30570;      // 30570
-		BSSoundHandle                   unk30574;      // 30574
-		std::uint64_t                   unk30580;      // 30580
-		std::uint64_t                   unk30588;      // 30588
-		std::uint64_t                   unk30590;      // 30590
+		BSTSmartPointer<MapMoveHandler> moveHandler;           // 00040
+		BSTSmartPointer<MapLookHandler> lookHandler;           // 00048
+		BSTSmartPointer<MapZoomHandler> zoomHandler;           // 00050
+		ObjectRefHandle                 mapMarker;             // 00058
+		LocalMapMenu                    localMapMenu;          // 00060
+		RefHandle                       unk30460;              // 30460
+		NiPoint3                        playerMarkerPosition;  // 30464
+		BSTArray<void*>                 unk30470;              // 30470
+		BSTArray<void*>                 unk30488;              // 30488
+		MapCamera                       camera;                // 304A0
+		std::uint64_t                   unk30530;              // 30530
+		TESWorldSpace*                  worldSpace;            // 30538
+		GFxValue                        unk30540;              // 30540
+		std::uint32_t                   unk30558;              // 30558
+		NiPoint3                        unk3055C;              // 3055C
+		NiPoint3                        unk30568;              // 30568
+		BSSoundHandle                   unk30574;              // 30574
+		std::uint64_t                   unk30580;              // 30580
+		std::uint64_t                   unk30588;              // 30588
+		std::uint64_t                   unk30590;              // 30590
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(MapMenu) == 0x30598);
 #else
@@ -138,6 +137,8 @@ namespace RE
 		std::uint64_t                       unk305D8;         // 305D0
 		std::uint64_t                       unk305E0;         // 305E0
 		std::uint64_t                       unk305E8;         // 305E8
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(MapMenu) == 0x305F0);
 #endif

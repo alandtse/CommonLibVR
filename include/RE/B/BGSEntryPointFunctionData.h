@@ -33,6 +33,8 @@ namespace RE
 		virtual std::uint16_t                           GetID();                                                 // 05 - { return 0xFFFF; }
 		virtual void                                    SetParentPerk(BGSPerk* a_perk);                          // 06 - { return; }
 		virtual BGSPerk*                                GetParentPerk();                                         // 07 - { return 0; }
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BGSEntryPointFunctionData) == 0x8);
 }

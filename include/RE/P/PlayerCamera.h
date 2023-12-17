@@ -102,6 +102,7 @@ namespace RE
 
 	private:
 		bool QCameraEquals(CameraState a_cameraState) const;
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(PlayerCamera) == 0x168);

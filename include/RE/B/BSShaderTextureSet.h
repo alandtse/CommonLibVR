@@ -31,6 +31,9 @@ namespace RE
 
 	private:
 		BSShaderTextureSet* Ctor();
+
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSShaderTextureSet) == 0x58);
 }

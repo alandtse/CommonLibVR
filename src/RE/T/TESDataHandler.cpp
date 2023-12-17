@@ -5,9 +5,22 @@
 
 namespace RE
 {
-	TESDataHandler* TESDataHandler::GetSingleton()
+	static const RE::TESFileCollection* VRcompiledFileCollection = nullptr;
+
+	TESDataHandler* TESDataHandler::GetSingleton(bool a_VRESL)
 	{
 		REL::Relocation<TESDataHandler**> singleton{ Offset::TESDataHandler::Singleton };
+#ifdef SKYRIMVR
+		if (a_VRESL) {
+			const auto VRhandle = WinAPI::GetModuleHandle("skyrimvresl");
+			if (!VRcompiledFileCollection) {
+				const auto GetCompiledFileCollection = reinterpret_cast<const RE::TESFileCollection* (*)()>(WinAPI::GetProcAddress(VRhandle, "GetCompiledFileCollectionExtern"));
+				if (GetCompiledFileCollection != nullptr) {
+					VRcompiledFileCollection = GetCompiledFileCollection();
+				}
+			}
+		}
+#endif
 		return *singleton;
 	}
 
@@ -38,7 +51,13 @@ namespace RE
 
 		return TESForm::LookupByID(formID);
 #else
-		return TESForm::LookupByID(a_rawFormID & 0xFFFFFF | (file->compileIndex << 24));
+		if (VRcompiledFileCollection) {
+			FormID formID = file->compileIndex << (3 * 8);
+			formID += file->smallFileCompileIndex << ((1 * 8) + 4);
+			formID += a_rawFormID;
+			return TESForm::LookupByID(formID);
+		} else
+			return TESForm::LookupByID(a_rawFormID & 0xFFFFFF | (file->compileIndex << 24));
 #endif
 	}
 
@@ -75,32 +94,50 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedModByName(std::string_view a_modName)
 	{
-		for (auto& file :
+		if (!VRcompiledFileCollection) {
+			for (auto& file :
 #ifndef SKYRIMVR
-			compiledFileCollection.files
+				compiledFileCollection.files
 #else
-			loadedMods
+				loadedMods
 #endif
-		) {
-			if (file && a_modName.size() == strlen(file->fileName) &&
-				_strnicmp(file->fileName, a_modName.data(), a_modName.size()) == 0) {
-				return file;
+			) {
+				if (file && a_modName.size() == strlen(file->fileName) &&
+					_strnicmp(file->fileName, a_modName.data(), a_modName.size()) == 0) {
+					return file;
+				}
 			}
+		} else {  // support SkyrimVRESL
+			for (auto& file : VRcompiledFileCollection->files) {
+				if (file && a_modName.size() == strlen(file->fileName) &&
+					_strnicmp(file->fileName, a_modName.data(), a_modName.size()) == 0) {
+					return file;
+				}
+			}
+			return nullptr;
 		}
 		return nullptr;
 	}
 
 	const TESFile* TESDataHandler::LookupLoadedModByIndex(std::uint8_t a_index)
 	{
-		for (auto& file :
+		if (!VRcompiledFileCollection) {
+			for (auto& file :
 #ifndef SKYRIMVR
-			compiledFileCollection.files
+				compiledFileCollection.files
 #else
-			loadedMods
+				loadedMods
 #endif
-		) {
-			if (file && file->compileIndex == a_index) {
-				return file;
+			) {
+				if (file && file->compileIndex == a_index) {
+					return file;
+				}
+			}
+		} else {
+			for (auto& file : VRcompiledFileCollection->files) {
+				if (file && file->compileIndex == a_index) {
+					return file;
+				}
 			}
 		}
 		return nullptr;
@@ -124,7 +161,17 @@ namespace RE
 		}
 		return nullptr;
 #else
-		return LookupLoadedModByName(a_modName);
+		if (!VRcompiledFileCollection) {
+			return LookupLoadedModByName(a_modName);
+		} else {
+			for (auto& smallFile : VRcompiledFileCollection->smallFiles) {
+				if (a_modName.size() == strlen(smallFile->fileName) &&
+					_strnicmp(smallFile->fileName, a_modName.data(), a_modName.size()) == 0) {
+					return smallFile;
+				}
+			}
+			return nullptr;
+		}
 #endif
 	}
 
@@ -139,7 +186,16 @@ namespace RE
 		}
 		return nullptr;
 #else
-		return LookupLoadedModByIndex(a_index);
+		if (!VRcompiledFileCollection) {
+			return LookupLoadedModByIndex(a_index);
+		} else {
+			for (auto& smallFile : VRcompiledFileCollection->smallFiles) {
+				if (smallFile->smallFileCompileIndex == a_index) {
+					return smallFile;
+				}
+			}
+		}
+		return nullptr;
 #endif
 	}
 

@@ -22,6 +22,8 @@ namespace RE
 		virtual bool               GetKeyCodeFromID(std::int32_t a_id, std::uint32_t& a_keyCode) = 0;        // 06
 		[[nodiscard]] virtual bool IsEnabled() const = 0;                                                    // 07
 		virtual void               Reset() = 0;                                                              // 08
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSIInputDevice) == 0x8);
 }

@@ -134,6 +134,8 @@ namespace RE
 		bool                                   closingAllMenus;               // 1C1
 		std::uint16_t                          pad1C2;                        // 1C2
 		std::uint32_t                          pad1C4;                        // 1C4
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(UI) == 0x1C8);

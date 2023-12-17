@@ -970,7 +970,7 @@ namespace RE
 
 		namespace Script
 		{
-			inline constexpr REL::ID CompileAndRun(static_cast<std::uint64_t>(21890));
+			inline constexpr REL::ID CompileAndRun(static_cast<std::uint64_t>(441582));
 			inline constexpr REL::ID GetProcessScripts(static_cast<std::uint64_t>(21921));
 			inline constexpr REL::ID SetProcessScripts(static_cast<std::uint64_t>(21920));
 		}

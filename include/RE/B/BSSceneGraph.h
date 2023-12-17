@@ -29,6 +29,8 @@ namespace RE
 		std::uint8_t        pad139;     // 139
 		std::uint16_t       pad13A;     // 13A
 		float               cameraFOV;  // 13C
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(BSSceneGraph) == 0x140);

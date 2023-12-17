@@ -38,6 +38,8 @@ namespace RE
 	public:
 		// members
 		BSBitField<>* visData;  // 0
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BGSTerrainVisibilityData) == 0x8);
 
@@ -72,6 +74,8 @@ namespace RE
 	public:
 		// members
 		BSTArray<BSTSmartPointer<NavMesh>> navMeshes;  // 00
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(NavMeshArray) == 0x18);
 
@@ -243,6 +247,8 @@ namespace RE
 		LOADED_CELL_DATA*                                    loadedData;        // 128
 		BGSLightingTemplate*                                 lightingTemplate;  // 130 - LTMP
 		std::uint64_t                                        unk138;            // 138
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(TESObjectCELL) == 0x140);

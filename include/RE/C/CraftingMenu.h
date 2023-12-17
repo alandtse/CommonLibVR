@@ -33,6 +33,8 @@ namespace RE
 
 		// members
 		CraftingSubMenus::CraftingSubMenu* subMenu;  // 30
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(CraftingMenu) == 0x38);

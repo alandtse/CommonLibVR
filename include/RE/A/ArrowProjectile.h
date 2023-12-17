@@ -44,6 +44,8 @@ namespace RE
 		// members
 		EnchantmentItem* enchantItem;  // 1E0
 		AlchemyItem*     poison;       // 1E8
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(ArrowProjectile) == 0x1F0);

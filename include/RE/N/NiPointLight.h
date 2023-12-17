@@ -23,6 +23,8 @@ namespace RE
 		float constAttenuation;      // 140
 		float linearAttenuation;     // 144
 		float quadraticAttenuation;  // 148
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(NiPointLight) == 0x150);

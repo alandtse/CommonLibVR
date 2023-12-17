@@ -99,6 +99,8 @@ namespace RE
 		std::uint8_t                         pad151;                      // 151
 		std::uint16_t                        pad152;                      // 152
 		std::uint32_t                        pad154;                      // 154
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSGeometry) == 0x158);
 #else
@@ -114,6 +116,8 @@ namespace RE
 		std::uint8_t                         pad191;                      // 191
 		std::uint16_t                        pad192;                      // 192
 		std::uint32_t                        pad194;                      // 194
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSGeometry) == 0x198);
 #endif

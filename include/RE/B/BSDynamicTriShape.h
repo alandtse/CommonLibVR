@@ -29,6 +29,8 @@ namespace RE
 		std::uint32_t      frameCount;   // 174
 		std::uint32_t      unk178;       // 178
 		std::uint32_t      unk17C;       // 17C
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(BSDynamicTriShape) == 0x180);

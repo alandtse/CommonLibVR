@@ -75,6 +75,8 @@ namespace RE
 		std::uint8_t                     unk17D;                   // 17D
 		std::uint8_t                     unk17E;                   // 17E
 		std::uint8_t                     unk17F;                   // 17F
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSWaterShaderMaterial) == 0x180);
 }

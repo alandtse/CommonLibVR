@@ -136,6 +136,8 @@ namespace RE
 		std::uint32_t                               reservedDecompressionBufferSize;  // 4B8
 		std::uint32_t                               pad4BC;                           // 4BC
 		void*                                       unk4C0;                           // 4C0
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(TESFile) == 0x4C8);
 }

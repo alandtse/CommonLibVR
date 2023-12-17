@@ -22,6 +22,8 @@ namespace RE
 		// members
 		bool unk50;     // 50 - Set in ProcessMessage, cleared in CanProcess
 		char pad51[7];  // 51
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(CalibrationOptionMenu) == 0x58);
 

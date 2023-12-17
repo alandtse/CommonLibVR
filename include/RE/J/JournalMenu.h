@@ -47,6 +47,8 @@ namespace RE
 		std::uint64_t     unkD0;      // D0
 		std::uint64_t     unkD8;      // D8
 		std::uint64_t     unkE0;      // E0
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(JournalMenu) == 0xE8);

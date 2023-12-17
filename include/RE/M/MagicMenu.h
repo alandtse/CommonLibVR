@@ -33,6 +33,8 @@ namespace RE
 		std::uint8_t  pad61;            // 61
 		std::uint16_t pad62;            // 62
 		std::uint32_t pad64;            // 64
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(MagicMenu) == 0x68);

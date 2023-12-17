@@ -20,6 +20,8 @@ namespace RE
 		std::uint64_t            unk70;               // 70
 		ControllerDeviceHand     hand;                // 78
 		vr::TrackedDeviceIndex_t trackedDeviceIndex;  // 7C
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSTrackedControllerDevice) == 0x80);
 }

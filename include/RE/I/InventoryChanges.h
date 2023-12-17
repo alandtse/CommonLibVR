@@ -79,6 +79,9 @@ namespace RE
 	private:
 		InventoryChanges* Ctor(TESObjectREFR* a_ref);
 		void              Dtor();
+
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(InventoryChanges) == 0x20);
 }

@@ -62,6 +62,8 @@ namespace RE
 		float                      subSurfaceLightRolloff;          // 90
 		float                      rimLightPower;                   // 94
 		std::uint64_t              unk98;                           // 98
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSLightingShaderMaterialBase) == 0xA0);
 

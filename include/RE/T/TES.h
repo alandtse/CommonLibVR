@@ -114,51 +114,64 @@ namespace RE
 		std::uint8_t                                        unk133;                     // 133
 		std::uint32_t                                       unk134;                     // 134
 		std::uint64_t                                       unk138;                     // 138
-		TESWorldSpace*                                      worldSpace;                 // 140
-		BSSimpleList<BSTTuple<TESNPC*, std::uint16_t>*>     deadCount;                  // 148
-		void*                                               unk158;                     // 158 - smart ptr
-		void*                                               unk160;                     // 160 - smart ptr
-		void*                                               unk168;                     // 168 - smart ptr
-		void*                                               unk170;                     // 170 - smart ptr
-		std::uint64_t                                       unk178;                     // 178
-		std::uint64_t                                       unk180;                     // 180
-		std::uint64_t                                       unk188;                     // 188
-		std::uint64_t                                       unk190;                     // 190
-		std::uint64_t                                       unk198;                     // 198
-		std::uint64_t                                       unk1A0;                     // 1A0
-		std::uint64_t                                       unk1A8;                     // 1A8
-		std::uint64_t                                       unk1B0;                     // 1B0
-		std::uint64_t                                       unk1B8;                     // 1B8
-		std::uint64_t                                       unk1C0;                     // 1C0
-		std::uint64_t                                       unk1C8;                     // 1C8
-		std::uint64_t                                       unk1D0;                     // 1D0
-		std::uint64_t                                       unk1D8;                     // 1D8
-		std::uint64_t                                       unk1E0;                     // 1E0
-		std::uint64_t                                       unk1E8;                     // 1E8
-		std::uint64_t                                       unk1F0;                     // 1F0
-		std::uint64_t                                       unk1F8;                     // 1F8
-		std::uint64_t                                       unk200;                     // 200
-		std::uint64_t                                       unk208;                     // 208
-		std::uint64_t                                       unk210;                     // 210
-		std::uint64_t                                       unk218;                     // 218
-		std::uint64_t                                       unk220;                     // 220
-		std::uint64_t                                       unk228;                     // 228
-		std::uint64_t                                       unk230;                     // 230
-		std::uint64_t                                       unk238;                     // 238
-		std::uint64_t                                       unk240;                     // 240
-		std::uint64_t                                       unk248;                     // 248
-		std::uint64_t                                       unk250;                     // 250
-		std::uint64_t                                       unk258;                     // 258
-		std::uint64_t                                       unk260;                     // 260
-		std::uint64_t                                       unk268;                     // 268
-		std::uint64_t                                       unk270;                     // 270
-		std::uint64_t                                       unk278;                     // 278
-		std::uint64_t                                       unk280;                     // 280
-		std::uint64_t                                       unk288;                     // 288
-		SystemEventAdapter                                  unk290;                     // 290
-		std::uint64_t                                       unk2A0;                     // 2A0
-		NavMeshInfoMap*                                     unk2A8;                     // 2A8
-		std::uint64_t                                       unk2B0;                     // 2B0
+#ifdef SKYRIM_SUPPORT_AE
+		std::uint64_t unk140;  // 140 - actual offset change is somewhere near showLandBorder
+#endif
+		TESWorldSpace*                                  worldSpace;  // 140
+		BSSimpleList<BSTTuple<TESNPC*, std::uint16_t>*> deadCount;   // 148
+		void*                                           unk158;      // 158 - smart ptr
+		void*                                           unk160;      // 160 - smart ptr
+		void*                                           unk168;      // 168 - smart ptr
+		void*                                           unk170;      // 170 - smart ptr
+		std::uint64_t                                   unk178;      // 178
+		std::uint64_t                                   unk180;      // 180
+		std::uint64_t                                   unk188;      // 188
+		std::uint64_t                                   unk190;      // 190
+		std::uint64_t                                   unk198;      // 198
+		std::uint64_t                                   unk1A0;      // 1A0
+		std::uint64_t                                   unk1A8;      // 1A8
+		std::uint64_t                                   unk1B0;      // 1B0
+		std::uint64_t                                   unk1B8;      // 1B8
+		std::uint64_t                                   unk1C0;      // 1C0
+		std::uint64_t                                   unk1C8;      // 1C8
+		std::uint64_t                                   unk1D0;      // 1D0
+		std::uint64_t                                   unk1D8;      // 1D8
+		std::uint64_t                                   unk1E0;      // 1E0
+		std::uint64_t                                   unk1E8;      // 1E8
+		std::uint64_t                                   unk1F0;      // 1F0
+		std::uint64_t                                   unk1F8;      // 1F8
+		std::uint64_t                                   unk200;      // 200
+		std::uint64_t                                   unk208;      // 208
+		std::uint64_t                                   unk210;      // 210
+		std::uint64_t                                   unk218;      // 218
+		std::uint64_t                                   unk220;      // 220
+		std::uint64_t                                   unk228;      // 228
+		std::uint64_t                                   unk230;      // 230
+		std::uint64_t                                   unk238;      // 238
+		std::uint64_t                                   unk240;      // 240
+		std::uint64_t                                   unk248;      // 248
+		std::uint64_t                                   unk250;      // 250
+		std::uint64_t                                   unk258;      // 258
+		std::uint64_t                                   unk260;      // 260
+		std::uint64_t                                   unk268;      // 268
+		std::uint64_t                                   unk270;      // 270
+		std::uint64_t                                   unk278;      // 278
+		std::uint64_t                                   unk280;      // 280
+		std::uint64_t                                   unk288;      // 288
+		SystemEventAdapter                              unk290;      // 290
+		std::uint64_t                                   unk2A0;      // 2A0
+		NavMeshInfoMap*                                 unk2A8;      // 2A8
+		std::uint64_t                                   unk2B0;      // 2B0
+	private:
+		KEEP_FOR_RE()
 	};
+#ifndef SKYRIMVR
+#	ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(TES) == 0x2B8);
+#	else
+	static_assert(sizeof(TES) == 0x2C0);
+#	endif
+#else
+	static_assert(sizeof(TES) == 0x2B8);
+#endif
 }

@@ -44,6 +44,8 @@ namespace RE
 		bool                  fadeIn;  // 64
 		std::uint8_t          pad65;   // 65
 		std::uint16_t         pad66;   // 66
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(LoadWaitSpinner) == 0x68);

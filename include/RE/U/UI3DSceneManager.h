@@ -45,6 +45,8 @@ namespace RE
 		bool               castsShadows;  // 20
 		NiPointer<BSLight> light;         // 28
 		MenuLight*         last;          // 30
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(MenuLight) == 0x38);
 
@@ -81,6 +83,8 @@ namespace RE
 		NiPoint3                                   cachedCameraPos;     // C8
 		NiMatrix3                                  cachedCameraRot;     // D0
 		NiFrustum                                  viewFrustum;         // F8
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(UI3DSceneManager) == 0x118);
 }

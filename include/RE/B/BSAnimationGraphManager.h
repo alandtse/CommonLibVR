@@ -89,6 +89,8 @@ namespace RE
 		mutable BSSpinLock                                  dependentManagerLock;  // A0
 		std::uint32_t                                       activeGraph;           // A8
 		std::uint32_t                                       generateDepth;         // A8
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(BSAnimationGraphManager) == 0xB0);

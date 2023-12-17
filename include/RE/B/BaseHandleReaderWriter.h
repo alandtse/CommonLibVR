@@ -11,6 +11,8 @@ namespace RE::SkyrimScript
 		inline static auto VTABLE = VTABLE_SkyrimScript__BaseHandleReaderWriter;
 
 		~BaseHandleReaderWriter() override;  // 0
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BaseHandleReaderWriter) == 0x8);
 }

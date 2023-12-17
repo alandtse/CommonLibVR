@@ -23,6 +23,8 @@ namespace RE
 
 		// override (GFxFunctionHandler)
 		void Call(Params& a_params) override;  // 01
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(CreditsMenu) == 0x40);

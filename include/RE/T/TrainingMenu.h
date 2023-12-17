@@ -41,6 +41,8 @@ namespace RE
 		GFxValue      timesTrained;     // A8 - TextField
 		GFxValue      trainCost;        // C0 - TextField
 		GFxValue      currentGold;      // D8 - TextField
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(TrainingMenu) == 0xF0);

@@ -23,5 +23,7 @@ namespace RE
 		NiPointer<NiSkinInstance> m_spSkinInstance;   // 120
 		NiPointer<NiGeometryData> m_spModelData;      // 128
 		std::uint64_t             unk130;             // 130
+	private:
+		KEEP_FOR_RE()
 	};
 }

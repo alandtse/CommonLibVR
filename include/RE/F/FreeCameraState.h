@@ -37,6 +37,12 @@ namespace RE
 		std::int16_t     verticalDirection;  // 4C
 		bool             useRunSpeed;        // 4E
 		bool             lockToZPlane;       // 4F
+	private:
+		KEEP_FOR_RE()
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(FreeCameraState) == 0x50);
+#else
+	static_assert(sizeof(FreeCameraState) == 0x68);
+#endif
 }

@@ -104,6 +104,8 @@ namespace RE
 		BSShaderTechniqueIDMap::MapType<BSGraphics::VertexShader*> vertexShaders;  // 28
 		BSShaderTechniqueIDMap::MapType<BSGraphics::PixelShader*>  pixelShaders;   // 58
 		const char*                                                fxpFilename;    // 88
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSShader) == 0x90);
 }

@@ -91,6 +91,8 @@ namespace RE
 		bool                            leftButtonHeldDown;             // 13A
 		bool                            rightButtonHeldDown;            // 13B
 		std::uint32_t                   pad13C;                         // 13C
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(MistMenu) == 0x140);

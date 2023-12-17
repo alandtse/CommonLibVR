@@ -54,6 +54,8 @@ namespace RE
 #ifdef SKYRIMVR
 		RE::NiNode* occlusionCheckNode;  // 78 - name is "Dialogue Menu Occlusion Check Node"
 #endif
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(DialogueMenu) == 0x50);

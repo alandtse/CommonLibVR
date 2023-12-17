@@ -39,6 +39,8 @@ namespace RE
 		BSTArray<PerkData> perkData;  // 30
 		float              unk48;     // 48
 		float              unk4C;     // 4C
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(TweenMenu) == 0x50);

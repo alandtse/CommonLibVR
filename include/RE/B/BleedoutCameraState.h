@@ -34,6 +34,12 @@ namespace RE
 		bool                  useCurrentHeading;  // 134
 		std::uint8_t          pad135;             // 135
 		std::uint16_t         pad136;             // 136
+	private:
+		KEEP_FOR_RE()
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BleedoutCameraState) == 0x138);
+#else
+	static_assert(sizeof(BleedoutCameraState) == 0x150);
+#endif
 }

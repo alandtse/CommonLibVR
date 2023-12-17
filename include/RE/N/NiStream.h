@@ -91,6 +91,8 @@ namespace RE
 		std::uint32_t                                 lastError;                           // 410
 		char                                          lastErrorMessage[WinAPI::MAX_PATH];  // 414
 		char                                          filePath[WinAPI::MAX_PATH];          // 518
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(NiStream) == 0x620);
 }

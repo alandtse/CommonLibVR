@@ -38,6 +38,8 @@ namespace RE
 		// members
 		float expirationTimer;  // 1D8
 		float coneAngle;        // 1DC
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(FlameProjectile) == 0x1E0);

@@ -32,6 +32,8 @@ namespace RE
 		BSLight**         sceneLights;       // 38
 		std::uint32_t     cachePoolId;       // 40
 		std::uint32_t     pad44;             // 44
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSRenderPass) == 0x48);
 }

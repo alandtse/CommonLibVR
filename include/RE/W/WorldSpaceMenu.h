@@ -58,6 +58,9 @@ namespace RE
 		bool                      queueUpdateFixup{ false };      // 52 - Update menuNode immediately, or on next MAIN_DRAW when calling Unk_09
 		std::uint8_t              pad53{ 0 };
 		std::uint32_t             pad54{ 0 };
+
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(WorldSpaceMenu) == 0x58);
 }

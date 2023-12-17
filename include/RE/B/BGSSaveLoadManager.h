@@ -39,6 +39,8 @@ namespace RE
 		std::uint64_t unk60;        // 60
 		std::uint64_t unk68;        // 68
 		std::uint64_t unk70;        // 70
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BGSSaveLoadFileEntry) == 0x78);
 
@@ -185,6 +187,9 @@ namespace RE
 	protected:
 		bool Save_Impl(std::int32_t a_deviceID, std::uint32_t a_outputStats, const char* a_fileName);
 		bool Load_Impl(const char* a_fileName, std::int32_t a_deviceID, std::uint32_t a_outputStats, bool a_checkForMods);
+
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	//static_assert(sizeof(BGSSaveLoadManager) == 0x3D0);

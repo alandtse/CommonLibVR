@@ -132,6 +132,8 @@ namespace RE
 		std::byte                                      unk34{ 1 };
 		BSFixedString                                  menuName{ "N/A" };  // 38
 #endif
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(IMenu) == 0x30);

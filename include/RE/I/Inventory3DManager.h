@@ -60,6 +60,8 @@ namespace RE
 		std::uint8_t                                  unk15A;         // 15A
 		std::uint8_t                                  pad15B;         // 15B
 		std::uint32_t                                 pad15C;         // 15C
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIM_SUPPORT_AE
 #	ifndef SKYRIMVR

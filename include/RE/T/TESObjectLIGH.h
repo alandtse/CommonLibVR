@@ -108,6 +108,8 @@ namespace RE
 		NiColor                 emittanceColor;  // 118
 		std::uint32_t           pad124;          // 124
 		BGSLensFlare*           lensFlare;       // 128
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(TESObjectLIGH) == 0x130);
 }

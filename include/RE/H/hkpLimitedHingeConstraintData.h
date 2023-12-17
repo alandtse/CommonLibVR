@@ -25,6 +25,8 @@ namespace RE
 
 		// members
 		Atoms atoms;  // 18
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(hkpLimitedHingeConstraintData) == 0x110);
 }

@@ -86,6 +86,8 @@ namespace RE
 		// members
 		AMMO_DATA     data;       // 110 - DATA
 		BSFixedString shortDesc;  // 120 - ONAM
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(TESAmmo) == 0x128);
