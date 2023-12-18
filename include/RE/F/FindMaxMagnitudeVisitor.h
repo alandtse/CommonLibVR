@@ -21,6 +21,8 @@ namespace RE
 		// Member variables
 		ActiveEffect* activeEffect{ nullptr }; // 8
 		float         maxMagnitude{ -1.0F }; // 10
+	private:
+		KEEP_FOR_RE()
     };
     static_assert(sizeof(FindMaxMagnitudeVisitor) == 0x18);
     

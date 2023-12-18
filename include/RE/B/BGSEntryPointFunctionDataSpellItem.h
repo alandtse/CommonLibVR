@@ -19,6 +19,8 @@ namespace RE
 
 		// Member variables
 		SpellItem* spell; // 8
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(offsetof(BGSEntryPointFunctionDataSpellItem, spell) == 0x8);
 	static_assert(sizeof(BGSEntryPointFunctionDataSpellItem) == 0x10);
