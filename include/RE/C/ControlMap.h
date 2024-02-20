@@ -53,7 +53,7 @@ namespace RE
 				if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
 					return INPUT_DEVICES::kTotal;
 				} else {
-					return static_cast<std::size_t>(INPUT_DEVICES::kVirtualKeyboard) + 1;
+					return INPUT_DEVICES::kFlatTotal;
 				}
 #endif
 			}
