@@ -71,7 +71,7 @@ namespace RE
 
 	BSWin32VirtualKeyboardDevice* BSInputDeviceManager::GetVirtualKeyboard()
 	{
-		return static_cast<BSWin32VirtualKeyboardDevice*>(devices[stl::to_underlying(INPUT_DEVICE::kVirtualKeyboard)]);
+		return static_cast<BSWin32VirtualKeyboardDevice*>(devices[stl::to_underlying(INPUT_DEVICES::VirtualKeyboard())]);
 	}
 
 	bool BSInputDeviceManager::IsGamepadConnected()
