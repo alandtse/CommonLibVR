@@ -4,8 +4,6 @@
 #include "RE/N/NiPlane.h"
 #include "RE/N/NiRect.h"
 
-#include <SimpleMath.h>
-
 namespace RE
 {
 	class BSShaderAccumulator;
@@ -18,7 +16,7 @@ namespace RE
 
 		struct ShadowmapDescriptor
 		{
-			::DirectX::SimpleMath::Matrix  lightTransform;     // 00
+			REX::W32::XMFLOAT4X4           lightTransform;     // 00
 			NiPointer<NiCamera>            camera;             // 40
 			NiPointer<BSShaderAccumulator> shaderAccumulator;  // 48
 			uint32_t                       unk50;              // 50
