@@ -1,5 +1,4 @@
 function(commonlibsse_parse_version VERSION)
-    message("${version_match_count}")
     string(REGEX MATCHALL "^([0-9]+)(\.([0-9]+)(\.([0-9]+)(\.([0-9]+))?)?)?$" version_match "${VERSION}")
     unset(COMMONLIBSSE_VERSION_MAJOR PARENT_SCOPE)
     unset(COMMONLIBSSE_VERSION_MINOR PARENT_SCOPE)
@@ -11,22 +10,46 @@ function(commonlibsse_parse_version VERSION)
         return()
     endif()
 
+    if(CMAKE_MATCH_1)
+        string(STRIP ${CMAKE_MATCH_1} CMAKE_MATCH1) # save stripped version since we're doing a regex check later
+    endif()
+
+    if(CMAKE_MATCH_3)
+        string(STRIP ${CMAKE_MATCH_3} CMAKE_MATCH3)
+    endif()
+
+    if(CMAKE_MATCH_5)
+        string(STRIP ${CMAKE_MATCH_5} CMAKE_MATCH5)
+    endif()
+
+    if(CMAKE_MATCH_7)
+        string(STRIP ${CMAKE_MATCH_7} CMAKE_MATCH7)
+    endif()
+
     set(COMMONLIBSSE_VERSION_MATCH TRUE PARENT_SCOPE)
-    set(COMMONLIBSSE_VERSION_MAJOR "${CMAKE_MATCH_1}" PARENT_SCOPE)
+    set(COMMONLIBSSE_VERSION_MAJOR "0" PARENT_SCOPE)
     set(COMMONLIBSSE_VERSION_MINOR "0" PARENT_SCOPE)
     set(COMMONLIBSSE_VERSION_PATCH "0" PARENT_SCOPE)
     set(COMMONLIBSSE_VERSION_TWEAK "0" PARENT_SCOPE)
 
-    if(DEFINED CMAKE_MATCH_3 AND NOT CMAKE_MATCH_3 STREQUAL " ")
-        set(COMMONLIBSSE_VERSION_MINOR "${CMAKE_MATCH_3}" PARENT_SCOPE)
+    if(DEFINED CMAKE_MATCH1 AND CMAKE_MATCH1 MATCHES "^[0-9]+$")
+        message("Setting major version to ${CMAKE_MATCH_0}")
+        set(COMMONLIBSSE_VERSION_MAJOR "${CMAKE_MATCH_0}" PARENT_SCOPE)
     endif()
 
-    if(DEFINED CMAKE_MATCH_5 AND NOT CMAKE_MATCH_5 STREQUAL " ")
-        set(COMMONLIBSSE_VERSION_PATCH "${CMAKE_MATCH_5}" PARENT_SCOPE)
+    if(DEFINED CMAKE_MATCH3 AND CMAKE_MATCH3 MATCHES "^[0-9]+$")
+        message("Setting minor version to ${CMAKE_MATCH_0}")
+        set(COMMONLIBSSE_VERSION_MINOR "${CMAKE_MATCH_0}" PARENT_SCOPE)
     endif()
 
-    if(DEFINED CMAKE_MATCH_7 AND NOT CMAKE_MATCH_7 STREQUAL " ")
-        set(COMMONLIBSSE_VERSION_TWEAK "${CMAKE_MATCH_7}" PARENT_SCOPE)
+    if(DEFINED CMAKE_MATCH5 AND CMAKE_MATCH5 MATCHES "^[0-9]+$")
+        message("Setting patch version to ${CMAKE_MATCH_0}")
+        set(COMMONLIBSSE_VERSION_PATCH "${CMAKE_MATCH_0}" PARENT_SCOPE)
+    endif()
+
+    if(DEFINED CMAKE_MATCH7 AND CMAKE_MATCH7 MATCHES "^[0-9]+$")
+        message("Setting tweak version to ${CMAKE_MATCH_0}")
+        set(COMMONLIBSSE_VERSION_TWEAK "${CMAKE_MATCH_0}" PARENT_SCOPE)
     endif()
 endfunction()
 
@@ -54,6 +77,7 @@ function(target_commonlibsse_properties TARGET)
         set(commonlibsse_plugin_version "${ADD_COMMONLIBSSE_PLUGIN_VERSION}")
     endif()
 
+    message("Parsing commonlibsse_plugin_version ${commonlibsse_plugin_version}")
     commonlibsse_parse_version("${commonlibsse_plugin_version}")
 
     if(NOT DEFINED COMMONLIBSSE_VERSION_MAJOR)
@@ -67,6 +91,7 @@ function(target_commonlibsse_properties TARGET)
         set(ADD_COMMONLIBSSE_PLUGIN_MINIMUM_SKSE_VERSION 0)
     endif()
 
+    message("Parsing ADD_COMMONLIBSSE_PLUGIN_MINIMUM_SKSE_VERSION ${ADD_COMMONLIBSSE_PLUGIN_MINIMUM_SKSE_VERSION}")
     commonlibsse_parse_version("${ADD_COMMONLIBSSE_PLUGIN_MINIMUM_SKSE_VERSION}")
 
     if(NOT COMMONLIBSSE_VERSION_MATCH)
