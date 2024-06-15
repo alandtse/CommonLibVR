@@ -200,6 +200,10 @@ namespace REL
 			return static_cast<std::size_t>(it->offset);
 		}
 
+#ifdef ENABLE_SKYRIM_VR
+		bool IsVRAddressLibraryAtLeastVersion(const char* a_minimalVRAddressLibVersion, bool a_reportAndFail = false) const;
+#endif
+
 	private:
 		friend class Module;
 
@@ -424,6 +428,10 @@ namespace REL
 		static inline std::mutex       _initLock;
 		detail::memory_map             _mmap;
 		std::span<mapping_t>           _id2offset;
+
+#ifdef ENABLE_SKYRIM_VR
+		Version _vrAddressLibraryVersion;
+#endif
 	};
 
 	class ID

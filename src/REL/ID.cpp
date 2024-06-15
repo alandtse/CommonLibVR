@@ -150,6 +150,7 @@ namespace REL
 		mapname += a_version.wstring();
 		address_count = in.GetCell<std::size_t>(0, 0);
 		version = in.GetCell<std::string>(1, 0);
+		_vrAddressLibraryVersion = Version(version);
 		const auto byteSize = static_cast<std::size_t>(address_count * sizeof(mapping_t));
 		if (!_mmap.open(mapname, byteSize) &&
 			!_mmap.create(mapname, byteSize)) {
@@ -182,6 +183,24 @@ namespace REL
 		});
 
 		return true;
+	}
+
+	bool IDDatabase::IsVRAddressLibraryAtLeastVersion(const char* a_minimalVRAddressLibVersion, bool a_reportAndFail) const
+	{
+		const auto minimalVersion = REL::Version(a_minimalVRAddressLibVersion);
+
+		if (minimalVersion <= _vrAddressLibraryVersion) {
+			return true;
+		}
+
+		if (!a_reportAndFail) {
+			return false;
+		}
+
+		stl::report_and_fail(
+			std::format("You need version: {} of VR Address Library for SKSEVR, you have version: {}"sv,
+				minimalVersion, _vrAddressLibraryVersion)
+		);
 	}
 #endif
 }
