@@ -563,6 +563,7 @@ namespace RE
 		};
 		static_assert(sizeof(PlayerSkills) == 0x8);
 
+#pragma pack(push, 4)
 		struct INFO_RUNTIME_DATA
 		{
 #define INFO_RUNTIME_DATA_CONTENT                                                                                     \
@@ -618,7 +619,8 @@ namespace RE
 
 			INFO_RUNTIME_DATA_CONTENT
 		};
-		static_assert(sizeof(INFO_RUNTIME_DATA) == 0x140);
+		static_assert(sizeof(INFO_RUNTIME_DATA) == 0x13C);
+#pragma pack(pop)
 
 		struct VR_INFO_RUNTIME_DATA
 		{
