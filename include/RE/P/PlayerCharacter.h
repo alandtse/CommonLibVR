@@ -1095,7 +1095,7 @@ namespace RE
 		{
 			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
 				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_6_629) != std::strong_ordering::less) {
-					return REL::RelocateMember<INFO_RUNTIME_DATA>(this, 0x8D8);
+					return REL::RelocateMember<INFO_RUNTIME_DATA>(this, 0x8EC);
 				}
 			}
 			return REL::RelocateMember<INFO_RUNTIME_DATA>(this, 0x8E4, 0);
@@ -1105,7 +1105,7 @@ namespace RE
 		{
 			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
 				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_6_629) != std::strong_ordering::less) {
-					return REL::RelocateMember<INFO_RUNTIME_DATA>(this, 0x8DC);
+					return REL::RelocateMember<INFO_RUNTIME_DATA>(this, 0x8EC);
 				}
 			}
 			return REL::RelocateMember<INFO_RUNTIME_DATA>(this, 0x8E4, 0);
