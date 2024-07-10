@@ -232,24 +232,13 @@ namespace RE
 	ID3D11Buffer*                           PSConstantBuffers[12];                                       /* VR 8F0 only */
                 VR_RUNTIME_DATA_CONTENT;
 			};
-
-			struct RUNTIME_DATA
-			{
-#if !defined(ENABLE_SKYRIM_VR)
-#	define RUNTIME_DATA_CONTENT \
-		FLAT_RUNTIME_DATA_CONTENT;
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-#	define RUNTIME_DATA_CONTENT \
-		VR_RUNTIME_DATA_CONTENT;
-#else
-#	define RUNTIME_DATA_CONTENT ;
-#endif
-				RUNTIME_DATA_CONTENT;
-			};
-
+			
 			// members
-
-			RUNTIME_DATA_CONTENT;  // 0
+#ifndef ENABLE_SKYRIM_VR
+			FLAT_RUNTIME_DATA_CONTENT;  // 0
+#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+			VR_RUNTIME_DATA_CONTENT;  // 0
+#endif
 
 			[[nodiscard]] inline FLAT_RUNTIME_DATA& GetRuntimeData() noexcept
 			{
@@ -430,6 +419,5 @@ namespace RE
 #endif
 	}
 }
-#undef RUNTIME_DATA_CONTENT
 #undef FLAT_RUNTIME_DATA_CONTENT
 #undef VR_RUNTIME_DATA_CONTENT

@@ -477,6 +477,7 @@ namespace RE
 
 			RUNTIME_DATA_CONTENT
 		};
+		static_assert(sizeof(REFERENCE_RUNTIME_DATA) == 0x10);
 
 		[[nodiscard]] inline REFERENCE_RUNTIME_DATA& GetReferenceRuntimeData() noexcept
 		{
@@ -507,6 +508,8 @@ namespace RE
 	};
 #ifndef ENABLE_SKYRIM_AE
 	static_assert(sizeof(TESObjectREFR) == 0x98);
+#else
+	static_assert(sizeof(TESObjectREFR) == 0x78);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT

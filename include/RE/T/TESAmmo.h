@@ -154,7 +154,11 @@ namespace RE
 		}
 
 		// members
-		RUNTIME_DATA_CONTENT;  // 110, 100
+#if !defined(ENABLE_SKYRIM_VR)
+		RUNTIME_DATA_CONTENT;  // 110
+#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+		RUNTIME_DATA_CONTENT;  // VR 100
+#endif
 	private:
 		KEEP_FOR_RE()
 	};
