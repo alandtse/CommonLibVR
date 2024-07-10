@@ -245,10 +245,10 @@ namespace RE
 			std::uint64_t unk000;      // 0000
 			bool          drawStereo;  // 0008
 #if !defined(ENABLE_SKYRIM_VR)
+			RUNTIME_DATA_CONTENT;  // 0010
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-			std::uint64_t unk010;  // 0010
+			RUNTIME_DATA_CONTENT;  // VR 18
 #endif
-			RUNTIME_DATA_CONTENT;  // 0010, VR 18
 
 		private:
 			void Begin(std::uint32_t windowID);
@@ -259,9 +259,9 @@ namespace RE
 #if !defined(ENABLE_SKYRIM_VR)
 		static_assert(sizeof(Renderer) == 0x21C0);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-		static_assert(sizeof(Renderer) == 0x1fc0);
+		static_assert(sizeof(Renderer) == 0x1FB0);
 #else
-		static_assert(sizeof(Renderer) == 0x1fb0);
+		static_assert(sizeof(Renderer) == 0x10);
 #endif
 	}
 }

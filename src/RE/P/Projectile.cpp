@@ -222,7 +222,7 @@ namespace RE
 	}
 
 	Projectile::LaunchData::LaunchData(Actor* a_shooter, const NiPoint3& a_origin, const ProjectileRot& a_angles, TESAmmo* a_ammo, TESObjectWEAP* a_weap) :
-		LaunchData(a_ammo->data.projectile, a_shooter, a_origin, a_angles)
+		LaunchData(a_ammo->GetRuntimeData().data.projectile, a_shooter, a_origin, a_angles)
 	{
 		weaponSource = a_weap;
 		ammoSource = a_ammo;

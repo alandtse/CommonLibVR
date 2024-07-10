@@ -236,14 +236,14 @@ namespace RE
 		auto                                gState = BSGraphics::State::GetSingleton();
 		BSTSmartPointer<BSEffectShaderData> newShaderData(new BSEffectShaderData());
 		newShaderData->fillColor = a_color;
-		newShaderData->baseTexture = gState->defaultTextureWhite;
+		newShaderData->baseTexture = gState->GetRuntimeData().defaultTextureWhite;
 
 		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geometry) -> BSVisit::BSVisitControl {
 			auto effect = a_geometry->GetGeometryRuntimeData().properties[BSGeometry::States::kEffect];
 			auto shaderProp = netimmerse_cast<BSShaderProperty*>(effect.get());
 			if (shaderProp && shaderProp->AcceptsEffectData()) {
 				auto shaderData = shaderProp->effectData;
-				if (!shaderData || shaderData->baseTexture == gState->defaultTextureWhite) {
+				if (!shaderData || shaderData->baseTexture == gState->GetRuntimeData().defaultTextureWhite) {
 					shaderProp->SetEffectShaderData(newShaderData);
 				}
 			}
