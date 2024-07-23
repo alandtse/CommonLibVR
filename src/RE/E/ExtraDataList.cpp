@@ -168,7 +168,7 @@ namespace RE
 	BSExtraData* ExtraDataList::Add(BSExtraData* a_toAdd)
 	{
 		using func_t = decltype(&ExtraDataList::Add);
-		REL::Relocation<func_t> func{ Offset::ExtraDataList::Add };
+		REL::Relocation<func_t> func{ RELOCATION_ID(12176, 12315) };
 		return func(this, a_toAdd);
 	}
 
@@ -297,7 +297,7 @@ namespace RE
 	void ExtraDataList::SetCount(std::uint16_t a_count)
 	{
 		using func_t = decltype(&ExtraDataList::SetCount);
-		REL::Relocation<func_t> func{ Offset::ExtraDataList::SetCount };
+		REL::Relocation<func_t> func{ RELOCATION_ID(11471, 11617) };
 		return func(this, a_count);
 	}
 
@@ -318,7 +318,7 @@ namespace RE
 	void ExtraDataList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
 	{
 		using func_t = decltype(&ExtraDataList::SetExtraFlags);
-		REL::Relocation<func_t> func{ Offset::ExtraDataList::SetExtraFlags };
+		REL::Relocation<func_t> func{ RELOCATION_ID(11903, 12042) };
 		return func(this, a_flags, a_enable);
 	}
 
@@ -332,7 +332,7 @@ namespace RE
 	void ExtraDataList::SetInventoryChanges(InventoryChanges* a_changes)
 	{
 		using func_t = decltype(&ExtraDataList::SetInventoryChanges);
-		REL::Relocation<func_t> func{ Offset::ExtraDataList::SetInventoryChanges };
+		REL::Relocation<func_t> func{ RELOCATION_ID(11483, 11600) };
 		return func(this, a_changes);
 	}
 

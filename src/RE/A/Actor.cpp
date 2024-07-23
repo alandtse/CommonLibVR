@@ -79,7 +79,7 @@ namespace RE
 	bool Actor::AddSpell(SpellItem* a_spell)
 	{
 		using func_t = decltype(&Actor::AddSpell);
-		REL::Relocation<func_t> func{ Offset::Actor::AddSpell };
+		REL::Relocation<func_t> func{ RELOCATION_ID(37771, 38716) };
 		return func(this, a_spell);
 	}
 
@@ -211,14 +211,14 @@ namespace RE
 	void Actor::DispelWornItemEnchantments()
 	{
 		using func_t = decltype(&Actor::DispelWornItemEnchantments);
-		REL::Relocation<func_t> func{ Offset::Actor::DispelWornItemEnchantments };
+		REL::Relocation<func_t> func{ RELOCATION_ID(33828, 34620) };
 		return func(this);
 	}
 
 	void Actor::DoReset3D(bool a_updateWeight)
 	{
 		using func_t = decltype(&Actor::DoReset3D);
-		REL::Relocation<func_t> func{ Offset::Actor::DoReset3D };
+		REL::Relocation<func_t> func{ RELOCATION_ID(39181, 40255) };
 		return func(this, a_updateWeight);
 	}
 
@@ -493,7 +493,7 @@ namespace RE
 	std::uint16_t Actor::GetLevel() const
 	{
 		using func_t = decltype(&Actor::GetLevel);
-		REL::Relocation<func_t> func{ Offset::Actor::GetLevel };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36344, 37334) };
 		return func(this);
 	}
 
@@ -686,7 +686,7 @@ namespace RE
 	bool Actor::HasPerk(BGSPerk* a_perk) const
 	{
 		using func_t = decltype(&Actor::HasPerk);
-		REL::Relocation<func_t> func{ Offset::Actor::HasPerk };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36690, 37698) };
 		return func(this, a_perk);
 	}
 
@@ -810,7 +810,7 @@ namespace RE
 	bool Actor::IsGhost() const
 	{
 		using func_t = decltype(&Actor::IsGhost);
-		REL::Relocation<func_t> func{ Offset::Actor::GetGhost };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36286, 37275) };
 		return func(this);
 	}
 
@@ -822,7 +822,7 @@ namespace RE
 	bool Actor::IsHostileToActor(Actor* a_actor)
 	{
 		using func_t = decltype(&Actor::IsHostileToActor);
-		REL::Relocation<func_t> func{ Offset::Actor::GetHostileToActor };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36537, 37537) };
 		return func(this, a_actor);
 	}
 
@@ -893,7 +893,7 @@ namespace RE
 	bool Actor::IsRunning() const
 	{
 		using func_t = decltype(&Actor::IsRunning);
-		REL::Relocation<func_t> func{ Offset::Actor::IsRunning };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36252, 37234) };
 		return func(this);
 	}
 
@@ -997,7 +997,7 @@ namespace RE
 	std::int32_t Actor::RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority)
 	{
 		using func_t = decltype(&Actor::RequestDetectionLevel);
-		REL::Relocation<func_t> func{ Offset::Actor::RequestDetectionLevel };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36748, 37764) };
 		return func(this, a_target, a_priority);
 	}
 
@@ -1085,7 +1085,7 @@ namespace RE
 	void Actor::SwitchRace(TESRace* a_race, bool a_player)
 	{
 		using func_t = decltype(&Actor::SwitchRace);
-		REL::Relocation<func_t> func{ Offset::Actor::SwitchRace };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36901, 37925) };
 		return func(this, a_race, a_player);
 	}
 
@@ -1099,7 +1099,7 @@ namespace RE
 	void Actor::UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData)
 	{
 		using func_t = decltype(&Actor::UpdateArmorAbility);
-		REL::Relocation<func_t> func{ Offset::Actor::UpdateArmorAbility };
+		REL::Relocation<func_t> func{ RELOCATION_ID(37802, 38751) };
 		return func(this, a_armor, a_extraData);
 	}
 
@@ -1167,7 +1167,7 @@ namespace RE
 	void Actor::UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand)
 	{
 		using func_t = decltype(&Actor::UpdateWeaponAbility);
-		REL::Relocation<func_t> func{ Offset::Actor::UpdateWeaponAbility };
+		REL::Relocation<func_t> func{ RELOCATION_ID(37803, 38752) };
 		return func(this, a_weapon, a_extraData, a_leftHand);
 	}
 

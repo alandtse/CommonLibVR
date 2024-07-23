@@ -5,14 +5,14 @@ namespace RE
 {
 	SkyrimVM* SkyrimVM::GetSingleton()
 	{
-		REL::Relocation<SkyrimVM**> singleton{ Offset::SkyrimVM::Singleton };
+		REL::Relocation<SkyrimVM**> singleton{ RELOCATION_ID(514315, 400475) };
 		return *singleton;
 	}
 
 	bool SkyrimVM::QueuePostRenderCall(const BSTSmartPointer<SkyrimScript::DelayFunctor>& a_functor)
 	{
 		using func_t = decltype(&SkyrimVM::QueuePostRenderCall);
-		REL::Relocation<func_t> func{ Offset::SkyrimVM::QueuePostRenderCall };
+		REL::Relocation<func_t> func{ RELOCATION_ID(53144, 53955) };
 		return func(this, a_functor);
 	}
 
