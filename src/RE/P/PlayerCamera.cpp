@@ -4,7 +4,7 @@ namespace RE
 {
 	PlayerCamera* PlayerCamera::GetSingleton()
 	{
-		REL::Relocation<PlayerCamera**> singleton{ Offset::PlayerCamera::Singleton };
+		REL::Relocation<PlayerCamera**> singleton{ RELOCATION_ID(514642, 400802) };
 		return *singleton;
 	}
 
@@ -65,7 +65,7 @@ namespace RE
 	void PlayerCamera::UpdateThirdPerson(bool a_weaponDrawn)
 	{
 		using func_t = decltype(&PlayerCamera::UpdateThirdPerson);
-		REL::Relocation<func_t> func{ Offset::PlayerCamera::UpdateThirdPerson };
+		REL::Relocation<func_t> func{ RELOCATION_ID(49908, 50841) };
 		return func(this, a_weaponDrawn);
 	}
 }

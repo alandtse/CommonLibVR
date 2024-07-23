@@ -11,7 +11,7 @@ namespace RE
 
 	TESDataHandler* TESDataHandler::GetSingleton(bool a_VRESL)
 	{
-		REL::Relocation<TESDataHandler**> singleton{ Offset::TESDataHandler::Singleton };
+		REL::Relocation<TESDataHandler**> singleton{ RELOCATION_ID(514141, 400269) };
 		if (REL::Module::IsVR() && a_VRESL && !VRcompiledFileCollection) {
 			const auto VRhandle = REX::W32::GetModuleHandleW(L"skyrimvresl");
 			if (VRhandle != NULL) {
@@ -34,7 +34,7 @@ namespace RE
 	std::uint32_t TESDataHandler::LoadScripts()
 	{
 		using func_t = decltype(&TESDataHandler::LoadScripts);
-		REL::Relocation<func_t> func{ Offset::TESDataHandler::LoadScripts };
+		REL::Relocation<func_t> func{ RELOCATION_ID(13657, 13766) };
 		return func(this);
 	}
 

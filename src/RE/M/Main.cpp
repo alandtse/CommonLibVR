@@ -7,7 +7,7 @@ namespace RE
 {
 	Main* Main::GetSingleton()
 	{
-		REL::Relocation<Main**> singleton{ Offset::Main::Singleton };
+		REL::Relocation<Main**> singleton{ RELOCATION_ID(516943, 403449) };
 		return *singleton;
 	}
 

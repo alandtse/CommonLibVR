@@ -187,7 +187,7 @@ namespace RE
 	bool NiAVObject::SetMotionType(hkpMotion::MotionType a_motionType, bool a_recurse, bool a_force, bool a_allowActivate)
 	{
 		using func_t = decltype(&NiAVObject::SetMotionType);
-		REL::Relocation<func_t> func{ Offset::NiAVObject::SetMotionType };
+		REL::Relocation<func_t> func{ RELOCATION_ID(76033, 77866) };
 		return func(this, a_motionType, a_recurse, a_force, a_allowActivate);
 	}
 
@@ -255,7 +255,7 @@ namespace RE
 	void NiAVObject::Update(NiUpdateData& a_data)
 	{
 		using func_t = decltype(&NiAVObject::Update);
-		REL::Relocation<func_t> func{ Offset::NiAVObject::Update };
+		REL::Relocation<func_t> func{ RELOCATION_ID(68900, 70251) };
 		return func(this, a_data);
 	}
 

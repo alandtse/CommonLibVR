@@ -8,7 +8,7 @@ namespace RE
 {
 	Calendar* Calendar::GetSingleton()
 	{
-		REL::Relocation<Calendar**> singleton{ Offset::Calendar::Singleton };
+		REL::Relocation<Calendar**> singleton{ RELOCATION_ID(514287, 400447) };
 		return *singleton;
 	}
 

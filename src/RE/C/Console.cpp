@@ -36,7 +36,7 @@ namespace RE
 	void Console::SetSelectedRef_Impl(ObjectRefHandle& a_handle)
 	{
 		using func_t = decltype(&Console::SetSelectedRef_Impl);
-		REL::Relocation<func_t> func{ Offset::Console::SetSelectedRef };
+		REL::Relocation<func_t> func{ RELOCATION_ID(50164, 51093) };
 		return func(this, a_handle);
 	}
 }

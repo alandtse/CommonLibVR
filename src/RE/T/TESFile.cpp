@@ -12,21 +12,21 @@ namespace RE
 	TESFile* TESFile::Duplicate(std::uint32_t a_cacheSize)
 	{
 		using func_t = decltype(&TESFile::Duplicate);
-		REL::Relocation<func_t> func{ Offset::TESFile::Duplicate };
+		REL::Relocation<func_t> func{ RELOCATION_ID(13923, 14018) };
 		return func(this, a_cacheSize);
 	}
 
 	std::uint32_t TESFile::GetCurrentSubRecordType()
 	{
 		using func_t = decltype(&TESFile::GetCurrentSubRecordType);
-		REL::Relocation<func_t> func{ Offset::TESFile::GetCurrentSubRecordType };
+		REL::Relocation<func_t> func{ RELOCATION_ID(13902, 13988) };
 		return func(this);
 	}
 
 	FormType TESFile::GetFormType()
 	{
 		using func_t = decltype(&TESFile::GetFormType);
-		REL::Relocation<func_t> func{ Offset::TESFile::GetFormType };
+		REL::Relocation<func_t> func{ RELOCATION_ID(13897, 13982) };
 		return func(this);
 	}
 
@@ -51,14 +51,14 @@ namespace RE
 	bool TESFile::ReadData(void* a_buf, std::uint32_t a_size)
 	{
 		using func_t = decltype(&TESFile::ReadData);
-		REL::Relocation<func_t> func{ Offset::TESFile::ReadData };
+		REL::Relocation<func_t> func{ RELOCATION_ID(13904, 13991) };
 		return func(this, a_buf, a_size);
 	}
 
 	bool TESFile::Seek(std::uint32_t a_offset)
 	{
 		using func_t = decltype(&TESFile::Seek);
-		REL::Relocation<func_t> func{ Offset::TESFile::Seek };
+		REL::Relocation<func_t> func{ RELOCATION_ID(13898, 13984) };
 		return func(this, a_offset);
 	}
 
@@ -72,7 +72,7 @@ namespace RE
 	bool TESFile::SeekNextSubrecord()
 	{
 		using func_t = decltype(&TESFile::SeekNextSubrecord);
-		REL::Relocation<func_t> func{ Offset::TESFile::SeekNextSubrecord };
+		REL::Relocation<func_t> func{ RELOCATION_ID(13903, 13990) };
 		return func(this);
 	}
 }
