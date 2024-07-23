@@ -302,7 +302,7 @@ namespace RE
 			kTelekinesis,
 		};
 
-		enum class ByCharGenFlag
+		enum class ByCharGenFlag : std::uint8_t
 		{
 			kNone = 0,
 			kDisableSaving = 1 << 0,
