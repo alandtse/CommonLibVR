@@ -188,7 +188,7 @@ namespace RE
 		std::uint32_t                     padD54;                                         // D54
 		TESFile*                          activeFile;                                     // D58
 		BSSimpleList<TESFile*>            files;                                          // D60
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		TESFileCollection compiledFileCollection;  // D70
 		RUNTIME_DATA_CONTENT
 		std::uint8_t          unkDAA;             // DAA
@@ -196,7 +196,7 @@ namespace RE
 		std::uint32_t         padDAC;             // DAC
 		TESRegionDataManager* regionDataManager;  // DB0
 		InventoryChanges*     merchantInventory;  // DB8
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		std::uint32_t loadedModCount;    // D70 this should be avoided if SkyrimVRESL is available
 		std::uint32_t pad14;             // D74
 		TESFile*      loadedMods[0xFF];  // D78 this should be avoided if SkyrimVRESL is available

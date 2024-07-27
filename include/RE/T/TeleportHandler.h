@@ -30,8 +30,7 @@ namespace RE
 	};
 #	if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(TeleportHandler) == 0x58);
-	char (*__kaboom)[sizeof(TeleportHandler)] = 1;
-#	elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#	elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(TeleportHandler) == 0x70);
 #	else
 	static_assert(sizeof(TeleportHandler) == 0x58);

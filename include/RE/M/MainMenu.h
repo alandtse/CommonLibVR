@@ -129,12 +129,12 @@ namespace RE
 	private:
 		KEEP_FOR_RE();
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-	static_assert(sizeof(MainMenu) == 0x70);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
+	static_assert(sizeof(MainMenu) == 0x60);
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(MainMenu) == 0x70);
 #else
-	static_assert(sizeof(MainMenu) == 0x40);
+	static_assert(sizeof(MainMenu) == 0x30);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT

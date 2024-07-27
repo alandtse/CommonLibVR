@@ -13,10 +13,10 @@ namespace RE
 	// flags = kUpdateUsesCursor | kDontHideCursorWhenTopmost
 	// context = kMenuMode
 	class DialogueMenu :
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		public WorldSpaceMenu,                   // 00
 		public BSTEventSink<MenuOpenCloseEvent>  // 88
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		public IMenu,                            // 00
 		public BSTEventSink<MenuOpenCloseEvent>  // 30
 #else
@@ -89,14 +89,16 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-#	ifdef ENABLE_SKYRIM_AE
-	static_assert(sizeof(DialogueMenu) == 0x78);
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
+#	if defined(ENABLE_SKYRIM_AE) || defined(ENABLE_SKYRIM_SE)
+	static_assert(sizeof(DialogueMenu) == 0x68);
 #	else
 	static_assert(sizeof(DialogueMenu) == 0x50);
 #	endif
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(DialogueMenu) == 0x60);
+#else
+	static_assert(sizeof(DialogueMenu) == 0x30);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT

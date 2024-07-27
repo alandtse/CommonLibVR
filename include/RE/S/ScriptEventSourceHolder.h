@@ -114,7 +114,7 @@ namespace RE
 		public BSTEventSource<TESUniqueIDChangeEvent>,           // 10D8
 		public BSTEventSource<TESWaitStartEvent>,                // 1130 - ?
 		public BSTEventSource<TESWaitStopEvent>,                 // 1188 - ?
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		public BSTEventSource<TESSwitchRaceCompleteEvent>,  // 11E0
 		public BSTEventSource<TESFastTravelEndEvent>        // 1238
 #else
@@ -170,9 +170,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(ScriptEventSourceHolder) == 0x1290);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(ScriptEventSourceHolder) == 0x1238);
 #endif
 }

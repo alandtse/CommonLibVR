@@ -110,14 +110,12 @@ namespace RE
 		RUNTIME_DATA_CONTENT  // 50, 60
 #endif
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-#	if defined(ENABLE_SKYRIM_AE)
-	static_assert(sizeof(BookMenu) == 0xA8);
-#	else
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(BookMenu) == 0x98);
-#	endif
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(BookMenu) == 0xA8);
+#else
+	static_assert(sizeof(BookMenu) == 0x30);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT

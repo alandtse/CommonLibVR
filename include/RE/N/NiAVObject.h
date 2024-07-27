@@ -103,7 +103,7 @@ namespace RE
 
 		// add
 		virtual void UpdateControllers(NiUpdateData& a_data);  // 25
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 		virtual void ApplyLocalTransformToWorld();
 #endif
 		SKYRIM_REL_VR_VIRTUAL void        PerformOp(PerformOpFunc& a_func);                                                                   // 26
@@ -168,7 +168,7 @@ namespace RE
 		NiTransform                  world;            // 07C
 		NiTransform                  previousWorld;    // 0B0
 		NiBound                      worldBound;       // 0E4
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		stl::enumeration<Flag, std::uint32_t> flags;                    // 0F4
 		TESObjectREFR*                        userData;                 // 0F8
 		float                                 fadeAmount;               // 100
@@ -181,7 +181,7 @@ namespace RE
 		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(NiAVObject) == 0x110);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		float                                 unkF4;                    // 0F4
 		float                                 unkF8;                    // 0F8
 		float                                 unkFC;                    // 0FC

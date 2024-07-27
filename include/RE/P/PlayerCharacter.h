@@ -54,7 +54,7 @@ namespace RE
 	struct PositionPlayerEvent;
 	struct TESQuestStageItem;
 	struct TESTrackedStatsEvent;
-#ifdef ENABLE_SKYRIM_VR
+#ifdef EXCLUSIVE_SKYRIM_VR
 	struct VRDeviceConnectionChange;
 	struct VROverlayChange;
 	struct VRResetHMDHeight;
@@ -278,7 +278,7 @@ namespace RE
 		public BSTEventSink<MenuModeChangeEvent>,    // SE,VR 2B8, AE 2C0
 		public BSTEventSink<UserEventEnabledEvent>,  // SE,VR 2C0, AE 2C8
 		public BSTEventSink<TESTrackedStatsEvent>    // SE,VR 2C8, AE 2D0
-#ifdef ENABLE_SKYRIM_VR
+#ifdef EXCLUSIVE_SKYRIM_VR
 		,
 		public BSTEventSink<VROverlayChange>,           // 2D0
 		public BSTEventSink<VRDeviceConnectionChange>,  // 2D8
@@ -391,29 +391,29 @@ namespace RE
 			bool dragonRideTargetLocked: 1;         // 5:2
 			bool everModded: 1;                     // 5:3
 			bool servingJailTime: 1;                // 5:4 - Briefly set
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 			bool          pad5_5: 3;  // 5:5
 			std::uint16_t pad6;       // 6
 #else
-			bool unk5_5: 1;                                                                // 5:5
-			bool unk5_6: 1;                                                                // 5:6
-			bool unk5_7: 1;                                                                // 5:7
-			bool unk6_0: 1;                                                                // 6:0
-			bool unk6_1: 1;                                                                // 6:1
-			bool unk6_2: 1;                                                                // 6:2
-			bool unk6_3: 1;                                                                // 6:3
-			bool unk6_4: 1;                                                                // 6:4
-			bool unk6_5: 1;                                                                // 6:5
-			bool unk6_6: 1;                                                                // 6:6
-			bool unk6_7: 1;                                                                // 6:7
-			bool unk7_0: 1;                                                                // 7:0
-			bool unk7_1: 1;                                                                // 7:1
-			bool unk7_2: 1;                                                                // 7:2
-			bool unk7_3: 1;                                                                // 7:3
-			bool unk7_4: 1;                                                                // 7:4
-			bool unk7_5: 1;                                                                // 7:5
-			bool unk7_6: 1;                                                                // 7:6
-			bool unk7_7: 1;                                                                // 7:7
+			bool unk5_5: 1;  // 5:5
+			bool unk5_6: 1;  // 5:6
+			bool unk5_7: 1;  // 5:7
+			bool unk6_0: 1;  // 6:0
+			bool unk6_1: 1;  // 6:1
+			bool unk6_2: 1;  // 6:2
+			bool unk6_3: 1;  // 6:3
+			bool unk6_4: 1;  // 6:4
+			bool unk6_5: 1;  // 6:5
+			bool unk6_6: 1;  // 6:6
+			bool unk6_7: 1;  // 6:7
+			bool unk7_0: 1;  // 7:0
+			bool unk7_1: 1;  // 7:1
+			bool unk7_2: 1;  // 7:2
+			bool unk7_3: 1;  // 7:3
+			bool unk7_4: 1;  // 7:4
+			bool unk7_5: 1;  // 7:5
+			bool unk7_6: 1;  // 7:6
+			bool unk7_7: 1;  // 7:7
 #endif
 		};
 		static_assert(sizeof(PlayerFlags) == 0x8);
@@ -683,9 +683,9 @@ namespace RE
 		~PlayerCharacter() override;  // 000
 
 		// override
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		void RemoveWeapon(BIPED_OBJECT equipIndex) override;  // 82
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		void AttachWeapon(RE::TESObjectWEAP* a_weapon, bool attachToShieldHand) override;  // 82
 		void RemoveWeapon(BIPED_OBJECT equipIndex) override;                               // 83
 #else
@@ -1148,25 +1148,25 @@ namespace RE
 		}
 
 		// members
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		PLAYER_RUNTIME_DATA_CONTENT
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		VR_PLAYER_RUNTIME_DATA_CONTENT
-#elif (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR))
 #endif
 
 	private:
 		bool CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell);
 	};
-#if !defined(ENABLE_SKYRIM_VR) && defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_AE)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
+#	if defined(EXCLUSIVE_SKYRIM_SE)
 	static_assert(sizeof(PlayerCharacter) == 0xBE0);
-#elif !defined(ENABLE_SKYRIM_VR) && !defined(ENABLE_SKYRIM_SE) && defined(ENABLE_SKYRIM_AE)
+#	else
 	static_assert(sizeof(PlayerCharacter) == 0x9A8);
-#elif defined(ENABLE_SKYRIM_VR) && !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_AE)
+#	endif
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(PlayerCharacter) == 0x12F0);
-#elif !defined(ENABLE_SKYRIM_VR)
 #else
-	static_assert(sizeof(PlayerCharacter) == 0x1B8);
+	static_assert(sizeof(PlayerCharacter) == 0x1A0);
 #endif
 }
 #undef PLAYER_RUNTIME_DATA_CONTENT

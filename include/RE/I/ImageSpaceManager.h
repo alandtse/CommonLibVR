@@ -321,17 +321,17 @@ namespace RE
 		std::int32_t                         unk40;       /* 040 */
 		NiPointer<BSTriShape>                unk48;       /* 048 */
 		NiPointer<BSTriShape>                unk50;       /* 050 */
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		RUNTIME_DATA_CONTENT
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		VR_RUNTIME_DATA_CONTENT
 #endif
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(ImageSpaceManager) == 0x220);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(ImageSpaceManager) == 0x248);
 #else
 	static_assert(sizeof(ImageSpaceManager) == 0x58);

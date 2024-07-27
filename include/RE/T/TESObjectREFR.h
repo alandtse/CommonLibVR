@@ -313,12 +313,12 @@ namespace RE
 		[[nodiscard]] virtual const BSTSmartPointer<BipedAnim>& GetBiped2() const;                                                                                                                                                                                           // 7F
 		[[nodiscard]] virtual const BSTSmartPointer<BipedAnim>& GetCurrentBiped() const;                                                                                                                                                                                     // 80 - { return GetBiped2(); }
 		virtual void                                            SetBiped(const BSTSmartPointer<BipedAnim>& a_biped);                                                                                                                                                         // 81 - { return; }																																																																			 // Virtual functions defined in TESObjectREFR after the vtable structure becomes different in VR.
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 		SKYRIM_REL_VR_VIRTUAL void AttachWeapon(RE::TESObjectWEAP* a_weapon, bool attachToShieldHand);  // 82 - Virtual in VR, non-virtual in SE/AE. Shield hand may be just left hand?
 #endif
 		SKYRIM_REL_VR_VIRTUAL void RemoveWeapon(BIPED_OBJECT equipIndex);  // 82 - { return; }
 		SKYRIM_REL_VR_VIRTUAL void Unk_83(void);                           // 83 - { return; }
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 		virtual void Unk_84(void);
 #endif
 		SKYRIM_REL_VR_VIRTUAL void                         SetObjectReference(TESBoundObject* a_object);                                         // 84 - sets flag 24 if the object has destructibles

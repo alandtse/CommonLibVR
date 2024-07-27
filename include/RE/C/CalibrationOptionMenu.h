@@ -25,6 +25,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
+#if defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(CalibrationOptionMenu) == 0x58);
-
+#else
+	static_assert(sizeof(CalibrationOptionMenu) == 0x48);
+#endif
 }

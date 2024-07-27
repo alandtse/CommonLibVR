@@ -50,9 +50,7 @@ namespace RE
 		friend class BSInputDeviceFactory;
 		BSPCGamepadDeviceHandler();
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-	static_assert(sizeof(BSPCGamepadDeviceHandler) == 0x10);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#ifndef SKYRIM_CROSS_VR
 	static_assert(sizeof(BSPCGamepadDeviceHandler) == 0x10);
 #else
 	static_assert(sizeof(BSPCGamepadDeviceHandler) == 0x8);

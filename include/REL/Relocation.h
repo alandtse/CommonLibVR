@@ -469,11 +469,11 @@ namespace REL
 		[[maybe_unused]] T a_ae,
 		[[maybe_unused]] T a_vr) noexcept
 	{
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_SE)
 		return a_se;
 #elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)
 		return a_ae;
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		return a_vr;
 #else
 		switch (Module::get().GetRuntime()) {
@@ -575,7 +575,7 @@ namespace REL
 #ifndef ENABLE_SKYRIM_VR
 												a_seAndAEVtableOffset) +
 			a_seAndAEVtableIndex
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 												a_vrVtableOffset) +
 			a_vrVtableIndex
 #else

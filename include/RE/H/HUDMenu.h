@@ -19,7 +19,7 @@ namespace RE
 	// flags = kAlwaysOpen | kRequiresUpdate | kAllowSaving | kCustomRendering | kAssignCursorToRenderer
 	// context = kNone
 	class HUDMenu :
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 		public WorldSpaceMenu,                       // 00
 		public BSTEventSink<UserEventEnabledEvent>,  // 58
 		public BSTEventSink<BSRemoteGamepadEvent>    // 60
@@ -125,7 +125,7 @@ namespace RE
 
 		// members
 #ifndef SKYRIM_CROSS_VR
-#	if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#	if defined(EXCLUSIVE_SKYRIM_VR)
 		std::uint64_t pad68;  // 68
 #	endif
 		RUNTIME_DATA_CONTENT;  // 40, 70
@@ -134,13 +134,11 @@ namespace RE
 		KEEP_FOR_RE()
 	};
 #ifndef ENABLE_SKYRIM_VR
-#	ifdef ENABLE_SKYRIM_AE
-	static_assert(sizeof(HUDMenu) == 0xA8);
-#	else
 	static_assert(sizeof(HUDMenu) == 0x98);
-#	endif
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(HUDMenu) == 0xC8);
+#else
+	static_assert(sizeof(HUDMenu) == 0x30);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT

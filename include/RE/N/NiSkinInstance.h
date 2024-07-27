@@ -48,7 +48,7 @@ namespace RE
 		void*                      boneMatrices;                  // 48
 		void*                      prevBoneMatrices;              // 50
 		void*                      skinToWorldWorldToSkinMatrix;  // 58
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		REX::W32::CRITICAL_SECTION lock;  // 60
 	private:
 		KEEP_FOR_RE()
