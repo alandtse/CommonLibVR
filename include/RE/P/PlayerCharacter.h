@@ -270,17 +270,19 @@ namespace RE
 	static_assert(sizeof(PlayerActionObject) == 0xC);
 
 	class PlayerCharacter :
-#ifndef ENABLE_SKYRIM_AE
 		public Character,                            // 000
-		public BSTEventSource<BGSActorCellEvent>,    // 2D0
-		public BSTEventSource<BGSActorDeathEvent>,   // 328
-		public BSTEventSource<PositionPlayerEvent>,  // 380
-		public BSTEventSink<MenuOpenCloseEvent>,     // 2B0
-		public BSTEventSink<MenuModeChangeEvent>,    // 2B8
-		public BSTEventSink<UserEventEnabledEvent>,  // 2C0
-		public BSTEventSink<TESTrackedStatsEvent>    // 2C8
-#else
-		public Character                                                                   // 000
+		public BSTEventSource<BGSActorCellEvent>,    // SE 2D0, AE 2D8, VR 2E8
+		public BSTEventSource<BGSActorDeathEvent>,   // SE 328, AE 330, VR 340
+		public BSTEventSource<PositionPlayerEvent>,  // SE 380, AE 388, VR 398
+		public BSTEventSink<MenuOpenCloseEvent>,     // SE,VR 2B0, AE 2B8
+		public BSTEventSink<MenuModeChangeEvent>,    // SE,VR 2B8, AE 2C0
+		public BSTEventSink<UserEventEnabledEvent>,  // SE,VR 2C0, AE 2C8
+		public BSTEventSink<TESTrackedStatsEvent>    // SE,VR 2C8, AE 2D0
+#ifdef ENABLE_SKYRIM_VR
+		,
+		public BSTEventSink<VROverlayChange>,           // 2D0
+		public BSTEventSink<VRDeviceConnectionChange>,  // 2D8
+		public BSTEventSink<VRResetHMDHeight>           // 2E0
 #endif
 	{
 	public:
@@ -1156,12 +1158,15 @@ namespace RE
 	private:
 		bool CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell);
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-	static_assert(sizeof(PlayerCharacter) == 0x880);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-	static_assert(sizeof(PlayerCharacter) == 0x12D8);
+#if !defined(ENABLE_SKYRIM_VR) && defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_AE)
+	static_assert(sizeof(PlayerCharacter) == 0xBE0);
+#elif !defined(ENABLE_SKYRIM_VR) && !defined(ENABLE_SKYRIM_SE) && defined(ENABLE_SKYRIM_AE)
+	static_assert(sizeof(PlayerCharacter) == 0x9A8);
+#elif defined(ENABLE_SKYRIM_VR) && !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_AE)
+	static_assert(sizeof(PlayerCharacter) == 0x12F0);
+#elif !defined(ENABLE_SKYRIM_VR)
 #else
-	static_assert(sizeof(PlayerCharacter) == 0x78);
+	static_assert(sizeof(PlayerCharacter) == 0x1B8);
 #endif
 }
 #undef PLAYER_RUNTIME_DATA_CONTENT
