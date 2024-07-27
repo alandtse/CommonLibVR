@@ -53,7 +53,7 @@ namespace RE
 			Data             unk301F8;        // 301F8
 			std::uint64_t    unk30240;        // 30240
 			std::uint64_t    unk30248;        // 30248
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 			std::uint64_t                  unk30250;  // 30250
 			std::uint64_t                  unk30258;  // 30258
 			LocalMapCamera                 camera;    // 30260
@@ -61,7 +61,7 @@ namespace RE
 			ImageSpaceShaderParam          unk302D0;  // 302D0
 			std::uint64_t                  unk30350;  // 30350
 			NiPointer<NiNode>              unk30358;  // 30358
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 			std::uint64_t                  padVR1;    // 30250
 			std::uint64_t                  padVR2;    // 30258
 			std::uint64_t                  unk30260;  // 30260
@@ -85,9 +85,9 @@ namespace RE
 			std::uint8_t  unk30260[0x100];  // 30260
 #endif
 		};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		static_assert(sizeof(LocalMapCullingProcess) == 0x30360);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		static_assert(sizeof(LocalMapCullingProcess) == 0x303D8);
 #endif
 
@@ -139,16 +139,16 @@ namespace RE
 		float                  unk0003C;             // 0003C
 		LocalMapCullingProcess localCullingProcess;  // 00040
 		RUNTIME_DATA           runtimeData;          // 303A0, 30418
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 		std::uint32_t unk30478;  // 30478
 		std::uint32_t pad3047C;  // 3047C
 #endif
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-	static_assert(sizeof(LocalMapMenu) == 0x30400);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(LocalMapMenu) == 0x30480);
+#else
+	static_assert(sizeof(LocalMapMenu) == 0x30400);
 #endif
 }

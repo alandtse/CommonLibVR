@@ -54,9 +54,9 @@ namespace RE
 		// members
 		std::uint16_t userFlags;  // 128
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(NiBillboardNode) == 0x130);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(NiBillboardNode) == 0x158);
 #else
 	static_assert(sizeof(NiBillboardNode) == 0x118);

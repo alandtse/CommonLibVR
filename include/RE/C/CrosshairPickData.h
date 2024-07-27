@@ -32,7 +32,7 @@ namespace RE
 		}
 
 		// members
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		std::uint32_t                    pad00;           // 00
 		ObjectRefHandle                  target;          // 04
 		ObjectRefHandle                  targetActor;     // 08
@@ -65,7 +65,7 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(CrosshairPickData) == 0x38);
 #else
 	static_assert(sizeof(CrosshairPickData) == 0x88);

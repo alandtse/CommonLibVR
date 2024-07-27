@@ -193,7 +193,7 @@ namespace RE
 			kKeywordFurnitureForces1stPerson = 180,
 			kKeywordFurnitureForces3rdPerson = 181,
 			kKeywordActivatorFurnitureNoPlayer = 182,
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 			kTelekinesisGrabSound = 183,
 			kTelekinesisThrowSound = 184,
 			kWorldMapWeather = 185,
@@ -383,7 +383,7 @@ namespace RE
 			kModsHelpFormList = 363,
 			kTotal = 364
 #	endif
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 			kisJarlChair = 184,
 			kFurnitureAnimatesFast = 185,
 			isCartTravelPlayer = 186,
@@ -1086,8 +1086,16 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(BGSDefaultObjectManager) == 0xD20);
+#elif defined(EXCLUSIVE_SKYRIM_FLAT)
+#	if defined(EXCLUSIVE_SKYRIM_AE)
+	static_assert(sizeof(BGSDefaultObjectManager) == 0xD08);
+#	elif defined(EXCLUSIVE_SKYRIM_SE)
+	static_assert(sizeof(BGSDefaultObjectManager) == 0xCF0);
+#	else
+	static_assert(sizeof(BGSDefaultObjectManager) == 0xCF0);
+#	endif
 #else
 	static_assert(sizeof(BGSDefaultObjectManager) == 0xCF0);
 #endif

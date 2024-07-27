@@ -123,16 +123,16 @@ namespace RE
 		//members
 
 		// members
-		InputContext* controlMap[InputContextID::kTotal];        // 060
-#if !defined(ENABLE_SKYRIM_VR)                                   //flat
-#	if !defined(ENABLE_SKYRIM_AE) && defined(ENABLE_SKYRIM_SE)  // SSE
-		RUNTIME_DATA_CONTENT;                                    // 0E8
-#	else                                                        // AE
+		InputContext* controlMap[InputContextID::kTotal];  // 060
+#if defined(EXCLUSIVE_SKYRIM_FLAT)                         // FLAT
+#	if defined(EXCLUSIVE_SKYRIM_SE)                       // SSE
+		RUNTIME_DATA_CONTENT;                              // 0E8
+#	else                                                  // AE
 		RUNTIME_DATA_CONTENT;  // 0F8
 #	endif
-#elif !defined(ENABLE_SKYRIM_AE) && defined(ENABLE_SKYRIM_SE)  // VR
+#elif defined(EXCLUSIVE_SKYRIM_VR)  // VR
 		RUNTIME_DATA_CONTENT;  // 108
-#else                                                          // ALL
+#else                               // ALL
 		// controlMap can be accessed up to kTotal, kAETotal, or kVRTotal based on runtime
 #endif
 
@@ -156,14 +156,16 @@ namespace RE
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0xE8, 0x108);
 		}
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-#	if !defined(ENABLE_SKYRIM_AE)
-	static_assert(sizeof(ControlMap) == 0x130);
-#	elif !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
+#	if defined(EXCLUSIVE_SKYRIM_SE)
 	static_assert(sizeof(ControlMap) == 0x128);
+#	else
+	static_assert(sizeof(ControlMap) == 0x130);
 #	endif
-#elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_AE)
-	//static_assert(sizeof(ControlMap) == 0x148);  // VS seems to choke even though this should be right
+#elif defined(EXCLUSIVE_SKYRIM_VR)
+	static_assert(sizeof(ControlMap) == 0x128);
+#else
+	static_assert(sizeof(ControlMap) == 0xE8);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT

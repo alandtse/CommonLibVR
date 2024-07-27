@@ -136,7 +136,7 @@ namespace RE
 		public BSTEventSink<TESUniqueIDChangeEvent>,           // 0170
 		public BSTEventSink<TESSwitchRaceCompleteEvent>,       // 0178
 		public BSTEventSink<TESPlayerBowShotEvent>,            // 0180
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		public BSTEventSink<TESFastTravelEndEvent>,  // 0188
 		public BSTEventSink<PositionPlayerEvent>,    // 0190
 		public BSTEventSink<BSScript::StatsEvent>,   // 0198
@@ -346,9 +346,9 @@ namespace RE
 		BSTArray<BSTSmartPointer<UpdateDataEvent>> queuedOnUpdateEvents;       // 0720
 		BSTArray<BSTSmartPointer<UpdateDataEvent>> queuedOnUpdateGameEvents;   // 0738
 		std::uint32_t                              unk0750;                    // 0750
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		RUNTIME_DATA_CONTENT;
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		VR_RUNTIME_DATA_CONTENT;
 #elif defined(SKYRIM_CROSS_VR)
 #else
@@ -358,14 +358,13 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 #ifdef ENABLE_SKYRIM_AE
 	static_assert(sizeof(SkyrimVM) == 0x760);
 	#else
-	static_assert(sizeof(SkyrimVM) == 0x8978);
-	char (*__kaboom)[sizeof(SkyrimVM)] = 1;
+	static_assert(sizeof(SkyrimVM) == 0x760);
 #	endif
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(SkyrimVM) == 0x780);
 #else
 	static_assert(sizeof(SkyrimVM) == 0x758);

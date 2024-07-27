@@ -256,7 +256,7 @@ namespace REL
 		{
 #ifndef ENABLE_SKYRIM_VR
 			return false;
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 			return true;
 #else
 			return GetRuntime() == Runtime::VR;

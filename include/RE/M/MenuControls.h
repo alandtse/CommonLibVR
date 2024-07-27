@@ -101,7 +101,7 @@ namespace RE
 		FavoritesHandler*           favoritesHandler;      // 70
 		ScreenshotHandler*          screenshotHandler;     // 78
 #ifndef ENABLE_SKYRIM_VR
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		std::uint64_t occlusionCullingToggleHandler;  // 80
 #endif
 #ifndef SKYRIM_CROSS_VR
@@ -115,7 +115,7 @@ namespace RE
 #ifndef ENABLE_SKYRIM_VR
 	static_assert(sizeof(MenuControls) == 0x88);
 	static_assert(offsetof(MenuControls, remapMode) == 0x82);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(offsetof(MenuControls, remapMode) == 0x8A);
 	static_assert(sizeof(MenuControls) == 0x90);
 #else

@@ -236,7 +236,7 @@ namespace RE
 			// members
 #ifndef ENABLE_SKYRIM_VR
 			FLAT_RUNTIME_DATA_CONTENT;  // 0
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 			VR_RUNTIME_DATA_CONTENT;  // 0
 #endif
 
@@ -351,7 +351,7 @@ namespace RE
 				*reinterpret_cast<ValueType*>((reinterpret_cast<float*>(data.currentPixelShader->constantBuffers[static_cast<size_t>(level)].data) + offset)) = value;
 			}
 		};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		static_assert(sizeof(RendererShadowState) == 0x5e0);
 		static_assert(offsetof(RendererShadowState, renderTargets) == 0x18);
 		static_assert(offsetof(RendererShadowState, depthStencil) == 0x38);
@@ -381,7 +381,7 @@ namespace RE
 		static_assert(offsetof(RendererShadowState, posAdjust) == 0x35c);
 		static_assert(offsetof(RendererShadowState, previousPosAdjust) == 0x368);
 		static_assert(offsetof(RendererShadowState, cameraData) == 0x380);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		static_assert(sizeof(RendererShadowState) == 0x950);
 		static_assert(offsetof(RendererShadowState, OMUAVModifiedBits) == 0x18);
 		static_assert(offsetof(RendererShadowState, renderTargets) == 0x20);

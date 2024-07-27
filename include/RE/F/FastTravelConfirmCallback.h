@@ -30,8 +30,7 @@ namespace RE
 		MapMenu*     mapMenu;     // 10
 		std::int32_t cursorPosX;  // 18
 		std::int32_t cursorPosY;  // 1C
-#if !defined(ENABLE_SKYRIM_VR)
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 		RUNTIME_DATA_CONTENT;
 #endif
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
@@ -47,12 +46,10 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-static_assert(sizeof(FastTravelConfirmCallback) == 0x20);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-static_assert(sizeof(FastTravelConfirmCallback) == 0x30);
+#if defined(EXCLUSIVE_SKYRIM_VR)
+	static_assert(sizeof(FastTravelConfirmCallback) == 0x30);
 #else
-static_assert(sizeof(FastTravelConfirmCallback) == 0x20);
+	static_assert(sizeof(FastTravelConfirmCallback) == 0x20);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT

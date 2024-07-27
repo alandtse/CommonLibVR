@@ -164,10 +164,10 @@ namespace RE
 		std::uint8_t  pad039;        // 039
 		std::uint16_t pad03A;        // 03A
 		ActorHandle   cameraTarget;  // 03C
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		RUNTIME_DATA_CONTENT;
 		RUNTIME_DATA2_CONTENT;
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		VR_RUNTIME_DATA_CONTENT;
 		RUNTIME_DATA2_CONTENT;
 #endif
@@ -177,9 +177,9 @@ namespace RE
 		bool QCameraEquals(CameraState a_cameraState) const;
 		KEEP_FOR_RE();
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(PlayerCamera) == 0x168);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(PlayerCamera) == 0x180);
 #endif
 }

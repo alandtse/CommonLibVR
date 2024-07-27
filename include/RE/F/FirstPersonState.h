@@ -53,9 +53,8 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-	static_assert(sizeof(FirstPersonState) == 0x90);
-#elif !defined(SKYRIM_AE) && !defined(SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
+	static_assert(sizeof(FirstPersonState) == 0xA8);
 #else
 	static_assert(sizeof(FirstPersonState) == 0x90);
 #endif

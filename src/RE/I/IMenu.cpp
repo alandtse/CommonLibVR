@@ -94,7 +94,7 @@ namespace RE
 #ifdef ENABLE_SKYRIM_VR
 	void IMenu::Unk_09(UI_MENU_Unk09 a_unk)
 	{
-		unk30 = a_unk;
+		GetVRRuntimeData().unk30 = a_unk;
 	}
 
 	void IMenu::Unk_0A()

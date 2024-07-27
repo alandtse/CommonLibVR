@@ -128,10 +128,12 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
+	static_assert(sizeof(LockpickingMenu) == 0x110);
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(LockpickingMenu) == 0x120);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-	static_assert(sizeof(LockpickingMenu) == 0x120);
+#else
+	static_assert(sizeof(LockpickingMenu) == 0x40);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT
