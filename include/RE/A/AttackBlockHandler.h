@@ -44,9 +44,8 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-	static_assert(sizeof(AttackBlockHandler) == 0x48);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_AE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
+	static_assert(sizeof(AttackBlockHandler) == 0x60);
 #else
 	static_assert(sizeof(AttackBlockHandler) == 0x48);
 #endif

@@ -98,6 +98,7 @@ namespace RE
 	std::uint64_t unk138;          /* 138 */
 			RUNTIME_DATA_CONTENT
 		};
+		static_assert(sizeof(RUNTIME_DATA) == 0x18);
 
 		// 1130 and later
 		struct AE_RUNTIME_DATA
@@ -111,6 +112,7 @@ namespace RE
 	std::uint64_t unk140;          /* 140 - actual offset change is somewhere near showLandBorder */
 			AE_RUNTIME_DATA_CONTENT
 		};
+		static_assert(sizeof(AE_RUNTIME_DATA) == 0x20);
 
 		struct RUNTIME_DATA2
 		{
@@ -162,6 +164,7 @@ namespace RE
 	std::uint64_t                                   unk2B0;     /* 2B0 */
             RUNTIME_DATA2_CONTENT
 		};
+		static_assert(sizeof(RUNTIME_DATA2) == 0x178);
 
 		[[nodiscard]] inline RUNTIME_DATA* GetRuntimeData() noexcept
 		{
@@ -232,20 +235,22 @@ namespace RE
 		BSSimpleList<NiPointer<ImageSpaceModifierInstance>> activeImageSpaceModifiers;  // 108
 		std::uint64_t                                       unk118;                     // 118
 		std::uint64_t                                       unk120;                     // 120
-#if defined(ENABLE_SKYRIM_AE) && !(defined(ENABLE_SKYRIM_SE) || defined(ENABLE_SKYRIM_VR))
-		AE_RUNTIME_DATA_CONTENT;
-#else
-		RUNTIME_DATA_CONTENT;
+#ifndef ENABLE_SKYRIM_AE
+		RUNTIME_DATA_CONTENT;   // 128
+		RUNTIME_DATA2_CONTENT;  // 140
+#elif !defined(ENABLE_SKYRIM_VR) && !defined(ENABLE_SKYRIM_SE)
+		AE_RUNTIME_DATA_CONTENT;  // 128
+		RUNTIME_DATA2_CONTENT;    // 148
 #endif
-		RUNTIME_DATA2_CONTENT;
-
 	private:
 		KEEP_FOR_RE()
 	};
-#if defined(ENABLE_SKYRIM_AE) && !(defined(ENABLE_SKYRIM_SE) || defined(ENABLE_SKYRIM_VR))
+#ifndef ENABLE_SKYRIM_AE
+	static_assert(sizeof(TES) == 0x2B8);
+#elif !defined(ENABLE_SKYRIM_VR) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(TES) == 0x2C0);
 #else
-	static_assert(sizeof(TES) == 0x2B8);
+	static_assert(sizeof(TES) == 0x128);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT

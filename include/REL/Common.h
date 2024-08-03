@@ -1,5 +1,35 @@
 #pragma once
 
+#if !defined(ENABLE_SKYRIM_VR) && !defined(ENABLE_SKYRIM_SE) && defined(ENABLE_SKYRIM_AE)
+/**
+ * Defined to indicate that this build only supports AE
+ */
+#define EXCLUSIVE_SKYRIM_AE
+/**
+ * Defined to indicate that this build only supports AE and SE
+ */
+#define EXCLUSIVE_SKYRIM_FLAT
+#elif !defined(ENABLE_SKYRIM_VR) && defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_AE)
+/**
+ * Defined to indicate that this build only supports SE
+ */
+#define EXCLUSIVE_SKYRIM_SE
+/**
+ * Defined to indicate that this build only supports AE and SE
+ */
+#define EXCLUSIVE_SKYRIM_FLAT
+#elif defined(ENABLE_SKYRIM_VR) && !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_AE)
+/**
+ * Defined to indicate that this build only supports VR
+ */
+#define EXCLUSIVE_SKYRIM_VR
+#elif !defined(ENABLE_SKYRIM_VR) && (defined(ENABLE_SKYRIM_SE) || defined(ENABLE_SKYRIM_AE))
+/**
+ * Defined to indicate that this build only supports AE and SE
+ */
+#define EXCLUSIVE_SKYRIM_FLAT
+#endif
+
 #if defined(ENABLE_SKYRIM_VR) && (defined(ENABLE_SKYRIM_AE) || defined(ENABLE_SKYRIM_SE))
 /**
  * Defined to indicate that this build supports both VR and non-VR runtimes.

@@ -9,7 +9,7 @@ namespace RE
 	class BSOpenVRControllerDevice : public BSTrackedControllerDevice
 	{
 	public:
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 		inline static constexpr auto RTTI = RTTI_BSOpenVRControllerDevice;
 #endif
 
@@ -40,7 +40,7 @@ namespace RE
 		void               Reset() override;                                                           // 08
 
 	private:
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 		std::uint64_t unk80[0x16];  // 080
 		std::uint32_t unk130;       // 130
 		std::uint32_t unk134;       // 134
@@ -52,7 +52,7 @@ namespace RE
 		std::uint32_t unk14C;       // 14C
 #endif
 	};
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(BSOpenVRControllerDevice) == 0x150);
 #endif
 }

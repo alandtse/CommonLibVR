@@ -70,9 +70,9 @@ namespace RE
 		RUNTIME_DATA_CONTENT  // 88, 68
 #endif
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(BSDismemberSkinInstance) == 0xA0);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(BSDismemberSkinInstance) == 0x80);
 #endif
 }

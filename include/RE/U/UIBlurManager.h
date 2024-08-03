@@ -33,7 +33,5 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(UIBlurManager) == 0x20);
-#endif
 }

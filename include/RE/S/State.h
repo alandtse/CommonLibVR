@@ -53,7 +53,7 @@ namespace RE
 		NiPoint3 posAdjust;                                             /* 20 */                                                               \
 		NiPoint3 currentPosAdjust;                                      /* 38 */                                                               \
 		NiPoint3 previousPosAdjust;                                     /* 50 */                                                               \
-		#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)  // VR
+		#elif defined(EXCLUSIVE_SKYRIM_VR)  // VR
 #	define CAMERASTATE_RUNTIME_DATA_CONTENT                                                                         \
 		BSTArray<ViewData> camViewData;       /* 08 VR is BSTArray, Each array has 2 elements (one for each eye?) */ \
 		BSTArray<NiPoint3> posAdjust;         /* 20 */                                                               \
@@ -87,7 +87,7 @@ namespace RE
 		};
 #if !defined(ENABLE_SKYRIM_VR)  // Non-VR
 		static_assert(sizeof(CameraStateData) == 0x68);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)  // VR
+#elif defined(EXCLUSIVE_SKYRIM_VR)  // VR
 		static_assert(sizeof(CameraStateData) == 0x8);
 #else
 		static_assert(sizeof(CameraStateData) == 0x8);
@@ -97,7 +97,7 @@ namespace RE
 		public:
 			struct RUNTIME_DATA
 			{
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)  // VR
+#if defined(EXCLUSIVE_SKYRIM_VR)  // VR
 #	define RUNTIME_DATA_CONTENT                                                                                               \
 		uint32_t                   firstCameraStateIndex;                /*	058 VR   only ?*/                                  \
 		NiPointer<NiSourceTexture> defaultTextureBlack;                  /* SE 058, AE,VR 060 - "BSShader_DefHeightMap"*/      \
@@ -150,7 +150,7 @@ namespace RE
 			};
 #if !defined(ENABLE_SKYRIM_VR)  // Non-VR
 			static_assert(offsetof(RUNTIME_DATA, dynamicResolutionWidthRatio) == 0xA4);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)  // VR
+#elif defined(EXCLUSIVE_SKYRIM_VR)  // VR
 			static_assert(offsetof(RUNTIME_DATA, dynamicResolutionWidthRatio) == 0xAC);
 #else
 			static_assert(offsetof(RUNTIME_DATA, dynamicResolutionWidthRatio) == 0xA4);
@@ -220,32 +220,36 @@ namespace RE
 			bool                       compiledShaderThisFrame;            // 053
 			bool                       useEarlyZ;                          // 054
 			bool                       unk055;                             // 055
-			RUNTIME_DATA_CONTENT;                                          // 058, AE,VR 060
+#ifndef ENABLE_SKYRIM_AE
+			RUNTIME_DATA_CONTENT;  // 058, AE,VR 060
+#endif
 		};
-#if !defined(ENABLE_SKYRIM_VR)  // Non-VR
+#if defined(EXCLUSIVE_SKYRIM_SE)  // SE
+		static_assert(sizeof(State) == 0x118);
 		static_assert(offsetof(State, screenWidth) == 0x24);
 		static_assert(offsetof(State, frameBufferViewport) == 0x2C);
 		static_assert(offsetof(State, letterbox) == 0x51);
+		static_assert(offsetof(State, useEarlyZ) == 0x54);
 		static_assert(offsetof(State, defaultTextureBlack) == 0x58);
 		static_assert(offsetof(State, defaultTextureWhite) == 0x60);
 		static_assert(offsetof(State, cameraDataCacheA) == 0xa0);
 		static_assert(offsetof(State, dynamicResolutionWidthRatio) == 0x0fc);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)  // VR
+#elif defined(EXCLUSIVE_SKYRIM_VR)  // VR
+		static_assert(sizeof(State) == 0x120);
 		static_assert(offsetof(State, screenWidth) == 0x24);
 		static_assert(offsetof(State, frameBufferViewport) == 0x2C);
 		static_assert(offsetof(State, letterbox) == 0x51);
+		static_assert(offsetof(State, useEarlyZ) == 0x54);
 		static_assert(offsetof(State, defaultTextureBlack) == 0x60);
 		static_assert(offsetof(State, defaultTextureWhite) == 0x68);
 		static_assert(offsetof(State, cameraDataCacheA) == 0xa8);
 		static_assert(offsetof(State, dynamicResolutionWidthRatio) == 0x104);
 #else
+		static_assert(sizeof(State) == 0x58);
 		static_assert(offsetof(State, screenWidth) == 0x24);
 		static_assert(offsetof(State, frameBufferViewport) == 0x2C);
 		static_assert(offsetof(State, letterbox) == 0x51);
-		static_assert(offsetof(State, defaultTextureBlack) == 0x58);
-		static_assert(offsetof(State, defaultTextureWhite) == 0x60);
-		static_assert(offsetof(State, cameraDataCacheA) == 0xa0);
-		static_assert(offsetof(State, dynamicResolutionWidthRatio) == 0x0fc);
+		static_assert(offsetof(State, useEarlyZ) == 0x54);
 #endif
 	}
 }

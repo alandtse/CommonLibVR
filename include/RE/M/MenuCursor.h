@@ -41,7 +41,7 @@ namespace RE
 		std::uint8_t  pad01;  // 01
 		std::uint16_t pad02;  // 02
 #ifndef ENABLE_SKYRIM_VR
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		float unkVR04;
 #else
 #endif
@@ -50,9 +50,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(MenuCursor) == 0x30);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(MenuCursor) == 0x34);
 #else
 	static_assert(sizeof(MenuCursor) == 0x30);

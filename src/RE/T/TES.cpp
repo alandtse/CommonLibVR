@@ -38,10 +38,12 @@ namespace RE
 				} while (x < gridLength);
 			}
 		}
-		if (const auto skyCell = worldSpace ? worldSpace->GetSkyCell() : nullptr; skyCell) {
-			skyCell->ForEachReference([&](TESObjectREFR* a_ref) {
-				return a_callback(a_ref);
-			});
+		if (const auto ws = GetRuntimeData2().worldSpace) {
+			if (const auto skyCell = ws ? ws->GetSkyCell() : nullptr; skyCell) {
+				skyCell->ForEachReference([&](TESObjectREFR* a_ref) {
+					return a_callback(a_ref);
+				});
+			}
 		}
 	}
 
@@ -81,11 +83,12 @@ namespace RE
 					} while (x < gridLength);
 				}
 			}
-
-			if (const auto skyCell = worldSpace ? worldSpace->GetSkyCell() : nullptr; skyCell) {
-				skyCell->ForEachReferenceInRange(originPos, a_radius, [&](TESObjectREFR* a_ref) {
-					return a_callback(a_ref);
-				});
+			if (const auto ws = GetRuntimeData2().worldSpace) {
+				if (const auto skyCell = ws ? ws->GetSkyCell() : nullptr; skyCell) {
+					skyCell->ForEachReferenceInRange(originPos, a_radius, [&](TESObjectREFR* a_ref) {
+						return a_callback(a_ref);
+					});
+				}
 			}
 		} else {
 			ForEachReference([&](TESObjectREFR* a_ref) {

@@ -47,7 +47,7 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(BGSStoryTeller) == 0xD8);
 #else
 	//static_assert(sizeof(BGSStoryTeller) == 0xE0);

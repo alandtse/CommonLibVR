@@ -793,6 +793,8 @@ namespace RE
 	};
 #ifndef ENABLE_SKYRIM_AE
 	static_assert(sizeof(Actor) == 0x2B0);
+#else
+	static_assert(sizeof(Actor) == 0x78);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT

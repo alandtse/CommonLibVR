@@ -153,19 +153,19 @@ namespace RE
 		}
 
 // members
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		RUNTIME_DATA_CONTENT;
 		RUNTIME_DATA2_CONTENT;
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		VR_RUNTIME_DATA_CONTENT;
 		RUNTIME_DATA2_CONTENT;
 #endif
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(BGSSaveLoadGame) == 0x348);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(BGSSaveLoadGame) == 0x518);
 #else
 	static_assert(sizeof(BGSSaveLoadGame) == 0x1);

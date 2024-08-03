@@ -56,14 +56,14 @@ namespace RE
 			bool firstPerson;      // 128
 			char _pad0[0x3];       // 129
 			bool drawDecals;       // 130
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 			RUNTIME_DATA_CONTENT;  // 130
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 			std::uint64_t unk000[(0x158 - 0x130) >> 3];  // 130
 			RUNTIME_DATA_CONTENT;                        // 158
 #endif
 		};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		static_assert(sizeof(BSShaderAccumulator) == 0x180);
 		static_assert(offsetof(BSShaderAccumulator, batchRenderer) == 0x130);
 		static_assert(offsetof(BSShaderAccumulator, currentPass) == 0x138);
@@ -72,7 +72,7 @@ namespace RE
 		static_assert(offsetof(BSShaderAccumulator, activeShadowSceneNode) == 0x148);
 		static_assert(offsetof(BSShaderAccumulator, renderMode) == 0x150);
 		static_assert(offsetof(BSShaderAccumulator, eyePosition) == 0x16C);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		static_assert(offsetof(BSShaderAccumulator, batchRenderer) == 0x158);
 		static_assert(offsetof(BSShaderAccumulator, currentPass) == 0x160);
 		static_assert(offsetof(BSShaderAccumulator, currentBucket) == 0x164);

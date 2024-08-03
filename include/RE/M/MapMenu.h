@@ -26,7 +26,7 @@ namespace RE
 	// flags = kPausesGame | kUsesCursor | kRendersOffscreenTargets | kCustomRendering
 	// context = kMap
 	class MapMenu :
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 		public WorldSpaceMenu,                    // 00000
 		public BSTEventSink<MenuOpenCloseEvent>,  // 00058
 		public IMapCameraCallbacks                // 00060
@@ -92,9 +92,9 @@ namespace RE
 
 			RUNTIME_DATA_CONTENT
 		};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		static_assert(sizeof(RUNTIME_DATA) == 0x30420);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		static_assert(sizeof(RUNTIME_DATA) == 0x304A0);
 #else
 		static_assert(sizeof(RUNTIME_DATA) == 0x30420);
@@ -116,9 +116,9 @@ namespace RE
 	LocalMapMenu                        localMapMenu;    /* 000B0*/
             VR_RUNTIME_DATA_CONTENT;
 		};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		static_assert(sizeof(VR_RUNTIME_DATA) == 0x30450);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		static_assert(sizeof(VR_RUNTIME_DATA) == 0x304D0);
 #else
 		static_assert(sizeof(VR_RUNTIME_DATA) == 0x30450);
@@ -295,26 +295,22 @@ namespace RE
 			}
 		}
 		// members
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		VR_RUNTIME_DATA_CONTENT;   // 40, 60
 		VR_RUNTIME_DATA2_CONTENT;  // 30460, 30530
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		RUNTIME_DATA_CONTENT;   // 40, 60
 		RUNTIME_DATA2_CONTENT;  // 30460, 30530
 #endif
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-#	ifdef ENABLE_SKYRIM_AE
-	static_assert(sizeof(MapMenu) == 0x30560);
-#	else
-	static_assert(sizeof(MapMenu) == 0x30598);
-#	endif
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
+	static_assert(sizeof(MapMenu) == 0x30550);
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(MapMenu) == 0x30640);
 #else
-	static_assert(sizeof(MapMenu) == 0x40);
+	static_assert(sizeof(MapMenu) == 0x30);
 #endif
 }
 

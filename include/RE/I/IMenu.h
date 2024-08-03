@@ -117,6 +117,20 @@ namespace RE
 		[[nodiscard]] constexpr bool UsesMenuContext() const noexcept { return menuFlags.all(Flag::kUsesMenuContext); }
 		[[nodiscard]] constexpr bool UsesMovementToDirection() const noexcept { return menuFlags.all(Flag::kUsesMovementToDirection); }
 
+		struct VR_RUNTIME_DATA
+		{
+#define VR_RUNTIME_DATA_CONTENT                                                   \
+	stl::enumeration<UI_MENU_Unk09, std::uint32_t> unk30{ UI_MENU_Unk09::kNone }; \
+	std::byte                                      unk34{ 1 };                    \
+	BSFixedString                                  menuName{ "N/A" };  // 38
+            VR_RUNTIME_DATA_CONTENT
+		};
+
+		[[nodiscard]] inline VR_RUNTIME_DATA& GetVRRuntimeData() noexcept
+		{
+			return REL::RelocateMember<VR_RUNTIME_DATA>(this, 0x0, 0x0);
+		}
+
 		// members
 		GPtr<GFxMovieView>                             uiMovie{ nullptr };              // 10
 		std::int8_t                                    depthPriority{ 3 };              // 18
@@ -126,17 +140,16 @@ namespace RE
 		stl::enumeration<Context, std::uint32_t>       inputContext{ Context::kNone };  // 20
 		std::uint32_t                                  pad24{ 0 };                      // 24
 		GPtr<FxDelegate>                               fxDelegate{ nullptr };           // 28
-		stl::enumeration<UI_MENU_Unk09, std::uint32_t> unk30{ UI_MENU_Unk09::kNone };
-		std::byte                                      unk34{ 1 };
-		BSFixedString                                  menuName{ "N/A" };  // 38
+#if defined(EXCLUSIVE_SKYRIM_VR)
+		VR_RUNTIME_DATA_CONTENT
+#endif
 	private:
 		KEEP_FOR_RE();
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-	static_assert(sizeof(IMenu) == 0x40);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(IMenu) == 0x40);
 #else
-	static_assert(sizeof(IMenu) == 0x40);
+	static_assert(sizeof(IMenu) == 0x30);
 #endif
 }
+#undef VR_RUNTIME_DATA_CONTENT

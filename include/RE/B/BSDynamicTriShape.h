@@ -56,9 +56,9 @@ namespace RE
 		RUNTIME_DATA_CONTENT;  // 160, 1A8
 #endif
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(BSDynamicTriShape) == 0x180);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(BSDynamicTriShape) == 0x1C8);
 #endif
 }

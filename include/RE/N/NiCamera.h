@@ -17,12 +17,12 @@ namespace RE
 
 		struct RUNTIME_DATA
 		{
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 #	define RUNTIME_DATA_CONTENT float worldToCam[4][4]; /* 0 */
 			RUNTIME_DATA_CONTENT
 		};
 		static_assert(sizeof(RUNTIME_DATA) == 0x40);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 #	define RUNTIME_DATA_CONTENT                   \
 		float           worldToCam[4][4]; /* 0 */  \
 		NiFrustum*      viewFrustumPtr;   /* 40 */ \
@@ -63,7 +63,7 @@ namespace RE
 		bool          RegisterStreamables(NiStream& a_stream) override;   // 1A
 		void          SaveBinary(NiStream& a_stream) override;            // 1B - { return; }
 		bool          IsEqual(NiObject* a_object) override;               // 1C
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR))
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		// The following are virtual functions past the point where VR compatibility breaks.
 		void UpdateWorldBound() override;                     // 2F - { return; }
 		void UpdateWorldData(NiUpdateData* a_data) override;  // 30
@@ -104,9 +104,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE();
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(NiCamera) == 0x188);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(NiCamera) == 0x208);
 #endif
 }

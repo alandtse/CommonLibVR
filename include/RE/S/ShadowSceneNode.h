@@ -100,7 +100,7 @@ namespace RE
 
 		// override (NiNode)
 		const NiRTTI* GetRTTI() const override;  // 02
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR))
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		// The following are virtual functions past the point where VR compatibility breaks.
 		void OnVisible(NiCullingProcess& a_process) override;  // 34
 #endif
@@ -136,9 +136,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(ShadowSceneNode) == 0x308);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(ShadowSceneNode) == 0x330);
 #endif
 }
