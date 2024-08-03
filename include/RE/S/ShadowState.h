@@ -266,13 +266,10 @@ namespace RE
 				return g_RendererShadowState;
 			}
 
-#define GET_RUNTIME_MEMBER(a_value) \
-	auto& a_value = !REL::Module::IsVR() ? GetRuntimeData().a_value : GetVRRuntimeData().a_value;
-
 			void SetPSTexture(size_t textureIndex, BSGraphics::Texture* newTexture)
 			{
-				GET_RUNTIME_MEMBER(PSTexture)
-				GET_RUNTIME_MEMBER(PSResourceModifiedBits)
+				GET_CROSSVR_RUNTIME_MEMBER(PSTexture)
+				GET_CROSSVR_RUNTIME_MEMBER(PSResourceModifiedBits)
 				ID3D11ShaderResourceView* resourceView = newTexture ? newTexture->resourceView : nullptr;
 				if (PSTexture[textureIndex] != resourceView) {
 					PSTexture[textureIndex] = resourceView;
@@ -282,8 +279,8 @@ namespace RE
 
 			void SetPSTexture(size_t textureIndex, const BSGraphics::RenderTargetData& newTexture)
 			{
-				GET_RUNTIME_MEMBER(PSTexture)
-				GET_RUNTIME_MEMBER(PSResourceModifiedBits)
+				GET_CROSSVR_RUNTIME_MEMBER(PSTexture)
+				GET_CROSSVR_RUNTIME_MEMBER(PSResourceModifiedBits)
 				ID3D11ShaderResourceView* resourceView = newTexture.SRV;
 				if (PSTexture[textureIndex] != resourceView) {
 					PSTexture[textureIndex] = resourceView;
@@ -293,8 +290,8 @@ namespace RE
 
 			void SetPSTextureAddressMode(size_t textureIndex, TextureAddressMode newAddressMode)
 			{
-				GET_RUNTIME_MEMBER(PSTextureAddressMode)
-				GET_RUNTIME_MEMBER(PSSamplerModifiedBits)
+				GET_CROSSVR_RUNTIME_MEMBER(PSTextureAddressMode)
+				GET_CROSSVR_RUNTIME_MEMBER(PSSamplerModifiedBits)
 				if (PSTextureAddressMode[textureIndex] != newAddressMode) {
 					PSTextureAddressMode[textureIndex] = newAddressMode;
 					PSSamplerModifiedBits |= (1 << textureIndex);
@@ -303,8 +300,8 @@ namespace RE
 
 			void SetPSTextureFilterMode(size_t textureIndex, TextureFilterMode newFilterMode)
 			{
-				GET_RUNTIME_MEMBER(PSTextureFilterMode)
-				GET_RUNTIME_MEMBER(PSSamplerModifiedBits)
+				GET_CROSSVR_RUNTIME_MEMBER(PSTextureFilterMode)
+				GET_CROSSVR_RUNTIME_MEMBER(PSSamplerModifiedBits)
 				if (PSTextureFilterMode[textureIndex] != newFilterMode) {
 					PSTextureFilterMode[textureIndex] = newFilterMode;
 					PSSamplerModifiedBits |= (1 << textureIndex);
@@ -313,8 +310,8 @@ namespace RE
 
 			void SetVertexShader(VertexShader* shader)
 			{
-				GET_RUNTIME_MEMBER(stateUpdateFlags)
-				GET_RUNTIME_MEMBER(currentVertexShader)
+				GET_CROSSVR_RUNTIME_MEMBER(stateUpdateFlags)
+				GET_CROSSVR_RUNTIME_MEMBER(currentVertexShader)
 				stateUpdateFlags |= ShaderFlags::DIRTY_VERTEX_DESC;
 				currentVertexShader = shader;
 				if (shader != nullptr) {
@@ -324,7 +321,7 @@ namespace RE
 
 			void SetPixelShader(PixelShader* shader)
 			{
-				GET_RUNTIME_MEMBER(currentPixelShader)
+				GET_CROSSVR_RUNTIME_MEMBER(currentPixelShader)
 				currentPixelShader = shader;
 				if (shader != nullptr) {
 					Renderer::GetSingleton()->GetRuntimeData().context->PSSetShader(shader->shader, nullptr, 0);
@@ -333,20 +330,20 @@ namespace RE
 
 			ConstantGroup& GetVSConstantGroup(ConstantGroupLevel level)
 			{
-				GET_RUNTIME_MEMBER(currentVertexShader)
+				GET_CROSSVR_RUNTIME_MEMBER(currentVertexShader)
 				return currentVertexShader->constantBuffers[static_cast<size_t>(level)];
 			}
 
 			ConstantGroup& GetPSConstantGroup(ConstantGroupLevel level)
 			{
-				GET_RUNTIME_MEMBER(currentPixelShader)
+				GET_CROSSVR_RUNTIME_MEMBER(currentPixelShader)
 				return currentPixelShader->constantBuffers[static_cast<size_t>(level)];
 			}
 
 			template <typename ValueType>
 			void SetVSConstant(const ValueType& value, ConstantGroupLevel level, size_t index)
 			{
-				GET_RUNTIME_MEMBER(currentVertexShader)
+				GET_CROSSVR_RUNTIME_MEMBER(currentVertexShader)
 				const int8_t offset = currentVertexShader->constantTable[index];
 				*reinterpret_cast<ValueType*>((reinterpret_cast<float*>(currentVertexShader->constantBuffers[static_cast<size_t>(level)].data) + offset)) = value;
 			}
@@ -354,7 +351,7 @@ namespace RE
 			template <typename ValueType>
 			void SetPSConstant(const ValueType& value, ConstantGroupLevel level, size_t index)
 			{
-				GET_RUNTIME_MEMBER(currentPixelShader)
+				GET_CROSSVR_RUNTIME_MEMBER(currentPixelShader)
 				const int8_t offset = currentPixelShader->constantTable[index];
 				*reinterpret_cast<ValueType*>((reinterpret_cast<float*>(currentPixelShader->constantBuffers[static_cast<size_t>(level)].data) + offset)) = value;
 			}
