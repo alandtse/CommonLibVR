@@ -12,7 +12,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiCamera;
-		inline static auto           Ni_RTTI = NiRTTI_NiCamera;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiCamera;
+		inline static constexpr auto VTABLE = VTABLE_NiCamera;
 
 		struct RUNTIME_DATA
 		{

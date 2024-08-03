@@ -12,6 +12,8 @@ namespace RE
 	class BSShaderMaterial;
 	class BSShaderPropertyLightData;
 	class NiSourceTexture;
+	class BSShader;
+	class BSLight;
 
 	class BSShaderProperty : public NiShadeProperty
 	{
@@ -20,13 +22,14 @@ namespace RE
 
 	public:
 		inline static constexpr auto RTTI = RTTI_BSShaderProperty;
-		inline static auto           Ni_RTTI = NiRTTI_BSShaderProperty;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSShaderProperty;
 		inline static constexpr auto VTABLE = VTABLE_BSShaderProperty;
 
 		class ForEachVisitor
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSShaderProperty__ForEachVisitor;
+			inline static constexpr auto VTABLE = VTABLE_BSShaderProperty__ForEachVisitor;
 
 			virtual ~ForEachVisitor();  // 00
 
@@ -36,7 +39,14 @@ namespace RE
 
 		struct RenderPassArray
 		{
-			BSRenderPass* head;  // 0
+			BSRenderPass* MakeRenderPass(BSShader* a_shader, BSShaderProperty* a_property, BSGeometry* a_geometry, uint32_t a_technique, uint8_t a_numLights, BSLight** a_lights);
+			void          ClearRenderPass(BSRenderPass* a_pass);
+			void          Clear();
+			BSRenderPass* EmplacePass(BSShader* a_shader, BSShaderProperty* a_property, BSGeometry* a_geometry,
+				uint32_t a_technique, uint8_t a_numLights = 0, BSLight* a_light0 = nullptr, BSLight* a_light1 = nullptr,
+				BSLight* a_light2 = nullptr, BSLight* a_light3 = nullptr);
+
+			BSRenderPass* head;  // 00
 		};
 		static_assert(sizeof(RenderPassArray) == 0x8);
 

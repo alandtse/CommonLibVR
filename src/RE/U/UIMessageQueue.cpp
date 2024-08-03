@@ -14,21 +14,21 @@ namespace RE
 	void UIMessageQueue::AddMessage(const BSFixedString& a_menuName, UI_MESSAGE_TYPE a_type, IUIMessageData* a_data)
 	{
 		using func_t = decltype(&UIMessageQueue::AddMessage);
-		REL::Relocation<func_t> func{ RELOCATION_ID(13530, 13631) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(13530, 13631) };
 		return func(this, a_menuName, a_type, a_data);
 	}
 
 	IUIMessageData* UIMessageQueue::CreateUIMessageData(const BSFixedString& a_name)
 	{
 		using func_t = decltype(&UIMessageQueue::CreateUIMessageData);
-		REL::Relocation<func_t> func{ RELOCATION_ID(80061, 82169) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(80061, 82169) };
 		return func(this, a_name);
 	}
 
 	void UIMessageQueue::ProcessCommands()
 	{
 		using func_t = decltype(&UIMessageQueue::ProcessCommands);
-		REL::Relocation<func_t> func{ RELOCATION_ID(80059, 82167) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(80059, 82167) };
 		return func(this);
 	}
 }

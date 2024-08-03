@@ -12,7 +12,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkSerializable;
-		inline static auto           Ni_RTTI = NiRTTI_bhkSerializable;
+		inline static constexpr auto Ni_RTTI = NiRTTI_bhkSerializable;
+		inline static constexpr auto VTABLE = VTABLE_bhkSerializable;
 
 		~bhkSerializable() override;  // 00
 

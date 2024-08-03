@@ -14,7 +14,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSFaceGenNiNode;
-		inline static auto           Ni_RTTI = NiRTTI_BSFaceGenNiNode;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSFaceGenNiNode;
+		inline static constexpr auto VTABLE = VTABLE_BSFaceGenNiNode;
 
 		struct RUNTIME_DATA
 		{

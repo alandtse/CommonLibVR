@@ -11,6 +11,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NiParticles;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiParticles;
+		inline static constexpr auto VTABLE = VTABLE_NiParticles;
 
 		struct PARTICLES_RUNTIME_DATA
 		{

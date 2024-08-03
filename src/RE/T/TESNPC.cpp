@@ -52,7 +52,7 @@ namespace RE
 	void TESNPC::ChangeHeadPart(BGSHeadPart* a_target)
 	{
 		using func_t = decltype(&TESNPC::ChangeHeadPart);
-		REL::Relocation<func_t> func{ RELOCATION_ID(24246, 24750) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(24246, 24750) };
 		return func(this, a_target);
 	}
 
@@ -70,7 +70,7 @@ namespace RE
 	BGSHeadPart** TESNPC::GetBaseOverlays() const
 	{
 		using func_t = decltype(&TESNPC::GetBaseOverlays);
-		REL::Relocation<func_t> func{ RELOCATION_ID(24275, 24791) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(24275, 24791) };
 		return func(this);
 	}
 
@@ -141,7 +141,7 @@ namespace RE
 	std::uint32_t TESNPC::GetNumBaseOverlays() const
 	{
 		using func_t = decltype(&TESNPC::GetNumBaseOverlays);
-		REL::Relocation<func_t> func{ RELOCATION_ID(24276, 24792) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(24276, 24792) };
 		return func(this);
 	}
 
@@ -195,7 +195,7 @@ namespace RE
 	bool TESNPC::HasOverlays()
 	{
 		using func_t = decltype(&TESNPC::HasOverlays);
-		REL::Relocation<func_t> func{ RELOCATION_ID(24274, 24790) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(24274, 24790) };
 		return func(this);
 	}
 
@@ -263,7 +263,7 @@ namespace RE
 	void TESNPC::SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_fromTint)
 	{
 		using func_t = decltype(&TESNPC::SetSkinFromTint);
-		REL::Relocation<func_t> func{ RELOCATION_ID(24206, 24710) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(24206, 24710) };
 		return func(this, a_result, a_tintMask, a_fromTint);
 	}
 
@@ -276,7 +276,7 @@ namespace RE
 	void TESNPC::UpdateNeck(BSFaceGenNiNode* a_faceNode)
 	{
 		using func_t = decltype(&TESNPC::UpdateNeck);
-		REL::Relocation<func_t> func{ RELOCATION_ID(24207, 24711) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(24207, 24711) };
 		return func(this, a_faceNode);
 	}
 }

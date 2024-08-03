@@ -11,6 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSEntryPointFunctionData;
+		inline static constexpr auto VTABLE = VTABLE_BGSEntryPointFunctionData;
 
 		enum class ENTRY_POINT_FUNCTION_DATA
 		{

@@ -149,6 +149,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_SkyrimVM;
+		inline static constexpr auto VTABLE = VTABLE_SkyrimVM;
 
 		struct UpdateDataEvent : public BSIntrusiveRefCounted
 		{

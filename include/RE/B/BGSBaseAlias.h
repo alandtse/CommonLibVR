@@ -12,7 +12,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSBaseAlias;
-		inline static auto           VMTYPEID = static_cast<VMTypeID>(139);
+		inline static constexpr auto VTABLE = VTABLE_BGSBaseAlias;
+		inline static constexpr auto VMTYPEID = static_cast<VMTypeID>(139);
 
 		enum class FLAGS
 		{

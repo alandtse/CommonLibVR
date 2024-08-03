@@ -11,14 +11,14 @@ namespace RE
 	void UIBlurManager::DecrementBlurCount()
 	{
 		using func_t = decltype(&UIBlurManager::DecrementBlurCount);
-		REL::Relocation<func_t> func{ RELOCATION_ID(51900, 52777) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(51900, 52777) };
 		return func(this);
 	}
 
 	void UIBlurManager::IncrementBlurCount()
 	{
 		using func_t = decltype(&UIBlurManager::IncrementBlurCount);
-		REL::Relocation<func_t> func{ RELOCATION_ID(51899, 52776) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(51899, 52776) };
 		return func(this);
 	}
 }

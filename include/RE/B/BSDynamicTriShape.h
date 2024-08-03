@@ -7,6 +7,10 @@ namespace RE
 	class BSDynamicTriShape : public BSTriShape
 	{
 	public:
+		inline static constexpr auto RTTI = RTTI_BSDynamicTriShape;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSDynamicTriShape;
+		inline static constexpr auto VTABLE = VTABLE_BSDynamicTriShape;
+
 		struct DYNAMIC_TRISHAPE_RUNTIME_DATA
 		{
 #define RUNTIME_DATA_CONTENT            \

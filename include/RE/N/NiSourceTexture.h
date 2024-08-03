@@ -27,7 +27,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiSourceTexture;
-		inline static auto           Ni_RTTI = NiRTTI_NiSourceTexture;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiSourceTexture;
+		inline static constexpr auto VTABLE = VTABLE_NiSourceTexture;
 
 		~NiSourceTexture() override;  // 00
 
