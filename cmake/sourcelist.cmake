@@ -1210,6 +1210,7 @@ set(SOURCES
 	include/RE/M/MapInputHandler.h
 	include/RE/M/MapLookHandler.h
 	include/RE/M/MapMenu.h
+	include/RE/M/MapMenuMarker.h
 	include/RE/M/MapMoveHandler.h
 	include/RE/M/MapZoomHandler.h
 	include/RE/M/MarkerUsedData.h

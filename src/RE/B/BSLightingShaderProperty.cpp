@@ -22,14 +22,6 @@ namespace RE
 		projectedUVColor = a_other->projectedUVColor;
 		emissiveMult = a_other->emissiveMult;
 	}
-#ifdef ENABLE_SKYRIM_VR
-	void BSLightingShaderProperty::InvalidateTextures(std::uint32_t a_unk1)
-	{
-		using func_t = decltype(&BSLightingShaderProperty::InvalidateTextures);
-		REL::Relocation<func_t> func{ REL::ID(5388393136) };
-		func(this, a_unk1);
-	}
-#endif
 
 	void BSLightingShaderProperty::Data::Clear()
 	{
@@ -62,4 +54,13 @@ namespace RE
 		}
 		return newPass;
 	}
+
+#ifdef ENABLE_SKYRIM_VR
+	void BSLightingShaderProperty::InvalidateTextures(std::uint32_t a_unk1)
+	{
+		using func_t = decltype(&BSLightingShaderProperty::InvalidateTextures);
+		REL::Relocation<func_t> func{ REL::ID(5388393136) };
+		func(this, a_unk1);
+	}
+#endif
 }

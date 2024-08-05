@@ -38,10 +38,10 @@ namespace RE
 		return func(this, inMaterial, a2);
 	}
 
-	void BSShaderProperty::LoadBinary(NiStream& stream)
+	void BSShaderProperty::LoadBinary(NiStream& a_stream)
 	{
 		auto vtable = REL::Relocation<void***>(BSShaderProperty::VTABLE[0]);
 		auto baseMethod = reinterpret_cast<void (*)(BSShaderProperty*, NiStream&)>((vtable.get()[0x18]));
-		return baseMethod(this, stream);
+		return baseMethod(this, a_stream);
 	}
 }

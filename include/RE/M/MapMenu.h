@@ -126,46 +126,49 @@ namespace RE
 
 		struct RUNTIME_DATA2
 		{
-#define RUNTIME_DATA2_CONTENT                                \
-	RefHandle                unk30460;             /* 000 */ \
-	NiPoint3                 playerMarkerPosition; /* 004 */ \
-	BSTArray<Unk30470Entry*> unk30470;             /* 010 */ \
-	BSTArray<Unk30488Entry*> unk30488;             /* 028 */ \
-	MapCamera                camera;               /* 040 */ \
-	std::uint64_t            unk30530;             /* 0D0 */ \
-	TESWorldSpace*           worldSpace;           /* 0D8 */ \
-	GFxValue                 unk30540;             /* 0E0 */ \
-	std::uint32_t            unk30558;             /* 0F8 */ \
-	NiPoint3                 cameraPickOrigin;     /* 0FC */ \
-	NiPoint3                 cameraPickDirection;  /* 108 */ \
-	BSSoundHandle            unk30574;             /* 114 */ \
-	std::uint64_t            unk30580;             /* 120 */ \
-	std::uint64_t            unk30588;             /* 128 */ \
-	std::uint64_t            unk30590;             /* 130 */
+#define RUNTIME_DATA2_CONTENT                               \
+	RefHandle               unk30460;             /* 000 */ \
+	NiPoint3                playerMarkerPosition; /* 004 */ \
+	BSTArray<MapMenuMarker> mapMarkers;           /* 010 */ \
+	BSTArray<GFxValue>      markerData;           /* 028 */ \
+	MapCamera               camera;               /* 040 */ \
+	std::uint64_t           unk30530;             /* 0D0 */ \
+	TESWorldSpace*          worldSpace;           /* 0D8 */ \
+	GFxValue                mapMovie;             /* 0E0 */ \
+	std::int32_t            selectedMarker;       /* 0F8 */ \
+	NiPoint3                cameraPickOrigin;     /* 0FC */ \
+	NiPoint3                cameraPickDirection;  /* 108 */ \
+	BSSoundHandle           unk30574;             /* 114 */ \
+	std::uint64_t           unk30580;             /* 120 */ \
+	std::uint32_t           unk30588;             /* 128 */ \
+	bool                    controlsReady;        /* 12C */ \
+	std::uint8_t            unk3058D;             /* 12D */ \
+	std::uint16_t           unk3058E;             /* 12E */ \
+	std::uint64_t           unk30590;             /* 130 */
             RUNTIME_DATA2_CONTENT
 		};
 		static_assert(sizeof(RUNTIME_DATA2) == 0x138);
 
 		struct VR_RUNTIME_DATA2
 		{
-#define VR_RUNTIME_DATA2_CONTENT                               \
-	RefHandle                unk30530;             /* 000 */   \
-	NiPoint3                 playerMarkerPosition; /* 004 */   \
-	BSTArray<Unk30470Entry*> unk30540;             /* 010 */   \
-	BSTArray<Unk30488Entry*> unk30558;             /* 028 */   \
-	NiPoint3                 unk30570;             /* 040 */   \
-	std::uint32_t            unk3057C;             /* 30540 */ \
-	std::uint64_t            unk30580;             /* 30558 */ \
-	std::uint64_t            unk30588;             /* 30570 */ \
-	TESWorldSpace*           worldSpace;           /* 0D8 */   \
-	GFxValue                 unk30598;             /* 0E0 */   \
-	BSSoundHandle            unk305B0;             /* 114 */   \
-	std::uint64_t            unk305C0;             /* 120 */   \
-	std::uint64_t            unk305C8;             /* 128 */   \
-	std::uint64_t            unk305D0;             /* 128 */   \
-	std::uint64_t            unk305D8;             /* 128 */   \
-	std::uint64_t            unk305E0;             /* 128 */   \
-	std::uint64_t            unk305E8;             /* 130 */
+#define VR_RUNTIME_DATA2_CONTENT                              \
+	RefHandle               unk30530;             /* 000 */   \
+	NiPoint3                playerMarkerPosition; /* 004 */   \
+	BSTArray<MapMenuMarker> mapMarkers;           /* 010 */   \
+	BSTArray<GFxValue>      markerData;           /* 028 */   \
+	NiPoint3                unk30570;             /* 040 */   \
+	std::int32_t            selectedMarker;       /* 30540 */ \
+	std::uint64_t           unk30580;             /* 30558 */ \
+	std::uint64_t           unk30588;             /* 30570 */ \
+	TESWorldSpace*          worldSpace;           /* 0D8 */   \
+	GFxValue                mapMovie;             /* 0E0 */   \
+	BSSoundHandle           unk305B0;             /* 114 */   \
+	std::uint64_t           unk305C0;             /* 120 */   \
+	std::uint64_t           unk305C8;             /* 128 */   \
+	std::uint64_t           unk305D0;             /* 128 */   \
+	std::uint64_t           unk305D8;             /* 128 */   \
+	std::uint64_t           unk305E0;             /* 128 */   \
+	std::uint64_t           unk305E8;             /* 130 */
             VR_RUNTIME_DATA2_CONTENT;
 		};
 		static_assert(sizeof(VR_RUNTIME_DATA2) == 0xC0);
