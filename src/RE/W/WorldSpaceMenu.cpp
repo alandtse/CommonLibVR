@@ -1,8 +1,8 @@
 #ifdef SKYRIMVR
-#include "RE/W/WorldSpaceMenu.h"
-#include "RE/I/InterfaceStrings.h"
-#include "RE/U/UI.h"
-#include "RE/U/UIMessage.h"
+#	include "RE/W/WorldSpaceMenu.h"
+#	include "RE/I/InterfaceStrings.h"
+#	include "RE/U/UI.h"
+#	include "RE/U/UIMessage.h"
 
 namespace RE
 {
