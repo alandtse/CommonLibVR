@@ -202,7 +202,7 @@ namespace RE
 #	ifdef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(BGSSaveLoadManager) == 0x418);
 #	else
-	static_assert(sizeof(BGSSaveLoadManager) == 0x3D0);
+	static_assert(sizeof(BGSSaveLoadManager) == 0x3D8);
 #	endif
 #else
 	static_assert(sizeof(BGSSaveLoadManager) == 0x3D8);

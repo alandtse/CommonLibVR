@@ -145,5 +145,5 @@ namespace RE
 		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSVRInterface) == 0x208);
-#endif
 }
+#endif

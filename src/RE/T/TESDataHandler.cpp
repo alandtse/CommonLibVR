@@ -5,7 +5,11 @@
 
 namespace RE
 {
-	TESDataHandler* TESDataHandler::GetSingleton(bool a_VRESL)
+	TESDataHandler* TESDataHandler::GetSingleton(bool 
+	#ifdef SKYRIMVR
+		a_VRESL
+	#endif
+	)
 	{
 		REL::Relocation<TESDataHandler**> singleton{ RELOCATION_ID(514141, 400269) };
 #ifdef SKYRIMVR

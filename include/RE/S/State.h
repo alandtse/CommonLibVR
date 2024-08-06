@@ -83,7 +83,7 @@ namespace RE
 #	ifdef SKYRIM_SUPPORT_AE
 		static_assert(sizeof(State) == 0x120);
 #	else
-		static_assert(sizeof(State) == 0x118);
+		static_assert(sizeof(State) == 0x128);
 #	endif
 #endif
 	}

@@ -67,7 +67,7 @@ namespace RE
 			REX::W32::HINSTANCE        hInstance;                                            // 27B0
 		};
 #ifndef SKYRIMVR
-		static_assert(offsetof(RendererData, renderWindows) == 0x2780);
+		static_assert(offsetof(RendererData, renderWindows) == 0x48);
 		static_assert(offsetof(RendererData, lock) == 0x2780);
 #else
 		static_assert(offsetof(RendererData, renderWindows) == 0x48);

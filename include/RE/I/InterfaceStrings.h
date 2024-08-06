@@ -112,7 +112,7 @@ namespace RE
 	};
 #ifndef SKYRIMVR
 #	ifndef SKYRIM_SUPPORT_AE
-	static_assert(sizeof(InterfaceStrings) == 0x278);
+	static_assert(sizeof(InterfaceStrings) == 0x260);
 #	else
 	static_assert(sizeof(InterfaceStrings) == 0x260);
 #	endif

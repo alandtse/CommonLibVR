@@ -78,5 +78,5 @@ namespace RE
 		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSOpenVR) == 0x408);
-#endif
 }
+#endif

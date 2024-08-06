@@ -713,6 +713,10 @@ namespace REL
 #	define KEEP_FOR_RE()
 #endif
 
+#include "RE/B/BSCoreTypes.h"
+#include "RE/Offsets_VTABLE.h"
+#include "RE/S/SFTypes.h"
+
 #ifndef SKYRIMVR
 #	include "RE/Offsets.h"
 #	include "RE/Offsets_NiRTTI.h"
@@ -723,7 +727,3 @@ namespace REL
 #	include "RE/Offsets_VR_NiRTTI.h"
 #	include "RE/Offsets_VR_RTTI.h"
 #endif
-
-#include "RE/B/BSCoreTypes.h"
-#include "RE/Offsets_VTABLE.h"
-#include "RE/S/SFTypes.h"

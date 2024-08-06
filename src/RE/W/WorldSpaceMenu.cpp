@@ -1,3 +1,4 @@
+#ifdef SKYRIMVR
 #include "RE/W/WorldSpaceMenu.h"
 #include "RE/I/InterfaceStrings.h"
 #include "RE/U/UI.h"
@@ -86,3 +87,4 @@ namespace RE
 		return isTopMenu || a_message->menu == menuName;
 	}
 }
+#endif
