@@ -68,7 +68,6 @@
       },
       "generator": "Visual Studio 17 2022",
       "inherits": [
-        "vr",
         "cmake-dev",
         "vcpkg",
         "windows"
