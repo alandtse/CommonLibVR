@@ -30,7 +30,7 @@ jobs:
       - name: Setup vcpkg
         run: |
           mkdir -p ${{ env.VCPKG_DEFAULT_BINARY_CACHE }}
-          cd $env:VCPKG_INSTALLATION_ROOT
+          cd $env:VCPKG_ROOT
           ./bootstrap-vcpkg.bat
           ./vcpkg --version > ${{ github.workspace }}/vcpkg-version.txt
 
