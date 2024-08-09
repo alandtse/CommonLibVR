@@ -42,45 +42,6 @@ namespace RE
 		inline static constexpr auto      RTTI = RTTI_MapMenu;
 		constexpr static std::string_view MENU_NAME = "MapMenu";
 
-		struct Unk30470Entry
-		{
-			TESFullName*  unk00;
-			std::uint32_t unk08;
-			std::uint32_t unk0C;
-			TESForm*      unk10;
-			std::uint32_t unk18;
-			std::uint32_t unk1C;
-			std::uint32_t unk20;
-			std::uint32_t unk24;
-			std::uint32_t unk28;
-			std::uint32_t unk2C;
-			std::uint32_t unk30;
-			std::uint32_t unk34;
-		};
-		static_assert(sizeof(Unk30470Entry) == 0x38);
-
-		struct Unk30488Entry
-		{
-			std::uint32_t unk00;
-			std::uint32_t unk04;
-			std::uint32_t unk08;
-			std::uint32_t unk0C;
-			const char*   label;
-			std::uint32_t unk18;
-			std::uint32_t unk1C;
-			std::uint32_t unk20;
-			std::uint32_t unk24;
-			std::uint32_t unk28;
-			std::uint32_t unk2C;
-			std::uint32_t unk30;
-			std::uint32_t unk34;
-			std::uint32_t unk38;
-			std::uint32_t unk3C;
-			std::uint32_t unk40;
-			std::uint32_t unk44;
-		};
-		static_assert(sizeof(Unk30488Entry) == 0x48);
-
 		struct RUNTIME_DATA
 		{
 #define RUNTIME_DATA_CONTENT                               \
@@ -229,7 +190,7 @@ namespace RE
 		[[nodiscard]] inline RUNTIME_DATA* GetRuntimeData() noexcept
 		{
 			if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
-				return REL::RelocateMember<RUNTIME_DATA*>(this, 0x40, 0);
+				return &REL::RelocateMember<RUNTIME_DATA>(this, 0x40, 0);
 			} else {
 				return nullptr;
 			}
@@ -238,7 +199,7 @@ namespace RE
 		[[nodiscard]] inline const RUNTIME_DATA* GetRuntimeData() const noexcept
 		{
 			if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
-				return REL::RelocateMember<RUNTIME_DATA*>(this, 0x40, 0);
+				return &REL::RelocateMember<RUNTIME_DATA>(this, 0x40, 0);
 			} else {
 				return nullptr;
 			}
@@ -247,7 +208,7 @@ namespace RE
 		[[nodiscard]] inline RUNTIME_DATA2* GetRuntimeData2() noexcept
 		{
 			if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
-				return REL::RelocateMember<RUNTIME_DATA2*>(this, 0x30460, 0);
+				return &REL::RelocateMember<RUNTIME_DATA2>(this, 0x30460, 0);
 			} else {
 				return nullptr;
 			}
@@ -256,7 +217,7 @@ namespace RE
 		[[nodiscard]] inline const RUNTIME_DATA2* GetRuntimeData2() const noexcept
 		{
 			if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
-				return REL::RelocateMember<RUNTIME_DATA2*>(this, 0x30460, 0);
+				return &REL::RelocateMember<RUNTIME_DATA2>(this, 0x30460, 0);
 			} else {
 				return nullptr;
 			}
@@ -267,7 +228,7 @@ namespace RE
 			if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
 				return nullptr;
 			} else {
-				return REL::RelocateMember<VR_RUNTIME_DATA*>(this, 0, 0x60);
+				return &REL::RelocateMember<VR_RUNTIME_DATA>(this, 0, 0x60);
 			}
 		}
 
@@ -276,7 +237,7 @@ namespace RE
 			if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
 				return nullptr;
 			} else {
-				return REL::RelocateMember<VR_RUNTIME_DATA*>(this, 0, 0x60);
+				return &REL::RelocateMember<VR_RUNTIME_DATA>(this, 0, 0x60);
 			}
 		}
 
@@ -285,7 +246,7 @@ namespace RE
 			if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
 				return nullptr;
 			} else {
-				return REL::RelocateMember<VR_RUNTIME_DATA2*>(this, 0, 0x30530);
+				return &REL::RelocateMember<VR_RUNTIME_DATA2>(this, 0, 0x30530);
 			}
 		}
 
@@ -294,7 +255,7 @@ namespace RE
 			if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
 				return nullptr;
 			} else {
-				return REL::RelocateMember<VR_RUNTIME_DATA2*>(this, 0, 0x30530);
+				return &REL::RelocateMember<VR_RUNTIME_DATA2>(this, 0, 0x30530);
 			}
 		}
 		// members
