@@ -565,8 +565,8 @@ namespace RE
 
 	bool Actor::GetPlayerControls() const
 	{
-		if (movementController) {
-			return movementController->IsPlayerControlsEnabled();
+		if (GetActorRuntimeData().movementController) {
+			return GetActorRuntimeData().movementController->IsPlayerControlsEnabled();
 		}
 		return false;
 	}
@@ -641,7 +641,7 @@ namespace RE
 
 	float Actor::GetTrackedDamage() const
 	{
-		return currentProcess ? currentProcess->trackedDamage : 0.0f;
+		return GetActorRuntimeData().currentProcess ? GetActorRuntimeData().currentProcess->trackedDamage : 0.0f;
 	}
 
 	TESFaction* Actor::GetVendorFaction()
@@ -844,8 +844,8 @@ namespace RE
 
 	bool Actor::IsDoingFavor() const
 	{
-		if (currentProcess) {
-			return currentProcess->IsInCommandState();
+		if (GetActorRuntimeData().currentProcess) {
+			return GetActorRuntimeData().currentProcess->IsInCommandState();
 		}
 		return false;
 	}
@@ -1113,12 +1113,12 @@ namespace RE
 
 	void Actor::SetPlayerControls(bool a_enable)
 	{
-		if (movementController) {
+		if (GetActorRuntimeData().movementController) {
 			EnableAI(!a_enable);
 			if (a_enable) {
-				movementController->EnablePlayerControls();
+				GetActorRuntimeData().movementController->EnablePlayerControls();
 			} else {
-				movementController->DisablePlayerControls();
+				GetActorRuntimeData().movementController->DisablePlayerControls();
 			}
 		}
 	}

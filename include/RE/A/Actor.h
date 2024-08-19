@@ -589,7 +589,7 @@ namespace RE
 		[[nodiscard]] bool                      IsAIEnabled() const;
 		[[nodiscard]] bool                      IsAlarmed() const;
 		[[nodiscard]] bool                      IsAMount() const;
-		[[nodiscard]] bool                      IsAngryWithPlayer() const { return boolFlags.all(BOOL_FLAGS::kAngryWithPlayer); };
+		[[nodiscard]] bool                      IsAngryWithPlayer() const { return GetActorRuntimeData().boolFlags.all(BOOL_FLAGS::kAngryWithPlayer); };
 		[[nodiscard]] bool                      IsAnimationDriven() const;
 		[[nodiscard]] bool                      IsBeingRidden() const;
 		[[nodiscard]] bool                      IsBlocking() const;
