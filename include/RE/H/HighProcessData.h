@@ -5,6 +5,7 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSIntrusiveRefCounted.h"
 #include "RE/B/BSPointerHandle.h"
+#include "RE/B/BSResourceHandle.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTList.h"
@@ -171,14 +172,14 @@ namespace RE
 		void ClearHeadtrackTarget(HEAD_TRACK_TYPE a_headtrackType, bool a_defaultHold)
 		{
 			using func_t = decltype(&HighProcessData::ClearHeadtrackTarget);
-			REL::Relocation<func_t> func{ RELOCATION_ID(38726, 39756) };
+			static REL::Relocation<func_t> func{ RELOCATION_ID(38726, 39756) };
 			return func(this, a_headtrackType, a_defaultHold);
 		}
 
 		void SetHeadtrackTarget(HEAD_TRACK_TYPE a_headtrackType, TESObjectREFR* a_target)
 		{
 			using func_t = decltype(&HighProcessData::SetHeadtrackTarget);
-			REL::Relocation<func_t> func{ RELOCATION_ID(38760, 39783) };
+			static REL::Relocation<func_t> func{ RELOCATION_ID(38760, 39783) };
 			return func(this, a_headtrackType, a_target);
 		}
 
@@ -296,7 +297,7 @@ namespace RE
 		BSTSmartPointer<DialogueItem>                         greetTopic;                                // 360
 		std::uint32_t                                         unk368;                                    // 368
 		RefHandle                                             unk36C;                                    // 36C
-		void*                                                 unk370;                                    // 370
+		ModelDBHandle                                         faceGenGeomHandle;                         // 370
 		std::uint64_t                                         unk378;                                    // 378
 		NiPointer<NiBillboardNode>                            healthBarNode;                             // 380
 		float                                                 unk388;                                    // 388

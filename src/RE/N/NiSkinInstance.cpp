@@ -5,7 +5,7 @@ namespace RE
 	NiSkinInstance* NiSkinInstance::Create()
 	{
 		using func_t = decltype(&NiSkinInstance::Create);
-		REL::Relocation<func_t> func{ RELOCATION_ID(69804, 71227) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(69804, 71227) };
 		return func();
 	}
 }

@@ -19,7 +19,7 @@ namespace RE
 	PlayerControls* PlayerControls::Ctor()
 	{
 		using func_t = decltype(&PlayerControls::Ctor);
-		REL::Relocation<func_t> func{ RELOCATION_ID(41257, 42336) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(41257, 42336) };
 		return func(this);
 	}
 }

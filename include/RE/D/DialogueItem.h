@@ -65,7 +65,7 @@ namespace RE
 		DialogueItem* Ctor(TESQuest* a_quest, TESTopic* a_topic, TESTopicInfo* a_topicInfo, TESObjectREFR* a_speaker)
 		{
 			using func_t = decltype(&DialogueItem::Ctor);
-			REL::Relocation<func_t> func{ RELOCATION_ID(34413, 35220) };
+			static REL::Relocation<func_t> func{ RELOCATION_ID(34413, 35220) };
 			return func(this, a_quest, a_topic, a_topicInfo, a_speaker);
 		}
 		KEEP_FOR_RE()

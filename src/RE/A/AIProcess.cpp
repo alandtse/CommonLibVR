@@ -20,7 +20,7 @@ namespace RE
 	void AIProcess::ClearMuzzleFlashes()
 	{
 		using func_t = decltype(&AIProcess::ClearMuzzleFlashes);
-		REL::Relocation<func_t> func{ RELOCATION_ID(38495, 39504) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(38495, 39504) };
 		return func(this);
 	}
 
@@ -57,7 +57,7 @@ namespace RE
 	ObjectRefHandle AIProcess::GetHeadtrackTarget() const
 	{
 		using func_t = decltype(&AIProcess::GetHeadtrackTarget);
-		REL::Relocation<func_t> func{ RELOCATION_ID(38483, 39484) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(38483, 39484) };
 		return func(this);
 	}
 
@@ -202,10 +202,15 @@ namespace RE
 	}
 #endif
 
+	bool AIProcess::IsInCommandState() const
+	{
+		return high && high->inCommandState;
+	}
+
 	void AIProcess::KnockExplosion(Actor* a_actor, const NiPoint3& a_location, float a_magnitude)
 	{
 		using func_t = decltype(&AIProcess::KnockExplosion);
-		REL::Relocation<func_t> func{ RELOCATION_ID(38858, 39895) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(38858, 39895) };
 		return func(this, a_actor, a_location, a_magnitude);
 	}
 
@@ -217,7 +222,7 @@ namespace RE
 	void AIProcess::SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_ref)
 	{
 		using func_t = decltype(&AIProcess::SetActorsDetectionEvent);
-		REL::Relocation<func_t> func{ RELOCATION_ID(38311, 39286) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(38311, 39286) };
 		return func(this, a_actor, a_location, a_soundLevel, a_ref);
 	}
 
@@ -238,7 +243,7 @@ namespace RE
 	void AIProcess::SetHeadtrackTarget(Actor* a_owner, NiPoint3& a_targetPosition)
 	{
 		using func_t = decltype(&AIProcess::SetHeadtrackTarget);
-		REL::Relocation<func_t> func{ RELOCATION_ID(38850, 39887) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(38850, 39887) };
 		return func(this, a_owner, a_targetPosition);
 	}
 
@@ -259,14 +264,14 @@ namespace RE
 	bool AIProcess::SetupSpecialIdle(Actor* a_actor, DEFAULT_OBJECT a_action, TESIdleForm* a_idle, bool a_arg5, bool a_arg6, TESObjectREFR* a_target)
 	{
 		using func_t = decltype(&AIProcess::SetupSpecialIdle);
-		REL::Relocation<func_t> func{ RELOCATION_ID(38290, 39256) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(38290, 39256) };
 		return func(this, a_actor, a_action, a_idle, a_arg5, a_arg6, a_target);
 	}
 
 	void AIProcess::StopCurrentIdle(Actor* a_actor, bool a_forceIdleStop)
 	{
 		using func_t = decltype(&AIProcess::StopCurrentIdle);
-		REL::Relocation<func_t> func{ RELOCATION_ID(38291, 39257) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(38291, 39257) };
 		return func(this, a_actor, a_forceIdleStop);
 	}
 
@@ -283,7 +288,7 @@ namespace RE
 	void AIProcess::Update3DModel_Impl(Actor* a_actor)
 	{
 		using func_t = decltype(&AIProcess::Update3DModel_Impl);
-		REL::Relocation<func_t> func{ RELOCATION_ID(38404, 39395) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(38404, 39395) };
 		return func(this, a_actor);
 	}
 
