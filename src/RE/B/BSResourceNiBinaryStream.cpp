@@ -52,7 +52,7 @@ namespace RE
 	void BSResourceNiBinaryStream::set_endian_swap(bool a_doSwap)
 	{
 		using func_t = decltype(&BSResourceNiBinaryStream::set_endian_swap);
-		static  REL::Relocation<func_t> func{ RELOCATION_ID(69643, 71021) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(69643, 71021) };
 		return func(this, a_doSwap);
 	}
 
