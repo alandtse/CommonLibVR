@@ -11,7 +11,7 @@ namespace RE
 
 	TESDataHandler* TESDataHandler::GetSingleton(bool a_VRESL)
 	{
-		REL::Relocation<TESDataHandler**> singleton{ RELOCATION_ID(514141, 400269) };
+		static REL::Relocation<TESDataHandler**> singleton{ RELOCATION_ID(514141, 400269) };
 		if (REL::Module::IsVR() && a_VRESL && !VRcompiledFileCollection) {
 			const auto VRhandle = REX::W32::GetModuleHandleW(L"skyrimvresl");
 			if (VRhandle != NULL) {

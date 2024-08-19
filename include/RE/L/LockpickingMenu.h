@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BSResourceHandle.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/I/IMenu.h"
@@ -35,8 +36,8 @@ namespace RE
 		struct RUNTIME_DATA
 		{
 #define RUNTIME_DATA_CONTENT                            \
-	void*                 lockpickShiv;        /* 00 */ \
-	void*                 lockpick;            /* 08 */ \
+	ModelDBHandle         lockpickShiv;        /* 00 */ \
+	ModelDBHandle         pickModel;           /* 08 */ \
 	NiMatrix3             pickRotation;        /* 10 */ \
 	NiPoint3              lockRotCenter;       /* 34 */ \
 	NiControllerManager*  lockController;      /* 40 */ \

@@ -381,6 +381,7 @@ namespace RE
 		[[nodiscard]] TESContainer*                     GetContainer() const;
 		[[nodiscard]] BGSLocation*                      GetCurrentLocation() const;
 		[[nodiscard]] const char*                       GetDisplayFullName();
+		[[nodiscard]] float                             GetDistance(TESObjectREFR* a_other, bool a_disabledRefs = false, bool a_ignoreWorldspace = false) const;
 		[[nodiscard]] InventoryDropMap                  GetDroppedInventory();
 		[[nodiscard]] InventoryDropMap                  GetDroppedInventory(std::function<bool(TESBoundObject&)> a_filter);
 		[[nodiscard]] BGSLocation*                      GetEditorLocation() const;
@@ -412,6 +413,7 @@ namespace RE
 		[[nodiscard]] float                             GetScale() const;
 		[[nodiscard]] NiControllerSequence*             GetSequence(stl::zstring a_name) const;
 		[[nodiscard]] std::uint32_t                     GetStealValue(const InventoryEntryData* a_entryData, std::uint32_t a_numItems, bool a_useMult) const;
+		[[nodiscard]] float                             GetSubmergeLevel(float a_zPos, TESObjectCELL* a_cell) const;
 		void                                            GetTransform(NiTransform& a_transform) const;
 		[[nodiscard]] float                             GetWaterHeight() const;
 		[[nodiscard]] float                             GetWeight() const;

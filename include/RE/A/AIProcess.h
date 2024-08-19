@@ -179,6 +179,7 @@ namespace RE
 		bool                    InLowProcess() const;
 		bool                    IsArrested() const;
 		bool                    IsGhost() const;
+		bool                    IsInCommandState() const;
 		void                    SetActorRefraction(float a_refraction);
 		void                    KnockExplosion(Actor* a_actor, const NiPoint3& a_location, float a_magnitude);
 		bool                    PlayIdle(Actor* a_actor, TESIdleForm* a_idle, TESObjectREFR* a_target);

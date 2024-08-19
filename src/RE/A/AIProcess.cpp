@@ -202,6 +202,11 @@ namespace RE
 	}
 #endif
 
+	bool AIProcess::IsInCommandState() const
+	{
+		return high && high->inCommandState;
+	}
+
 	void AIProcess::KnockExplosion(Actor* a_actor, const NiPoint3& a_location, float a_magnitude)
 	{
 		using func_t = decltype(&AIProcess::KnockExplosion);

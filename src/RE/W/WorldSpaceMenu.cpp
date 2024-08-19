@@ -1,9 +1,9 @@
-#include "RE/W/WorldSpaceMenu.h"
-#include "RE/I/InterfaceStrings.h"
-#include "RE/U/UI.h"
-#include "RE/U/UIMessage.h"
-
 #ifdef ENABLE_SKYRIM_VR
+#	include "RE/W/WorldSpaceMenu.h"
+#	include "RE/I/InterfaceStrings.h"
+#	include "RE/U/UI.h"
+#	include "RE/U/UIMessage.h"
+
 namespace RE
 {
 	WorldSpaceMenu::~WorldSpaceMenu()
