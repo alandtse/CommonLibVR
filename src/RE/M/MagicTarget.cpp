@@ -45,28 +45,28 @@ namespace RE
 
 	Actor* MagicTarget::GetTargetAsActor()
 	{
-			if (MagicTargetIsActor()) {
-				return static_cast<Actor*>(this);
-			}
+		if (MagicTargetIsActor()) {
+			return static_cast<Actor*>(this);
+		}
 
-			return nullptr;
+		return nullptr;
 	}
 
 	bool MagicTarget::HasEffectWithArchetype(Archetype a_type)
 	{
-			auto effects = GetActiveEffectList();
-			if (!effects) {
-				return false;
-			}
-
-			EffectSetting* setting = nullptr;
-			for (auto& effect : *effects) {
-				setting = effect ? effect->GetBaseObject() : nullptr;
-				if (setting && setting->HasArchetype(a_type)) {
-					return true;
-				}
-			}
+		auto effects = GetActiveEffectList();
+		if (!effects) {
 			return false;
+		}
+
+		EffectSetting* setting = nullptr;
+		for (auto& effect : *effects) {
+			setting = effect ? effect->GetBaseObject() : nullptr;
+			if (setting && setting->HasArchetype(a_type)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	bool MagicTarget::HasMagicEffect(EffectSetting* a_effect)

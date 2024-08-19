@@ -106,7 +106,7 @@ namespace RE
 	};
 #ifndef SKYRIMVR
 #	ifndef SKYRIM_SUPPORT_AE
- //static_assert(sizeof(ControlMap) == 0x120);
+	//static_assert(sizeof(ControlMap) == 0x120);
 #	else
 	static_assert(sizeof(ControlMap) == 0x128);
 #	endif
