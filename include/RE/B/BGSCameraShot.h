@@ -80,18 +80,18 @@ namespace RE
 		void InitItemImpl() override;        // 13
 
 		// members
-		CAMERA_SHOT_DATA      data;   // 58 - DATA
-		std::uint32_t         pad84;  // 84
-		void*                 unk88;  // 88 - smart ptr
-		void*                 unk90;  // 90 - smart ptr
-		RefHandle             unk98;  // 98
-		std::uint32_t         unk9C;  // 9C
+		CAMERA_SHOT_DATA      data;          // 58 - DATA
+		std::uint32_t         pad84;         // 84
+		void*                 unk88;         // 88 - smart ptr
+		void*                 unk90;         // 90 - smart ptr
+		RefHandle             unk98;         // 98
+		std::uint32_t         unk9C;         // 9C
 		NiPointer<NiNode>     cameraNode;    // A0 - smart ptr
-		NiPointer<NiAVObject> unkA8;  // A8 - smart ptr
-		std::uint8_t          unkB0;  // B0
-		bool                  unkB1;  // B1
-		std::uint16_t         padB2;  // B2
-		std::uint32_t         padB4;  // B4
+		NiPointer<NiAVObject> unkA8;         // A8 - smart ptr
+		std::uint8_t          unkB0;         // B0
+		bool                  unkB1;         // B1
+		std::uint16_t         padB2;         // B2
+		std::uint32_t         padB4;         // B4
 		ModelDBHandle         cameraHandle;  // B8
 	private:
 		KEEP_FOR_RE()
