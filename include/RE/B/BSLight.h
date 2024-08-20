@@ -40,8 +40,8 @@ namespace RE
 		~BSLight() override;  // 00
 
 		// add
-		virtual bool Unk_02(NiLight* a_light);  // 02
-		virtual bool Unk_03();                  // 03
+		virtual bool SetLight(NiLight* a_light);  // 02
+		virtual bool IsShadowLight();             // 03
 
 		// members
 		float                  luminance;       // 010
@@ -55,7 +55,7 @@ namespace RE
 		bool                   portalStrict;    // 047
 		NiPointer<NiLight>     light;           // 048
 		NiPoint3               worldTranslate;  // 050
-		std::uint32_t          unk05C;          // 05C
+		std::uint32_t          frustrumCull;    // 05C
 		std::uint8_t           unk060;          // 060
 		bool                   affectLand;      // 061
 		bool                   affectWater;     // 062
