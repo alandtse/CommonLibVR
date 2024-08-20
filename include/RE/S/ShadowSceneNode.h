@@ -53,58 +53,58 @@ namespace RE
 		}
 
 		// members
-		std::uint64_t                   unk128;                  // 128
-		BSTArray<NiPointer<BSLight>>    activeLights;            // 130
-		BSTArray<NiPointer<BSLight>>    activeShadowLights;      // 148
-		BSTArray<NiPointer<BSLight>>    lightQueueAdd;           // 160
-		BSTArray<NiPointer<BSLight>>    lightQueueRemove;        // 178
-		BSTArray<NiPointer<BSLight>>    unk190;                  // 190 - unused?
-		mutable BSSpinLock              lightQueueLock;          // 1A8
-		BSTArray<NiPointer<NiAVObject>> litGeometry;             // 1B0
-		BSTArray<NiPointer<NiAVObject>> objectList1;             // 1C8
-		BSTArray<NiPointer<NiAVObject>> objectList2;             // 1E0
-		mutable BSSpinLock              objectListLock;          // 1F8
-		BSLight*                        sunLight;                // 200
-		BSLight*                        cloudLight;              // 208
-		BSShadowDirectionalLight*       shadowDirLight;          // 210
-		std::uint8_t                    sceneGraphIndex;         // 218
-		bool                            disableLightUpdate;      // 219
-		bool                            wireframe;               // 21A
-		bool                            opaqueWireframe;         // 21B
-		std::uint32_t                   pad21C;                  // 21C
-		NiPointer<BSFogProperty>        fogProperty;             // 220
-		BSPortalGraph*                  portalGraph;             // 228
-		BSTArray<BSShadowLight*>        shadowLightsAccum;       // 230
-		std::uint32_t                   firstPersonShadowMask;   // 248
-		std::uint32_t                   unk24C;                  // 24C
-		std::uint64_t                   unk250;                  // 250
-		std::uint64_t                   unk258;                  // 258
-		std::uint64_t                   unk260;                  // 260
-		std::uint64_t                   unk268;                  // 268
-		std::uint64_t                   unk270;                  // 270
-		std::uint64_t                   unk278;                  // 278
-		std::uint64_t                   unk280;                  // 280
-		std::uint64_t                   unk288;                  // 288
-		std::uint64_t                   unk290;                  // 290
-		std::uint64_t                   unk298;                  // 298
-		std::uint64_t                   unk2A0;                  // 2A0
-		std::uint64_t                   unk2A8;                  // 2A8
-		std::uint64_t                   unk2B0;                  // 2B0
-		std::uint64_t                   unk2B8;                  // 2B8
-		std::uint64_t                   unk2C0;                  // 2C0
-		std::uint64_t                   unk2C8;                  // 2C8
-		std::uint64_t                   unk2D0;                  // 2D0
-		std::uint64_t                   unk2D8;                  // 2D8
-		std::uint64_t                   unk2E0;                  // 2E0
-		NiPoint3                        lightingOffset;          // 2E8
-		NiPoint3                        cameraPos;               // 2F4
+		std::uint64_t                   unk128;                 // 128
+		BSTArray<NiPointer<BSLight>>    activeLights;           // 130
+		BSTArray<NiPointer<BSLight>>    activeShadowLights;     // 148
+		BSTArray<NiPointer<BSLight>>    lightQueueAdd;          // 160
+		BSTArray<NiPointer<BSLight>>    lightQueueRemove;       // 178
+		BSTArray<NiPointer<BSLight>>    unk190;                 // 190 - unused?
+		mutable BSSpinLock              lightQueueLock;         // 1A8
+		BSTArray<NiPointer<NiAVObject>> litGeometry;            // 1B0
+		BSTArray<NiPointer<NiAVObject>> objectList1;            // 1C8
+		BSTArray<NiPointer<NiAVObject>> objectList2;            // 1E0
+		mutable BSSpinLock              objectListLock;         // 1F8
+		BSLight*                        sunLight;               // 200
+		BSLight*                        cloudLight;             // 208
+		BSShadowDirectionalLight*       shadowDirLight;         // 210
+		std::uint8_t                    sceneGraphIndex;        // 218
+		bool                            disableLightUpdate;     // 219
+		bool                            wireframe;              // 21A
+		bool                            opaqueWireframe;        // 21B
+		std::uint32_t                   pad21C;                 // 21C
+		NiPointer<BSFogProperty>        fogProperty;            // 220
+		BSPortalGraph*                  portalGraph;            // 228
+		BSTArray<BSShadowLight*>        shadowLightsAccum;      // 230
+		std::uint32_t                   firstPersonShadowMask;  // 248
+		std::uint32_t                   unk24C;                 // 24C
+		std::uint64_t                   unk250;                 // 250
+		std::uint64_t                   unk258;                 // 258
+		std::uint64_t                   unk260;                 // 260
+		std::uint64_t                   unk268;                 // 268
+		std::uint64_t                   unk270;                 // 270
+		std::uint64_t                   unk278;                 // 278
+		std::uint64_t                   unk280;                 // 280
+		std::uint64_t                   unk288;                 // 288
+		std::uint64_t                   unk290;                 // 290
+		std::uint64_t                   unk298;                 // 298
+		std::uint64_t                   unk2A0;                 // 2A0
+		std::uint64_t                   unk2A8;                 // 2A8
+		std::uint64_t                   unk2B0;                 // 2B0
+		std::uint64_t                   unk2B8;                 // 2B8
+		std::uint64_t                   unk2C0;                 // 2C0
+		std::uint64_t                   unk2C8;                 // 2C8
+		std::uint64_t                   unk2D0;                 // 2D0
+		std::uint64_t                   unk2D8;                 // 2D8
+		std::uint64_t                   unk2E0;                 // 2E0
+		NiPoint3                        lightingOffset;         // 2E8
+		NiPoint3                        cameraPos;              // 2F4
 #ifdef SKYRIMVR
 		NiPoint3 unk328;  // 328
 #endif
-		bool                            allowLightRemoveQueues;  // 300
-		std::uint8_t                    pad301;                  // 301
-		std::uint16_t                   pad302;                  // 302
-		float                           windMagnitude;           // 304
+		bool          allowLightRemoveQueues;  // 300
+		std::uint8_t  pad301;                  // 301
+		std::uint16_t pad302;                  // 302
+		float         windMagnitude;           // 304
 	private:
 		KEEP_FOR_RE()
 	};
