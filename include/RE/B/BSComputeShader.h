@@ -19,6 +19,9 @@ namespace RE
 
 		// add
 		virtual void Dispatch(uint32_t a_techniqueId, uint32_t a_threadGroupCountX, uint32_t a_threadGroupCountY, uint32_t a_threadGroupCountZ);  // 02
+#if defined(EXCLUSIVE_SKYRIM_VR)
+		virtual void FakeDispatch(uint32_t a_techniqueId, uint32_t a_threadGroupCountX, uint32_t a_threadGroupCountY, uint32_t a_threadGroupCountZ);  // 03, VR Only. Instead of compiling it has a null function
+#endif
 
 		// members
 		const char*                                      name;        // 18

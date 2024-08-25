@@ -36,8 +36,14 @@ namespace RE
 		virtual void PreRender();                                                                                                      // 0A - { return; }
 		virtual void PostRender();                                                                                                     // 0B - { return; }
 		virtual void DispatchComputeShader(uint32_t a_threadGroupCountX, uint32_t a_threadGroupCountY, uint32_t a_threadGroupCountZ);  // 0C
-		virtual void GetShaderMacros(ShaderMacro* a_macros);                                                                           // 0D
-		virtual void LoadShaders();                                                                                                    // 0E
+#if defined(EXCLUSIVE_SKYRIM_VR)
+		virtual void FakeDispatchComputeShader(uint32_t a_threadGroupCountX, uint32_t a_threadGroupCountY, uint32_t a_threadGroupCountZ);  // VR 0D
+		virtual void GetShaderMacros(ShaderMacro* a_macros);                                                                               // 0D, VR 0E
+		virtual void LoadShaders();                                                                                                        // 0E
+#	elseif defined(EXCLUSIVE_SKYRIM_FLAT)
+		virtual void GetShaderMacros(ShaderMacro* a_macros);  // 0D, VR 0E
+		virtual void LoadShaders();                           // 0E
+#endif
 
 		static BSImagespaceShader* Create()
 		{
@@ -60,6 +66,18 @@ namespace RE
 		BSComputeShader*        computeShader;       // 198
 		bool                    unk1A0;              // 1A0
 		bool                    isComputeShader;     // 1A1
+
+#ifdef SKYRIM_CROSS_VR
+		void GetShaderMacros(ShaderMacro* a_macros)
+		{
+			REL::RelocateVirtual<decltype(&BSImagespaceShader::GetShaderMacros)>(0x0D, 0x0E, this, a_macros);
+		}
+
+		void LoadShaders()
+		{
+			REL::RelocateVirtual<decltype(&BSImagespaceShader::LoadShaders)>(0x0E, 0x0F, this);
+		}
+#endif
 
 	private:
 		BSImagespaceShader* Ctor()
