@@ -12,6 +12,7 @@ namespace RE
 	class BSPortalGraph;
 	class BSShadowLight;
 	class BSShadowDirectionalLight;
+	class NiLight;
 
 	class ShadowSceneNode : public NiNode
 	{
@@ -43,7 +44,7 @@ namespace RE
 		{
 #define RUNTIME_DATA_CONTENT                                                                    \
 	std::uint64_t                      unk128;                /* 128 */                         \
-	BSTArray<NiPointer<BSLight>>       activePointLights;     /* 130 */                         \
+	BSTArray<NiPointer<BSLight>>       activeLights;     /* 130 */                         \
 	BSTArray<NiPointer<BSShadowLight>> activeShadowLights;    /* 148 */                         \
 	BSTArray<NiPointer<BSLight>>       lightQueueAdd;         /* 160 */                         \
 	BSTArray<NiPointer<BSLight>>       lightQueueRemove;      /* 178 */                         \
@@ -123,12 +124,11 @@ namespace RE
 			return func(this, object);
 		}
 
-		BSLight* AddLight(NiLight* a_light, const LIGHT_CREATE_PARAMS& a_params)
-		{
-			using func_t = decltype(&ShadowSceneNode::AddLight);
-			static REL::Relocation<func_t> func{ RELOCATION_ID(99692, 106326) };
-			return func(this, a_light, a_params);
-		}
+		BSLight* AddLight(NiLight* a_light, const LIGHT_CREATE_PARAMS& a_params);
+		BSLight* GetLight(NiLight* a_light);
+		BSLight* GetPointLight(NiLight* a_light);
+		BSLight* GetShadowLight(NiLight* a_light);
+		void     RemoveLight(NiLight* a_light);
 
 		// members
 #ifndef SKYRIM_CROSS_VR

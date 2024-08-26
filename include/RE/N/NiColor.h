@@ -136,6 +136,11 @@ namespace RE
 			return *this;
 		}
 
+		NiColor operator-()
+		{
+			return NiColor(-red, -green, -blue);
+		}
+
 		friend NiColor operator-(float a_lhs, const NiColor& a_rhs)
 		{
 			return NiColor(
