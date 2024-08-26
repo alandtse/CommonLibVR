@@ -13,7 +13,16 @@ namespace RE
 		~BSImagespaceShaderBlur3() override;  // 00
 
 		// override (BSImagespaceShader)
-		void GetShaderMacros(ShaderMacro* a_macros) override;  // 0D
+#if !defined(SKYRIM_CROSS_VR)
+		void GetShaderMacros(ShaderMacro* a_macros) override;  // 0D, VR 0E
+#endif
+
+#ifdef SKYRIM_CROSS_VR
+		void GetShaderMacros(ShaderMacro* a_macros)
+		{
+			REL::RelocateVirtual<decltype(&BSImagespaceShaderBlur3::GetShaderMacros)>(0x0D, 0x0E, this, a_macros);
+		}
+#endif
 	private:
 		KEEP_FOR_RE()
 	};
