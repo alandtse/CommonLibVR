@@ -1,5 +1,6 @@
 #include "RE/S/ShadowSceneNode.h"
 #include "RE/B/BSLight.h"
+#include "RE/B/BSShadowLight.h"
 
 namespace RE
 {
@@ -21,7 +22,7 @@ namespace RE
 
 	BSLight* ShadowSceneNode::GetPointLight(NiLight* a_light)
 	{
-		for (auto& light : activeLights) {
+		for (auto& light : GetRuntimeData().activeLights) {
 			if (light && light->light.get() == a_light) {
 				return light.get();
 			}
@@ -31,7 +32,7 @@ namespace RE
 
 	BSLight* ShadowSceneNode::GetShadowLight(NiLight* a_light)
 	{
-		for (auto& light : activeShadowLights) {
+		for (auto& light : GetRuntimeData().activeShadowLights) {
 			if (light && light->light.get() == a_light) {
 				return light.get();
 			}
