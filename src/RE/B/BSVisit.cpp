@@ -65,6 +65,7 @@ namespace RE
 			return result;
 		}
 
+#ifndef SKYRIM_CROSS_VR
 		BSVisitControl TraverseScenegraphLights(NiAVObject* a_object, std::function<BSVisitControl(NiPointLight*)> a_func)
 		{
 			auto result = BSVisitControl::kContinue;
@@ -90,6 +91,7 @@ namespace RE
 
 			return result;
 		}
+#endif
 
 		BSVisitControl TraverseScenegraphObjects(NiAVObject* a_object, std::function<BSVisitControl(NiAVObject*)> a_func)
 		{
