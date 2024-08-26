@@ -1,8 +1,11 @@
 #pragma once
 
 #include "RE/B/BSLight.h"
+#include "RE/B/BSShaderRenderTargets.h"
 #include "RE/N/NiPlane.h"
 #include "RE/N/NiRect.h"
+
+#include "REX/W32/D3D.h"
 
 namespace RE
 {

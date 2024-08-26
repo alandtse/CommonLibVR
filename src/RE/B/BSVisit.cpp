@@ -80,7 +80,7 @@ namespace RE
 
 			auto node = a_object->AsNode();
 			if (node) {
-				for (auto& child : node->children) {
+				for (auto& child : node->GetChildren()) {
 					result = TraverseScenegraphLights(child.get(), a_func);
 					if (result == BSVisitControl::kStop) {
 						break;
