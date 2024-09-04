@@ -213,7 +213,19 @@ namespace RE
 			auto* deviceContext = GetSingleton()->GetRuntimeData().context;
 
 			auto& group = shadowState->GetVSConstantGroup(level);
-			deviceContext->VSSetConstantBuffers(static_cast<UINT>(level), 1, &group.buffer);
+
+			static const bool isVr = REL::Module::IsVR();
+			if (isVr) {
+				auto& vrData = shadowState->GetVRRuntimeData();
+				auto* buffer = reinterpret_cast<ID3D11Buffer*>(group.buffer);
+				const auto bufferIndex = static_cast<UINT>(level);
+				if (vrData.VSConstantBuffers[bufferIndex] != buffer) {
+					deviceContext->VSSetConstantBuffers(bufferIndex, 1, &group.buffer);
+					vrData.VSConstantBuffers[bufferIndex] = buffer;
+				}
+			} else {
+				deviceContext->VSSetConstantBuffers(static_cast<UINT>(level), 1, &group.buffer);
+			}
 		}
 
 		void Renderer::ApplyPSConstantGroup(ConstantGroupLevel level)
@@ -222,7 +234,19 @@ namespace RE
 			auto* deviceContext = GetSingleton()->GetRuntimeData().context;
 
 			auto& group = shadowState->GetPSConstantGroup(level);
-			deviceContext->PSSetConstantBuffers(static_cast<UINT>(level), 1, &group.buffer);
+
+			static const bool isVr = REL::Module::IsVR();
+			if (isVr) {
+				auto&      vrData = shadowState->GetVRRuntimeData();
+				auto*      buffer = reinterpret_cast<ID3D11Buffer*>(group.buffer);
+				const auto bufferIndex = static_cast<UINT>(level);
+				if (vrData.PSConstantBuffers[bufferIndex] != buffer) {
+					deviceContext->PSSetConstantBuffers(bufferIndex, 1, &group.buffer);
+					vrData.PSConstantBuffers[bufferIndex] = buffer;
+				}
+			} else {
+				deviceContext->PSSetConstantBuffers(static_cast<UINT>(level), 1, &group.buffer);
+			}
 		}
 	}
 }
