@@ -145,12 +145,11 @@ namespace RE
 			}
 		}
 
-		[[nodiscard]] inline std::uint8_t GetLoadedLightModCount() const noexcept
-		{
+		[[nodiscard]] inline std::uint16_t GetLoadedLightModCount() const noexcept {
 			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
-				return (!VRcompiledFileCollection) ? 0 : static_cast<std::uint8_t>(VRcompiledFileCollection->smallFiles.size());
+				return (!VRcompiledFileCollection) ? 0 : static_cast<std::uint16_t>(VRcompiledFileCollection->smallFiles.size());
 			} else {
-				return static_cast<std::uint8_t>(REL::RelocateMember<const TESFileCollection>(this, 0xD70, 0).smallFiles.size());
+				return static_cast<std::uint16_t>(REL::RelocateMember<const TESFileCollection>(this, 0xD70, 0).smallFiles.size());
 			}
 		}
 
