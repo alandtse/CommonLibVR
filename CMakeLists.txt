@@ -29,9 +29,12 @@ if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
 	message(FATAL_ERROR "in-source builds are not allowed")
 endif()
 
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
 find_package(spdlog CONFIG REQUIRED)
 find_path(RAPIDCSV_INCLUDE_DIRS "rapidcsv.h")
 find_package(directxtk CONFIG REQUIRED)
+find_package(OpenVR REQUIRED)
 
 include(cmake/sourcelist.cmake)
 include(cmake/testlist.cmake)
@@ -108,13 +111,11 @@ if(MSVC)
 	)
 endif()
 
-set(OPENVR_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/extern/openvr/headers)
 target_include_directories(
 	"${PROJECT_NAME}"
 	PUBLIC
 	"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
 	"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
-	"$<BUILD_INTERFACE:${OPENVR_INCLUDE_DIR}>"
 )
 
 target_include_directories(
@@ -134,6 +135,7 @@ target_link_libraries(
 	PUBLIC
 	spdlog::spdlog
 	Microsoft::DirectXTK
+	OpenVR::OpenVR
 	Advapi32.lib
 	D3D11.lib
 	d3dcompiler.lib

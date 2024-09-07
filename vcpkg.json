@@ -7,7 +7,7 @@
   "homepage": "https://github.com/CharmedBaryon/CommonLibSSE",
   "license": "MIT",
   "supports": "windows & x64",
-  "builtin-baseline": "fc3f61366102c1f0d4547c06d03c523bb18c13a7",
+  "builtin-baseline": "68d349964cb4e8da561fd849d9491e6ba11c5681",
   "dependencies": [
     {
       "name": "vcpkg-cmake-config",
@@ -16,7 +16,14 @@
     "directxmath",
     "directxtk",
     "rapidcsv",
-    "spdlog"
+    "spdlog",
+    "openvr"
+  ],
+  "overrides": [
+    {
+      "name": "fmt",
+      "version": "10.2.1"
+    }
   ],
   "features": {
     "tests": {

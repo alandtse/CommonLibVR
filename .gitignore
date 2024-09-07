@@ -9,7 +9,6 @@
 /vs*
 
 # files
-*.cmake
 *.zip
 CMakeUserPresets.json
 CMakeFiles
