@@ -11,7 +11,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSFadeNode;
-		inline static auto           Ni_RTTI = NiRTTI_BSFadeNode;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSFadeNode;
+		inline static constexpr auto VTABLE = VTABLE_BSFadeNode;
 
 		struct RUNTIME_DATA
 		{
@@ -73,9 +74,9 @@ namespace RE
 		RUNTIME_DATA_CONTENT  // 128, 150
 #endif
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(BSFadeNode) == 0x158);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(BSFadeNode) == 0x180);
 #endif
 }

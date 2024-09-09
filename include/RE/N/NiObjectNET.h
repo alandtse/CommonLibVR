@@ -13,7 +13,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiObjectNET;
-		inline static auto           Ni_RTTI = NiRTTI_NiObjectNET;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiObjectNET;
+		inline static constexpr auto VTABLE = VTABLE_NiObjectNET;
 
 		~NiObjectNET() override;  // 00
 

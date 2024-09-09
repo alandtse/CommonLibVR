@@ -75,6 +75,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MapCamera;
+		inline static constexpr auto VTABLE = VTABLE_MapCamera;
 
 		~MapCamera() override;  // 00
 

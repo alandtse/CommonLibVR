@@ -9,7 +9,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraInfoGeneralTopic;
-		inline static auto           EXTRADATATYPE = ExtraDataType::kInfoGeneralTopic;
+		inline static constexpr auto VTABLE = VTABLE_ExtraInfoGeneralTopic;
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kInfoGeneralTopic;
 
 		struct Data
 		{

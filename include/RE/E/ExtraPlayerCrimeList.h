@@ -12,7 +12,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraPlayerCrimeList;
-		inline static auto           EXTRADATATYPE = ExtraDataType::kPlayerCrimeList;
+		inline static constexpr auto VTABLE = VTABLE_ExtraPlayerCrimeList;
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPlayerCrimeList;
 
 		~ExtraPlayerCrimeList() override;  // 00
 

@@ -54,7 +54,7 @@ namespace RE
 		void AddModifier(NiPSysModifier* a_modifier)
 		{
 			using func_t = decltype(&NiParticleSystem::AddModifier);
-			REL::Relocation<func_t> func{ RELOCATION_ID(72799, 74499) };
+			static REL::Relocation<func_t> func{ RELOCATION_ID(72799, 74499) };
 			return func(this, a_modifier);
 		}
 
@@ -75,9 +75,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(NiParticleSystem) == 0x198);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(NiParticleSystem) == 0x1E0);
 #else
 	static_assert(sizeof(NiParticleSystem) == 0x110);

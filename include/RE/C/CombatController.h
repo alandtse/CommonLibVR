@@ -99,7 +99,7 @@ namespace RE
 		AITimer                        unk44;                 // 44
 		float                          lowMovementDelta;      // 4C
 		BSTArray<CombatAimController*> aimControllers;        // 50
-#if defined(ENABLE_SKYRIM_AE) && !(defined(ENABLE_SKYRIM_SE) || defined(ENABLE_SKYRIM_VR))
+#if defined(EXCLUSIVE_SKYRIM_AE)
 		AE_RUNTIME_DATA_CONTENT;
 #endif
 		RUNTIME_DATA_CONTENT;
@@ -107,7 +107,7 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if defined(ENABLE_SKYRIM_AE) && !(defined(ENABLE_SKYRIM_SE) || defined(ENABLE_SKYRIM_VR))
+#if defined(EXCLUSIVE_SKYRIM_AE)
 	static_assert(sizeof(CombatController) == 0xE0);
 #else
 	static_assert(sizeof(CombatController) == 0xD8);

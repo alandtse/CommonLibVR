@@ -30,10 +30,10 @@ namespace RE
 	};
 #	if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(WSActivateRollover) == 0x68);
-#	elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#	elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(WSActivateRollover) == 0x70);
 #	else
-	static_assert(sizeof(WSActivateRollover) == 0x68);
+	static_assert(sizeof(WSActivateRollover) == 0x58);
 #	endif
 }
 

@@ -9,6 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NiBillboardNode;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiBillboardNode;
+		inline static constexpr auto VTABLE = VTABLE_NiBillboardNode;
 
 		enum
 		{
@@ -54,10 +55,10 @@ namespace RE
 		// members
 		std::uint16_t userFlags;  // 128
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(NiBillboardNode) == 0x130);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-	static_assert(sizeof(NiBillboardNode) == 0x118);
+#elif defined(EXCLUSIVE_SKYRIM_VR)
+	static_assert(sizeof(NiBillboardNode) == 0x158);
 #else
 	static_assert(sizeof(NiBillboardNode) == 0x118);
 #endif

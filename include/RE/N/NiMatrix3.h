@@ -24,6 +24,10 @@ namespace RE
 		NiMatrix3(float a_x, float a_y, float a_z);
 		NiMatrix3(const NiPoint3& a_x, const NiPoint3& a_y, const NiPoint3& a_z);
 
+		NiPoint3 GetVectorX() const;
+		NiPoint3 GetVectorY() const;
+		NiPoint3 GetVectorZ() const;
+
 		bool      ToEulerAnglesXYZ(NiPoint3& a_angle) const;
 		bool      ToEulerAnglesXYZ(float& a_xAngle, float& a_yAngle, float& a_zAngle) const;
 		void      EulerAnglesToAxesZXY(const NiPoint3& a_angle);
@@ -34,6 +38,8 @@ namespace RE
 
 		bool      operator==(const NiMatrix3& a_rhs) const;
 		bool      operator!=(const NiMatrix3& a_rhs) const;
+		NiMatrix3 operator+(const NiMatrix3& a_rhs) const;
+		NiMatrix3 operator-(const NiMatrix3& a_rhs) const;
 		NiMatrix3 operator*(const NiMatrix3& a_rhs) const;
 		NiPoint3  operator*(const NiPoint3& a_point) const;
 		NiMatrix3 operator*(float a_scalar) const;

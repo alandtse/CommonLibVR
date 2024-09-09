@@ -10,7 +10,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiLight;
-		inline static auto           Ni_RTTI = NiRTTI_NiLight;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiLight;
+		inline static constexpr auto VTABLE = VTABLE_NiLight;
 
 		struct LIGHT_RUNTIME_DATA
 		{
@@ -50,9 +51,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(NiLight) == 0x140);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(NiLight) == 0x168);
 #endif
 }

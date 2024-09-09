@@ -8,6 +8,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_AutoMoveHandler;
+		inline static constexpr auto VTABLE = VTABLE_AutoMoveHandler;
 
 		~AutoMoveHandler() override;  // 00
 
@@ -17,9 +18,7 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-	static_assert(sizeof(AutoMoveHandler) == 0x10);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(AutoMoveHandler) == 0x28);
 #else
 	static_assert(sizeof(AutoMoveHandler) == 0x10);

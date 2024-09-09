@@ -41,7 +41,7 @@ namespace RE
 
 		struct RUNTIME_DATA
 		{
-#define RUNTIME_DATA_CONTENT             \
+#define RUNTIME_DATA_CONTENT                    \
 	bool          isProcessing; /* 80, VR 88 */ \
 	bool          beastForm;    /* 81, VR 89 */ \
 	bool          remapMode;    /* 82, VR 8A */ \
@@ -62,12 +62,12 @@ namespace RE
 
 		static MenuControls* GetSingleton();
 
-		void                         AddHandler(MenuEventHandler* a_handler);
+		void               AddHandler(MenuEventHandler* a_handler);
 		[[nodiscard]] bool InBeastForm() const noexcept { return GetRuntimeData().beastForm; }
-		void                         RegisterHandler(MenuEventHandler* a_handler);
-		void                         RemoveHandler(MenuEventHandler* a_handler);
-		bool                         QueueScreenshot();
-		void                         UnregisterHandler(MenuEventHandler* a_handler);
+		void               RegisterHandler(MenuEventHandler* a_handler);
+		void               RemoveHandler(MenuEventHandler* a_handler);
+		bool               QueueScreenshot();
+		void               UnregisterHandler(MenuEventHandler* a_handler);
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
@@ -101,7 +101,7 @@ namespace RE
 		FavoritesHandler*           favoritesHandler;      // 70
 		ScreenshotHandler*          screenshotHandler;     // 78
 #ifndef ENABLE_SKYRIM_VR
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		std::uint64_t occlusionCullingToggleHandler;  // 80
 #endif
 #ifndef SKYRIM_CROSS_VR
@@ -115,7 +115,7 @@ namespace RE
 #ifndef ENABLE_SKYRIM_VR
 	static_assert(sizeof(MenuControls) == 0x88);
 	static_assert(offsetof(MenuControls, remapMode) == 0x82);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(offsetof(MenuControls, remapMode) == 0x8A);
 	static_assert(sizeof(MenuControls) == 0x90);
 #else

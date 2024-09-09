@@ -9,7 +9,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSMultiBoundAABB;
-		inline static auto           Ni_RTTI = NiRTTI_BSMultiBoundAABB;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSMultiBoundAABB;
+		inline static constexpr auto VTABLE = VTABLE_BSMultiBoundAABB;
 
 		~BSMultiBoundAABB() override;  // 00
 

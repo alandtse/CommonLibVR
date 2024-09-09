@@ -8,6 +8,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MovementHandler;
+		inline static constexpr auto VTABLE = VTABLE_MovementHandler;
 
 		~MovementHandler() override;  // 00
 
@@ -18,9 +19,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(MovementHandler) == 0x10);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(MovementHandler) == 0x28);
 #endif
 }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BSResourceHandle.h"
 #include "RE/I/IMenu.h"
 #include "RE/M/MenuEventHandler.h"
 #include "RE/N/NiColor.h"
@@ -8,6 +9,7 @@
 
 namespace RE
 {
+	class BSFadeNode;
 	class BSLightingShaderProperty;
 	class NiAVObject;
 	class NiControllerManager;
@@ -55,8 +57,8 @@ namespace RE
 	std::uint32_t                   unk0A4;                        /* 0A4 */                            \
 	std::uint64_t                   unk0A8;                        /* 0A8 */                            \
 	NiPointer<NiNode>               mistModel;                     /* 0B0 - smart ptr */                \
-	void*                           mistModelDBHandle;             /* 0B8 */                            \
-	void*                           loadScreenDBHandle;            /* 0C0 */                            \
+	ModelDBHandle                   mistModelDBHandle;             /* 0B8 */                            \
+	ModelDBHandle                   loadScreenModelHandle;         /* 0C0 */                            \
 	NiPointer<BSFadeNode>           cameraPath;                    /* 0C8 - parent of cameraPathNode */ \
 	NiPointer<NiNode>               cameraPathNode;                /* 0D0 - smart ptr */                \
 	NiPointer<NiControllerSequence> cameraPathSequence;            /* 0D8 - smart ptr */                \
@@ -141,14 +143,12 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-#	ifdef ENABLE_SKYRIM_AE
-	static_assert(sizeof(MistMenu) == 0x150);
-#	else
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(MistMenu) == 0x140);
-#	endif
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(MistMenu) == 0x150);
+#else
+	static_assert(sizeof(MistMenu) == 0x30);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT

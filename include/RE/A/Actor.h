@@ -28,6 +28,8 @@
 
 namespace RE
 {
+	enum class FIGHT_REACTION;
+
 	class ActorMagicCaster;
 	class ActorMover;
 	class AIProcess;
@@ -138,6 +140,7 @@ namespace RE
 
 	public:
 		inline static constexpr auto RTTI = RTTI_Actor;
+		inline static constexpr auto VTABLE = VTABLE_Actor;
 		inline static constexpr auto FORMTYPE = FormType::ActorCharacter;
 
 		struct SlotTypes
@@ -262,6 +265,7 @@ namespace RE
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_Actor__ForEachSpellVisitor;
+			inline static constexpr auto VTABLE = VTABLE_Actor__ForEachSpellVisitor;
 
 			virtual ~ForEachSpellVisitor() = default;  // 00
 
@@ -497,6 +501,7 @@ namespace RE
 
 		bool                                    AddAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
 		void                                    AddCastPower(SpellItem* a_power);
+		void                                    AddDeathItems();
 		bool                                    AddSpell(SpellItem* a_spell);
 		void                                    AddToFaction(TESFaction* a_faction, std::int8_t a_rank);
 		void                                    AddWornOutfit(BGSOutfit* a_outfit, bool a_forceUpdate);
@@ -542,6 +547,7 @@ namespace RE
 		[[nodiscard]] TESForm*                  GetEquippedObjectInSlot(const BGSEquipSlot* slot) const;
 		[[nodiscard]] float                     GetEquippedWeight();
 		[[nodiscard]] std::int32_t              GetFactionRank(TESFaction* a_faction, bool a_isPlayer);
+		[[nodiscard]] FIGHT_REACTION            GetFactionReaction(Actor* a_other) const;
 		[[nodiscard]] std::int32_t              GetGoldAmount(bool a_noInit = false);
 		[[nodiscard]] ActorHandle               GetHandle();
 		[[nodiscard]] NiAVObject*               GetHeadPartObject(BGSHeadPart::HeadPartType a_type);
@@ -554,13 +560,16 @@ namespace RE
 		[[nodiscard]] bool                      GetMountedBy(NiPointer<Actor>& a_outRider);
 		[[nodiscard]] double                    GetMoveDirectionRelativeToFacing();
 		[[nodiscard]] ObjectRefHandle           GetOccupiedFurniture() const;
+		[[nodiscard]] bool                      GetPlayerControls() const;
 		[[nodiscard]] TESRace*                  GetRace() const;
 		[[nodiscard]] float                     GetRegenDelay(ActorValue a_actorValue) const;
 		[[nodiscard]] bool                      GetRider(NiPointer<Actor>& a_outRider);
 		[[nodiscard]] TESObjectARMO*            GetSkin() const;
 		[[nodiscard]] TESObjectARMO*            GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot, bool a_noInit = false);
 		[[nodiscard]] SOUL_LEVEL                GetSoulSize() const;
+		[[nodiscard]] TESNPC*                   GetTemplateBase();
 		[[nodiscard]] float                     GetTotalCarryWeight();
+		[[nodiscard]] float                     GetTrackedDamage() const;
 		[[nodiscard]] TESFaction*               GetVendorFaction();
 		[[nodiscard]] const TESFaction*         GetVendorFaction() const;
 		[[nodiscard]] float                     GetVoiceRecoveryTime();
@@ -580,12 +589,15 @@ namespace RE
 		[[nodiscard]] bool                      IsAIEnabled() const;
 		[[nodiscard]] bool                      IsAlarmed() const;
 		[[nodiscard]] bool                      IsAMount() const;
+		[[nodiscard]] bool                      IsAngryWithPlayer() const { return GetActorRuntimeData().boolFlags.all(BOOL_FLAGS::kAngryWithPlayer); };
 		[[nodiscard]] bool                      IsAnimationDriven() const;
 		[[nodiscard]] bool                      IsBeingRidden() const;
 		[[nodiscard]] bool                      IsBlocking() const;
 		[[nodiscard]] bool                      IsCasting(MagicItem* a_spell) const;
 		[[nodiscard]] bool                      IsCommandedActor() const;
+		[[nodiscard]] bool                      IsCombatTarget(Actor* a_other) const;
 		[[nodiscard]] bool                      IsCurrentShout(SpellItem* a_power);
+		[[nodiscard]] bool                      IsDoingFavor() const;
 		[[nodiscard]] bool                      IsDualCasting() const;
 		[[nodiscard]] bool                      IsEssential() const;
 		[[nodiscard]] bool                      IsFactionInCrimeGroup(const TESFaction* a_faction) const;
@@ -605,7 +617,6 @@ namespace RE
 		[[nodiscard]] bool                      IsProtected() const;
 		[[nodiscard]] bool                      IsRunning() const;
 		[[nodiscard]] bool                      IsSneaking() const;
-		[[nodiscard]] bool                      IsPointSubmergedMoreThan(const NiPoint3& a_pos, TESObjectCELL* a_cell, float a_waterLevel);
 		[[nodiscard]] bool                      IsSummoned() const noexcept;
 		[[nodiscard]] bool                      IsTrespassing() const;
 		void                                    KillImmediate();
@@ -619,10 +630,11 @@ namespace RE
 		bool                                    RemoveSpell(SpellItem* a_spell);
 		[[nodiscard]] std::int32_t              RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);
 		bool                                    SetDefaultOutfit(BGSOutfit* a_outfit, bool a_update3D);
+		void                                    SetHeading(float a_angle);  // SetRotationZ
 		void                                    SetLifeState(ACTOR_LIFE_STATE a_lifeState);
+		void                                    SetPlayerControls(bool a_enable);
+		void                                    SetLooking(float a_angle);  // SetRotationX
 		bool                                    SetSleepOutfit(BGSOutfit* a_outfit, bool a_update3D);
-		void                                    SetRotationX(float a_angle);
-		void                                    SetRotationZ(float a_angle);
 		void                                    StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning);
 		void                                    StopAlarmOnActor();
 		void                                    StopInteractingQuick(bool a_unk02);
@@ -791,6 +803,8 @@ namespace RE
 	};
 #ifndef ENABLE_SKYRIM_AE
 	static_assert(sizeof(Actor) == 0x2B0);
+#else
+	static_assert(sizeof(Actor) == 0x78);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT

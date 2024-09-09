@@ -47,14 +47,13 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-#	ifdef ENABLE_SKYRIM_AE
+
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
+	static_assert(sizeof(ConsoleNativeUIMenu) == 0x38);
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(ConsoleNativeUIMenu) == 0x48);
 #else
-	static_assert(sizeof(ConsoleNativeUIMenu) == 0x38);
-#endif
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-	static_assert(sizeof(ConsoleNativeUIMenu) == 0x48);
+	static_assert(sizeof(ConsoleNativeUIMenu) == 0x30);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT

@@ -10,7 +10,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraRefrPath;
-		inline static auto           EXTRADATATYPE = ExtraDataType::kRefrPath;
+		inline static constexpr auto VTABLE = VTABLE_ExtraRefrPath;
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRefrPath;
 
 		enum class PATH_TYPE
 		{

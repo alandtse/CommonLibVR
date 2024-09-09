@@ -51,10 +51,10 @@ namespace RE
 		struct DepthStencilRuntimeData
 		{
 		public:
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 #	define DEPTHSTENCIL_RUNTIME_DATA_CONTENT \
 		DepthStencilData depthStencils[RENDER_TARGET_DEPTHSTENCIL::kTOTAL]; /* 1FB8, VR 21D0, AE1130 0x2018*/
-//#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+//#elif defined(EXCLUSIVE_SKYRIM_VR)
 #else
 #	define DEPTHSTENCIL_RUNTIME_DATA_CONTENT \
 		DepthStencilData depthStencils[RENDER_TARGET_DEPTHSTENCIL::kVRTOTAL]; /* 1FB8, VR 21D0, AE1130 0x2018*/
@@ -66,7 +66,7 @@ namespace RE
 		{
 		public:
 			// members
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 #	define RUNTIME_DATA_CONTENT                                                                             \
 		std::uint32_t                      uiAdapter;                              /* 0018 */                \
 		REX::W32::DXGI_RATIONAL            desiredRefreshRate;                     /* 001C - refreshRate? */ \
@@ -111,11 +111,11 @@ namespace RE
 #endif
 			RUNTIME_DATA_CONTENT;
 		};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		static_assert(sizeof(RendererData) == 0x21B8);
 		static_assert(offsetof(RendererData, context) == 0x40);
 		static_assert(offsetof(RendererData, renderTargets) == 0xa48);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		static_assert(sizeof(RendererData) == 0x1fa8);
 		static_assert(offsetof(RendererData, context) == 0x40);
 		static_assert(offsetof(RendererData, renderTargets) == 0xa48);
@@ -138,8 +138,8 @@ namespace RE
 
 		struct ScreenSize
 		{
-			uint32_t width;   // 00
-			uint32_t height;  // 04
+			std::uint32_t width;   // 00
+			std::uint32_t height;  // 04
 		};
 		static_assert(sizeof(ScreenSize) == 0x8);
 
@@ -241,28 +241,27 @@ namespace RE
 			[[nodiscard]] static REX::W32::ID3D11Device* GetDevice();
 			[[nodiscard]] static RendererWindow*         GetCurrentRenderWindow();
 
+			// members
+			std::uint64_t unk000;      // 0000
+			bool          drawStereo;  // 0008
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
+			RUNTIME_DATA_CONTENT;  // 0010
+#elif defined(EXCLUSIVE_SKYRIM_VR)
+			RUNTIME_DATA_CONTENT;  // VR 18
+#endif
+
 		private:
 			void Begin(std::uint32_t windowID);
 			void Init(RendererInitOSData* a_data, ApplicationWindowProperties* a_windowProps, REX::W32::HWND a_window);
 			void End();
 			void Shutdown();
-
-		public:
-			// members
-			std::uint64_t unk000;      // 0000
-			bool          drawStereo;  // 0008
-#if !defined(ENABLE_SKYRIM_VR)
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-			std::uint64_t unk010;  // 0010
-#endif
-			RUNTIME_DATA_CONTENT;  // 0010, VR 18
 		};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		static_assert(sizeof(Renderer) == 0x21C0);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-		static_assert(sizeof(Renderer) == 0x1fc0);
+#elif defined(EXCLUSIVE_SKYRIM_VR)
+		static_assert(sizeof(Renderer) == 0x1FB0);
 #else
-		static_assert(sizeof(Renderer) == 0x1fb0);
+		static_assert(sizeof(Renderer) == 0x10);
 #endif
 	}
 }

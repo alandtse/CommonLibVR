@@ -11,6 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MovementControllerAI;
+		inline static constexpr auto VTABLE = VTABLE_MovementControllerAI;
 
 		~MovementControllerAI() override;  // 00
 
@@ -60,7 +61,7 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(MovementControllerAI) == 0x120);
 #endif
 }

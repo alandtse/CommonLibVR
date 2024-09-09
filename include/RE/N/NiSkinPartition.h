@@ -28,7 +28,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiSkinPartition;
-		inline static auto           Ni_RTTI = NiRTTI_NiSkinPartition;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiSkinPartition;
+		inline static constexpr auto VTABLE = VTABLE_NiSkinPartition;
 
 		class Partition
 		{

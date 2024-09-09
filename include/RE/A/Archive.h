@@ -13,6 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Archive;
+		inline static constexpr auto VTABLE = VTABLE_Archive;
 
 		~Archive() override;  // 00
 
@@ -34,7 +35,7 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(Archive) == 0x230);
 #endif
 }

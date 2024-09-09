@@ -8,6 +8,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ActivateHandler;
+		inline static constexpr auto VTABLE = VTABLE_ActivateHandler;
 
 		~ActivateHandler() override;  // 00
 
@@ -26,9 +27,7 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-	static_assert(sizeof(ActivateHandler) == 0x20);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(ActivateHandler) == 0x38);
 #else
 	static_assert(sizeof(ActivateHandler) == 0x20);

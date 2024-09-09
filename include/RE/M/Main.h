@@ -51,7 +51,7 @@ namespace RE
 	static_assert(sizeof(BSSaveDataSystemUtilityImage) == 0x18);
 
 	class Main :
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		public BSTEventSink<PositionPlayerEvent>,  // 00
 		public BSTEventSink<BSGamerProfileEvent>   // 08
 #else
@@ -60,13 +60,14 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Main;
+		inline static constexpr auto VTABLE = VTABLE_Main;
 
 		~Main() override;  // 00
 
 		// override (BSTEventSink<PositionPlayerEvent>)
 		BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;  // 01 - { return BSEventNotifyControl::kContinue; }
 
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		// override (BSTEventSink<BSGamerProfileEvent>)
 		BSEventNotifyControl ProcessEvent(const BSGamerProfileEvent* a_event, BSTEventSource<BSGamerProfileEvent>* a_eventSource) override;  // 01
 #endif
@@ -76,6 +77,7 @@ namespace RE
 		static NiCamera*   WorldRootCamera();
 		static Scenegraph* WorldRootNode();
 
+		bool IsRoomVisible(NiNode* a_room);
 		void SetActive(bool a_active);
 
 		// members
@@ -105,7 +107,7 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(Main) == 0x270);
 #else
 	static_assert(sizeof(Main) == 0x268);

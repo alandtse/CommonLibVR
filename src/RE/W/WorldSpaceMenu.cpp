@@ -1,9 +1,9 @@
-#include "RE/W/WorldSpaceMenu.h"
-#include "RE/I/InterfaceStrings.h"
-#include "RE/U/UI.h"
-#include "RE/U/UIMessage.h"
-
 #ifdef ENABLE_SKYRIM_VR
+#	include "RE/W/WorldSpaceMenu.h"
+#	include "RE/I/InterfaceStrings.h"
+#	include "RE/U/UI.h"
+#	include "RE/U/UIMessage.h"
+
 namespace RE
 {
 	WorldSpaceMenu::~WorldSpaceMenu()
@@ -16,7 +16,7 @@ namespace RE
 			menuNode.reset();
 		}
 
-		menuName.~BSFixedString();
+		GetVRRuntimeData().menuName.~BSFixedString();
 		fxDelegate.reset();
 		uiMovie.reset();
 	}
@@ -79,12 +79,12 @@ namespace RE
 			RE::IMenu* topMenu = 0;
 			UI::GetSingleton()->GetTopMostMenu(&topMenu, 15);
 			if (topMenu &&
-				topMenu->menuName == InterfaceStrings::GetSingleton()->hudMenu &&
+				topMenu->GetVRRuntimeData().menuName == InterfaceStrings::GetSingleton()->hudMenu &&
 				a_message->menu == InterfaceStrings::GetSingleton()->topMenu) {
 				isTopMenu = true;
 			}
 		}
-		return isTopMenu || a_message->menu == menuName;
+		return isTopMenu || a_message->menu == GetVRRuntimeData().menuName;
 	}
 }
 #endif

@@ -10,7 +10,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiPointLight;
-		inline static auto           Ni_RTTI = NiRTTI_NiPointLight;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiPointLight;
+		inline static constexpr auto VTABLE = VTABLE_NiPointLight;
 
 		struct POINT_LIGHT_RUNTIME_DATA
 		{
@@ -44,7 +45,7 @@ namespace RE
 		void SetLightAttenuation(float a_radius)
 		{
 			using func_t = decltype(&NiPointLight::SetLightAttenuation);
-			REL::Relocation<func_t> func{ RELOCATION_ID(17224, 17626) };
+			static REL::Relocation<func_t> func{ RELOCATION_ID(17224, 17626) };
 			return func(this, a_radius);
 		}
 
@@ -66,14 +67,14 @@ namespace RE
 		NiPointLight* Ctor()
 		{
 			using func_t = decltype(&NiPointLight::Ctor);
-			REL::Relocation<func_t> func{ RELOCATION_ID(69583, 70967) };
+			static REL::Relocation<func_t> func{ RELOCATION_ID(69583, 70967) };
 			return func(this);
 		}
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(NiPointLight) == 0x150);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(NiPointLight) == 0x178);
 #endif
 }

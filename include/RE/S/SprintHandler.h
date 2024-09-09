@@ -8,6 +8,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_SprintHandler;
+		inline static constexpr auto VTABLE = VTABLE_SprintHandler;
 
 		~SprintHandler() override;  // 00
 
@@ -17,9 +18,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(SprintHandler) == 0x18);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(SprintHandler) == 0x30);
 #endif
 }

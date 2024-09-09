@@ -40,6 +40,7 @@ namespace RE
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__IVirtualMachine;
+			inline static constexpr auto VTABLE = VTABLE_BSScript__IVirtualMachine;
 
 			using Severity = BSScript::ErrorLogger::Severity;
 			struct Awaitable
@@ -92,11 +93,11 @@ namespace RE
 			virtual bool BindNativeMethod(IFunction* a_fn) = 0;                                                                                                     // 18
 			virtual void SetCallableFromTasklets1(const char* a_className, const char* a_stateName, const char* a_fnName, bool a_callable) = 0;                     // 19
 			virtual void SetCallableFromTasklets2(const char* a_className, const char* a_fnName, bool a_callable) = 0;                                              // 1A
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 			virtual void New_1B(void) = 0;
 #endif
 			SKYRIM_REL_VR_VIRTUAL void ForEachBoundObject(VMHandle a_handle, IForEachScriptObjectFunctor* a_functor);  // 1B, 1C
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 			virtual void New_1D(void) = 0;
 #endif
 			SKYRIM_REL_VR_VIRTUAL bool                       FindBoundObject(VMHandle a_handle, const char* a_className, BSTSmartPointer<Object>& a_result) const;                                                                                   // 1C

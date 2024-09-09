@@ -46,6 +46,13 @@ namespace RE
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0x30, 0x40);
 		}
 
+		static void ToggleOpenSleepWaitMenu(bool a_sleeping)
+		{
+			using func_t = decltype(&SleepWaitMenu::ToggleOpenSleepWaitMenu);
+			static REL::Relocation<func_t> func{ RELOCATION_ID(51618, 52490) };
+			return func(a_sleeping);
+		}
+		
 		// members
 #ifndef SKYRIM_CROSS_VR
 		RUNTIME_DATA_CONTENT;  // 30, 40
@@ -53,14 +60,12 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-#	ifdef ENABLE_SKYRIM_AE
-	static_assert(sizeof(SleepWaitMenu) == 0x68);
-#	else
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(SleepWaitMenu) == 0x58);
-#	endif
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(SleepWaitMenu) == 0x68);
+#else
+	static_assert(sizeof(SleepWaitMenu) == 0x30);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT

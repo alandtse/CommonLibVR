@@ -17,7 +17,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSGeometry;
-		inline static auto           Ni_RTTI = NiRTTI_BSGeometry;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSGeometry;
+		inline static constexpr auto VTABLE = VTABLE_BSGeometry;
 
 		enum class Type
 		{
@@ -50,7 +51,7 @@ namespace RE
 
 		struct MODEL_DATA
 		{
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#if defined(EXCLUSIVE_SKYRIM_VR)
 #	define MODEL_DATA_CONTENT        \
 		NiBound  modelBound; /* 0 */  \
 		NiPoint3 unk148;     /* 10 */ \
@@ -60,9 +61,9 @@ namespace RE
 #endif
 			MODEL_DATA_CONTENT
 		};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		static_assert(sizeof(MODEL_DATA) == 0x10);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		static_assert(sizeof(MODEL_DATA) == 0x28);
 #endif
 
@@ -159,7 +160,7 @@ namespace RE
 		std::uint8_t                         pad31;  // 151
 		std::uint16_t                        pad32;  // 152
 		std::uint32_t                        pad34;  // 154
-#	elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#	elif defined(EXCLUSIVE_SKYRIM_VR)
 		stl::enumeration<Type, std::uint32_t> type;   // 190
 		std::uint8_t                          pad31;  // 194
 		std::uint16_t                         pad32;  // 195
@@ -167,9 +168,9 @@ namespace RE
 #	endif
 #endif
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(BSGeometry) == 0x158);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(BSGeometry) == 0x1A0);
 #endif
 }

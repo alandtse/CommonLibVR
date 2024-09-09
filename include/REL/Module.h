@@ -191,13 +191,13 @@ namespace REL
 
 			return true;
 		}
+#endif
 
 		static void reset()
 		{
 			_initialized = false;
 			_instance.clear();
 		}
-#endif
 
 		[[nodiscard]] std::uintptr_t base() const noexcept { return _base; }
 
@@ -256,7 +256,7 @@ namespace REL
 		{
 #ifndef ENABLE_SKYRIM_VR
 			return false;
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 			return true;
 #else
 			return GetRuntime() == Runtime::VR;

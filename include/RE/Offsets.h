@@ -207,7 +207,7 @@ namespace RE::Offset
 		constexpr auto Singleton = RELOCATION_ID(514622, 400782);
 	}
 
-#if !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_AE)
 	namespace GASActionBufferData
 	{
 		constexpr auto Vtbl = RELOCATION_ID(0, 242366);
@@ -239,7 +239,7 @@ namespace RE::Offset
 		constexpr auto InvokeNoReturn = RELOCATION_ID(80547, 82665);
 	}
 
-#if !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_AE)
 	namespace GFxPlaceObject2
 	{
 		constexpr auto Vtbl = RELOCATION_ID(0, 242592);

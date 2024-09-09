@@ -60,13 +60,11 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-#	ifdef ENABLE_SKYRIM_AE
-	static_assert(sizeof(KinectMenu) == 0x60);
-#	else
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(KinectMenu) == 0x50);
-#	endif
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(KinectMenu) == 0x60);
+#else
+	static_assert(sizeof(KinectMenu) == 0x30);
 #endif
 }

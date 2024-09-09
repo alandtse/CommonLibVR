@@ -9,7 +9,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSTextureSet;
-		inline static auto           Ni_RTTI = NiRTTI_BSTextureSet;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSTextureSet;
+		inline static constexpr auto VTABLE = VTABLE_BSTextureSet;
 
 		struct Textures
 		{

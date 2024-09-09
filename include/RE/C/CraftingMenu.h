@@ -42,6 +42,13 @@ namespace RE
 			REL::RelocateMember<CraftingSubMenus::CraftingSubMenu*>(this, 0x30, 0x40) = craftingSubMenu;
 		}
 
+		static void QuitMenu()
+		{
+			using func_t = decltype(&CraftingMenu::QuitMenu);
+			static REL::Relocation<func_t> func{ RELOCATION_ID(50447, 51352) };
+			return func();
+		}
+
 		// members
 #ifndef SKYRIM_CROSS_VR
 		CraftingSubMenus::CraftingSubMenu* subMenu;  // 30, 40
@@ -49,15 +56,11 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-#	ifdef ENABLE_SKYRIM_AE
-	static_assert(sizeof(CraftingMenu) == 0x48);
-#	else
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(CraftingMenu) == 0x38);
-#	endif
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(CraftingMenu) == 0x58);
 #else
-	static_assert(sizeof(CraftingMenu) == 0x50);
+	static_assert(sizeof(CraftingMenu) == 0x40);
 #endif
 }

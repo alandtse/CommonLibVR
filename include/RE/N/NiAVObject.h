@@ -4,6 +4,7 @@
 #include "RE/B/BSLightingShaderProperty.h"
 #include "RE/B/BSShaderMaterial.h"
 #include "RE/C/CollisionLayers.h"
+#include "RE/H/hkpMotion.h"
 #include "RE/N/NiBound.h"
 #include "RE/N/NiObjectNET.h"
 #include "RE/N/NiSmartPointer.h"
@@ -56,7 +57,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiAVObject;
-		inline static auto           Ni_RTTI = NiRTTI_NiAVObject;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiAVObject;
+		inline static constexpr auto VTABLE = VTABLE_NiAVObject;
 
 		enum class Flag
 		{
@@ -102,8 +104,8 @@ namespace RE
 
 		// add
 		virtual void UpdateControllers(NiUpdateData& a_data);  // 25
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-		virtual void Unk_VRFunc(void);
+#if defined(EXCLUSIVE_SKYRIM_VR)
+		virtual void ApplyLocalTransformToWorld();
 #endif
 		SKYRIM_REL_VR_VIRTUAL void        PerformOp(PerformOpFunc& a_func);                                                                   // 26
 		SKYRIM_REL_VR_VIRTUAL void        AttachProperty(NiAlphaProperty* a_property);                                                        // 27 - { return; }
@@ -128,6 +130,7 @@ namespace RE
 		[[nodiscard]] bhkCollisionObject* GetCollisionObject() const;
 		[[nodiscard]] COL_LAYER           GetCollisionLayer() const;
 		[[nodiscard]] BSGeometry*         GetFirstGeometryOfShaderType(BSShaderMaterial::Feature a_type);
+		[[nodiscard]] float               GetMass();
 		[[nodiscard]] TESObjectREFR*      GetUserData() const;
 		void                              SetUserData(TESObjectREFR* a_ref) noexcept;
 		[[nodiscard]] bool                HasAnimation() const;
@@ -136,7 +139,7 @@ namespace RE
 		void                              SetAppCulled(bool a_cull);
 		void                              SetCollisionLayer(COL_LAYER a_collisionLayer);
 		void                              SetCollisionLayerAndGroup(COL_LAYER a_collisionLayer, std::uint32_t a_group);
-		bool                              SetMotionType(std::uint32_t a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
+		bool                              SetMotionType(hkpMotion::MotionType a_motionType, bool a_recurse = true, bool a_force = false, bool a_allowActivate = true);
 		bool                              SetProjectedUVData(const NiColorA& a_projectedUVParams, const NiColor& a_projectedUVColor, bool a_isSnow);
 		void                              TintScenegraph(const NiColorA& a_color);
 		void                              Update(NiUpdateData& a_data);
@@ -166,7 +169,7 @@ namespace RE
 		NiTransform                  world;            // 07C
 		NiTransform                  previousWorld;    // 0B0
 		NiBound                      worldBound;       // 0E4
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		stl::enumeration<Flag, std::uint32_t> flags;                    // 0F4
 		TESObjectREFR*                        userData;                 // 0F8
 		float                                 fadeAmount;               // 100
@@ -179,7 +182,7 @@ namespace RE
 		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(NiAVObject) == 0x110);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 		float                                 unkF4;                    // 0F4
 		float                                 unkF8;                    // 0F8
 		float                                 unkFC;                    // 0FC

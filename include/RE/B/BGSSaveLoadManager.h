@@ -53,11 +53,13 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSSaveLoadManager;
+		inline static constexpr auto VTABLE = VTABLE_BGSSaveLoadManager;
 
 		class Thread : public BSThread
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BGSSaveLoadManager__Thread;
+			inline static constexpr auto VTABLE = VTABLE_BGSSaveLoadManager__Thread;
 
 			~Thread() override;  // 00
 
@@ -229,7 +231,7 @@ namespace RE
 		std::uint32_t unk2A0;                                                               // 2A0
 		std::uint32_t unk2A4;                                                               // 2A4
 		std::uint64_t unk2A8;                                                               // 2A8
-#if defined(ENABLE_SKYRIM_AE) && !(defined(ENABLE_SKYRIM_SE) || defined(ENABLE_SKYRIM_VR))  // AE 1130 specific change
+#if defined(EXCLUSIVE_SKYRIM_AE)  // AE 1130 specific change
 		std::uint16_t   unk2B0;                                                             // 2B0
 		std::uint16_t   unk2B2;                                                             // 2B2
 		std::uint64_t   unk2B8;                                                             // 2B8
@@ -247,14 +249,13 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-#	ifdef ENABLE_SKYRIM_AE
-	static_assert(sizeof(BGSSaveLoadManager) == 0x3D8);
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
+#	if defined(EXCLUSIVE_SKYRIM_AE)
+	static_assert(sizeof(BGSSaveLoadManager) == 0x420);
 #	else
-	static_assert(sizeof(BGSSaveLoadManager) == 0x418);
-	char (*__kaboom)[sizeof(BGSSaveLoadManager)] = 1;
+	static_assert(sizeof(BGSSaveLoadManager) == 0x3D8);
 #	endif
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(BGSSaveLoadManager) == 0x3D8);
 #else
 	static_assert(sizeof(BGSSaveLoadManager) == 0x2B0);

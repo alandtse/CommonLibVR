@@ -12,7 +12,7 @@ namespace RE
 {
 	BSInputDeviceManager* BSInputDeviceManager::GetSingleton()
 	{
-		REL::Relocation<BSInputDeviceManager**> singleton{ Offset::BSInputDeviceManager::Singleton };
+		REL::Relocation<BSInputDeviceManager**> singleton{ RELOCATION_ID(516574, 402776) };
 		return *singleton;
 	}
 
@@ -157,7 +157,7 @@ namespace RE
 		// Emits the last InputEvent
 		// resets the global BSInputEventQueue
 		using func_t = decltype(&BSInputDeviceManager::PollInputDevices);
-		REL::Relocation<func_t> func{ RELOCATION_ID(67315, 68617) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(67315, 68617) };
 		return func(this, a_secsSinceLastFrame);
 	}
 }

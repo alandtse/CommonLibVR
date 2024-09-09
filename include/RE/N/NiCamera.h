@@ -12,16 +12,17 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiCamera;
-		inline static auto           Ni_RTTI = NiRTTI_NiCamera;
+		inline static constexpr auto Ni_RTTI = NiRTTI_NiCamera;
+		inline static constexpr auto VTABLE = VTABLE_NiCamera;
 
 		struct RUNTIME_DATA
 		{
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 #	define RUNTIME_DATA_CONTENT float worldToCam[4][4]; /* 0 */
 			RUNTIME_DATA_CONTENT
 		};
 		static_assert(sizeof(RUNTIME_DATA) == 0x40);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 #	define RUNTIME_DATA_CONTENT                   \
 		float           worldToCam[4][4]; /* 0 */  \
 		NiFrustum*      viewFrustumPtr;   /* 40 */ \
@@ -62,18 +63,17 @@ namespace RE
 		bool          RegisterStreamables(NiStream& a_stream) override;   // 1A
 		void          SaveBinary(NiStream& a_stream) override;            // 1B - { return; }
 		bool          IsEqual(NiObject* a_object) override;               // 1C
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR))
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 		// The following are virtual functions past the point where VR compatibility breaks.
 		void UpdateWorldBound() override;                     // 2F - { return; }
 		void UpdateWorldData(NiUpdateData* a_data) override;  // 30
 #endif
 
-		bool WorldPtToScreenPt3(const NiPoint3& a_point, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance);
-
 		static bool BoundInFrustum(const NiBound& a_bound, NiCamera* a_camera);
 		static bool NodeInFrustum(NiAVObject* a_node, NiCamera* a_camera);
 		static bool PointInFrustum(const NiPoint3& a_point, NiCamera* a_camera, float a_radius);
-
+		bool        WindowPointToRay(std::int32_t a_x, std::int32_t a_y, NiPoint3& a_origin, NiPoint3& a_dir, float a_windowWidth, float a_windowHeight);
+		bool        WorldPtToScreenPt3(const NiPoint3& a_point, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance);
 		static bool WorldPtToScreenPt3(const float a_matrix[4][4], const NiRect<float>& a_port, const NiPoint3& a_point, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance);
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
@@ -104,9 +104,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE();
 	};
-#if !defined(ENABLE_SKYRIM_VR)
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(NiCamera) == 0x188);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(NiCamera) == 0x208);
 #endif
 }
