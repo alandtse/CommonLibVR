@@ -55,7 +55,7 @@ namespace RE
 
 			// override (CraftingSubMenu)
 			void Accept(CallbackProcessor* a_cbReg) override;          // 01
-			void Unk_02(void) override;                                // 02
+			void UpdateItemList() override;                            // 02
 			bool ProcessUserEvent(BSFixedString* a_control) override;  // 05
 
 			// members
