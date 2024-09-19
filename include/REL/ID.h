@@ -140,7 +140,7 @@ namespace REL
 				[](auto&& a_lhs, auto&& a_rhs) {
 					return a_lhs.id < a_rhs.id;
 				});
-			if (it == _id2offset.end()) {
+			if (it->id != a_id) {
 				stl::report_and_fail(
 					std::format(
 						"Failed to find the id within the address library: {}\n"
