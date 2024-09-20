@@ -140,12 +140,12 @@ namespace REL
 				[](auto&& a_lhs, auto&& a_rhs) {
 					return a_lhs.id < a_rhs.id;
 				});
-			if (it == _id2offset.end()) {
+			if (it->id != a_id) {
 				stl::report_and_fail(
 					std::format(
 						"Failed to find the id within the address library: {}\n"
-						"This means this script extender plugin is incompatible with the address "
-						"library for this version of the game, and thus does not support it."sv,
+						"This means that this script extender plugin needs a newer version of the "
+						"library than you currently have."sv,
 						a_id));
 			}
 
