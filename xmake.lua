@@ -46,7 +46,8 @@ option("tests")
 option_end()
 
 -- require packages
-add_requires("directxmath", "directxtk", "spdlog", { configs = { header_only = false, wchar = true, std_format = true } })
+add_requires("directxmath", "directxtk")
+add_requires("spdlog", { configs = { header_only = false, wchar = true, std_format = true } })
 
 if has_config("skyrim_vr") then
     add_requires("rapidcsv")
