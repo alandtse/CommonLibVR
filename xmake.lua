@@ -66,6 +66,7 @@ target("commonlibsse-ng")
 
     if has_config("skyrim_vr") then
         add_packages("rapidcsv", { public = true })
+        add_includedirs("extern/openvr/headers", { public = true })
     end
 
     if has_config("skse_xbyak") then
