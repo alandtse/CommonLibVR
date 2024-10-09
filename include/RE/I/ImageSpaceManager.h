@@ -142,7 +142,7 @@ namespace RE
 			ISIBLensFlares = 124,                          // BSImagespaceShaderISIBLensFlares, VR 130
 			ISLightingComposite = 125,                     // BSImagespaceShaderISLightingComposite
 			ISLightingCompositeNoDirectionalLight = 126,   // BSImagespaceShaderISLightingCompositeNoDirectionalLight
-			ISLightingCompositeMenu = 127,                 // BSImagespaceShaderISLightingCompositeMenu
+			ISLightingCompositeMenu = 127,                 // BSImagespaceShaderISLightingCompositeMenu, VR has BSImagespaceShaderISDiffScaleDownsampleDepthBufferCS
 			ISPerlinNoiseCS = 128,                         // BSImagespaceShaderISPerlinNoiseCS
 			ISPerlinNoise2DCS = 129,                       // BSImagespaceShaderISPerlinNoise2DCS, VR 135
 			ISReflectionsRayTracing = 130,                 // BSImagespaceShaderReflectionsRayTracing, VR 145
@@ -157,7 +157,7 @@ namespace RE
 			ISSAOCompositeFog = 139,                       // BSImagespaceShaderISSAOCompositeFog
 			ISSAOCompositeSAOFog = 140,                    // BSImagespaceShaderISSAOCompositeSAOFog
 			ISMinify = 141,                                // BSImagespaceShaderISMinify
-			ISMinifyContrast = 142,                        // BSImagespaceShaderISMinifyContrast
+			ISMinifyContrast = 142,                        // BSImagespaceShaderISMinifyContrast, VR has "BSImagespaceShaderLvl1PreTest" instead
 			ISSAORawAO = 143,                              // BSImagespaceShaderISSAORawAO
 			ISSAORawAONoTemporal = 144,                    // BSImagespaceShaderISSAORawAONoTemporal, instead VR CreateBSImagespaceShaderSetupPreTest at 144
 			ISSAORawAOCS = 145,                            // BSImagespaceShaderISSAORawAOCS
