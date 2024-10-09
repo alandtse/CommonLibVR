@@ -50,6 +50,8 @@ namespace RE
 		struct ShadowmapDescriptorVR
 		{
 #define SHADOWMAPDESCRIPTOR_CONTENT_VR                                         \
+	REX::W32::XMFLOAT4X4           lightTransform;    /* 00 */                 \
+	NiPointer<NiCamera>            camera;            /* 40 */                 \
 	uint64_t                       unkVR48;           /* VR 48 */              \
 	NiPointer<BSShaderAccumulator> shaderAccumulator; /* 48, VR 50 */          \
 	uint64_t                       unkVR58;           /* VR 58 */              \
@@ -67,8 +69,6 @@ namespace RE
 	BSCullingProcess*              cullingProcess;    /* E0, VR F8 */          \
 	uint16_t                       flags;             /* E8, VR 100 */
 
-			REX::W32::XMFLOAT4X4 lightTransform; /* 00 */
-			NiPointer<NiCamera>  camera;         /* 40 */
 			SHADOWMAPDESCRIPTOR_CONTENT_VR;
 		};
 		static_assert(sizeof(ShadowmapDescriptorVR) == 0x108);
@@ -151,31 +151,31 @@ namespace RE
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
-			return REL::RelocateMember<RUNTIME_DATA>(this, 0x520, 0);
+			return REL::RelocateMember<RUNTIME_DATA>(this, 0x148, 0x148);
 		}
 
 		[[nodiscard]] inline const RUNTIME_DATA& GetRuntimeData() const noexcept
 		{
-			return REL::RelocateMember<RUNTIME_DATA>(this, 0x520, 0);
+			return REL::RelocateMember<RUNTIME_DATA>(this, 0x148, 0x148);
 		}
 
 		[[nodiscard]] inline RUNTIME_DATA_VR& GetVRRuntimeData() noexcept
 		{
-			return REL::RelocateMember<RUNTIME_DATA_VR>(this, 0, 0x580);
+			return REL::RelocateMember<RUNTIME_DATA_VR>(this, 0x148, 0x148);
 		}
 
 		[[nodiscard]] inline const RUNTIME_DATA_VR& GetVRRuntimeData() const noexcept
 		{
-			return REL::RelocateMember<RUNTIME_DATA_VR>(this, 0, 0x580);
+			return REL::RelocateMember<RUNTIME_DATA_VR>(this, 0x148, 0x148);
 		}
 
 		// members
 		uint32_t shadowMapCount;  // 140
 		uint32_t unk144;          // 144
 #if defined(EXCLUSIVE_SKYRIM_FLAT)
-		RUNTIME_DATA_CONTENT;  // 520, VR 580
+		RUNTIME_DATA_CONTENT;  // 148, VR 148
 #elif defined(EXCLUSIVE_SKYRIM_VR)
-		RUNTIME_DATA_CONTENT_VR;  // 520, VR 580
+		RUNTIME_DATA_CONTENT_VR;  // 148, VR 148
 #endif
 	private:
 		KEEP_FOR_RE()
