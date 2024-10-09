@@ -96,16 +96,6 @@ namespace RE
 	bool                            drawFocusShadows;             /* 558, VR 5B8  */
             RUNTIME_DATA_CONTENT
 		};
-#if defined(EXCLUSIVE_SKYRIM_FLAT)
-		static_assert(sizeof(RUNTIME_DATA) == 0x418);
-		static_assert(offsetof(RUNTIME_DATA, shadowLightIndex) == 0x3D8);
-		static_assert(offsetof(RUNTIME_DATA, unk524) == 0x3DC);
-		static_assert(offsetof(RUNTIME_DATA, cullingObjects) == 0x3E0);
-		static_assert(offsetof(RUNTIME_DATA, shadowBiasScale) == 0x3F8);
-		static_assert(offsetof(RUNTIME_DATA, port) == 0x3FC);
-		static_assert(offsetof(RUNTIME_DATA, shadowSceneNodeIndex) == 0x40C);
-		static_assert(offsetof(RUNTIME_DATA, drawFocusShadows) == 0x410);
-#endif
 
 		struct RUNTIME_DATA_VR
 		{
@@ -121,16 +111,6 @@ namespace RE
 	bool                            drawFocusShadows;             /* 558, VR 5B8  */
             RUNTIME_DATA_CONTENT_VR
 		};
-#if defined(EXCLUSIVE_SKYRIM_VR)
-		static_assert(sizeof(RUNTIME_DATA_VR) == 0x478);
-		static_assert(offsetof(RUNTIME_DATA_VR, shadowLightIndex) == 0x438);
-		static_assert(offsetof(RUNTIME_DATA_VR, unk524) == 0x43C);
-		static_assert(offsetof(RUNTIME_DATA_VR, cullingObjects) == 0x440);
-		static_assert(offsetof(RUNTIME_DATA_VR, shadowBiasScale) == 0x458);
-		static_assert(offsetof(RUNTIME_DATA_VR, port) == 0x45C);
-		static_assert(offsetof(RUNTIME_DATA_VR, shadowSceneNodeIndex) == 0x46C);
-		static_assert(offsetof(RUNTIME_DATA_VR, drawFocusShadows) == 0x470);
-#endif
 
 		~BSShadowLight() override;  // 00
 
@@ -182,8 +162,22 @@ namespace RE
 	};
 #if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(BSShadowLight) == 0x560);
+	static_assert(offsetof(BSShadowLight, shadowLightIndex) == 0x520);
+	static_assert(offsetof(BSShadowLight, unk524) == 0x524);
+	static_assert(offsetof(BSShadowLight, cullingObjects) == 0x528);
+	static_assert(offsetof(BSShadowLight, shadowBiasScale) == 0x540);
+	static_assert(offsetof(BSShadowLight, port) == 0x544);
+	static_assert(offsetof(BSShadowLight, shadowSceneNodeIndex) == 0x554);
+	static_assert(offsetof(BSShadowLight, drawFocusShadows) == 0x558);
 #elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(BSShadowLight) == 0x5C0);
+	static_assert(offsetof(BSShadowLight, shadowLightIndex) == 0x580);
+	static_assert(offsetof(BSShadowLight, unk524) == 0x584);
+	static_assert(offsetof(BSShadowLight, cullingObjects) == 0x588);
+	static_assert(offsetof(BSShadowLight, shadowBiasScale) == 0x5A0);
+	static_assert(offsetof(BSShadowLight, port) == 0x5A4);
+	static_assert(offsetof(BSShadowLight, shadowSceneNodeIndex) == 0x5B4);
+	static_assert(offsetof(BSShadowLight, drawFocusShadows) == 0x5B8);
 #else
 	static_assert(sizeof(BSShadowLight) == 0x148);
 #endif
