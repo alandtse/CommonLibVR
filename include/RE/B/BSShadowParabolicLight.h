@@ -24,5 +24,11 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
+#if defined(EXCLUSIVE_SKYRIM_FLAT)
 	static_assert(sizeof(BSShadowParabolicLight) == 0x560);
+#elif defined(EXCLUSIVE_SKYRIM_VR)
+	static_assert(sizeof(BSShadowParabolicLight) == 0x5C0);
+#else
+	static_assert(sizeof(BSShadowParabolicLight) == 0x148);
+#endif
 }
