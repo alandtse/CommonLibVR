@@ -422,7 +422,7 @@ namespace RE
 		SKYRIM_REL_VR_VIRTUAL void                       InitiateSpectator(Actor* a_target);                                                                                                                                              // 0DC - { return; }
 		SKYRIM_REL_VR_VIRTUAL void                       InitiateFlee(TESObjectREFR* a_fleeRef, bool a_runOnce, bool a_knows, bool a_combatMode, TESObjectCELL* a_cell, TESObjectREFR* a_ref, float a_fleeFromDist, float a_fleeToDist);  // 0DD
 		SKYRIM_REL_VR_VIRTUAL void                       InitiateGetUpPackage();                                                                                                                                                          // 0DE
-		SKYRIM_REL_VR_VIRTUAL void                       PutCreatedPackage(TESPackage* a_package, bool a_tempPackage, bool a_createdPackage, bool a_allowFromFurniture);                                                                  // 0DF
+		SKYRIM_REL_VR_VIRTUAL void                       PutCreatedPackage(TESPackage* a_package, bool a_tempPackage, bool a_createdPackage);                                                                                             // 0DF
 		SKYRIM_REL_VR_VIRTUAL void                       UpdateAlpha();                                                                                                                                                                   // 0E0
 		SKYRIM_REL_VR_VIRTUAL void                       SetAlpha(float a_alpha = 1.0);                                                                                                                                                   // 0E1
 		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL float        GetAlpha();                                                                                                                                                                      // 0E2
@@ -594,8 +594,8 @@ namespace RE
 		[[nodiscard]] bool                      IsBeingRidden() const;
 		[[nodiscard]] bool                      IsBlocking() const;
 		[[nodiscard]] bool                      IsCasting(MagicItem* a_spell) const;
-		[[nodiscard]] bool                      IsCommandedActor() const;
 		[[nodiscard]] bool                      IsCombatTarget(Actor* a_other) const;
+		[[nodiscard]] bool                      IsCommandedActor() const;
 		[[nodiscard]] bool                      IsCurrentShout(SpellItem* a_power);
 		[[nodiscard]] bool                      IsDoingFavor() const;
 		[[nodiscard]] bool                      IsDualCasting() const;
@@ -614,6 +614,7 @@ namespace RE
 		[[nodiscard]] bool                      IsOnMount() const;
 		[[nodiscard]] bool                      IsOverEncumbered() const;
 		[[nodiscard]] bool                      IsPlayerTeammate() const;
+		[[nodiscard]] bool                      IsPowerAttacking() const;
 		[[nodiscard]] bool                      IsProtected() const;
 		[[nodiscard]] bool                      IsRunning() const;
 		[[nodiscard]] bool                      IsSneaking() const;

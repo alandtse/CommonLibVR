@@ -350,4 +350,10 @@ namespace SKSE
 	{
 		return reinterpret_cast<const PluginDeclaration*>(GetProcAddress(reinterpret_cast<HMODULE>(&__ImageBase), "SKSEPlugin_Version"));
 	}
+
+	const PluginVersionData* PluginVersionData::GetSingleton() noexcept
+	{
+		return reinterpret_cast<const PluginVersionData*>(REX::W32::GetProcAddress(REX::W32::GetCurrentModule(), "SKSEPlugin_Version"));
+	}
+
 }
