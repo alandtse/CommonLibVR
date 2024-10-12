@@ -551,7 +551,7 @@ namespace RE
 	bool Actor::GetPlayerControls() const
 	{
 		if (movementController) {
-			return movementController->IsPlayerControlsEnabled();
+			return movementController->GetControlsDriven();
 		}
 		return false;
 	}
@@ -771,7 +771,7 @@ namespace RE
 	bool Actor::IsAlarmed() const
 	{
 		auto currentPackage = GetCurrentPackage();
-		return currentPackage && currentPackage->packData.packType.get() == PACKAGE_PROCEDURE_TYPE::kAlarm;
+		return currentPackage && currentPackage->packData.packType.get() == PACKAGE_TYPE::kAlarm;
 	}
 
 	bool Actor::IsAMount() const
@@ -938,6 +938,13 @@ namespace RE
 		return boolBits.all(BOOL_BITS::kPlayerTeammate);
 	}
 
+	bool Actor::IsPowerAttacking() const
+	{
+		using func_t = decltype(&Actor::IsPowerAttacking);
+		static REL::Relocation<func_t> func{ RELOCATION_ID(37639, 38592) };
+		return func(this);
+	}
+
 	bool Actor::IsProtected() const
 	{
 		return boolFlags.all(BOOL_FLAGS::kProtected);
@@ -1095,9 +1102,9 @@ namespace RE
 		if (movementController) {
 			EnableAI(!a_enable);
 			if (a_enable) {
-				movementController->EnablePlayerControls();
+				movementController->SetControlsDriven();
 			} else {
-				movementController->DisablePlayerControls();
+				movementController->SetAIDriven();
 			}
 		}
 	}
