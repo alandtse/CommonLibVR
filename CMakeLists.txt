@@ -116,6 +116,7 @@ target_link_libraries(
 		binary_io::binary_io
 		spdlog::spdlog
  		Advapi32.lib
+		bcrypt.lib
 		D3D11.lib
 		d3dcompiler.lib
 		Dbghelp.lib
