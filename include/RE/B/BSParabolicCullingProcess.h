@@ -13,7 +13,7 @@ namespace RE
 		inline static constexpr auto VTABLE = VTABLE_BSParabolicCullingProcess;
 
 		// override (BSCullingProcess)
-		const NiRTTI*              GetRTTI() const override;                           // 00
+		const NiRTTI* GetRTTI() const override;  // 00
 
 		~BSParabolicCullingProcess() override;  // 15
 
