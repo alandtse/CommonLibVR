@@ -11,7 +11,7 @@ namespace RE
 {
 	TES* TES::GetSingleton()
 	{
-		REL::Relocation<TES**> singleton{ RELOCATION_ID(516923, 403450) };
+		static REL::Relocation<TES**> singleton{ RELOCATION_ID(516923, 403450) };
 		return *singleton;
 	}
 

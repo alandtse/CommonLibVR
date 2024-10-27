@@ -39,7 +39,7 @@ namespace RE
 	float TESForm::GetWeight() const
 	{
 		using func_t = decltype(&TESForm::GetWeight);
-		REL::Relocation<func_t> func{ RELOCATION_ID(14809, 14988) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(14809, 14988) };
 		return func(this);
 	}
 

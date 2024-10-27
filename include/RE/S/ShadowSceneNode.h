@@ -120,7 +120,7 @@ namespace RE
 		void AttachObject(RE::NiAVObject* object)
 		{
 			using func_t = decltype(&ShadowSceneNode::AttachObject);
-			REL::Relocation<func_t> func{ RELOCATION_ID(99696, 106330) };
+			static REL::Relocation<func_t> func{ RELOCATION_ID(99696, 106330) };
 			return func(this, object);
 		}
 
