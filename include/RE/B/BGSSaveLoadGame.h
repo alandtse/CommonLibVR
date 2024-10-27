@@ -76,7 +76,7 @@ namespace RE
 
 		static BGSSaveLoadGame* GetSingleton()
 		{
-			REL::Relocation<BGSSaveLoadGame**> singleton{ RELOCATION_ID(516851, 403330) };
+			static REL::Relocation<BGSSaveLoadGame**> singleton{ RELOCATION_ID(516851, 403330) };
 			return *singleton;
 		}
 

@@ -4,7 +4,7 @@ namespace RE
 {
 	BGSSaveLoadManager* BGSSaveLoadManager::GetSingleton()
 	{
-		REL::Relocation<BGSSaveLoadManager**> singleton{ RELOCATION_ID(516860, 403340) };
+		static REL::Relocation<BGSSaveLoadManager**> singleton{ RELOCATION_ID(516860, 403340) };
 		return *singleton;
 	}
 

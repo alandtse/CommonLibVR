@@ -47,7 +47,7 @@ namespace RE
 			[[nodiscard]] static BSShaderAccumulator* GetCurrentAccumulator()
 			{
 				using func_t = decltype(&GetCurrentAccumulator);
-				REL::Relocation<func_t> func{ REL::RelocationID(98997, 105651) };
+				static REL::Relocation<func_t> func{ REL::RelocationID(98997, 105651) };
 				return func();
 			}
 
