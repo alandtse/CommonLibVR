@@ -12,7 +12,7 @@ set_warnings("allextra")
 set_encodings("utf-8")
 
 -- add rules
-add_rules("mode.debug", "mode.release")
+add_rules("mode.debug", "mode.releasedbg")
 
 -- define options
 option("skyrim_se")
@@ -62,6 +62,9 @@ target("commonlibsse-ng")
     -- set target kind
     set_kind("static")
 
+    -- set build by default
+    set_default(os.scriptdir() == os.projectdir())
+
     -- add packages
     add_packages("directxmath", "directxtk", "spdlog", { public = true })
 
@@ -78,7 +81,7 @@ target("commonlibsse-ng")
     add_options("skyrim_se", "skyrim_ae", "skyrim_vr", "skse_xbyak", "tests", { public = true })
 
     -- add system links
-    add_syslinks("advapi32", "d3d11", "d3dcompiler", "dbghelp", "dxgi", "ole32", "shell32", "user32", "version")
+    add_syslinks("advapi32", "bcrypt", "d3d11", "d3dcompiler", "dbghelp", "dxgi", "ole32", "shell32", "user32", "version")
 
     -- add source files
     add_files("src/**.cpp")
@@ -162,6 +165,9 @@ if has_config("tests") then
     target("commonlibsse-ng-tests")
         -- set target kind
         set_kind("binary")
+
+        -- set build by default
+        set_default(os.scriptdir() == os.projectdir())
 
         -- add dependencies
         add_deps("commonlibsse-ng")
