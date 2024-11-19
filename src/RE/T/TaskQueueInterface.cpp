@@ -50,6 +50,13 @@ namespace RE
 		return func(this, a_weather, a_forceOverride);
 	}
 
+	void TaskQueueInterface::QueueUpdateNiObject(NiAVObject* a_obj)
+	{
+		using func_t = decltype(&TaskQueueInterface::QueueUpdateNiObject);
+		static REL::Relocation<func_t> func{ RELOCATION_ID(35929, 36904) };
+		return func(this, a_obj);
+	}
+
 	void TaskQueueInterface::QueueActorDisarm(ActorHandle& a_target, ActorHandle& a_caster)
 	{
 		using func_t = decltype(&TaskQueueInterface::QueueActorDisarm);
