@@ -1660,6 +1660,7 @@
 #include "RE/V/VrWandTouchpadSwipeEvent.h"
 #include "RE/W/WSActivateRollover.h"
 #include "RE/W/WeaponAnimationGraphManagerHolder.h"
+#include "RE/W/WeaponEnchantmentController.h"
 #include "RE/W/WeatherType.h"
 #include "RE/W/WerewolfEffect.h"
 #include "RE/W/WerewolfFeedEffect.h"

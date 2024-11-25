@@ -275,6 +275,24 @@ namespace RE
 		return GetEditorLocation2(a_outPos, a_outRot, a_outWorldOrCell, a_fallback);
 	}
 
+	EnchantmentItem* TESObjectREFR::GetEnchantment() const
+	{
+		auto xEnch = extraList.GetByType<ExtraEnchantment>();
+		if (xEnch && xEnch->enchantment) {
+			return xEnch->enchantment;
+		}
+
+		auto obj = GetObjectReference();
+		if (obj) {
+			auto ench = obj->As<TESEnchantableForm>();
+			if (ench) {
+				return ench->formEnchanting;
+			}
+		}
+		
+		return nullptr;
+	}
+
 	std::optional<double> TESObjectREFR::GetEnchantmentCharge() const
 	{
 		std::optional<double> result;
