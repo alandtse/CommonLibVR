@@ -28,8 +28,9 @@ namespace RE
 		enum class Flag
 		{
 			kNone = 0,
-			kVisible = 1 << 0,
+			kThirdPerson = 1 << 0,
 			kInterfaceEffect = 1 << 1,
+			kSuspended = 1 << 6,
 			kAllowTargetRoot = 1 << 7
 		};
 

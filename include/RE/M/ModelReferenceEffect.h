@@ -28,7 +28,7 @@ namespace RE
 		{
 			kNone = 0,
 			kAttached = 1 << 0,
-			k3rdPersonVisible = 1 << 1
+			kThirdPerson = 1 << 1
 		};
 
 		~ModelReferenceEffect() override;  // 00
