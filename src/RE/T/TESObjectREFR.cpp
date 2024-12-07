@@ -289,7 +289,7 @@ namespace RE
 				return ench->formEnchanting;
 			}
 		}
-		
+
 		return nullptr;
 	}
 
