@@ -12,7 +12,7 @@ namespace RE
 
 	ObjectRefHandle Console::GetSelectedRefHandle()
 	{
-		REL::Relocation<ObjectRefHandle*> selectedRef{ RELOCATION_ID(519394, 504099) };
+		static REL::Relocation<ObjectRefHandle*> selectedRef{ RELOCATION_ID(519394, 504099) };
 		return *selectedRef;
 	}
 

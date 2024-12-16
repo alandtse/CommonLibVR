@@ -7,6 +7,7 @@
 #include "RE/E/ErrorLogger.h"
 #include "RE/I/IStackCallbackFunctor.h"
 #include "RE/T/TypeInfo.h"
+#include "RE/T/TypeTraits.h"
 #include "RE/V/Variable.h"
 
 namespace RE

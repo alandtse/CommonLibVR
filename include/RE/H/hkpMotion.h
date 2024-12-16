@@ -66,7 +66,7 @@ namespace RE
 
 		float GetMass() const
 		{
-			float massInv = inertiaAndMassInv.quad.m128_f32[3];
+			float massInv = _mm_cvtss_f32(_mm_shuffle_ps(inertiaAndMassInv.quad, inertiaAndMassInv.quad, 3));
 			return massInv != 0.0f ? 1.0f / massInv : 0.0f;
 		}
 

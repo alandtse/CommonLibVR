@@ -6,7 +6,7 @@ namespace RE
 {
 	UI* UI::GetSingleton()
 	{
-		REL::Relocation<UI**> singleton{ RELOCATION_ID(514178, 400327) };
+		static REL::Relocation<UI**> singleton{ RELOCATION_ID(514178, 400327) };
 		return *singleton;
 	}
 

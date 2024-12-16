@@ -13,13 +13,13 @@ namespace RE
 
 	PlayerCharacter* PlayerCharacter::GetSingleton()
 	{
-		REL::Relocation<NiPointer<PlayerCharacter>*> singleton{ RELOCATION_ID(517014, 403521) };
+		static REL::Relocation<NiPointer<PlayerCharacter>*> singleton{ RELOCATION_ID(517014, 403521) };
 		return singleton->get();
 	}
 
 	bool PlayerCharacter::IsGodMode()
 	{
-		REL::Relocation<bool*> singleton{ RELOCATION_ID(517711, 404238) };
+		static REL::Relocation<bool*> singleton{ RELOCATION_ID(517711, 404238) };
 		return *singleton;
 	}
 #ifndef SKYRIMVR

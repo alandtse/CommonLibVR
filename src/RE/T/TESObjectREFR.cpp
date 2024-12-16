@@ -207,7 +207,7 @@ namespace RE
 	float TESObjectREFR::GetDistance(TESObjectREFR* a_other, bool a_disabledRefs, bool a_ignoreWorldspace) const
 	{
 		using func_t = decltype(&TESObjectREFR::GetDistance);
-		REL::Relocation<func_t> func{ RELOCATION_ID(19396, 19823) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(19396, 19823) };
 		return func(this, a_other, a_disabledRefs, a_ignoreWorldspace);
 	}
 
@@ -616,7 +616,7 @@ namespace RE
 
 		for (const auto& keyword : a_keywords) {
 			hasKeyword = keyword && HasKeyword(keyword);
-			if (a_matchAll && !hasKeyword || hasKeyword) {
+			if ((a_matchAll && !hasKeyword) || hasKeyword) {
 				break;
 			}
 		}
@@ -635,7 +635,7 @@ namespace RE
 		a_keywordList->ForEachForm([&](TESForm* a_form) {
 			const auto keyword = a_form->As<BGSKeyword>();
 			hasKeyword = keyword && HasKeyword(keyword);
-			if (a_matchAll && !hasKeyword || hasKeyword) {
+			if ((a_matchAll && !hasKeyword) || hasKeyword) {
 				return BSContainer::ForEachResult::kStop;
 			}
 			return BSContainer::ForEachResult::kContinue;

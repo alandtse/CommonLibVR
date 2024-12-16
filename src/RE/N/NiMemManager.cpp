@@ -4,7 +4,7 @@ namespace RE
 {
 	NiMemManager* NiMemManager::GetSingleton()
 	{
-		REL::Relocation<NiMemManager**> singleton{ REL::ID(523759) };
+		static REL::Relocation<NiMemManager**> singleton{ REL::ID(523759) };
 		return *singleton;
 	}
 
