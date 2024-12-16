@@ -159,9 +159,9 @@ namespace RE
 	{
 	public:
 		// members
-		float                                          timer;   // 0
-		RefHandle                                      refObj;  // 4
-		stl::enumeration<PLAYER_ACTION, std::uint32_t> next;    // 8
+		float                                      timer;   // 0
+		RefHandle                                  refObj;  // 4
+		REX::EnumSet<PLAYER_ACTION, std::uint32_t> next;    // 8
 	};
 	static_assert(sizeof(PlayerActionObject) == 0xC);
 
@@ -617,13 +617,13 @@ namespace RE
 		TESImageSpaceModifier*                                  sunGazeImageSpaceModifier;                    // AE0
 		ActorValue                                              advanceSkill;                                 // AE8 - advance values set, then cleared in PlayerSkills::ModSkillPoints surronding ApplyPerkEntry
 		std::uint32_t                                           advanceAction;                                // AEC - Part of AE8 and 9F0
-		stl::enumeration<DEFAULT_OBJECT, std::int32_t>          animationObjectAction;                        // AF0
-		stl::enumeration<GrabbingType, std::uint32_t>           grabType;                                     // AF4
+		REX::EnumSet<DEFAULT_OBJECT, std::int32_t>              animationObjectAction;                        // AF0
+		REX::EnumSet<GrabbingType, std::uint32_t>               grabType;                                     // AF4
 		std::int32_t                                            difficulty;                                   // AF8
 		ActorHandle                                             assumedIdentity;                              // AFC
 		std::int8_t                                             murder;                                       // B00
 		std::int8_t                                             perkCount;                                    // B01
-		stl::enumeration<ByCharGenFlag, std::uint8_t>           byCharGenFlag;                                // B02
+		REX::EnumSet<ByCharGenFlag, std::uint8_t>               byCharGenFlag;                                // B02
 		std::uint8_t                                            padB03;                                       // B03
 		std::uint32_t                                           unkB04;                                       // B04
 		Crime*                                                  resistArrestCrime;                            // B08
@@ -874,12 +874,12 @@ namespace RE
 		TESImageSpaceModifier* sunGazeImageSpaceModifier;                                // 11E0
 		ActorValue advanceSkill;                                                         // 11E8 - advance values set, then cleared in PlayerSkills::ModSkillPoints surronding ApplyPerkEntry
 		std::uint32_t advanceAction;                                                     // 11EC - Part of 10F0 and 11E8
-		stl::enumeration<DEFAULT_OBJECT, std::int32_t> animationObjectAction;            // 11F0
+		REX::EnumSet<DEFAULT_OBJECT, std::int32_t> animationObjectAction;                // 11F0
 		std::int32_t difficulty;                                                         // 11F4
 		ActorHandle assumedIdentity;                                                     // 11F8
 		std::int8_t murder;                                                              // 11FC
 		std::int8_t perkCount;                                                           // 11FD
-		stl::enumeration<ByCharGenFlag, std::uint8_t> byCharGenFlag;                     // 11FE
+		REX::EnumSet<ByCharGenFlag, std::uint8_t> byCharGenFlag;                         // 11FE
 		std::uint8_t padB03;                                                             // 11FF
 		Crime* resistArrestCrime;                                                        // 1200
 		BSTArray<TintMask*> tintMasks;                                                   // 1208

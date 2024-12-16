@@ -353,13 +353,13 @@ namespace RE
 		void SetPlayerKnows(bool a_known);
 
 		// members
-		TESFileContainer                                sourceFiles;      // 08
-		std::uint32_t                                   formFlags;        // 10
-		FormID                                          formID;           // 14
-		stl::enumeration<InGameFormFlag, std::uint16_t> inGameFormFlags;  // 18
-		stl::enumeration<FormType, std::uint8_t>        formType;         // 1A
-		std::uint8_t                                    pad1B;            // 1B
-		std::uint32_t                                   pad1C;            // 1C
+		TESFileContainer                            sourceFiles;      // 08
+		std::uint32_t                               formFlags;        // 10
+		FormID                                      formID;           // 14
+		REX::EnumSet<InGameFormFlag, std::uint16_t> inGameFormFlags;  // 18
+		REX::EnumSet<FormType, std::uint8_t>        formType;         // 1A
+		std::uint8_t                                pad1B;            // 1B
+		std::uint32_t                               pad1C;            // 1C
 	private:
 		KEEP_FOR_RE()
 	};
