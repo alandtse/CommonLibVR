@@ -33,7 +33,7 @@ namespace RE
 	void PlayerCharacter::ActivatePickRef(VR_DEVICE a_device)
 	{
 		using func_t = decltype(&PlayerCharacter::ActivatePickRef);
-		REL::Relocation<func_t> func{ RELOCATION_ID(39471, 40548) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(39471, 40548) };
 		return func(this, a_device);
 	}
 #endif
@@ -224,7 +224,7 @@ namespace RE
 	void PlayerCharacter::StartGrabObject(VR_DEVICE a_device)
 	{
 		using func_t = decltype(&PlayerCharacter::StartGrabObject);
-		REL::Relocation<func_t> func{ RELOCATION_ID(39475, 40552) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(39475, 40552) };
 		return func(this, a_device);
 	}
 #endif

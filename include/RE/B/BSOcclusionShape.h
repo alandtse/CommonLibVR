@@ -28,6 +28,8 @@ namespace RE
 		NiMatrix3 rotation;     // 1C
 		float     unk40;        // 40
 		bool      unk44;        // 44
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSOcclusionShape) == 0x48);
 }

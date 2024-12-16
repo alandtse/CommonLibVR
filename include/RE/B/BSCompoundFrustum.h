@@ -21,6 +21,8 @@ namespace RE
 		uint32_t        unkBC;          // BC
 		uint32_t        unkC0;          // C0
 		uint16_t        unkC4;          // C4
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSCompoundFrustum) == 0xC8);
 }

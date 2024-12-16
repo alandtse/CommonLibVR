@@ -24,6 +24,8 @@ namespace RE
 		BSMultiBoundRoom*             entranceRoom;      // 118
 		BSMultiBoundRoom*             exitRoom;          // 120
 		NiPointer<BSPortalSharedNode> portalSharedNode;  // 128
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSPortal) == 0x130);
 }

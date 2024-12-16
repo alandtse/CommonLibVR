@@ -19,6 +19,8 @@ namespace RE
 
 		// members
 		BGSKeyword* keyword;  // 18
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(MagicItemFindKeywordFunctor) == 0x20);
 }

@@ -46,6 +46,8 @@ namespace RE
 		uint64_t        unk1D0;            // 1D0
 		uint64_t        unk1D8;            // 1D8
 		uint64_t        unk1E0;            // 1E0
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSOcclusionBox) == 0x1E8);
 }

@@ -31,6 +31,8 @@ namespace RE
 			// members
 			LevelUpMenu*   menu;        // 10
 			RE::ActorValue actorValue;  // 18
+		private:
+			KEEP_FOR_RE()
 		};
 		static_assert(sizeof(ConfirmLevelUpAttributeCallback) == 0x20);
 

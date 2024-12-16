@@ -27,6 +27,8 @@ namespace RE
 		BSCompoundFrustum                       compoundFrustum;  // 68
 		uint64_t                                unk130;           // 130
 		uint32_t                                cellId;           // 138
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSPortalGraphEntry) == 0x140);
 }

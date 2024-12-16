@@ -31,9 +31,11 @@ namespace RE
 		}
 
 		// members
-		std::uint64_t unk00;                          // 00
-		std::uint32_t lastPerformanceCount;           // 08
-		std::uint32_t pad0C;                          // 0C
+		std::uint64_t unk00;                 // 00
+		std::uint32_t lastPerformanceCount;  // 08
+#ifndef SKYRIMVR
+		std::uint32_t pad0C;  // 0C
+#endif
 		float         clamp;                          // 10
 		float         clampRemainder;                 // 14
 		float         delta;                          // 18
