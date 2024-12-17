@@ -35,6 +35,7 @@ namespace RE
 	class BSFaceGenNiNode;
 	class BSFlattenedBoneTree;
 	class DialogueResponse;
+	class EnchantmentItem;
 	class Explosion;
 	class InventoryChanges;
 	class InventoryEntryData;
@@ -415,6 +416,7 @@ namespace RE
 		BGSEncounterZone*                       GetEncounterZone() const;
 		BGSLocation*                            GetEditorLocation() const;
 		bool                                    GetEditorLocation(NiPoint3& a_outPos, NiPoint3& a_outRot, TESForm*& a_outWorldOrCell, TESObjectCELL* a_fallback);
+		EnchantmentItem*                        GetEnchantment() const;
 		std::optional<double>                   GetEnchantmentCharge() const;
 		TESFaction*                             GetFactionOwner();
 		ObjectRefHandle                         GetHandle();

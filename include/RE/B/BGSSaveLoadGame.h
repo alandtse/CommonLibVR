@@ -76,7 +76,7 @@ namespace RE
 
 		static BGSSaveLoadGame* GetSingleton()
 		{
-			REL::Relocation<BGSSaveLoadGame**> singleton{ RELOCATION_ID(516851, 403330) };
+			static REL::Relocation<BGSSaveLoadGame**> singleton{ RELOCATION_ID(516851, 403330) };
 			return *singleton;
 		}
 
@@ -95,19 +95,19 @@ namespace RE
 		std::uint8_t pluginList[0xFF];  // 000
 		std::uint8_t unk18[0xFF];       // 0FF
 #endif
-		BGSSaveLoadFormIDMap                   worldspaceFormIDMap;  // 030
-		BSTHashMap<FormID, ActorHandle>        unk98;                // 098
-		BGSSaveLoadReferencesMap               unkC8;                // 0C8
-		BSTHashMap<FormID, FormID>             unk158;               // 158
-		BGSConstructFormsInAllFilesMap         reconstructFormsMap;  // 188
-		BGSSaveLoadQueuedSubBufferMap          queuedSubBuffersMap;  // 208
-		BGSSaveLoadFormIDMap                   formIDMap;            // 298
-		BSTArray<void*>                        saveLoadHistory;      // 300
-		BSTArray<void*>                        unk318;               // 318
-		BGSSaveLoadChangesMap*                 saveLoadChanges;      // 330
-		std::uint64_t                          unk338;               // 338
-		stl::enumeration<Flags, std::uint32_t> flags;                // 340
-		std::uint8_t                           currentMinorVersion;  // 344
+		BGSSaveLoadFormIDMap               worldspaceFormIDMap;  // 030
+		BSTHashMap<FormID, ActorHandle>    unk98;                // 098
+		BGSSaveLoadReferencesMap           unkC8;                // 0C8
+		BSTHashMap<FormID, FormID>         unk158;               // 158
+		BGSConstructFormsInAllFilesMap     reconstructFormsMap;  // 188
+		BGSSaveLoadQueuedSubBufferMap      queuedSubBuffersMap;  // 208
+		BGSSaveLoadFormIDMap               formIDMap;            // 298
+		BSTArray<void*>                    saveLoadHistory;      // 300
+		BSTArray<void*>                    unk318;               // 318
+		BGSSaveLoadChangesMap*             saveLoadChanges;      // 330
+		std::uint64_t                      unk338;               // 338
+		REX::EnumSet<Flags, std::uint32_t> flags;                // 340
+		std::uint8_t                       currentMinorVersion;  // 344
 	private:
 		KEEP_FOR_RE()
 	};

@@ -217,6 +217,7 @@ set(SOURCES
 	include/RE/B/BSBitField.h
 	include/RE/B/BSBloodSplatterShaderProperty.h
 	include/RE/B/BSBound.h
+	include/RE/B/BSCompoundFrustum.h
 	include/RE/B/BSComputeShader.h
 	include/RE/B/BSContainer.h
 	include/RE/B/BSCoreTypes.h
@@ -297,12 +298,16 @@ set(SOURCES
 	include/RE/B/BSNavmeshInfoMap.h
 	include/RE/B/BSNiAllocator.h
 	include/RE/B/BSNiNode.h
+	include/RE/B/BSOcclusionBox.h
+	include/RE/B/BSOcclusionPlane.h
+	include/RE/B/BSOcclusionShape.h
 	include/RE/B/BSOpenVR.h
 	include/RE/B/BSOpenVRControllerDevice.h
 	include/RE/B/BSOrderedNode.h
 	include/RE/B/BSPCGamepadDeviceDelegate.h
 	include/RE/B/BSPCGamepadDeviceHandler.h
 	include/RE/B/BSPCOrbisGamepadDevice.h
+	include/RE/B/BSParabolicCullingProcess.h
 	include/RE/B/BSParticleShaderCubeEmitter.h
 	include/RE/B/BSParticleShaderEmitter.h
 	include/RE/B/BSParticleShaderObjectEmitter.h
@@ -313,7 +318,10 @@ set(SOURCES
 	include/RE/B/BSPointerHandle.h
 	include/RE/B/BSPointerHandleManager.h
 	include/RE/B/BSPointerHandleSmartPointer.h
+	include/RE/B/BSPortal.h
 	include/RE/B/BSPortalGraph.h
+	include/RE/B/BSPortalGraphEntry.h
+	include/RE/B/BSPortalSharedNode.h
 	include/RE/B/BSPrecomputedNavmeshInfoPathMap.h
 	include/RE/B/BSReloadShaderI.h
 	include/RE/B/BSRenderPass.h
@@ -1202,6 +1210,8 @@ set(SOURCES
 	include/RE/M/MagicFormulas.h
 	include/RE/M/MagicItem.h
 	include/RE/M/MagicItemDataCollector.h
+	include/RE/M/MagicItemFindFunctor.h
+	include/RE/M/MagicItemFindKeywordFunctor.h
 	include/RE/M/MagicItemTraversalFunctor.h
 	include/RE/M/MagicMenu.h
 	include/RE/M/MagicSystem.h
@@ -1669,6 +1679,7 @@ set(SOURCES
 	include/RE/V/VrWandTouchpadSwipeEvent.h
 	include/RE/W/WSActivateRollover.h
 	include/RE/W/WeaponAnimationGraphManagerHolder.h
+	include/RE/W/WeaponEnchantmentController.h
 	include/RE/W/WeatherType.h
 	include/RE/W/WerewolfEffect.h
 	include/RE/W/WerewolfFeedEffect.h
@@ -1684,9 +1695,18 @@ set(SOURCES
 	include/REL/Version.h
 	include/REX/PS4.h
 	include/REX/PS4/SCEPAD.h
+	include/REX/REX.h
+	include/REX/REX/Enum.h
+	include/REX/REX/EnumSet.h
+	include/REX/REX/INI.h
+	include/REX/REX/JSON.h
+	include/REX/REX/Setting.h
+	include/REX/REX/Singleton.h
+	include/REX/REX/TOML.h
 	include/REX/W32.h
 	include/REX/W32/ADVAPI32.h
 	include/REX/W32/BASE.h
+	include/REX/W32/BCRYPT.h
 	include/REX/W32/COM.h
 	include/REX/W32/COMPTR.h
 	include/REX/W32/D3D.h
@@ -1705,6 +1725,7 @@ set(SOURCES
 	include/REX/W32/DXGI_5.h
 	include/REX/W32/DXGI_6.h
 	include/REX/W32/KERNEL32.h
+	include/REX/W32/NT.h
 	include/REX/W32/OLE32.h
 	include/REX/W32/SHELL32.h
 	include/REX/W32/USER32.h
@@ -2060,16 +2081,8 @@ set(SOURCES
 	src/REL/Module.cpp
 	src/REL/Relocation.cpp
 	src/REL/Version.cpp
-	src/REX/W32/ADVAPI32.cpp
-	src/REX/W32/D3D11.cpp
-	src/REX/W32/D3DCOMPILER.cpp
-	src/REX/W32/DBGHELP.cpp
-	src/REX/W32/DXGI.cpp
-	src/REX/W32/KERNEL32.cpp
-	src/REX/W32/OLE32.cpp
-	src/REX/W32/SHELL32.cpp
-	src/REX/W32/USER32.cpp
-	src/REX/W32/VERSION.cpp
+	src/REX/REX.cpp
+	src/REX/W32.cpp
 	src/SKSE/API.cpp
 	src/SKSE/IAT.cpp
 	src/SKSE/Impl/PCH.cpp

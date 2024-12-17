@@ -7,42 +7,42 @@ namespace RE
 #ifdef SKYRIMVR
 	BSOpenVR* BSOpenVR::GetSingleton()
 	{
-		REL::Relocation<BSOpenVR**> singleton{ Offset::BSOpenVR::Singleton };
+		static REL::Relocation<BSOpenVR**> singleton{ Offset::BSOpenVR::Singleton };
 		return *singleton;
 	}
 
 	vr::IVRCompositor* BSOpenVR::GetIVRCompositor()
 	{
 		using func_t = decltype(&BSOpenVR::GetIVRCompositor);
-		REL::Relocation<func_t> func{ REL::Offset(0xC57880) };
+		static REL::Relocation<func_t> func{ REL::Offset(0xC57880) };
 		return func();
 	}
 
 	vr::IVROverlay* BSOpenVR::GetIVROverlay(Unk190* a_unk190)
 	{
 		using func_t = decltype(&BSOpenVR::GetIVROverlay);
-		REL::Relocation<func_t> func{ REL::Offset(0x8A0110) };
+		static REL::Relocation<func_t> func{ REL::Offset(0x8A0110) };
 		return func(a_unk190);
 	}
 
 	vr::IVRRenderModels* BSOpenVR::GetIVRRenderModels()
 	{
 		using func_t = decltype(&BSOpenVR::GetIVRRenderModels);
-		REL::Relocation<func_t> func{ REL::Offset(0xC57920) };
+		static REL::Relocation<func_t> func{ REL::Offset(0xC57920) };
 		return func();
 	}
 
 	vr::IVRSettings* BSOpenVR::GetIVRSettings()
 	{
 		using func_t = decltype(&BSOpenVR::GetIVRSettings);
-		REL::Relocation<func_t> func{ REL::Offset(0xC579C0) };
+		static REL::Relocation<func_t> func{ REL::Offset(0xC579C0) };
 		return func();
 	}
 
 	vr::IVRSystem* BSOpenVR::GetIVRSystem()
 	{
 		using func_t = decltype(&BSOpenVR::GetIVRSystem);
-		REL::Relocation<func_t> func{ REL::Offset(0xC57A60) };
+		static REL::Relocation<func_t> func{ REL::Offset(0xC57A60) };
 		return func();
 	}
 #endif

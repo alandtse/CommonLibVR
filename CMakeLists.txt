@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.19)
 
+option(REX_OPTION_INI "Enables ini config support for REX." OFF)
+option(REX_OPTION_JSON "Enables json config support for REX." OFF)
+option(REX_OPTION_TOML "Enables toml config support for REX." OFF)
 option(SKSE_SUPPORT_XBYAK "Enables trampoline support for Xbyak." OFF)
 option(BUILD_SKYRIMVR "Build for Skyrim VR" OFF)
 option(SKYRIM_SUPPORT_AE "Enables support for Skyrim AE" OFF)
@@ -48,6 +51,9 @@ target_compile_definitions(
 	PUBLIC
 		WINVER=0x0601	# windows 7, minimum supported version by skyrim special edition
 		_WIN32_WINNT=0x0601
+		"$<$<BOOL:${REX_OPTION_INI}>:REX_OPTION_INI=1>"
+		"$<$<BOOL:${REX_OPTION_JSON}>:REX_OPTION_JSON=1>"
+		"$<$<BOOL:${REX_OPTION_TOML}>:REX_OPTION_TOML=1>"
 		"$<$<BOOL:${SKSE_SUPPORT_XBYAK}>:SKSE_SUPPORT_XBYAK=1>"
 		"$<$<BOOL:${SKYRIM_SUPPORT_AE}>:SKYRIM_SUPPORT_AE=1>"
 )
@@ -116,6 +122,7 @@ target_link_libraries(
 		binary_io::binary_io
 		spdlog::spdlog
  		Advapi32.lib
+		bcrypt.lib
 		D3D11.lib
 		d3dcompiler.lib
 		Dbghelp.lib

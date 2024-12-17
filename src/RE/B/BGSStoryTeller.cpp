@@ -4,7 +4,7 @@ namespace RE
 {
 	BGSStoryTeller* BGSStoryTeller::GetSingleton()
 	{
-		REL::Relocation<BGSStoryTeller**> singleton{ REL::ID(514316) };
+		static REL::Relocation<BGSStoryTeller**> singleton{ REL::ID(514316) };
 		return *singleton;
 	}
 

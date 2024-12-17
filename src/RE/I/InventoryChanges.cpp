@@ -33,14 +33,14 @@ namespace RE
 	void InventoryChanges::GenerateLeveledListChanges()
 	{
 		using func_t = decltype(&InventoryChanges::GenerateLeveledListChanges);
-		REL::Relocation<func_t> func{ REL::ID(5370677424) };
+		static REL::Relocation<func_t> func{ REL::ID(5370677424) };
 		return func(this);
 	}
 
 	std::int16_t InventoryChanges::GetItemCount(RE::TESBoundObject* a_obj)
 	{
 		using func_t = decltype(&InventoryChanges::GetItemCount);
-		REL::Relocation<func_t> func{ REL::ID(5370704656) };
+		static REL::Relocation<func_t> func{ REL::ID(5370704656) };
 		return func(this, a_obj);
 	}
 #endif
