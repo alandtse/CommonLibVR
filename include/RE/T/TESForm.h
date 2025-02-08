@@ -318,7 +318,7 @@ namespace RE
 
 		template <class... Args>
 		[[nodiscard]] bool Is(Args... a_args) const noexcept  //
-			requires(std::same_as<Args, FormType>&&...)
+			requires(std::same_as<Args, FormType> && ...)
 		{
 			return (Is(a_args) || ...);
 		}
@@ -338,7 +338,7 @@ namespace RE
 
 		template <class... Args>
 		[[nodiscard]] bool IsNot(Args... a_args) const noexcept  //
-			requires(std::same_as<Args, FormType>&&...)
+			requires(std::same_as<Args, FormType> && ...)
 		{
 			return (IsNot(a_args) && ...);
 		}
