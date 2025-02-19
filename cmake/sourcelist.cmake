@@ -35,6 +35,7 @@ set(SOURCES
 	include/RE/A/AnimationFileManagerSingleton.h
 	include/RE/A/AnimationObjects.h
 	include/RE/A/Archive.h
+	include/RE/A/ArchiveStream.h
 	include/RE/A/ArmorRatingVisitor.h
 	include/RE/A/ArmorRatingVisitorBase.h
 	include/RE/A/Array.h
@@ -91,6 +92,7 @@ set(SOURCES
 	include/RE/B/BGSDirectionalAmbientLightingColors.h
 	include/RE/B/BGSDistantTreeBlock.h
 	include/RE/B/BGSDualCastData.h
+	include/RE/B/BGSDynamicPersistenceManager.h
 	include/RE/B/BGSEncounterZone.h
 	include/RE/B/BGSEntryPoint.h
 	include/RE/B/BGSEntryPointFunction.h
@@ -347,7 +349,9 @@ set(SOURCES
 	include/RE/B/BSShaderPropertyLightData.h
 	include/RE/B/BSShaderRenderTargets.h
 	include/RE/B/BSShaderTextureSet.h
+	include/RE/B/BSShadowFrustumLight.h
 	include/RE/B/BSShadowLight.h
+	include/RE/B/BSShadowParabolicLight.h
 	include/RE/B/BSSimpleScaleController.h
 	include/RE/B/BSSkyShaderProperty.h
 	include/RE/B/BSSmallBlockAllocator.h
@@ -512,6 +516,7 @@ set(SOURCES
 	include/RE/C/CommonTypeTraits.h
 	include/RE/C/CompactingStore.h
 	include/RE/C/CompiledScriptLoader.h
+	include/RE/C/CompressedArchiveStream.h
 	include/RE/C/ConcreteFormFactory.h
 	include/RE/C/ConcreteObjectFormFactory.h
 	include/RE/C/ConcussionEffect.h
@@ -1172,6 +1177,7 @@ set(SOURCES
 	include/RE/I/ItemCrafted.h
 	include/RE/I/ItemHarvested.h
 	include/RE/I/ItemList.h
+	include/RE/I/ItemRemoveReason.h
 	include/RE/I/ItemsPickpocketed.h
 	include/RE/J/JournalMenu.h
 	include/RE/J/JournalTab.h
@@ -1279,6 +1285,7 @@ set(SOURCES
 	include/RE/N/NiControllerManager.h
 	include/RE/N/NiControllerSequence.h
 	include/RE/N/NiCullingProcess.h
+	include/RE/N/NiDirectionalLight.h
 	include/RE/N/NiExtraData.h
 	include/RE/N/NiFile.h
 	include/RE/N/NiFloatData.h
@@ -1329,6 +1336,7 @@ set(SOURCES
 	include/RE/N/NiStream.h
 	include/RE/N/NiStringExtraData.h
 	include/RE/N/NiStringsExtraData.h
+	include/RE/N/NiSwitchNode.h
 	include/RE/N/NiSystem.h
 	include/RE/N/NiTArray.h
 	include/RE/N/NiTCollection.h

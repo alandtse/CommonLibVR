@@ -59,8 +59,22 @@ namespace RE
 	bool TESObjectREFR::ActivateRef(TESObjectREFR* a_activator, uint8_t a_arg2, TESBoundObject* a_object, int32_t a_count, bool a_defaultProcessingOnly)
 	{
 		using func_t = decltype(&TESObjectREFR::ActivateRef);
-		static REL::Relocation<func_t> func{ RELOCATION_ID(19369, 19796) };
+		static REL::Relocation<func_t> func{ RELOCATION_ID(19369, 20221) };
 		return func(this, a_activator, a_arg2, a_object, a_count, a_defaultProcessingOnly);
+	}
+
+	REFR_LOCK* TESObjectREFR::AddLock()
+	{
+		using func_t = decltype(&TESObjectREFR::AddLock);
+		static REL::Relocation<func_t> func{ RELOCATION_ID(19816, 20221) };
+		return func(this);
+	}
+
+	DoorTeleportData* TESObjectREFR::AddTeleport()
+	{
+		using func_t = decltype(&TESObjectREFR::AddTeleport);
+		static REL::Relocation<func_t> func{ RELOCATION_ID(19809, 20214) };
+		return func(this);
 	}
 
 	ModelReferenceEffect* TESObjectREFR::ApplyArtObject(BGSArtObject* a_artObject, float a_duration, TESObjectREFR* a_facingRef, bool a_faceTarget, bool a_attachToCamera, NiAVObject* a_attachNode, bool a_interfaceEffect)
@@ -876,6 +890,13 @@ namespace RE
 		extraList.SetExtraFlags(ExtraFlags::Flag::kBlockActivate, a_blocked);
 	}
 
+	void TESObjectREFR::SetAngle(const NiPoint3& a_angle)
+	{
+		using func_t = decltype(&TESObjectREFR::SetAngle);
+		static REL::Relocation<func_t> func{ RELOCATION_ID(19359, 19786) };
+		return func(this, a_angle);
+	}
+
 	void TESObjectREFR::SetCollision(bool a_enable)
 	{
 		if (a_enable) {
@@ -938,9 +959,18 @@ namespace RE
 		return SetPosition(NiPoint3(a_x, a_y, a_z));
 	}
 
-	void TESObjectREFR::SetPosition(NiPoint3 a_pos)
+	void TESObjectREFR::SetPosition(const NiPoint3& a_pos)
 	{
-		MoveTo_Impl(ObjectRefHandle(), GetParentCell(), GetWorldspace(), a_pos, data.angle);
+		using func_t = void(TESObjectREFR*, const NiPoint3&);
+		static REL::Relocation<func_t> func{ RELOCATION_ID(19363, 19790) };
+		return func(this, a_pos);
+	}
+
+	void TESObjectREFR::SetScale(float a_scale)
+	{
+		using func_t = decltype(&TESObjectREFR::SetScale);
+		static REL::Relocation<func_t> func{ RELOCATION_ID(19239, 19665) };
+		func(this, a_scale);
 	}
 
 	void TESObjectREFR::SetTemporary()

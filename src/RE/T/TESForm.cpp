@@ -183,6 +183,13 @@ namespace RE
 		}
 	}
 
+	void TESForm::SetFile(TESFile* a_file)
+	{
+		using func_t = decltype(&TESForm::SetFile);
+		static REL::Relocation<func_t> func{ RELOCATION_ID(14467, 14623) };
+		return func(this, a_file);
+	}
+
 	void TESForm::SetPlayerKnows(bool a_known)
 	{
 		using func_t = decltype(&TESForm::SetPlayerKnows);

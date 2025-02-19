@@ -143,6 +143,12 @@ namespace RE
 		}
 
 		template <class T>
+		inline void PrependEventSink(BSTEventSink<T>* a_sink)
+		{
+			GetEventSource<T>()->PrependEventSink(a_sink);
+		}
+
+		template <class T>
 		inline void RemoveEventSink(BSTEventSink<T>* a_sink)
 		{
 			GetEventSource<T>()->RemoveEventSink(a_sink);

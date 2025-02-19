@@ -87,6 +87,13 @@ namespace RE
 			return func(this, a_form, a_changes);
 		}
 
+		bool IsFormIDInUse(FormID a_formID)
+		{
+			using func_t = decltype(&BGSSaveLoadGame::IsFormIDInUse);
+			static REL::Relocation<func_t> func{ RELOCATION_ID(34670, 35593) };
+			return func(this, a_formID);
+		}
+
 // members
 #ifndef SKYRIMVR
 		BSTArray<TESFile*> pluginList;  // 000
@@ -104,10 +111,10 @@ namespace RE
 		BGSSaveLoadFormIDMap               formIDMap;            // 298
 		BSTArray<void*>                    saveLoadHistory;      // 300
 		BSTArray<void*>                    unk318;               // 318
-		BGSSaveLoadChangesMap*             saveLoadChanges;      // 330
-		std::uint64_t                      unk338;               // 338
-		REX::EnumSet<Flags, std::uint32_t> flags;                // 340
-		std::uint8_t                       currentMinorVersion;  // 344
+		BGSSaveLoadChangesMap*             saveLoadChanges;      // 330, VR 500
+		std::uint64_t                      unk338;               // 338, VR 508
+		REX::EnumSet<Flags, std::uint32_t> flags;                // 340, VR 510
+		std::uint8_t                       currentMinorVersion;  // 344, VR 514
 	private:
 		KEEP_FOR_RE()
 	};
