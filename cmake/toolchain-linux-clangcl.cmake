@@ -42,3 +42,17 @@ if(NOT CMAKE_CXX_FLAGS MATCHES "winsysroot")
     set(CMAKE_EXE_LINKER_FLAGS    "${CMAKE_EXE_LINKER_FLAGS} /winsysroot:${_xwin_sysroot}" CACHE STRING "" FORCE)
     set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /winsysroot:${_xwin_sysroot}" CACHE STRING "" FORCE)
 endif()
+
+# RC is commonly `enable_language()`d well after C/CXX (e.g. only once a
+# target with a .rc source is actually declared), by which point the guard
+# above has already gone false -- so this needs its own independent guard,
+# not reuse of the C/CXX one, or it silently never runs.
+#
+# CMake's built-in RC-compile rule (cmake_llvm_rc) preprocesses the .rc file
+# via clang-cl in -E mode using CMAKE_RC_FLAGS, a separate variable from
+# CMAKE_C_FLAGS/CMAKE_CXX_FLAGS above -- without this, a resource file that
+# includes Windows SDK headers (e.g. winres.h) fails with "file not found"
+# since the preprocessing step never gets the sysroot's include paths.
+if(NOT CMAKE_RC_FLAGS MATCHES "winsysroot")
+    set(CMAKE_RC_FLAGS "${CMAKE_RC_FLAGS} --target=x86_64-pc-windows-msvc /winsysroot${_xwin_sysroot}" CACHE STRING "" FORCE)
+endif()
