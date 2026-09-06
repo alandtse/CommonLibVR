@@ -42,7 +42,7 @@ established pattern for this (see `test_consumer_live/` and its README).
   and against the canonical offsets CSVs in `skyrim_vr_address_library` for id-to-address
   mappings. A decompiler's default calling-convention analysis routinely drops real parameters
   and return values silently (shows up as `in_EDX`/`in_R8`-style unclaimed inputs, or a value
-  written to `AL` right before `RET` with no `return` in the pseutdo-C) — verify a signature
+  written to `AL` right before `RET` with no `return` in the pseudo-C) — verify a signature
   by hand from the raw disassembly, don't take the decompiler's first pass at face value.
 - A name, signature, or address applies across SE/AE/VR only if you've actually checked it
   there — AE in particular sometimes differs in register allocation, instruction order, or
