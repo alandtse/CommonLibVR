@@ -66,9 +66,50 @@ established pattern for this (see `test_consumer_live/` and its README).
 - **Minimal churn.** Touch only what the change requires — no drive-by reformatting, no
   renaming adjacent identifiers, no unrelated cleanup folded into the same diff. Spotted
   something else worth fixing? Note it in the PR description or open a follow-up.
-- **No placeholders.** Ship complete, working code — no `TODO`/stub bodies outside genuine
-  scaffolding work.
-- **Descriptive naming**, one job per function, magic numbers named.
+- **No placeholders, complete solutions.** Ship complete, working code — no `TODO`/stub
+  bodies outside genuine scaffolding work, and real resource management (RAII / explicit
+  cleanup), not just the happy path.
+- **Descriptive naming**, one job per function, magic numbers named as constants.
+
+## Constructive proactivity
+
+- Flag performance, security, and cross-runtime-compatibility concerns proactively; suggest a
+  more idiomatic pattern when one exists in this codebase already.
+- Explain the reasoning behind a non-obvious or high-blast-radius change (e.g. a new
+  three-way-conditional pattern) in the PR body, not just in the diff.
+- Prefer surfacing a problem plus a concrete option over silently working around it — e.g. a
+  missing address-library id is a blocker to say out loud, not something to paper over with a
+  raw offset and move on.
+- **Verify identifying facts; don't confabulate.** A relocation id, a runtime's real slot
+  layout, whether a struct field exists — read it from the binary or the address library
+  before stating it. "Unverified" beats a plausible-sounding guess.
+
+## Security & input validation
+
+- Validate external input this library actually parses (save data, config/INI-style values,
+  anything from a game file) — malformed input must not crash or corrupt state.
+- Bounds-check any buffer/array access derived from an external or game-controlled value,
+  especially in the low-level ABI/relocation code described above.
+- A GitHub Actions `run:` step must receive any workflow-dispatch-tainted value via `env:`
+  indirection, never direct `${{ }}` template interpolation — a crafted value there injects
+  shell commands.
+
+## Error handling
+
+- Log with enough context to diagnose (which runtime, which id/offset) at an appropriate
+  severity — not silently swallowed, not spammed every frame.
+- Degrade gracefully where the engine allows it (an unresolved id, a missing feature on a
+  given runtime) rather than hard-crashing when a soft failure is possible; but see the
+  address-library note above — a genuinely missing dependency should fail loudly at load,
+  not corrupt state quietly.
+
+## Testing & validation
+
+- Build and run the relevant tests after any significant change before calling it done —
+  don't rely on CI alone to catch a preset-specific break.
+- **Never bypass commit verification** (`--no-verify` or otherwise skipping pre-commit/
+  commit-msg hooks) unless the user explicitly directs it for a specific commit. If a hook
+  fails, fix the underlying cause.
 
 ## Commits & PRs
 
@@ -78,8 +119,21 @@ established pattern for this (see `test_consumer_live/` and its README).
   reads for the version bump.
 - PR/commit descriptions describe the change for a reviewer evaluating the current diff, not
   the session history that produced it (no "resolved via rebase," no git-mechanics narration).
+- Treat `git commit`/`gh pr create` as a hard checkpoint: re-read this file's Commits & PRs and
+  Collaboration sections immediately before either, not just once at the start of a task.
+
+## Collaboration / git safety
+
 - Never force-push or rewrite history on `ng` or any other shared/already-reviewed branch
   without explicit instruction. Confirm before pushing to any remote.
 - Addressing a bot or human review comment: fix it, then resolve the review thread — don't
   reply with prose, and never post as the maintainer's own identity via a token that isn't
   yours.
+- A review sweep must read each review's full body text, not just inline `reviewThreads` —
+  "outside diff range" findings (CodeRabbit and similar) are often embedded in the review body
+  with no inline thread, so a threads-only query can report "no comments" while real findings
+  exist.
+- Don't manually create release tags or hand-edit `vcpkg.json`/`CMakeLists.txt` version
+  fields — semantic-release owns both on merge to `ng`.
+- Know this repo's actual default PR branch (`ng`, not `main`) before opening or targeting a
+  PR.
