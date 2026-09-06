@@ -39,11 +39,13 @@ established pattern for this (see `test_consumer_live/` and its README).
 
 - Never trust a `FUN_<addr>`/auto-analyzed name, an existing comment, or a decompiler's
   auto-inferred signature as ground truth — cross-check against the actual binary via Ghidra,
-  and against the canonical offsets CSVs in `skyrim_vr_address_library` for id-to-address
-  mappings. A decompiler's default calling-convention analysis routinely drops real parameters
-  and return values silently (shows up as `in_EDX`/`in_R8`-style unclaimed inputs, or a value
-  written to `AL` right before `RET` with no `return` in the pseudo-C) — verify a signature
-  by hand from the raw disassembly, don't take the decompiler's first pass at face value.
+  and against the canonical offsets CSVs in
+  [`skyrim_vr_address_library`](https://github.com/alandtse/skyrim_vr_address_library) for
+  id-to-address mappings. A decompiler's default calling-convention analysis routinely drops
+  real parameters and return values silently (shows up as `in_EDX`/`in_R8`-style unclaimed
+  inputs, or a value written to `AL` right before `RET` with no `return` in the pseudo-C) —
+  verify a signature by hand from the raw disassembly, don't take the decompiler's first pass
+  at face value.
 - A name, signature, or address applies across SE/AE/VR only if you've actually checked it
   there — AE in particular sometimes differs in register allocation, instruction order, or
   (across its own point releases, e.g. 1.6.1170 vs 1.7.99 vs 1.7.104) real vtable/slot-count
