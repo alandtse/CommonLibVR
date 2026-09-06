@@ -116,7 +116,8 @@ established pattern for this (see `test_consumer_live/` and its README).
 - Conventional Commits (`type(scope): description`), title ≤ 50 chars, body wrapped at 72.
   See `CONTRIBUTING.md` for the full type table and this repo's squash-merge/semantic-release
   flow — get the PR title's type right, since squash-merge makes it the commit semantic-release
-  reads for the version bump.
+  reads for the version bump. **`ci` is its own type, not a scope** — a workflow/CI-config-only
+  change is `ci: ...`, never `fix(ci): ...`/`feat(ci): ...`.
 - PR/commit descriptions describe the change for a reviewer evaluating the current diff, not
   the session history that produced it (no "resolved via rebase," no git-mechanics narration).
 - Treat `git commit`/`gh pr create` as a hard checkpoint: re-read this file's Commits & PRs and
