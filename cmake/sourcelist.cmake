@@ -218,6 +218,7 @@ set(SOURCES
 	include/RE/B/BGSTypedItem.h
 	include/RE/B/BGSVoiceType.h
 	include/RE/B/BGSVolumetricLighting.h
+	include/RE/B/BGSWaterCollisionManager.h
 	include/RE/B/BGSWorldLocation.h
 	include/RE/B/BSAnimNote.h
 	include/RE/B/BSAnimNoteListener.h
@@ -1294,6 +1295,7 @@ set(SOURCES
 	include/RE/H/hkpMotion.h
 	include/RE/H/hkpMouseSpringAction.h
 	include/RE/H/hkpPhantom.h
+	include/RE/H/hkpPhantomCallbackShape.h
 	include/RE/H/hkpPhantomListener.h
 	include/RE/H/hkpPhantomType.h
 	include/RE/H/hkpProcessCollisionInput.h
