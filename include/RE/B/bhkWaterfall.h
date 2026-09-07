@@ -36,31 +36,22 @@ namespace RE
 
 			void Update()
 			{
-				if (REL::Module::IsAE()) {
-					return;
-				}
 				using func_t = decltype(&bhkWaterfall::Update);
-				REL::Relocation<func_t> func{ RELOCATION_ID(31324, 0) };
+				REL::Relocation<func_t> func{ RELOCATION_ID(31324, 32108) };
 				func(this);
 			}
 
 			void AddOverlappingCollidable(hkpCollidable* a_collidable)
 			{
-				if (REL::Module::IsAE()) {
-					return;
-				}
 				using func_t = decltype(&bhkWaterfall::AddOverlappingCollidable);
-				REL::Relocation<func_t> func{ RELOCATION_ID(31321, 0) };
+				REL::Relocation<func_t> func{ RELOCATION_ID(31321, 32105) };
 				func(this, a_collidable);
 			}
 
 			void RemoveOverlappingCollidable(hkpCollidable* a_collidable)
 			{
-				if (REL::Module::IsAE()) {
-					return;
-				}
 				using func_t = decltype(&bhkWaterfall::RemoveOverlappingCollidable);
-				REL::Relocation<func_t> func{ RELOCATION_ID(31322, 0) };
+				REL::Relocation<func_t> func{ RELOCATION_ID(31322, 32106) };
 				func(this, a_collidable);
 			}
 

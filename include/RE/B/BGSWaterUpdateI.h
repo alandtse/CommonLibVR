@@ -46,11 +46,8 @@ namespace RE
 
 			void SetContext(void* a_context)
 			{
-				if (REL::Module::IsAE()) {
-					return;
-				}
 				using func_t = decltype(&BGSWaterUpdateI::SetContext);
-				REL::Relocation<func_t> func{ RELOCATION_ID(31301, 0) };
+				REL::Relocation<func_t> func{ RELOCATION_ID(31301, 32085) };
 				func(this, a_context);
 			}
 

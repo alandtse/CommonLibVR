@@ -32,11 +32,8 @@ namespace RE
 
 			void Update()
 			{
-				if (REL::Module::IsAE()) {
-					return;
-				}
 				using func_t = decltype(&bshkAutoWater::Update);
-				REL::Relocation<func_t> func{ RELOCATION_ID(31343, 0) };
+				REL::Relocation<func_t> func{ RELOCATION_ID(31343, 32128) };
 				func(this);
 			}
 

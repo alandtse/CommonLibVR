@@ -32,53 +32,38 @@ namespace RE
 
 			void Update()
 			{
-				if (REL::Module::IsAE()) {
-					return;
-				}
 				using func_t = decltype(&bhkPlaceableWater::Update);
-				REL::Relocation<func_t> func{ RELOCATION_ID(31319, 0) };
+				REL::Relocation<func_t> func{ RELOCATION_ID(31319, 32103) };
 				func(this);
 			}
 
 			// removes then immediately re-adds every tracked collidable
 			void RefreshOverlaps()
 			{
-				if (REL::Module::IsAE()) {
-					return;
-				}
 				using func_t = decltype(&bhkPlaceableWater::RefreshOverlaps);
-				REL::Relocation<func_t> func{ RELOCATION_ID(31318, 0) };
+				REL::Relocation<func_t> func{ RELOCATION_ID(31318, 32102) };
 				func(this);
 			}
 
 			// calls hkpWorld::getPenetrations and forwards results into Add/RemoveOverlappingCollidable
 			void CheckPenetrations()
 			{
-				if (REL::Module::IsAE()) {
-					return;
-				}
 				using func_t = decltype(&bhkPlaceableWater::CheckPenetrations);
-				REL::Relocation<func_t> func{ RELOCATION_ID(31309, 0) };
+				REL::Relocation<func_t> func{ RELOCATION_ID(31309, 32093) };
 				func(this);
 			}
 
 			void NotifyCollidableEntered(hkpCollidable* a_collidable)
 			{
-				if (REL::Module::IsAE()) {
-					return;
-				}
 				using func_t = decltype(&bhkPlaceableWater::NotifyCollidableEntered);
-				REL::Relocation<func_t> func{ RELOCATION_ID(31313, 0) };
+				REL::Relocation<func_t> func{ RELOCATION_ID(31313, 32097) };
 				func(this, a_collidable);
 			}
 
 			void NotifyCollidableExited(hkpCollidable* a_collidable)
 			{
-				if (REL::Module::IsAE()) {
-					return;
-				}
 				using func_t = decltype(&bhkPlaceableWater::NotifyCollidableExited);
-				REL::Relocation<func_t> func{ RELOCATION_ID(31314, 0) };
+				REL::Relocation<func_t> func{ RELOCATION_ID(31314, 32098) };
 				func(this, a_collidable);
 			}
 
