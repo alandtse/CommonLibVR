@@ -1,3 +1,9 @@
+## [7.4.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v7.3.0...v7.4.0) (2026-09-07)
+
+### Features
+
+* **water:** add BGSWaterCollisionManager types ([#338](https://github.com/alandtse/CommonLibSSE-NG/issues/338)) ([f684855](https://github.com/alandtse/CommonLibSSE-NG/commit/f68485576df7faf8b41026a09e3fde925031243f))
+
 ## [7.3.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v7.2.0...v7.3.0) (2026-09-07)
 
 ### Features
