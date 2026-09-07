@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BGSDecalGroup.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTempEffectSimpleDecal.h"
 #include "RE/N/NiSmartPointer.h"
@@ -16,6 +17,15 @@ namespace RE
 		{
 			static REL::Relocation<BGSDecalManager**> singleton{ RELOCATION_ID(514414, 400561) };
 			return *singleton;
+		}
+
+		// The engine call every vanilla decal (blood, scorch) already goes
+		// through -- lets a caller place one without a real hit event.
+		void ApplyDecal(DECAL_CREATION_DATA& a_data, bool a_forceDecal = false, BGSDecalGroup* a_group = nullptr)
+		{
+			using func_t = decltype(&BGSDecalManager::ApplyDecal);
+			static REL::Relocation<func_t> func{ RELOCATION_ID(15029, 15203) };
+			return func(this, a_data, a_forceDecal, a_group);
 		}
 
 		// members
