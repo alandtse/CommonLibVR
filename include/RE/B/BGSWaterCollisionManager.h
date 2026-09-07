@@ -47,8 +47,12 @@ namespace RE
 				func(this, a_disabled);
 			}
 
+			// no confirmed AE id yet -- RELOCATION_ID(id, 0) resolves to address 0 on AE
 			void SetContext(void* a_context)
 			{
+				if (REL::Module::IsAE()) {
+					return;
+				}
 				using func_t = decltype(&BGSWaterUpdateI::SetContext);
 				REL::Relocation<func_t> func{ RELOCATION_ID(31301, 0) };
 				func(this, a_context);
@@ -109,6 +113,9 @@ namespace RE
 
 			void Update()
 			{
+				if (REL::Module::IsAE()) {
+					return;
+				}
 				using func_t = decltype(&bhkPlaceableWater::Update);
 				REL::Relocation<func_t> func{ RELOCATION_ID(31319, 0) };
 				func(this);
@@ -117,6 +124,9 @@ namespace RE
 			// removes then immediately re-adds every tracked collidable
 			void RefreshOverlaps()
 			{
+				if (REL::Module::IsAE()) {
+					return;
+				}
 				using func_t = decltype(&bhkPlaceableWater::RefreshOverlaps);
 				REL::Relocation<func_t> func{ RELOCATION_ID(31318, 0) };
 				func(this);
@@ -125,6 +135,9 @@ namespace RE
 			// calls hkpWorld::getPenetrations and forwards results into Add/RemoveOverlappingCollidable
 			void CheckPenetrations()
 			{
+				if (REL::Module::IsAE()) {
+					return;
+				}
 				using func_t = decltype(&bhkPlaceableWater::CheckPenetrations);
 				REL::Relocation<func_t> func{ RELOCATION_ID(31309, 0) };
 				func(this);
@@ -132,6 +145,9 @@ namespace RE
 
 			void NotifyCollidableEntered(hkpCollidable* a_collidable)
 			{
+				if (REL::Module::IsAE()) {
+					return;
+				}
 				using func_t = decltype(&bhkPlaceableWater::NotifyCollidableEntered);
 				REL::Relocation<func_t> func{ RELOCATION_ID(31313, 0) };
 				func(this, a_collidable);
@@ -139,6 +155,9 @@ namespace RE
 
 			void NotifyCollidableExited(hkpCollidable* a_collidable)
 			{
+				if (REL::Module::IsAE()) {
+					return;
+				}
 				using func_t = decltype(&bhkPlaceableWater::NotifyCollidableExited);
 				REL::Relocation<func_t> func{ RELOCATION_ID(31314, 0) };
 				func(this, a_collidable);
@@ -174,6 +193,9 @@ namespace RE
 
 			void Update()
 			{
+				if (REL::Module::IsAE()) {
+					return;
+				}
 				using func_t = decltype(&bhkWaterfall::Update);
 				REL::Relocation<func_t> func{ RELOCATION_ID(31324, 0) };
 				func(this);
@@ -181,6 +203,9 @@ namespace RE
 
 			void AddOverlappingCollidable(hkpCollidable* a_collidable)
 			{
+				if (REL::Module::IsAE()) {
+					return;
+				}
 				using func_t = decltype(&bhkWaterfall::AddOverlappingCollidable);
 				REL::Relocation<func_t> func{ RELOCATION_ID(31321, 0) };
 				func(this, a_collidable);
@@ -188,6 +213,9 @@ namespace RE
 
 			void RemoveOverlappingCollidable(hkpCollidable* a_collidable)
 			{
+				if (REL::Module::IsAE()) {
+					return;
+				}
 				using func_t = decltype(&bhkWaterfall::RemoveOverlappingCollidable);
 				REL::Relocation<func_t> func{ RELOCATION_ID(31322, 0) };
 				func(this, a_collidable);
@@ -219,6 +247,9 @@ namespace RE
 
 			void Update()
 			{
+				if (REL::Module::IsAE()) {
+					return;
+				}
 				using func_t = decltype(&bshkAutoWater::Update);
 				REL::Relocation<func_t> func{ RELOCATION_ID(31343, 0) };
 				func(this);
