@@ -44,7 +44,6 @@ namespace RE
 				func(this, a_disabled);
 			}
 
-			// no confirmed AE id yet -- RELOCATION_ID(id, 0) resolves to address 0 on AE
 			void SetContext(void* a_context)
 			{
 				if (REL::Module::IsAE()) {
