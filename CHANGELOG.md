@@ -1,3 +1,13 @@
+## [7.3.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v7.2.0...v7.3.0) (2026-09-07)
+
+### Features
+
+* **decal:** add BGSDecalManager::ApplyDecal binding ([#335](https://github.com/alandtse/CommonLibSSE-NG/issues/335)) ([6b1eac1](https://github.com/alandtse/CommonLibSSE-NG/commit/6b1eac17721e8ae13656cce25a598753487bd8a0))
+
+### Bug Fixes
+
+* **variable:** pack null handles as typed None ([#337](https://github.com/alandtse/CommonLibSSE-NG/issues/337)) ([e44731e](https://github.com/alandtse/CommonLibSSE-NG/commit/e44731e04d255d7e2f0f66f369cf6f3ee6b23223))
+
 ## [7.2.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v7.1.0...v7.2.0) (2026-09-03)
 
 ### Features
