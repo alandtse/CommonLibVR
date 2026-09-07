@@ -218,7 +218,7 @@ set(SOURCES
 	include/RE/B/BGSTypedItem.h
 	include/RE/B/BGSVoiceType.h
 	include/RE/B/BGSVolumetricLighting.h
-	include/RE/B/BGSWaterCollisionManager.h
+	include/RE/B/BGSWaterUpdateI.h
 	include/RE/B/BGSWorldLocation.h
 	include/RE/B/BSAnimNote.h
 	include/RE/B/BSAnimNoteListener.h
@@ -543,6 +543,7 @@ set(SOURCES
 	include/RE/B/bhkPCollisionObject.h
 	include/RE/B/bhkPhantom.h
 	include/RE/B/bhkPickData.h
+	include/RE/B/bhkPlaceableWater.h
 	include/RE/B/bhkRagdollConstraint.h
 	include/RE/B/bhkRefObject.h
 	include/RE/B/bhkRigidBody.h
@@ -557,9 +558,11 @@ set(SOURCES
 	include/RE/B/bhkTelekinesisListener.h
 	include/RE/B/bhkThreadMemorySource.h
 	include/RE/B/bhkUnaryAction.h
+	include/RE/B/bhkWaterfall.h
 	include/RE/B/bhkWorld.h
 	include/RE/B/bhkWorldCinfo.h
 	include/RE/B/bhkWorldObject.h
+	include/RE/B/bshkAutoWater.h
 	include/RE/C/CCallback.h
 	include/RE/C/CFilter.h
 	include/RE/C/CRC.h
