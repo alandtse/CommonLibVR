@@ -170,10 +170,13 @@ namespace RE
 		};
 		static_assert(sizeof(bhkPlaceableWater) == 0x70);
 
-		// trailing size beyond hkpPhantomCallbackShape (0x20) + updateI (0x48) not independently confirmed
+		// trailing size beyond hkpPhantomCallbackShape (0x20) + updateI (0x48) not independently
+		// confirmed -- non-constructible until it is; only use via a pointer the engine already owns
 		class bhkWaterfall : public hkpPhantomCallbackShape  // 00
 		{
 		public:
+			bhkWaterfall() = delete;
+
 			inline static constexpr auto RTTI = RTTI_BGSWaterCollisionManager__bhkWaterfall;
 			inline static constexpr auto VTABLE = VTABLE_BGSWaterCollisionManager__bhkWaterfall;
 
