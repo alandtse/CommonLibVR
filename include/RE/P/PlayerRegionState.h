@@ -26,6 +26,9 @@ namespace RE
 
 		static PlayerRegionState* GetSingleton()
 		{
+			// TODO(sync): po3/dev has a DIFFERENT SE id here (514317) vs ours (517160); AE id
+			// (400477) matches on both sides. Not re-verified against the address library in
+			// this merge -- confirm via Ghidra/offsets CSV before trusting either value blindly.
 			static REL::Relocation<PlayerRegionState**> singleton{ RELOCATION_ID(517160, 400477) };
 			return *singleton;
 		}
@@ -37,7 +40,7 @@ namespace RE
 		bool                               unk41;                 // 41
 		std::uint16_t                      pad42;                 // 42
 		std::uint32_t                      pad44;                 // 44
-		TESRegion*                         currentRegion;         // 48
+		TESRegion*                         currentRegion;         // 48 - po3/dev names this lastKnownWeatherRegion, not yet cross-checked
 		BGSMusicType*                      currentMusicType;      // 50
 		BSTEventSource<BGSActorCellEvent>* actorCellEventSource;  // 58
 	};

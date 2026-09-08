@@ -4,17 +4,33 @@
 
 namespace RE
 {
+	BSNonReentrantSpinLock::BSNonReentrantSpinLock() :
+		lock(0)
+	{}
+
+	void BSNonReentrantSpinLock::Lock()
+	{
+		while (REX::W32::InterlockedCompareExchange(&lock, 1, 0)) {
+			REX::W32::Sleep(0);
+		}
+		_mm_mfence();
+	}
+
+	void BSNonReentrantSpinLock::Unlock()
+	{
+		lock = 0;
+		_mm_mfence();
+	}
+
 	BSSemaphoreBase::BSSemaphoreBase() :
 		semaphore()
 	{
-		stl::memzero(&semaphore);
 		semaphore = REX::W32::CreateSemaphoreA(nullptr, 0, 40, nullptr);
 	}
 
 	BSSemaphoreBase::~BSSemaphoreBase()
 	{
 		REX::W32::CloseHandle(semaphore);
-		stl::memzero(&semaphore);
 	}
 
 	BSSpinLock::BSSpinLock() :

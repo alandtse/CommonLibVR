@@ -315,12 +315,12 @@ TEST_CASE("Module/SupportsSkyrimAE_1_6_1179_GOG")
 {
 	SECTION("Runtime is mockable")
 	{
-		REQUIRE(REL::Module::mock(SKSE::RUNTIME_1_6_1179, REL::Module::Runtime::AE, L"SkyrimSE.exe", 0x1000));
+		REQUIRE(REL::Module::mock(SKSE::RUNTIME_SSE_1_6_1179, REL::Module::Runtime::AE, L"SkyrimSE.exe", 0x1000));
 	}
 	SECTION("Address Library format can be loaded")
 	{
 		CHECK(REL::IDDB::inject(
-			L"Data\\SKSE\\Plugins\\versionlib-1-6-1179-0.bin", REL::IDDB::Format::SSEv2, SKSE::RUNTIME_1_6_1179));
+			L"Data\\SKSE\\Plugins\\versionlib-1-6-1179-0.bin", REL::IDDB::Format::SSEv2, SKSE::RUNTIME_SSE_1_6_1179));
 	}
 	SECTION("Lookup by ID returns the correct offset")
 	{

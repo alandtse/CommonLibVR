@@ -13,6 +13,7 @@ namespace RE
 	class SixaxisEvent;
 #endif
 	class PlayerControlsData;
+	class SixaxisEvent;
 	class ThumbstickEvent;
 
 	class PlayerInputHandler
@@ -24,7 +25,6 @@ namespace RE
 		virtual ~PlayerInputHandler() = default;  // 00
 
 		virtual bool CanProcess(InputEvent* a_event) = 0;  // 01
-
 #if defined(EXCLUSIVE_SKYRIM_VR)
 		virtual void ProcessThumbstick([[maybe_unused]] ThumbstickEvent* a_event, [[maybe_unused]] PlayerControlsData* a_data)
 		{}                                                                                                                       // 02

@@ -4,6 +4,18 @@
 #ifdef EXCLUSIVE_SKYRIM_VR
 namespace RE
 {
+#	ifdef ENABLE_SKYRIM_AE
+	bool MenuEventHandler::ProcessMotionGesture(MotionGestureEvent*)
+	{
+		return false;
+	}
+
+	bool MenuEventHandler::ProcessSixaxis(SixaxisEvent*)
+	{
+		return false;
+	}
+#	endif
+
 	bool MenuEventHandler::ProcessKinect(KinectEvent*)
 	{
 		return false;

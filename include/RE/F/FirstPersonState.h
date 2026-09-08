@@ -26,7 +26,7 @@ namespace RE
 #if defined(EXCLUSIVE_SKYRIM_FLAT)
 		// Function doesn't exist in SE/AE-only builds
 #elif defined(EXCLUSIVE_SKYRIM_VR)
-		void Unk_03() override;  // 03 - VR only
+		void          Unk_03() override;    // 03 - VR only
 #else
 		void Unk_03();  // 03 - Multi-runtime
 #endif
@@ -55,12 +55,22 @@ namespace RE
 		float         unk70;                    // 70
 		float         currentPitchOffset;       // 74 - [-100, 100]
 		float         targetPitchOffset;        // 78 - [-100, 100]
-		float         unk7C;                    // 7C
-		std::uint32_t unk80;                    // 80
-		bool          cameraOverride;           // 84
-		bool          cameraPitchOverride;      // 85
-		std::uint16_t unk86;                    // 86
-		std::uint64_t unk88;                    // 88
+#ifndef ENABLE_SKYRIM_AE
+		float         unk7C;                // 7C
+		std::uint32_t unk80;                // 80
+		bool          cameraOverride;       // 84
+		bool          cameraPitchOverride;  // 85
+		std::uint16_t unk86;                // 86
+		std::uint64_t unk88;                // 88
+#else
+		std::uint32_t unk7C;                // 7C
+		float         unk80;                // 80
+		std::uint32_t unk84;                // 84
+		bool          cameraOverride;       // 88
+		bool          cameraPitchOverride;  // 89
+		std::uint16_t unk8A;                // 8A
+		std::uint64_t unk90;                // 90
+#endif
 	};
-	STATIC_ASSERT_SIZE(FirstPersonState, 0x90, 0xA8);
+	STATIC_ASSERT_SIZE(FirstPersonState, 0x90, 0x98, 0xA8);
 }

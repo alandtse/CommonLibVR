@@ -122,11 +122,11 @@ namespace RE
 			return func(this);
 		}
 
-		void SetActorBaseFlag(ACTOR_BASE_DATA::Flag a_flag, bool a_set, bool a_notify)
+		void SetFlagBit(ACTOR_BASE_DATA::Flag a_flag, bool a_val, bool a_addChange)
 		{
-			using func_t = decltype(&TESActorBaseData::SetActorBaseFlag);
+			using func_t = decltype(&TESActorBaseData::SetFlagBit);
 			static REL::Relocation<func_t> func{ RELOCATION_ID(14261, 14383) };
-			return func(this, a_flag, a_set, a_notify);
+			func(this, a_flag, a_val, a_addChange);
 		}
 
 		// members

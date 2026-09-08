@@ -153,6 +153,10 @@ namespace RE
 #endif
 		// AE 1.7.99's Amiibo bases (real bases, see above) shift this base's data by
 		// +0x10 with no corrected accessor -- do not access it directly on that version.
+		// TODO(sync): po3_sse/dev now inherits TESAmiiboTouchEvent/TESAmiiboForcedStopDetectionEvent
+		// as real bases (guarded #ifdef SKYRIM_SUPPORT_AE) ahead of TESPlayerBowShotEvent, which would
+		// fix this known offset gap -- not adopted here because doing so shifts every subsequent base's
+		// vtable offset and needs an audit of every raw-offset accessor in this class first.
 		public BSTEventSource<BSScript::StatsEvent>  // 01A8
 	{
 	public:

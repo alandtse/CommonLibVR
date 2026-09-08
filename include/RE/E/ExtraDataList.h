@@ -209,6 +209,7 @@ namespace RE
 		ObjectRefHandle       GetTeleportLinkedDoor();
 		bool                  GetWorn() const;
 		bool                  HasQuestObjectAlias();
+		[[nodiscard]] bool    IsInventoryStackable(bool a_ignoreWorn) const;
 		void                  SetActivateParent(TESObjectREFR* a_parentRef, float a_delay);
 		void                  SetCount(std::uint16_t a_count);
 		void                  SetEnchantment(EnchantmentItem* a_enchantment, std::uint16_t a_chargeAmount, bool a_removeOnUnequip);
