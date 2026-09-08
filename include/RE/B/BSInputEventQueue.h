@@ -1,11 +1,14 @@
 #pragma once
 
+#include "RE/A/AmiiboEvent.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/B/ButtonEvent.h"
 #include "RE/C/CharEvent.h"
 #include "RE/D/DeviceConnectEvent.h"
 #include "RE/K/KinectEvent.h"
+#include "RE/M/MotionGestureEvent.h"
 #include "RE/M/MouseMoveEvent.h"
+#include "RE/S/SixaxisEvent.h"
 #include "RE/T/ThumbstickEvent.h"
 #include "RE/V/VrWandTouchpadPositionEvent.h"
 #include "RE/V/VrWandTouchpadSwipeEvent.h"

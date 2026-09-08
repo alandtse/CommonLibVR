@@ -13,6 +13,8 @@
 
 namespace RE
 {
+	class BSImagespaceShader;
+	class BSImagespaceShaderISTemporalAA;
 	class BSShader;
 	class BSTriShape;
 	class ImageSpaceEffect;

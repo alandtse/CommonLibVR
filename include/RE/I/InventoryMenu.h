@@ -8,6 +8,7 @@
 namespace RE
 {
 	class GFxMovieView;
+	class TESBoundObject;
 	class TESObjectREFR;
 	struct BottomBar;
 	struct ItemCard;
@@ -25,20 +26,20 @@ namespace RE
 
 		struct RUNTIME_DATA
 		{
-#define RUNTIME_DATA_CONTENT                                                       \
-	GFxValue        root;            /* 00 - kDisplayObject - "_level0.Menu_mc" */ \
-	ItemList*       itemList;        /* 18 */                                      \
-	ItemCard*       itemCard;        /* 20 */                                      \
-	BottomBar*      bottomBar;       /* 28 */                                      \
-	BSTArray<void*> unk60;           /* 30 */                                      \
-	std::uint8_t    unk78;           /* 48 */                                      \
-	std::uint8_t    pad79;           /* 49 */                                      \
-	std::uint16_t   pad7A;           /* 4A */                                      \
-	std::uint32_t   unk7C;           /* 4C */                                      \
-	bool            pcControlsReady; /* 50 */                                      \
-	std::uint8_t    unk81;           /* 51 */                                      \
-	std::uint16_t   pad82;           /* 52 */                                      \
-	std::uint32_t   pad84;           /* 54 */
+#define RUNTIME_DATA_CONTENT                                                                      \
+	GFxValue                  root;                 /* 00 - kDisplayObject - "_level0.Menu_mc" */ \
+	ItemList*                 itemList;             /* 18 */                                      \
+	ItemCard*                 itemCard;             /* 20 */                                      \
+	BottomBar*                bottomBar;            /* 28 */                                      \
+	BSTArray<TESBoundObject*> pendingUpdateObjects; /* 30 */                                      \
+	std::uint8_t              unk78;                /* 48 */                                      \
+	std::uint8_t              pad79;                /* 49 */                                      \
+	std::uint16_t             pad7A;                /* 4A */                                      \
+	std::uint32_t             unk7C;                /* 4C */                                      \
+	bool                      pcControlsReady;      /* 50 */                                      \
+	std::uint8_t              unk81;                /* 51 */                                      \
+	std::uint16_t             pad82;                /* 52 */                                      \
+	std::uint32_t             pad84;                /* 54 */
 
 			RUNTIME_DATA_CONTENT
 		};
@@ -50,6 +51,20 @@ namespace RE
 		void               Accept(CallbackProcessor* a_processor) override;  // 01
 		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
 		void               PostDisplay() override;                           // 06
+
+		void RefreshItemList()
+		{
+			using func_t = decltype(&InventoryMenu::RefreshItemList);
+			static REL::Relocation<func_t> func{ RELOCATION_ID(50987, 51866) };
+			return func(this);
+		}
+
+		void RefreshBottomBar()
+		{
+			using func_t = decltype(&InventoryMenu::RefreshBottomBar);
+			static REL::Relocation<func_t> func{ RELOCATION_ID(50986, 51865) };
+			return func(this);
+		}
 
 		RUNTIME_DATA_ACCESSOR(RUNTIME_DATA, 0x30, 0x40);
 		// members

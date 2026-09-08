@@ -44,24 +44,25 @@ namespace RE
 		void                    SetTextureSet(NiPointer<BSTextureSet> a_textureSet);
 
 		// members
-		NiColor                    specularColor = NiColor(1.f, 1.f, 1.f);  // 38
-		std::uint32_t              pad44;                                   // 44
-		NiPointer<NiSourceTexture> diffuseTexture;                          // 48
-		std::int32_t               diffuseRenderTargetSourceIndex = -1;     // 50
-		std::uint32_t              pad54;                                   // 54
-		NiPointer<NiSourceTexture> normalTexture;                           // 58
-		NiPointer<NiSourceTexture> rimSoftLightingTexture;                  // 60
-		NiPointer<NiSourceTexture> specularBackLightingTexture;             // 68
-		std::int32_t               textureClampMode = 3;                    // 70
-		std::int32_t               pad74;                                   // 70
-		NiPointer<BSTextureSet>    textureSet;                              // 78
-		float                      materialAlpha = 1.f;                     // 80
-		float                      refractionPower = 0.f;                   // 84
-		float                      specularPower = 1.f;                     // 88
-		float                      specularColorScale = 1.f;                // 8C
-		float                      subSurfaceLightRolloff = 0.f;            // 90
-		float                      rimLightPower = 0.f;                     // 94
-		std::uint32_t              unk98 = 0;                               // 98
+		NiColor                        specularColor = NiColor(1.f, 1.f, 1.f);  // 38
+		std::uint32_t                  pad44;                                   // 44
+		NiPointer<NiSourceTexture>     diffuseTexture;                          // 48
+		std::int32_t                   diffuseRenderTargetSourceIndex = -1;     // 50
+		std::uint32_t                  pad54;                                   // 54
+		NiPointer<NiSourceTexture>     normalTexture;                           // 58
+		NiPointer<NiSourceTexture>     rimSoftLightingTexture;                  // 60
+		NiPointer<NiSourceTexture>     specularBackLightingTexture;             // 68
+		std::int32_t                   textureClampMode = 3;                    // 70
+		std::int32_t                   pad74;                                   // 70
+		NiPointer<BSTextureSet>        textureSet;                              // 78
+		float                          materialAlpha = 1.f;                     // 80
+		float                          refractionPower = 0.f;                   // 84
+		float                          specularPower = 1.f;                     // 88
+		float                          specularColorScale = 1.f;                // 8C
+		float                          subSurfaceLightRolloff = 0.f;            // 90
+		float                          rimLightPower = 0.f;                     // 94
+		volatile mutable std::uint32_t textureSetLock;                          // 98 - spin lock used in OnLoadTextureSet
+		std::uint32_t                  pad9C;                                   // 9C
 
 	protected:
 		static BSLightingShaderMaterialBase* Constructor(BSLightingShaderMaterialBase* material)

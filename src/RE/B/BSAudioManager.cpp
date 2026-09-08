@@ -2,6 +2,7 @@
 
 #include "RE/B/BGSSoundDescriptorForm.h"
 #include "RE/B/BSAudio.h"
+#include "RE/B/BSGameSound.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/F/FormTraits.h"
 #include "RE/N/NiAVObject.h"
@@ -99,5 +100,48 @@ namespace RE
 			flags.reset(Flags::CacheEnabled);
 			ClearCache();
 		}
+	}
+
+	void BSAudioManager::ReleaseAllSounds()
+	{
+		using func_t = void (*)(BSAudioManager*);
+		static REL::Relocation<func_t> func{ RELOCATION_ID(66472, 67736) };
+		func(this);
+	}
+
+	void BSAudioManager::StopAllSounds()
+	{
+#if defined(HAS_SKYRIM_MULTI_TARGETING) && defined(ENABLE_SKYRIM_SE) && defined(ENABLE_SKYRIM_AE)
+		// AE has a dedicated native implementation with no SE equivalent. A single binary
+		// supporting both runtimes can't pick this at compile time -- dispatch by
+		// REL::Module::IsAE() instead of the raw #ifdef upstream (single-runtime) uses.
+		if (REL::Module::IsAE()) {
+			using func_t = void (*)(BSTHashMap<std::uint32_t, BSGameSound*>*);
+			static REL::Relocation<func_t> func{ REL::ID(67749) };
+			func(&activeSounds);
+			return;
+		}
+		for (auto& entry : activeSounds) {
+			const auto sound = entry.second;
+			if (sound) {
+				sound->StopImpl();
+				sound->flags = static_cast<BSGameSound::Flags>(sound->flags.underlying() & ~0x200u);
+				sound->SetSoundFinished(true);
+			}
+		}
+#elif defined(ENABLE_SKYRIM_AE)
+		using func_t = void (*)(BSTHashMap<std::uint32_t, BSGameSound*>*);
+		static REL::Relocation<func_t> func{ REL::ID(67749) };
+		func(&activeSounds);
+#else
+		for (auto& entry : activeSounds) {
+			const auto sound = entry.second;
+			if (sound) {
+				sound->StopImpl();
+				sound->flags = static_cast<BSGameSound::Flags>(sound->flags.underlying() & ~0x200u);
+				sound->SetSoundFinished(true);
+			}
+		}
+#endif
 	}
 }
