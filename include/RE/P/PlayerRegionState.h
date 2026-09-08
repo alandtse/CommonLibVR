@@ -26,9 +26,6 @@ namespace RE
 
 		static PlayerRegionState* GetSingleton()
 		{
-			// TODO(sync): po3/dev has a DIFFERENT SE id here (514317) vs ours (517160); AE id
-			// (400477) matches on both sides. Not re-verified against the address library in
-			// this merge -- confirm via Ghidra/offsets CSV before trusting either value blindly.
 			static REL::Relocation<PlayerRegionState**> singleton{ RELOCATION_ID(517160, 400477) };
 			return *singleton;
 		}

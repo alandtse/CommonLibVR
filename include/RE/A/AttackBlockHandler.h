@@ -59,16 +59,6 @@ namespace RE
 #else
 	public:
 		// members
-#	ifdef ENABLE_SKYRIM_AE
-		BSFixedString gestureEngageLL;             // 18
-		BSFixedString gestureEngageLR;             // 20
-		BSFixedString gestureEngageRL;             // 28
-		BSFixedString gestureEngageRR;             // 30
-		BSFixedString gesturePunchLeft;            // 38
-		BSFixedString gesturePunchRight;           // 40
-		BSFixedString gestureRaiseShield;          // 48
-		BSFixedString gestureDropShield;           // 50
-#	endif
 		std::uint32_t heldTimeMs;                  // 18
 		std::uint32_t unk1C;                       // 1C
 		BSFixedString controlID;                   // 20

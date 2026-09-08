@@ -10,7 +10,7 @@ namespace RE
 	{
 		auto camera = malloc<BSCubeMapCamera>();
 		if (camera) {
-			std::memset(camera, 0, sizeof(BSCubeMapCamera));
+			std::memset(reinterpret_cast<void*>(camera), 0, sizeof(BSCubeMapCamera));
 			camera->Ctor();
 		}
 		return camera;
