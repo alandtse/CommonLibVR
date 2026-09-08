@@ -44,11 +44,7 @@ namespace RE
 #endif
 
 #if defined(HAS_SKYRIM_MULTI_TARGETING) && defined(ENABLE_SKYRIM_SE) && defined(ENABLE_SKYRIM_AE)
-		// SE and AE diverge here (AE inserts an extra field before cameraOverride). A single
-		// binary supporting both runtimes can't pick one layout at compile time -- dispatch by
-		// REL::Module::IsAE() instead, matching the RUNTIME_DATA_ACCESSOR pattern used elsewhere
-		// (e.g. TES.h's AE_RUNTIME_DATA) rather than the raw #ifdef upstream (single-runtime,
-		// where this is unambiguous) uses.
+		// Both runtimes are compiled in: dispatch by REL::Module::IsAE(), not #ifdef.
 #	pragma pack(push, 4)
 		struct SE_RUNTIME_DATA
 		{

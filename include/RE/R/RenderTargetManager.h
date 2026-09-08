@@ -26,10 +26,7 @@ namespace RE
 			void SetCurrentDepthStencilTarget(RENDER_TARGET_DEPTHSTENCIL a_renderTarget, SetRenderTargetMode a_mode, std::uint32_t a_slice);
 
 #if defined(HAS_SKYRIM_MULTI_TARGETING) && defined(ENABLE_SKYRIM_SE) && defined(ENABLE_SKYRIM_AE)
-			// AE inserts 0x38 bytes of padding before these two arrays that SE doesn't have. A
-			// single binary supporting both runtimes can't fix this offset at compile time --
-			// dispatch by REL::Module::IsAE() via RelocateMember instead of the raw #ifdef
-			// upstream (single-runtime) uses.
+			// Both runtimes are compiled in: dispatch by REL::Module::IsAE(), not #ifdef.
 			[[nodiscard]] inline DepthStencilTargetProperties* GetDepthStencilTargetData() noexcept
 			{
 				return &REL::RelocateMember<DepthStencilTargetProperties>(this, 0xC78, 0xCB0);
