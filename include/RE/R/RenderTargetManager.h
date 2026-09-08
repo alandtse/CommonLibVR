@@ -25,16 +25,40 @@ namespace RE
 			void SetCurrentCubeMapRenderTarget(RENDER_TARGET_CUBEMAP a_renderTarget, SetRenderTargetMode a_mode, std::uint32_t a_faceIndex, bool a_updateViewport);
 			void SetCurrentDepthStencilTarget(RENDER_TARGET_DEPTHSTENCIL a_renderTarget, SetRenderTargetMode a_mode, std::uint32_t a_slice);
 
+#if defined(HAS_SKYRIM_MULTI_TARGETING) && defined(ENABLE_SKYRIM_SE) && defined(ENABLE_SKYRIM_AE)
+			// AE inserts 0x38 bytes of padding before these two arrays that SE doesn't have. A
+			// single binary supporting both runtimes can't fix this offset at compile time --
+			// dispatch by REL::Module::IsAE() via RelocateMember instead of the raw #ifdef
+			// upstream (single-runtime) uses.
+			[[nodiscard]] inline DepthStencilTargetProperties* GetDepthStencilTargetData() noexcept
+			{
+				return &REL::RelocateMember<DepthStencilTargetProperties>(this, 0xC78, 0xCB0);
+			}
+			[[nodiscard]] inline CubeMapRenderTargetProperties* GetCubeMapRenderTargetData() noexcept
+			{
+				return &REL::RelocateMember<CubeMapRenderTargetProperties>(this, 0xD38, 0xD70);
+			}
+#endif
+
 			// members
 			RenderTargetProperties renderTargetData[RENDER_TARGET::kTOTAL];  // 000
-#ifdef ENABLE_SKYRIM_AE
-			std::byte padC78[0x38];  // C78
-#endif
+#if defined(HAS_SKYRIM_MULTI_TARGETING) && defined(ENABLE_SKYRIM_SE) && defined(ENABLE_SKYRIM_AE)
+			// Placeholder sized to the larger (AE) layout; real access goes through
+			// GetDepthStencilTargetData()/GetCubeMapRenderTargetData() above, not these
+			// members directly.
+			std::byte runtimeDataPlaceholder[0x104];  // C78
+#else
+#	ifdef ENABLE_SKYRIM_AE
+			std::byte                     padC78[0x38];                                                 // C78
+#	endif
 			DepthStencilTargetProperties  depthStencilTargetData[RENDER_TARGETS_DEPTHSTENCIL::kTOTAL];  // C78, CB0
 			CubeMapRenderTargetProperties cubeMapRenderTargetData[RENDER_TARGETS_CUBEMAP::kTOTAL];      // D38, D70
+#endif
 		};
 
-#ifdef ENABLE_SKYRIM_AE
+#if defined(HAS_SKYRIM_MULTI_TARGETING) && defined(ENABLE_SKYRIM_SE) && defined(ENABLE_SKYRIM_AE)
+		static_assert(sizeof(RenderTargetManager) == 0xD7C);
+#elif defined(ENABLE_SKYRIM_AE)
 		static_assert(sizeof(RenderTargetManager) == 0xD7C);
 #else
 		static_assert(sizeof(RenderTargetManager) == 0xD44);
