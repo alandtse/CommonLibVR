@@ -66,6 +66,8 @@ namespace RE
 	};
 #if defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(BSCubeMapCamera) == 0x248);
+#elif defined(SKYRIM_CROSS_VR)
+	static_assert(sizeof(BSCubeMapCamera) == 0x150);
 #else
 	static_assert(sizeof(BSCubeMapCamera) == 0x1C8);
 #endif
