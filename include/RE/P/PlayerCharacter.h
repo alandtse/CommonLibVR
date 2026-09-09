@@ -733,6 +733,7 @@ namespace RE
 		bool                                   CenterOnCell(const char* a_cellName);
 		bool                                   CenterOnCell(TESObjectCELL* a_cell);
 		bool                                   CheckCast(MagicItem* a_spell, Effect* a_effect, MagicSystem::CannotCastReason& a_reason);
+		void                                   CheckPoisonWeapon(AlchemyItem* a_poison);
 		void                                   DestroyMouseSprings();
 		void                                   EndGrabObject();
 		[[nodiscard]] NiPointer<Actor>         GetActorDoingPlayerCommand() const;

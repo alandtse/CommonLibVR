@@ -644,7 +644,6 @@ namespace SKSE
 		}
 	}
 }
-
 namespace RE
 {
 	using namespace std::literals;
@@ -655,6 +654,11 @@ namespace REL
 {
 	using namespace std::literals;
 	namespace stl = SKSE::stl;
+}
+
+namespace SKSE
+{
+	using namespace std::literals;
 }
 
 #define RELOCATION_ID(a_se, a_ae) REL::RelocationID(a_se, a_ae)
