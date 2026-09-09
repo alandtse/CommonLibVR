@@ -4,6 +4,9 @@
 
 namespace RE
 {
+	class BSMultiBound;
+	class NiFrustumPlanes;
+
 	class BSMultiBoundShape : public NiObject
 	{
 	public:

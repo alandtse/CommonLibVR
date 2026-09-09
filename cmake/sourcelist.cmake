@@ -2184,6 +2184,7 @@ set(SOURCES
 	src/RE/B/BSModelDB.cpp
 	src/RE/B/BSMouseDevice.cpp
 	src/RE/B/BSMultiBoundNode.cpp
+	src/RE/B/BSMultiStreamInstanceTriShape.cpp
 	src/RE/B/BSOcclusionPlane.cpp
 	src/RE/B/BSOpenVR.cpp
 	src/RE/B/BSPCGamepadDeviceDelegate.cpp
