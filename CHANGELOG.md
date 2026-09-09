@@ -1,3 +1,9 @@
+## [7.5.1](https://github.com/alandtse/CommonLibSSE-NG/compare/v7.5.0...v7.5.1) (2026-09-09)
+
+### Bug Fixes
+
+* **runtime:** fix BSMultiStreamInstanceTriShape vtable ([#341](https://github.com/alandtse/CommonLibSSE-NG/issues/341)) ([16e4761](https://github.com/alandtse/CommonLibSSE-NG/commit/16e4761aed090ffbd3a39da7fb9679be6476028d))
+
 ## [7.5.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v7.4.0...v7.5.0) (2026-09-09)
 
 ### Features
