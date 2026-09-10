@@ -10,20 +10,24 @@
 namespace REL
 {
 	/**
-	 * Applies the byte/slot shift required on Skyrim AE 1.7.99+, which inserted an
-	 * additional base class/vtable slot that pushes every member or virtual function
-	 * declared after it forward by a fixed amount on affected classes.
+	 * Applies the byte/slot shift required when a Skyrim runtime update inserts an
+	 * additional base class/vtable slot, pushing every member or virtual function
+	 * declared after it forward by a fixed amount on affected classes on builds at
+	 * or above a_threshold. AE 1.7.99 is the only version boundary that currently
+	 * needs this (see SKSE::RUNTIME_SSE_1_7_99 callers), but Bethesda has done this
+	 * kind of mid-stream base-class insertion before (the SE/AE 1.6.629 boundary
+	 * itself) and may again -- this is not 1.7.99-specific.
 	 *
 	 * <p>
-	 * a_delta has no default -- it varies per class (a pointer-sized member shift is
-	 * 8 bytes; a virtual function slot index shifts by however many slots were
-	 * inserted, e.g. 1, 2, or 6) and must be confirmed per call site rather than
-	 * assumed.
+	 * Neither a_delta nor a_threshold has a default -- both vary per class/version
+	 * (a pointer-sized member shift is 8 bytes; a virtual function slot index shifts
+	 * by however many slots were inserted, e.g. 1, 2, or 6) and must be confirmed
+	 * per call site rather than assumed.
 	 * </p>
 	 */
-	[[nodiscard]] SKYRIM_REL std::size_t AE1799Shift(std::size_t a_offset, std::size_t a_delta) noexcept
+	[[nodiscard]] SKYRIM_REL std::size_t VersionShift(std::size_t a_offset, std::size_t a_delta, REL::Version a_threshold) noexcept
 	{
-		return REL::Module::IsAtLeast(SKSE::RUNTIME_SSE_1_7_99) ? a_offset + a_delta : a_offset;
+		return REL::Module::IsAtLeast(a_threshold) ? a_offset + a_delta : a_offset;
 	}
 }
 

@@ -38,15 +38,15 @@ namespace RE
 
 		void ProcessThumbstick(ThumbstickEvent* a_event, PlayerControlsData* a_data)
 		{
-			REL::RelocateVirtual<void(PlayerInputHandler*, ThumbstickEvent*, PlayerControlsData*)>(REL::AE1799Shift(0x02, kAE1799AddedVFuncCount), 0x02, this, a_event, a_data);
+			REL::RelocateVirtual<void(PlayerInputHandler*, ThumbstickEvent*, PlayerControlsData*)>(REL::VersionShift(0x02, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), 0x02, this, a_event, a_data);
 		}
 		void ProcessMouseMove(MouseMoveEvent* a_event, PlayerControlsData* a_data)
 		{
-			REL::RelocateVirtual<void(PlayerInputHandler*, MouseMoveEvent*, PlayerControlsData*)>(REL::AE1799Shift(0x03, kAE1799AddedVFuncCount), 0x03, this, a_event, a_data);
+			REL::RelocateVirtual<void(PlayerInputHandler*, MouseMoveEvent*, PlayerControlsData*)>(REL::VersionShift(0x03, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), 0x03, this, a_event, a_data);
 		}
 		void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data)
 		{
-			REL::RelocateVirtual<void(PlayerInputHandler*, ButtonEvent*, PlayerControlsData*)>(REL::AE1799Shift(0x04, kAE1799AddedVFuncCount), 0x04, this, a_event, a_data);
+			REL::RelocateVirtual<void(PlayerInputHandler*, ButtonEvent*, PlayerControlsData*)>(REL::VersionShift(0x04, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), 0x04, this, a_event, a_data);
 		}
 
 #	ifdef ENABLE_SKYRIM_AE

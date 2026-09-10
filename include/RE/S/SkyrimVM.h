@@ -298,7 +298,7 @@ namespace RE
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
 			assert(!REL::Module::IsVR());
-			return REL::RelocateMember<RUNTIME_DATA>(this, REL::AE1799Shift(0x754, kAE1799AmiiboShift));
+			return REL::RelocateMember<RUNTIME_DATA>(this, REL::VersionShift(0x754, kAE1799AmiiboShift, SKSE::RUNTIME_SSE_1_7_99));
 		}
 
 		VR_ONLY_POINTER_ACCESSOR(VR_RUNTIME_DATA, GetVRRuntimeData, 0x754);
@@ -308,7 +308,7 @@ namespace RE
 			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
 				return REL::RelocateMember<RUNTIME_DATA2>(this, 0x780);
 			}
-			return REL::RelocateMember<RUNTIME_DATA2>(this, REL::AE1799Shift(0x760, kAE1799AmiiboShift));
+			return REL::RelocateMember<RUNTIME_DATA2>(this, REL::VersionShift(0x760, kAE1799AmiiboShift, SKSE::RUNTIME_SSE_1_7_99));
 		}
 
 #ifdef ENABLE_SKYRIM_AE
@@ -336,22 +336,22 @@ namespace RE
 #if defined(EXCLUSIVE_SKYRIM_FLAT)
 		[[nodiscard]] BSTEventSink<TESPlayerBowShotEvent>* AsTESPlayerBowShotEventSink() noexcept
 		{
-			return reinterpret_cast<BSTEventSink<TESPlayerBowShotEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::AE1799Shift(0x180, kAE1799AmiiboShift));
+			return reinterpret_cast<BSTEventSink<TESPlayerBowShotEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::VersionShift(0x180, kAE1799AmiiboShift, SKSE::RUNTIME_SSE_1_7_99));
 		}
 
 		[[nodiscard]] BSTEventSink<TESFastTravelEndEvent>* AsTESFastTravelEndEventSink() noexcept
 		{
-			return reinterpret_cast<BSTEventSink<TESFastTravelEndEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::AE1799Shift(0x188, kAE1799AmiiboShift));
+			return reinterpret_cast<BSTEventSink<TESFastTravelEndEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::VersionShift(0x188, kAE1799AmiiboShift, SKSE::RUNTIME_SSE_1_7_99));
 		}
 
 		[[nodiscard]] BSTEventSink<PositionPlayerEvent>* AsPositionPlayerEventSink() noexcept
 		{
-			return reinterpret_cast<BSTEventSink<PositionPlayerEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::AE1799Shift(0x190, kAE1799AmiiboShift));
+			return reinterpret_cast<BSTEventSink<PositionPlayerEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::VersionShift(0x190, kAE1799AmiiboShift, SKSE::RUNTIME_SSE_1_7_99));
 		}
 
 		[[nodiscard]] BSTEventSink<BSScript::StatsEvent>* AsStatsEventSink() noexcept
 		{
-			return reinterpret_cast<BSTEventSink<BSScript::StatsEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::AE1799Shift(0x198, kAE1799AmiiboShift));
+			return reinterpret_cast<BSTEventSink<BSScript::StatsEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::VersionShift(0x198, kAE1799AmiiboShift, SKSE::RUNTIME_SSE_1_7_99));
 		}
 #endif
 

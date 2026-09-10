@@ -137,20 +137,20 @@ namespace RE
 		static constexpr std::size_t kAE1799AddedVFuncCount = 6;  // matches Unk_05AE..Unk_0AAE above
 		void                         Unk_05(void)
 		{
-			REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::AE1799Shift(0x05, kAE1799AddedVFuncCount), REL::AE1799Shift(0x05, kAE1799AddedVFuncCount), this);
+			REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::VersionShift(0x05, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), REL::VersionShift(0x05, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), this);
 		}
-		void Unk_06(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::AE1799Shift(0x06, kAE1799AddedVFuncCount), REL::AE1799Shift(0x06, kAE1799AddedVFuncCount), this); }
-		void Unk_07(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::AE1799Shift(0x07, kAE1799AddedVFuncCount), REL::AE1799Shift(0x07, kAE1799AddedVFuncCount), this); }
-		void Unk_08(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::AE1799Shift(0x08, kAE1799AddedVFuncCount), REL::AE1799Shift(0x08, kAE1799AddedVFuncCount), this); }
-		void Unk_09(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::AE1799Shift(0x09, kAE1799AddedVFuncCount), REL::AE1799Shift(0x09, kAE1799AddedVFuncCount), this); }
-		void Unk_0A(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::AE1799Shift(0x0A, kAE1799AddedVFuncCount), REL::AE1799Shift(0x0A, kAE1799AddedVFuncCount), this); }
-		void Unk_0B(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::AE1799Shift(0x0B, kAE1799AddedVFuncCount), REL::AE1799Shift(0x0B, kAE1799AddedVFuncCount), this); }
-		void Unk_0C(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::AE1799Shift(0x0C, kAE1799AddedVFuncCount), REL::AE1799Shift(0x0C, kAE1799AddedVFuncCount), this); }
-		void Unk_0D(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::AE1799Shift(0x0D, kAE1799AddedVFuncCount), REL::AE1799Shift(0x0D, kAE1799AddedVFuncCount), this); }
-		void Unk_0E(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::AE1799Shift(0x0E, kAE1799AddedVFuncCount), REL::AE1799Shift(0x0E, kAE1799AddedVFuncCount), this); }
-		void Unk_0F(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::AE1799Shift(0x0F, kAE1799AddedVFuncCount), REL::AE1799Shift(0x0F, kAE1799AddedVFuncCount), this); }
-		void Unk_10(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::AE1799Shift(0x10, kAE1799AddedVFuncCount), REL::AE1799Shift(0x10, kAE1799AddedVFuncCount), this); }
-		void Unk_11(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::AE1799Shift(0x11, kAE1799AddedVFuncCount), REL::AE1799Shift(0x11, kAE1799AddedVFuncCount), this); }
+		void Unk_06(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::VersionShift(0x06, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), REL::VersionShift(0x06, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), this); }
+		void Unk_07(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::VersionShift(0x07, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), REL::VersionShift(0x07, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), this); }
+		void Unk_08(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::VersionShift(0x08, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), REL::VersionShift(0x08, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), this); }
+		void Unk_09(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::VersionShift(0x09, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), REL::VersionShift(0x09, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), this); }
+		void Unk_0A(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::VersionShift(0x0A, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), REL::VersionShift(0x0A, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), this); }
+		void Unk_0B(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::VersionShift(0x0B, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), REL::VersionShift(0x0B, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), this); }
+		void Unk_0C(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::VersionShift(0x0C, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), REL::VersionShift(0x0C, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), this); }
+		void Unk_0D(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::VersionShift(0x0D, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), REL::VersionShift(0x0D, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), this); }
+		void Unk_0E(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::VersionShift(0x0E, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), REL::VersionShift(0x0E, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), this); }
+		void Unk_0F(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::VersionShift(0x0F, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), REL::VersionShift(0x0F, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), this); }
+		void Unk_10(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::VersionShift(0x10, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), REL::VersionShift(0x10, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), this); }
+		void Unk_11(void) { REL::RelocateVirtual<void(BSSaveDataSystemUtility*)>(REL::VersionShift(0x11, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), REL::VersionShift(0x11, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), this); }
 #endif
 
 		// members

@@ -21,11 +21,11 @@ namespace RE
 		// vtable this class's own slots shift against.
 		void UpdateHeldStateActive(const ButtonEvent* a_event)
 		{
-			REL::RelocateVirtual<void(HeldStateHandler*, const ButtonEvent*)>(REL::AE1799Shift(0x05, kAE1799AddedVFuncCount), 0x05, this, a_event);
+			REL::RelocateVirtual<void(HeldStateHandler*, const ButtonEvent*)>(REL::VersionShift(0x05, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), 0x05, this, a_event);
 		}
 		void SetHeldStateActive(bool a_flag)
 		{
-			REL::RelocateVirtual<void(HeldStateHandler*, bool)>(REL::AE1799Shift(0x06, kAE1799AddedVFuncCount), 0x06, this, a_flag);
+			REL::RelocateVirtual<void(HeldStateHandler*, bool)>(REL::VersionShift(0x06, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), 0x06, this, a_flag);
 		}
 #endif
 
