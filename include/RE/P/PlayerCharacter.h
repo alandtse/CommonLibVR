@@ -1075,29 +1075,29 @@ namespace RE
 
 		// Runtime data accessors
 		// 1.7.99 adds another base class; most members below are shifted by this many
-		// bytes (REL::AE1799Shift), matching PlayerCharacter.cpp's GetGrabbedActorHandle
+		// bytes (REL::VersionShift), matching PlayerCharacter.cpp's GetGrabbedActorHandle
 		// et al.
 		static constexpr std::size_t kAE1799ShiftBytes = 0x8;
 
-		RUNTIME_DATA_ACCESSOR_VERSIONED_EX(PLAYER_RUNTIME_DATA, GetPlayerRuntimeData, SKSE::RUNTIME_SSE_1_6_629, 0x3D8, REL::AE1799Shift(0x3E0, kAE1799ShiftBytes));
+		RUNTIME_DATA_ACCESSOR_VERSIONED_EX(PLAYER_RUNTIME_DATA, GetPlayerRuntimeData, SKSE::RUNTIME_SSE_1_6_629, 0x3D8, REL::VersionShift(0x3E0, kAE1799ShiftBytes, SKSE::RUNTIME_SSE_1_7_99));
 		// VR's block starts 0x18 later than SE's 0x3D8 anchor (3 extra VR-only BSTEventSink members);
 		// matches GetVRNodeData's own 0x3F0 anchor below.
 		VR_ONLY_POINTER_ACCESSOR(VR_PLAYER_RUNTIME_DATA, GetVRPlayerRuntimeData, 0x3F0);
 
-		RUNTIME_MEMBER_ACCESSOR_VERSIONED(CrimeValue, GetCrimeValue, SKSE::RUNTIME_SSE_1_6_629, 0x3E0, 0x9D0, REL::AE1799Shift(0x3E8, kAE1799ShiftBytes));
+		RUNTIME_MEMBER_ACCESSOR_VERSIONED(CrimeValue, GetCrimeValue, SKSE::RUNTIME_SSE_1_6_629, 0x3E0, 0x9D0, REL::VersionShift(0x3E8, kAE1799ShiftBytes, SKSE::RUNTIME_SSE_1_7_99));
 
-		RUNTIME_MEMBER_ACCESSOR_VERSIONED(RaceData, GetRaceData, SKSE::RUNTIME_SSE_1_6_629, 0xB30, 0x1228, REL::AE1799Shift(0xB38, kAE1799ShiftBytes));
+		RUNTIME_MEMBER_ACCESSOR_VERSIONED(RaceData, GetRaceData, SKSE::RUNTIME_SSE_1_6_629, 0xB30, 0x1228, REL::VersionShift(0xB38, kAE1799ShiftBytes, SKSE::RUNTIME_SSE_1_7_99));
 
-		RUNTIME_MEMBER_ACCESSOR_VERSIONED(GameStateData, GetGameStatsData, SKSE::RUNTIME_SSE_1_6_629, 0xAF8, 0x11F4, REL::AE1799Shift(0xB00, kAE1799ShiftBytes));
+		RUNTIME_MEMBER_ACCESSOR_VERSIONED(GameStateData, GetGameStatsData, SKSE::RUNTIME_SSE_1_6_629, 0xAF8, 0x11F4, REL::VersionShift(0xB00, kAE1799ShiftBytes, SKSE::RUNTIME_SSE_1_7_99));
 
 		using QuestTargetsMap = BSTHashMap<TESQuest*, BSTArray<TESQuestTarget*>*>;
-		RUNTIME_MEMBER_ACCESSOR_VERSIONED(BSSpinLock, GetQuestTargetsLock, SKSE::RUNTIME_SSE_1_6_629, 0x3D8, 0x9C8, REL::AE1799Shift(0x3E0, kAE1799ShiftBytes));
-		RUNTIME_MEMBER_ACCESSOR_VERSIONED(BSSimpleList<TESQuestStageItem*>, GetQuestLog, SKSE::RUNTIME_SSE_1_6_629, 0x570, 0xB60, REL::AE1799Shift(0x578, kAE1799ShiftBytes));
-		RUNTIME_MEMBER_ACCESSOR_VERSIONED(QuestTargetsMap, GetQuestTargets, SKSE::RUNTIME_SSE_1_6_629, 0x598, 0xB88, REL::AE1799Shift(0x5A0, kAE1799ShiftBytes));
+		RUNTIME_MEMBER_ACCESSOR_VERSIONED(BSSpinLock, GetQuestTargetsLock, SKSE::RUNTIME_SSE_1_6_629, 0x3D8, 0x9C8, REL::VersionShift(0x3E0, kAE1799ShiftBytes, SKSE::RUNTIME_SSE_1_7_99));
+		RUNTIME_MEMBER_ACCESSOR_VERSIONED(BSSimpleList<TESQuestStageItem*>, GetQuestLog, SKSE::RUNTIME_SSE_1_6_629, 0x570, 0xB60, REL::VersionShift(0x578, kAE1799ShiftBytes, SKSE::RUNTIME_SSE_1_7_99));
+		RUNTIME_MEMBER_ACCESSOR_VERSIONED(QuestTargetsMap, GetQuestTargets, SKSE::RUNTIME_SSE_1_6_629, 0x598, 0xB88, REL::VersionShift(0x5A0, kAE1799ShiftBytes, SKSE::RUNTIME_SSE_1_7_99));
 
-		RUNTIME_MEMBER_ACCESSOR_VERSIONED(INFO_RUNTIME_DATA, GetInfoRuntimeData, SKSE::RUNTIME_SSE_1_6_629, 0x8E4, 0x8E4, REL::AE1799Shift(0x8EC, kAE1799ShiftBytes));
+		RUNTIME_MEMBER_ACCESSOR_VERSIONED(INFO_RUNTIME_DATA, GetInfoRuntimeData, SKSE::RUNTIME_SSE_1_6_629, 0x8E4, 0x8E4, REL::VersionShift(0x8EC, kAE1799ShiftBytes, SKSE::RUNTIME_SSE_1_7_99));
 
-		RUNTIME_MEMBER_ACCESSOR_VERSIONED(PlayerFlags, GetPlayerFlags, SKSE::RUNTIME_SSE_1_6_629, 0xBD8, 0x12D0, REL::AE1799Shift(0xBE0, kAE1799ShiftBytes));
+		RUNTIME_MEMBER_ACCESSOR_VERSIONED(PlayerFlags, GetPlayerFlags, SKSE::RUNTIME_SSE_1_6_629, 0xBD8, 0x12D0, REL::VersionShift(0xBE0, kAE1799ShiftBytes, SKSE::RUNTIME_SSE_1_7_99));
 
 		VR_ONLY_POINTER_ACCESSOR(VR_INFO_RUNTIME_DATA, GetVRInfoRuntimeData, 0xFE0);
 		VR_ONLY_POINTER_ACCESSOR(VR_NODE_DATA, GetVRNodeData, 0x3F0);
