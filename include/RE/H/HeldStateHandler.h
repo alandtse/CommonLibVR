@@ -17,13 +17,15 @@ namespace RE
 		virtual void UpdateHeldStateActive(const ButtonEvent* a_event);  // 05
 		virtual void SetHeldStateActive(bool a_flag);                    // 06
 #else
+		// Inherits PlayerInputHandler::kAE1799AddedVFuncCount -- same base-class
+		// vtable this class's own slots shift against.
 		void UpdateHeldStateActive(const ButtonEvent* a_event)
 		{
-			REL::RelocateVirtual<void(HeldStateHandler*, const ButtonEvent*)>(REL::AE1799Shift(0x05, 2), 0x05, this, a_event);
+			REL::RelocateVirtual<void(HeldStateHandler*, const ButtonEvent*)>(REL::AE1799Shift(0x05, kAE1799AddedVFuncCount), 0x05, this, a_event);
 		}
 		void SetHeldStateActive(bool a_flag)
 		{
-			REL::RelocateVirtual<void(HeldStateHandler*, bool)>(REL::AE1799Shift(0x06, 2), 0x06, this, a_flag);
+			REL::RelocateVirtual<void(HeldStateHandler*, bool)>(REL::AE1799Shift(0x06, kAE1799AddedVFuncCount), 0x06, this, a_flag);
 		}
 #endif
 

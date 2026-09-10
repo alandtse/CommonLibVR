@@ -290,10 +290,15 @@ namespace RE
             RUNTIME_DATA2_CONTENT
 		};
 
+		// See the base-class-list comment above: the game's own AE 1.7.99 binary adds
+		// 2 real 8-byte base classes here (not modeled as C++ inheritance in this repo),
+		// shifting every member/offset after them by the same +0x10.
+		static constexpr std::size_t kAE1799AmiiboShift = 0x10;
+
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
 			assert(!REL::Module::IsVR());
-			return REL::RelocateMember<RUNTIME_DATA>(this, REL::AE1799Shift(0x754, 0x10));
+			return REL::RelocateMember<RUNTIME_DATA>(this, REL::AE1799Shift(0x754, kAE1799AmiiboShift));
 		}
 
 		VR_ONLY_POINTER_ACCESSOR(VR_RUNTIME_DATA, GetVRRuntimeData, 0x754);
@@ -303,7 +308,7 @@ namespace RE
 			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
 				return REL::RelocateMember<RUNTIME_DATA2>(this, 0x780);
 			}
-			return REL::RelocateMember<RUNTIME_DATA2>(this, REL::AE1799Shift(0x760, 0x10));
+			return REL::RelocateMember<RUNTIME_DATA2>(this, REL::AE1799Shift(0x760, kAE1799AmiiboShift));
 		}
 
 #ifdef ENABLE_SKYRIM_AE
@@ -331,22 +336,22 @@ namespace RE
 #if defined(EXCLUSIVE_SKYRIM_FLAT)
 		[[nodiscard]] BSTEventSink<TESPlayerBowShotEvent>* AsTESPlayerBowShotEventSink() noexcept
 		{
-			return reinterpret_cast<BSTEventSink<TESPlayerBowShotEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::AE1799Shift(0x180, 0x10));
+			return reinterpret_cast<BSTEventSink<TESPlayerBowShotEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::AE1799Shift(0x180, kAE1799AmiiboShift));
 		}
 
 		[[nodiscard]] BSTEventSink<TESFastTravelEndEvent>* AsTESFastTravelEndEventSink() noexcept
 		{
-			return reinterpret_cast<BSTEventSink<TESFastTravelEndEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::AE1799Shift(0x188, 0x10));
+			return reinterpret_cast<BSTEventSink<TESFastTravelEndEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::AE1799Shift(0x188, kAE1799AmiiboShift));
 		}
 
 		[[nodiscard]] BSTEventSink<PositionPlayerEvent>* AsPositionPlayerEventSink() noexcept
 		{
-			return reinterpret_cast<BSTEventSink<PositionPlayerEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::AE1799Shift(0x190, 0x10));
+			return reinterpret_cast<BSTEventSink<PositionPlayerEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::AE1799Shift(0x190, kAE1799AmiiboShift));
 		}
 
 		[[nodiscard]] BSTEventSink<BSScript::StatsEvent>* AsStatsEventSink() noexcept
 		{
-			return reinterpret_cast<BSTEventSink<BSScript::StatsEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::AE1799Shift(0x198, 0x10));
+			return reinterpret_cast<BSTEventSink<BSScript::StatsEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::AE1799Shift(0x198, kAE1799AmiiboShift));
 		}
 #endif
 

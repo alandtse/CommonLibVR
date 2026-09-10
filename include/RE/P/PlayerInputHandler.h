@@ -34,17 +34,19 @@ namespace RE
 		virtual void Unk_05(void);                                                                                               // 05
 		virtual void Unk_06(void);                                                                                               // 06
 #else
+		static constexpr std::size_t kAE1799AddedVFuncCount = 2;  // matches ProcessMotionGesture/ProcessSixaxis below
+
 		void ProcessThumbstick(ThumbstickEvent* a_event, PlayerControlsData* a_data)
 		{
-			REL::RelocateVirtual<void(PlayerInputHandler*, ThumbstickEvent*, PlayerControlsData*)>(REL::AE1799Shift(0x02, 2), 0x02, this, a_event, a_data);
+			REL::RelocateVirtual<void(PlayerInputHandler*, ThumbstickEvent*, PlayerControlsData*)>(REL::AE1799Shift(0x02, kAE1799AddedVFuncCount), 0x02, this, a_event, a_data);
 		}
 		void ProcessMouseMove(MouseMoveEvent* a_event, PlayerControlsData* a_data)
 		{
-			REL::RelocateVirtual<void(PlayerInputHandler*, MouseMoveEvent*, PlayerControlsData*)>(REL::AE1799Shift(0x03, 2), 0x03, this, a_event, a_data);
+			REL::RelocateVirtual<void(PlayerInputHandler*, MouseMoveEvent*, PlayerControlsData*)>(REL::AE1799Shift(0x03, kAE1799AddedVFuncCount), 0x03, this, a_event, a_data);
 		}
 		void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data)
 		{
-			REL::RelocateVirtual<void(PlayerInputHandler*, ButtonEvent*, PlayerControlsData*)>(REL::AE1799Shift(0x04, 2), 0x04, this, a_event, a_data);
+			REL::RelocateVirtual<void(PlayerInputHandler*, ButtonEvent*, PlayerControlsData*)>(REL::AE1799Shift(0x04, kAE1799AddedVFuncCount), 0x04, this, a_event, a_data);
 		}
 
 #	ifdef ENABLE_SKYRIM_AE

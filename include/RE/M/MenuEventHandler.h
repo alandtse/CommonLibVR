@@ -39,21 +39,23 @@ namespace RE
 		virtual bool ProcessMouseMove(MouseMoveEvent* a_event);                            // VR 07 - { return false; }
 		virtual bool ProcessButton(ButtonEvent* a_event);                                  // VR 08 - { return false; }
 #else
+		static constexpr std::size_t kAE1799AddedVFuncCount = 2;  // matches ProcessMotionGesture/ProcessSixaxis below
+
 		bool ProcessKinect(KinectEvent* a_event)
 		{
-			return REL::RelocateVirtual<decltype(&MenuEventHandler::ProcessKinect)>(REL::AE1799Shift(0x02, 2), 0x05, this, a_event);
+			return REL::RelocateVirtual<decltype(&MenuEventHandler::ProcessKinect)>(REL::AE1799Shift(0x02, kAE1799AddedVFuncCount), 0x05, this, a_event);
 		}
 		bool ProcessThumbstick(ThumbstickEvent* a_event)
 		{
-			return REL::RelocateVirtual<decltype(&MenuEventHandler::ProcessThumbstick)>(REL::AE1799Shift(0x03, 2), 0x06, this, a_event);
+			return REL::RelocateVirtual<decltype(&MenuEventHandler::ProcessThumbstick)>(REL::AE1799Shift(0x03, kAE1799AddedVFuncCount), 0x06, this, a_event);
 		}
 		bool ProcessMouseMove(MouseMoveEvent* a_event)
 		{
-			return REL::RelocateVirtual<decltype(&MenuEventHandler::ProcessMouseMove)>(REL::AE1799Shift(0x04, 2), 0x07, this, a_event);
+			return REL::RelocateVirtual<decltype(&MenuEventHandler::ProcessMouseMove)>(REL::AE1799Shift(0x04, kAE1799AddedVFuncCount), 0x07, this, a_event);
 		}
 		bool ProcessButton(ButtonEvent* a_event)
 		{
-			return REL::RelocateVirtual<decltype(&MenuEventHandler::ProcessButton)>(REL::AE1799Shift(0x05, 2), 0x08, this, a_event);
+			return REL::RelocateVirtual<decltype(&MenuEventHandler::ProcessButton)>(REL::AE1799Shift(0x05, kAE1799AddedVFuncCount), 0x08, this, a_event);
 		}
 
 #	ifdef ENABLE_SKYRIM_AE
