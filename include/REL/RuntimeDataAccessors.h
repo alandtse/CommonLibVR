@@ -1,10 +1,30 @@
 #pragma once
 
 #include <cassert>
+#include <cstddef>
 #include <type_traits>
 
 #include "REL/Relocation.h"
 #include "SKSE/Version.h"
+
+namespace REL
+{
+	/**
+	 * Applies the byte/slot shift required on Skyrim AE 1.7.99+, which inserted an
+	 * additional base class/vtable slot that pushes every member or virtual function
+	 * declared after it forward by a fixed amount on affected classes.
+	 *
+	 * <p>
+	 * a_delta defaults to 8 (a pointer-sized member shift); pass a smaller delta
+	 * (e.g. 1 or 2) for virtual function slot indices, which shift by slot count,
+	 * not bytes.
+	 * </p>
+	 */
+	[[nodiscard]] SKYRIM_REL std::size_t AE1799Shift(std::size_t a_offset, std::size_t a_delta = 8) noexcept
+	{
+		return REL::Module::IsAtLeast(SKSE::RUNTIME_SSE_1_7_99) ? a_offset + a_delta : a_offset;
+	}
+}
 
 // Helper macros for generating runtime data accessor functions.
 // These reduce boilerplate for common patterns across ~160+ accessor function pairs.

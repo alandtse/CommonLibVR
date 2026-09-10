@@ -1,6 +1,7 @@
 #pragma once
 #include "RE/B/BSFixedString.h"
 #include "REL/Relocation.h"
+#include "REL/RuntimeDataAccessors.h"
 #include "SKSE/Version.h"
 
 namespace RE
@@ -33,22 +34,17 @@ namespace RE
 		virtual void Unk_05(void);                                                                                               // 05
 		virtual void Unk_06(void);                                                                                               // 06
 #else
-#	ifdef ENABLE_SKYRIM_AE
-#		define AE1799_SLOT_SHIFT(idx) (REL::Module::IsAtLeast(SKSE::RUNTIME_SSE_1_7_99) ? (idx) + 2 : (idx))
-#	else
-#		define AE1799_SLOT_SHIFT(idx) (idx)
-#	endif
 		void ProcessThumbstick(ThumbstickEvent* a_event, PlayerControlsData* a_data)
 		{
-			REL::RelocateVirtual<void(PlayerInputHandler*, ThumbstickEvent*, PlayerControlsData*)>(AE1799_SLOT_SHIFT(0x02), 0x02, this, a_event, a_data);
+			REL::RelocateVirtual<void(PlayerInputHandler*, ThumbstickEvent*, PlayerControlsData*)>(REL::AE1799Shift(0x02, 2), 0x02, this, a_event, a_data);
 		}
 		void ProcessMouseMove(MouseMoveEvent* a_event, PlayerControlsData* a_data)
 		{
-			REL::RelocateVirtual<void(PlayerInputHandler*, MouseMoveEvent*, PlayerControlsData*)>(AE1799_SLOT_SHIFT(0x03), 0x03, this, a_event, a_data);
+			REL::RelocateVirtual<void(PlayerInputHandler*, MouseMoveEvent*, PlayerControlsData*)>(REL::AE1799Shift(0x03, 2), 0x03, this, a_event, a_data);
 		}
 		void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data)
 		{
-			REL::RelocateVirtual<void(PlayerInputHandler*, ButtonEvent*, PlayerControlsData*)>(AE1799_SLOT_SHIFT(0x04), 0x04, this, a_event, a_data);
+			REL::RelocateVirtual<void(PlayerInputHandler*, ButtonEvent*, PlayerControlsData*)>(REL::AE1799Shift(0x04, 2), 0x04, this, a_event, a_data);
 		}
 
 #	ifdef ENABLE_SKYRIM_AE
@@ -67,7 +63,6 @@ namespace RE
 			return REL::RelocateVirtual<bool(PlayerInputHandler*, SixaxisEvent*)>(0x03, 0x03, this, a_event);
 		}
 #	endif
-#	undef AE1799_SLOT_SHIFT
 
 		void Unk_05(void)
 		{

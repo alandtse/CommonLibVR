@@ -17,20 +17,14 @@ namespace RE
 		virtual void UpdateHeldStateActive(const ButtonEvent* a_event);  // 05
 		virtual void SetHeldStateActive(bool a_flag);                    // 06
 #else
-#	ifdef ENABLE_SKYRIM_AE
-#		define AE1799_SLOT_SHIFT(idx) (REL::Module::IsAtLeast(SKSE::RUNTIME_SSE_1_7_99) ? (idx) + 2 : (idx))
-#	else
-#		define AE1799_SLOT_SHIFT(idx) (idx)
-#	endif
 		void UpdateHeldStateActive(const ButtonEvent* a_event)
 		{
-			REL::RelocateVirtual<void(HeldStateHandler*, const ButtonEvent*)>(AE1799_SLOT_SHIFT(0x05), 0x05, this, a_event);
+			REL::RelocateVirtual<void(HeldStateHandler*, const ButtonEvent*)>(REL::AE1799Shift(0x05, 2), 0x05, this, a_event);
 		}
 		void SetHeldStateActive(bool a_flag)
 		{
-			REL::RelocateVirtual<void(HeldStateHandler*, bool)>(AE1799_SLOT_SHIFT(0x06), 0x06, this, a_flag);
+			REL::RelocateVirtual<void(HeldStateHandler*, bool)>(REL::AE1799Shift(0x06, 2), 0x06, this, a_flag);
 		}
-#	undef AE1799_SLOT_SHIFT
 #endif
 
 		// members
