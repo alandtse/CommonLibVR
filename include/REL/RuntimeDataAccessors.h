@@ -15,12 +15,13 @@ namespace REL
 	 * declared after it forward by a fixed amount on affected classes.
 	 *
 	 * <p>
-	 * a_delta defaults to 8 (a pointer-sized member shift); pass a smaller delta
-	 * (e.g. 1 or 2) for virtual function slot indices, which shift by slot count,
-	 * not bytes.
+	 * a_delta has no default -- it varies per class (a pointer-sized member shift is
+	 * 8 bytes; a virtual function slot index shifts by however many slots were
+	 * inserted, e.g. 1, 2, or 6) and must be confirmed per call site rather than
+	 * assumed.
 	 * </p>
 	 */
-	[[nodiscard]] SKYRIM_REL std::size_t AE1799Shift(std::size_t a_offset, std::size_t a_delta = 8) noexcept
+	[[nodiscard]] SKYRIM_REL std::size_t AE1799Shift(std::size_t a_offset, std::size_t a_delta) noexcept
 	{
 		return REL::Module::IsAtLeast(SKSE::RUNTIME_SSE_1_7_99) ? a_offset + a_delta : a_offset;
 	}
