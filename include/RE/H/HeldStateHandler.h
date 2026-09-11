@@ -17,8 +17,7 @@ namespace RE
 		virtual void UpdateHeldStateActive(const ButtonEvent* a_event);  // 05
 		virtual void SetHeldStateActive(bool a_flag);                    // 06
 #else
-		// Inherits PlayerInputHandler::kAE1799AddedVFuncCount -- same base-class
-		// vtable this class's own slots shift against.
+		// Same base-class vtable, so PlayerInputHandler's delta applies here too.
 		void UpdateHeldStateActive(const ButtonEvent* a_event)
 		{
 			REL::RelocateVirtual<void(HeldStateHandler*, const ButtonEvent*)>(REL::VersionShift(0x05, kAE1799AddedVFuncCount, SKSE::RUNTIME_SSE_1_7_99), 0x05, this, a_event);

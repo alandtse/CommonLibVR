@@ -290,9 +290,6 @@ namespace RE
             RUNTIME_DATA2_CONTENT
 		};
 
-		// See the base-class-list comment above: the game's own AE 1.7.99 binary adds
-		// 2 real 8-byte base classes here (not modeled as C++ inheritance in this repo),
-		// shifting every member/offset after them by the same +0x10.
 		static constexpr std::size_t kAE1799AmiiboShift = 0x10;
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept

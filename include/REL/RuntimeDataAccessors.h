@@ -12,17 +12,12 @@ namespace REL
 	/**
 	 * Applies the byte/slot shift required when a Skyrim runtime update inserts an
 	 * additional base class/vtable slot, pushing every member or virtual function
-	 * declared after it forward by a fixed amount on affected classes on builds at
-	 * or above a_threshold. AE 1.7.99 is the only version boundary that currently
-	 * needs this (see SKSE::RUNTIME_SSE_1_7_99 callers), but Bethesda has done this
-	 * kind of mid-stream base-class insertion before (the SE/AE 1.6.629 boundary
-	 * itself) and may again -- this is not 1.7.99-specific.
+	 * declared after it forward by a fixed amount on builds at or above a_threshold.
 	 *
 	 * <p>
-	 * Neither a_delta nor a_threshold has a default -- both vary per class/version
-	 * (a pointer-sized member shift is 8 bytes; a virtual function slot index shifts
-	 * by however many slots were inserted, e.g. 1, 2, or 6) and must be confirmed
-	 * per call site rather than assumed.
+	 * Neither a_delta nor a_threshold has a default -- both are per-class RE facts
+	 * (a member shift is a byte count, a vtable slot index shifts by however many
+	 * slots were inserted) and must be confirmed per call site rather than assumed.
 	 * </p>
 	 */
 	[[nodiscard]] SKYRIM_REL std::size_t VersionShift(std::size_t a_offset, std::size_t a_delta, REL::Version a_threshold) noexcept
