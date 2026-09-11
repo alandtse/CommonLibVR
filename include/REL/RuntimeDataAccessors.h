@@ -1,10 +1,30 @@
 #pragma once
 
 #include <cassert>
+#include <cstddef>
 #include <type_traits>
 
 #include "REL/Relocation.h"
 #include "SKSE/Version.h"
+
+namespace REL
+{
+	/**
+	 * Applies the byte/slot shift required when a Skyrim runtime update inserts an
+	 * additional base class/vtable slot, pushing every member or virtual function
+	 * declared after it forward by a fixed amount on builds at or above a_threshold.
+	 *
+	 * <p>
+	 * Neither a_delta nor a_threshold has a default -- both are per-class RE facts
+	 * (a member shift is a byte count, a vtable slot index shifts by however many
+	 * slots were inserted) and must be confirmed per call site rather than assumed.
+	 * </p>
+	 */
+	[[nodiscard]] SKYRIM_REL std::size_t VersionShift(std::size_t a_offset, std::size_t a_delta, REL::Version a_threshold) noexcept
+	{
+		return REL::Module::IsAtLeast(a_threshold) ? a_offset + a_delta : a_offset;
+	}
+}
 
 // Helper macros for generating runtime data accessor functions.
 // These reduce boilerplate for common patterns across ~160+ accessor function pairs.
