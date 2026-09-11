@@ -44,7 +44,7 @@ TEST_CASE("BSInputEventQueue/ButtonCache", "[unit][input-queue]")
 	const auto [version, runtime, first, stride, head] = GENERATE(
 		std::tuple{ SKSE::RUNTIME_SSE_1_5_97, Runtime::SE, 0x20, 0x30, 0x380 },
 		std::tuple{ SKSE::RUNTIME_SSE_1_6_1170, Runtime::AE, 0x20, 0x30, 0x380 },
-		std::tuple{ SKSE::RUNTIME_1_6_1179, Runtime::AE, 0x20, 0x30, 0x380 },
+		std::tuple{ SKSE::RUNTIME_SSE_1_6_1179, Runtime::AE, 0x20, 0x30, 0x380 },
 		std::tuple{ SKSE::RUNTIME_SSE_1_7_99, Runtime::AE, 0x28, 0x30, 0x558 },
 		std::tuple{ REL::Version{ 1, 7, 104, 0 }, Runtime::AE, 0x28, 0x30, 0x558 },
 		std::tuple{ SKSE::RUNTIME_VR_1_4_15, Runtime::VR, 0x28, 0x38, 0x570 });
