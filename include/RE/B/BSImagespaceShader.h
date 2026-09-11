@@ -1,6 +1,9 @@
 #pragma once
 
+#include "RE/B/BSFixedString.h"
 #include "RE/B/BSShader.h"
+#include "RE/B/BSShaderRenderTargets.h"
+#include "RE/B/BSTArray.h"
 #include "RE/I/ImageSpaceEffect.h"
 
 namespace RE
@@ -44,6 +47,10 @@ namespace RE
 		virtual void GetShaderMacros(ShaderMacro* a_macros);  // 0D, VR 0E
 		virtual void LoadShaders();                           // 0E
 #endif
+
+		void          DispatchCopySubRegion();
+		RENDER_TARGET RenderSSAO(RENDER_TARGET a_inputRenderTarget, RENDER_TARGET a_outputRenderTarget);
+		RENDER_TARGET RenderSnowSSS(RENDER_TARGET a_inputRenderTarget, RENDER_TARGET a_outputRenderTarget);
 
 		static BSImagespaceShader* Create()
 		{

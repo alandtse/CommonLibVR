@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	struct hkpContactMgr;
+	class hkpContactMgr;
 	struct hkpProcessCollisionInput;
 
 	// hkpAgent3::ProcessInput

@@ -1,11 +1,18 @@
 #pragma once
 
-#include "RE\D\DepthStencilDepthModes.h"
-#include "RE\S\State.h"
-#include "RE\T\TextureAddressModes.h"
-#include "RE\T\TextureFilterModes.h"
+#include "RE/B/BSShader.h"
+#include "RE/B/BSShaderRenderTargets.h"
+#include "RE/D/DepthStencilDepthModes.h"
+#include "RE/N/NiPoint2.h"
+#include "RE/N/NiPoint3.h"
+#include "RE/N/NiRect.h"
+#include "RE/R/RenderTargetData.h"
+#include "RE/R/Renderer.h"
+#include "RE/S/State.h"
+#include "RE/T/TextureAddressModes.h"
+#include "RE/T/TextureFilterModes.h"
 
-#include <REX/W32/D3D11.h>
+#include "REX/W32/D3D11.h"
 
 // see https://github.com/Nukem9/SkyrimSETest/blob/master/skyrim64_test/src/patches/TES/BSGraphics/BSGraphicsRenderer.h
 namespace RE
@@ -60,7 +67,9 @@ namespace RE
 
 		enum RasterStateCullMode
 		{
+			RASTER_STATE_CULL_MODE_NONE = 0,
 			RASTER_STATE_CULL_MODE_BACK = 1,
+			RASTER_STATE_CULL_MODE_FRONT = 2,
 
 			RASTER_STATE_CULL_MODE_DEFAULT = RASTER_STATE_CULL_MODE_BACK,  // Used for BSShader::RestoreX
 		};
@@ -421,6 +430,7 @@ namespace RE
 		static_assert(offsetof(RendererShadowState, drawStereo) == 0x880);
 		static_assert(offsetof(RendererShadowState, VSConstantBuffers) == 0x890);
 		static_assert(offsetof(RendererShadowState, PSConstantBuffers) == 0x8f0);
+		static_assert(sizeof(RendererShadowState) == 0x950);
 #else
 		static_assert(sizeof(RendererShadowState) == 1);
 #endif

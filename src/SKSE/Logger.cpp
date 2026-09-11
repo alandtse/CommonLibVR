@@ -21,6 +21,14 @@ namespace SKSE
 		public:
 			using EventResult = RE::BSEventNotifyControl;
 
+			LogEventHandler() = default;
+			LogEventHandler(const LogEventHandler&) = delete;
+			LogEventHandler(LogEventHandler&&) = delete;
+			~LogEventHandler() override = default;
+
+			LogEventHandler& operator=(const LogEventHandler&) = delete;
+			LogEventHandler& operator=(LogEventHandler&&) = delete;
+
 			[[nodiscard]] static inline LogEventHandler* GetSingleton()
 			{
 				static LogEventHandler singleton;
@@ -54,14 +62,6 @@ namespace SKSE
 			}
 
 		private:
-			LogEventHandler() = default;
-			LogEventHandler(const LogEventHandler&) = delete;
-			LogEventHandler(LogEventHandler&&) = delete;
-			~LogEventHandler() override = default;
-
-			LogEventHandler& operator=(const LogEventHandler&) = delete;
-			LogEventHandler& operator=(LogEventHandler&&) = delete;
-
 			std::regex _filter;
 		};
 	}
@@ -74,7 +74,7 @@ namespace SKSE
 			const auto                                                     result = REX::W32::SHGetKnownFolderPath(REX::W32::FOLDERID_Documents, REX::W32::KF_FLAG_DEFAULT, nullptr, std::addressof(buffer));
 			std::unique_ptr<wchar_t[], decltype(&REX::W32::CoTaskMemFree)> knownPath(buffer, REX::W32::CoTaskMemFree);
 			if (!knownPath || result != 0) {
-				error("failed to get known folder path"sv);
+				log::error("failed to get known folder path"sv);
 				return std::nullopt;
 			}
 
