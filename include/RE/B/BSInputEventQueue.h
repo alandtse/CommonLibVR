@@ -181,6 +181,15 @@ namespace RE
 		RUNTIME_DATA_ACCESSOR_VERSIONED_OPTIONAL_EX(AE1799_EVENT_DATA, GetAe1799EventData, SKSE::RUNTIME_SSE_1_7_99, 0x388);
 #endif
 
+		// Engine offsets of the queue's head/tail links. As with the cached event arrays
+		// below, RUNTIME_DATA's compiled offsets can't supply these in a cross-VR build.
+		static constexpr std::ptrdiff_t kQueueHeadSE = 0x380;
+		static constexpr std::ptrdiff_t kQueueHeadAE1799 = 0x558;
+		static constexpr std::ptrdiff_t kQueueTailSE = 0x388;
+		static constexpr std::ptrdiff_t kQueueTailAE1799 = 0x560;
+		static constexpr std::ptrdiff_t kQueueHeadVR = 0x570;
+		static constexpr std::ptrdiff_t kQueueTailVR = 0x578;
+
 #if defined(EXCLUSIVE_SKYRIM_VR)
 		[[nodiscard]] inline InputEvent*& GetQueueHead() noexcept
 		{
@@ -191,27 +200,27 @@ namespace RE
 		[[nodiscard]] inline InputEvent*& GetQueueHead() noexcept
 		{
 			if (REL::Module::IsVR()) {
-				return REL::RelocateMember<InputEvent*>(this, 0, 0x570);
+				return REL::RelocateMember<InputEvent*>(this, 0, kQueueHeadVR);
 			}
-			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, 0x380, 0x558);
+			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, kQueueHeadSE, kQueueHeadAE1799);
 		}
 
 		[[nodiscard]] inline InputEvent*& GetQueueTail() noexcept
 		{
 			if (REL::Module::IsVR()) {
-				return REL::RelocateMember<InputEvent*>(this, 0, 0x578);
+				return REL::RelocateMember<InputEvent*>(this, 0, kQueueTailVR);
 			}
-			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, 0x388, 0x560);
+			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, kQueueTailSE, kQueueTailAE1799);
 		}
 #else                            // SE-only, AE-only, or flat -- no VR possible
 		[[nodiscard]] inline InputEvent*& GetQueueHead() noexcept
 		{
-			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, 0x380, 0x558);
+			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, kQueueHeadSE, kQueueHeadAE1799);
 		}
 
 		[[nodiscard]] inline InputEvent*& GetQueueTail() noexcept
 		{
-			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, 0x388, 0x560);
+			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, kQueueTailSE, kQueueTailAE1799);
 		}
 #endif
 
