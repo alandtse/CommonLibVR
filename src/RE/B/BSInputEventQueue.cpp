@@ -12,11 +12,7 @@ namespace RE
 	ButtonEvent* BSInputEventQueue::GetCachedEvent<ButtonEvent>()
 	{
 		if (buttonEventCount < MAX_BUTTON_EVENTS) {
-			// ButtonEvent's compile-time size is only 0x18 in cross-VR builds.
-			const auto flatOffset = REL::Module::IsAtLeast(SKSE::RUNTIME_SSE_1_7_99) ? 0x28 : 0x20;
-			return &REL::RelocateMember<ButtonEvent>(this,
-				flatOffset + buttonEventCount * 0x30,
-				0x28 + buttonEventCount * 0x38);
+			return CachedEventAt<ButtonEvent>(kButtonEventArray, buttonEventCount);
 		}
 
 		return nullptr;
@@ -26,7 +22,7 @@ namespace RE
 	CharEvent* BSInputEventQueue::GetCachedEvent<CharEvent>()
 	{
 		if (charEventCount < MAX_CHAR_EVENTS) {
-			return &GetRuntimeData().charEvents[charEventCount];
+			return CachedEventAt<CharEvent>(kCharEventArray, charEventCount);
 		}
 
 		return nullptr;
@@ -36,7 +32,7 @@ namespace RE
 	MouseMoveEvent* BSInputEventQueue::GetCachedEvent<MouseMoveEvent>()
 	{
 		if (mouseEventCount < MAX_MOUSE_EVENTS) {
-			return &GetRuntimeData().mouseEvents[mouseEventCount];
+			return CachedEventAt<MouseMoveEvent>(kMouseEventArray, mouseEventCount);
 		}
 
 		return nullptr;
@@ -46,7 +42,7 @@ namespace RE
 	ThumbstickEvent* BSInputEventQueue::GetCachedEvent<ThumbstickEvent>()
 	{
 		if (thumbstickEventCount < MAX_THUMBSTICK_EVENTS) {
-			return &GetRuntimeData().thumbstickEvents[thumbstickEventCount];
+			return CachedEventAt<ThumbstickEvent>(kThumbstickEventArray, thumbstickEventCount);
 		}
 
 		return nullptr;
@@ -56,7 +52,7 @@ namespace RE
 	DeviceConnectEvent* BSInputEventQueue::GetCachedEvent<DeviceConnectEvent>()
 	{
 		if (connectEventCount < MAX_CONNECT_EVENTS) {
-			return &GetRuntimeData().connectEvents[connectEventCount];
+			return CachedEventAt<DeviceConnectEvent>(kConnectEventArray, connectEventCount);
 		}
 
 		return nullptr;

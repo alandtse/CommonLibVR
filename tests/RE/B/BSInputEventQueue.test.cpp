@@ -103,4 +103,46 @@ TEST_CASE("BSInputEventQueue/ButtonCache", "[unit][input-queue]")
 		CHECK(static_cast<RE::ButtonEvent*>(*expectedHead)->AsVRWandEvent()->unkVR28 == 7);
 	}
 }
+
+TEST_CASE("BSInputEventQueue/SiblingCaches", "[unit][input-queue]")
+{
+	using Runtime = REL::Module::Runtime;
+	const auto [version, runtime, charBase, charStride, mouseBase, thumbBase, thumbStride, connectBase] = GENERATE(
+		std::tuple{ SKSE::RUNTIME_SSE_1_5_97, Runtime::SE, 0x200, 0x20, 0x2A0, 0x2D0, 0x30, 0x330 },
+		std::tuple{ SKSE::RUNTIME_SSE_1_6_1170, Runtime::AE, 0x200, 0x20, 0x2A0, 0x2D0, 0x30, 0x330 },
+		std::tuple{ REL::Version{ 1, 7, 104, 0 }, Runtime::AE, 0x208, 0x20, 0x2A8, 0x2D8, 0x30, 0x338 },
+		std::tuple{ SKSE::RUNTIME_VR_1_4_15, Runtime::VR, 0x258, 0x20, 0x2F8, 0x328, 0x30, 0x388 });
+	CAPTURE(version.string());
+	QueueFixture fixture(version, runtime);
+	auto*        queue = reinterpret_cast<RE::BSInputEventQueue*>(fixture.storage.data());
+	auto**       tail = &queue->GetQueueTail();
+
+	for (int i = 0; i < 5; ++i) {
+		auto* expected = reinterpret_cast<RE::InputEvent*>(fixture.storage.data() + charBase + i * charStride);
+		queue->AddCharEvent(static_cast<std::uint32_t>('a' + i));
+		REQUIRE(queue->charEventCount == static_cast<std::uint32_t>(i + 1));
+		CHECK(*tail == expected);
+	}
+
+	for (int i = 0; i < 2; ++i) {
+		auto* expected = reinterpret_cast<RE::InputEvent*>(fixture.storage.data() + thumbBase + i * thumbStride);
+		queue->AddThumbstickEvent(RE::ThumbstickEvent::InputTypes::kLeftThumbstick, 0.5F, 0.25F);
+		REQUIRE(queue->thumbstickEventCount == static_cast<std::uint32_t>(i + 1));
+		CHECK(*tail == expected);
+	}
+
+	{
+		auto* expected = reinterpret_cast<RE::InputEvent*>(fixture.storage.data() + mouseBase);
+		queue->AddMouseMoveEvent(1, 2);
+		REQUIRE(queue->mouseEventCount == 1);
+		CHECK(*tail == expected);
+	}
+
+	{
+		auto* expected = reinterpret_cast<RE::InputEvent*>(fixture.storage.data() + connectBase);
+		queue->AddConnectEvent(RE::INPUT_DEVICE::kKeyboard, true);
+		REQUIRE(queue->connectEventCount == 1);
+		CHECK(*tail == expected);
+	}
+}
 #endif
