@@ -389,6 +389,7 @@ if(BUILD_TESTS)
 	)
 
 	file(COPY
+		tests/REL/input-queue.csv
 		tests/REL/version-1-4-15-0.csv
 		tests/REL/version-1-5-97-0.bin
 		tests/REL/versionlib-1-6-353-0.bin

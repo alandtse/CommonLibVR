@@ -12,7 +12,11 @@ namespace RE
 	ButtonEvent* BSInputEventQueue::GetCachedEvent<ButtonEvent>()
 	{
 		if (buttonEventCount < MAX_BUTTON_EVENTS) {
-			return &GetRuntimeData().buttonEvents[buttonEventCount];
+			// ButtonEvent's compile-time size is only 0x18 in cross-VR builds.
+			const auto flatOffset = REL::Module::IsAtLeast(SKSE::RUNTIME_SSE_1_7_99) ? 0x28 : 0x20;
+			return &REL::RelocateMember<ButtonEvent>(this,
+				flatOffset + buttonEventCount * 0x30,
+				0x28 + buttonEventCount * 0x38);
 		}
 
 		return nullptr;

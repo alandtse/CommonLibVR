@@ -191,7 +191,7 @@ namespace RE
 		[[nodiscard]] inline InputEvent*& GetQueueHead() noexcept
 		{
 			if (REL::Module::IsVR()) {
-				return GetRuntimeData().queueHead;
+				return REL::RelocateMember<InputEvent*>(this, 0, 0x570);
 			}
 			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, 0x380, 0x558);
 		}
@@ -199,7 +199,7 @@ namespace RE
 		[[nodiscard]] inline InputEvent*& GetQueueTail() noexcept
 		{
 			if (REL::Module::IsVR()) {
-				return GetRuntimeData().queueTail;
+				return REL::RelocateMember<InputEvent*>(this, 0, 0x578);
 			}
 			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, 0x388, 0x560);
 		}
