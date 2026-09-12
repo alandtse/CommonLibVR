@@ -1,3 +1,28 @@
+## [8.0.0](https://github.com/alandtse/CommonLibSSE-NG/compare/v7.5.4...v8.0.0) (2026-09-12)
+
+### ⚠ BREAKING CHANGES
+
+* **re:** Consolidates duplicate BSShaderAccumulator declarations. To migrate:
+- Replace `#include "RE/S/ShaderAccumulator.h"` with `#include "RE/B/BSShaderAccumulator.h"`.
+- Rename `FinishAccumulatingPreResolveDepth` call sites to `FinishAccumulatingDispatch`.
+- Access accumulator flags (`firstPerson`, `drawDecals`) via `GetRuntimeFlags()` instead of `GetRuntimeData()`.
+- Use `GetFlatRuntimeData()` or `GetVRRuntimeData()` for runtime-specific fields prior to the shared render-state tail.
+- Cast or use the scoped `RENDER_MODE` enum when comparing `renderMode`.
+
+Co-authored-by: Claude Code <noreply@anthropic.com>
+
+### Features
+
+* **rex:** add a REX::W32 to SDK type bridge ([#352](https://github.com/alandtse/CommonLibSSE-NG/issues/352)) ([80bf621](https://github.com/alandtse/CommonLibSSE-NG/commit/80bf62138fc7ab94195bbe84610a3e0edeffbfc0))
+
+### Bug Fixes
+
+* **vr:** correct NiCamera runtime offset ([#353](https://github.com/alandtse/CommonLibSSE-NG/issues/353)) ([c919ccc](https://github.com/alandtse/CommonLibSSE-NG/commit/c919cccd978e3e7c45208ea329cce5004c681262))
+
+### Code Refactoring
+
+* **re:** consolidate BSShaderAccumulator ([#332](https://github.com/alandtse/CommonLibSSE-NG/issues/332)) ([38e6399](https://github.com/alandtse/CommonLibSSE-NG/commit/38e6399e56d6b3c297183a2b135818257949a474))
+
 ## [7.5.4](https://github.com/alandtse/CommonLibSSE-NG/compare/v7.5.3...v7.5.4) (2026-09-12)
 
 ### Bug Fixes
