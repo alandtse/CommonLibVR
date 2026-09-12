@@ -1,3 +1,9 @@
+## [7.5.3](https://github.com/alandtse/CommonLibSSE-NG/compare/v7.5.2...v7.5.3) (2026-09-12)
+
+### Bug Fixes
+
+* **AE:** correct PlayerCharacter 1.7.x accessors ([#343](https://github.com/alandtse/CommonLibSSE-NG/issues/343)) ([15c399d](https://github.com/alandtse/CommonLibSSE-NG/commit/15c399d7fb22d70706303066f471618022cf4baa))
+
 ## [7.5.2](https://github.com/alandtse/CommonLibSSE-NG/compare/v7.5.1...v7.5.2) (2026-09-11)
 
 ## [7.5.1](https://github.com/alandtse/CommonLibSSE-NG/compare/v7.5.0...v7.5.1) (2026-09-09)
