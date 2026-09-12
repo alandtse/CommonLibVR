@@ -1074,8 +1074,8 @@ namespace RE
 		};
 
 		// Runtime data accessors
-		// 1.7.99 adds another base class; most members below are shifted by this many
-		// bytes (REL::VersionShift).
+		// 1.7.99 adds another base class; most members below are shifted by
+		// this many bytes.
 		static constexpr std::size_t kAE1799ShiftBytes = 0x8;
 
 		RUNTIME_DATA_ACCESSOR_VERSIONED_EX(PLAYER_RUNTIME_DATA, GetPlayerRuntimeData, SKSE::RUNTIME_SSE_1_6_629, 0x3D8, REL::VersionShift(0x3E0, kAE1799ShiftBytes, SKSE::RUNTIME_SSE_1_7_99));
