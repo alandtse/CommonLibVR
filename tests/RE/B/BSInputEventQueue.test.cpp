@@ -61,7 +61,7 @@ TEST_CASE("BSInputEventQueue/ButtonCache", "[unit][input-queue]")
 		auto*      expected = reinterpret_cast<RE::ButtonEvent*>(fixture.storage.data() + first + i * stride);
 		const auto duration = static_cast<float>(i) / 10.0F;
 		queue->AddButtonEvent(RE::INPUT_DEVICE::kKeyboard, i + 17, 1.0F, duration);
-		REQUIRE(queue->buttonEventCount == i + 1);
+		REQUIRE(queue->buttonEventCount == static_cast<std::uint32_t>(i + 1));
 		REQUIRE(*expectedTail == expected);
 		REQUIRE(*expectedHead == reinterpret_cast<RE::InputEvent*>(fixture.storage.data() + first));
 		if (previous) {
@@ -69,7 +69,7 @@ TEST_CASE("BSInputEventQueue/ButtonCache", "[unit][input-queue]")
 		}
 		CHECK(expected->next == nullptr);
 		CHECK(expected->device == RE::INPUT_DEVICE::kKeyboard);
-		CHECK(expected->GetIDCode() == i + 17);
+		CHECK(expected->GetIDCode() == static_cast<std::uint32_t>(i + 17));
 		CHECK(expected->Value() == 1.0F);
 		CHECK(expected->HeldDuration() == duration);
 		std::uint32_t id;
@@ -79,7 +79,7 @@ TEST_CASE("BSInputEventQueue/ButtonCache", "[unit][input-queue]")
 		std::memcpy(&id, bytes + 0x20, sizeof(id));
 		std::memcpy(&value, bytes + stride - 8, sizeof(value));
 		std::memcpy(&held, bytes + stride - 4, sizeof(held));
-		CHECK(id == i + 17);
+		CHECK(id == static_cast<std::uint32_t>(i + 17));
 		CHECK(value == 1.0F);
 		CHECK(held == duration);
 		previous = expected;
