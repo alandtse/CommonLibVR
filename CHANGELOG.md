@@ -1,3 +1,11 @@
+## [7.5.4](https://github.com/alandtse/CommonLibSSE-NG/compare/v7.5.3...v7.5.4) (2026-09-12)
+
+### Bug Fixes
+
+* **input:** correct cached button event layout ([#347](https://github.com/alandtse/CommonLibSSE-NG/issues/347)) ([2994ab4](https://github.com/alandtse/CommonLibSSE-NG/commit/2994ab4f614dcbc69eaedc091da5c6c6e7bcaa78))
+* **input:** correct cached event array offsets ([#348](https://github.com/alandtse/CommonLibSSE-NG/issues/348)) ([0db97a2](https://github.com/alandtse/CommonLibSSE-NG/commit/0db97a2dbb8ed5eaa8e8ee4fd0b058dbc6bc613b))
+* **NiSkinData:** make accessors public ([#349](https://github.com/alandtse/CommonLibSSE-NG/issues/349)) ([2515f86](https://github.com/alandtse/CommonLibSSE-NG/commit/2515f86d1c7afca159653681eb675eedcc39e024))
+
 ## [7.5.3](https://github.com/alandtse/CommonLibSSE-NG/compare/v7.5.2...v7.5.3) (2026-09-12)
 
 ### Bug Fixes
