@@ -1,11 +1,14 @@
 #pragma once
 
+#include "RE/A/AmiiboEvent.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/B/ButtonEvent.h"
 #include "RE/C/CharEvent.h"
 #include "RE/D/DeviceConnectEvent.h"
 #include "RE/K/KinectEvent.h"
+#include "RE/M/MotionGestureEvent.h"
 #include "RE/M/MouseMoveEvent.h"
+#include "RE/S/SixaxisEvent.h"
 #include "RE/T/ThumbstickEvent.h"
 #include "RE/V/VrWandTouchpadPositionEvent.h"
 #include "RE/V/VrWandTouchpadSwipeEvent.h"
@@ -120,14 +123,14 @@ namespace RE
 #	define RUNTIME_DATA_CONTENT                                             \
 		VRTOUCHPAD_DATA_CONTENT;                                    /* 020*/ \
 		ButtonEvent        buttonEvents[MAX_BUTTON_EVENTS];         /* 028*/ \
-		CharEvent          charEvents[MAX_CHAR_EVENTS];             /* 208*/ \
-		MouseMoveEvent     mouseEvents[MAX_MOUSE_EVENTS];           /* 2A8*/ \
-		ThumbstickEvent    thumbstickEvents[MAX_THUMBSTICK_EVENTS]; /* 2D8*/ \
-		DeviceConnectEvent connectEvents[MAX_CONNECT_EVENTS];       /* 338*/ \
-		KinectEvent        kinectEvents[MAX_KINECT_EVENTS];         /* 358*/ \
-		VRTOUCHPADEVENT_DATA_CONTENT;                               /* 380*/ \
-		InputEvent* queueHead;                                      /* 518*/ \
-		InputEvent* queueTail;                                      /* 520*/
+		CharEvent          charEvents[MAX_CHAR_EVENTS];             /* 258*/ \
+		MouseMoveEvent     mouseEvents[MAX_MOUSE_EVENTS];           /* 2F8*/ \
+		ThumbstickEvent    thumbstickEvents[MAX_THUMBSTICK_EVENTS]; /* 328*/ \
+		DeviceConnectEvent connectEvents[MAX_CONNECT_EVENTS];       /* 388*/ \
+		KinectEvent        kinectEvents[MAX_KINECT_EVENTS];         /* 3A8*/ \
+		VRTOUCHPADEVENT_DATA_CONTENT;                               /* 3D8*/ \
+		InputEvent* queueHead;                                      /* 570*/ \
+		InputEvent* queueTail;                                      /* 578*/
 #endif
 			RUNTIME_DATA_CONTENT
 		};
@@ -178,6 +181,15 @@ namespace RE
 		RUNTIME_DATA_ACCESSOR_VERSIONED_OPTIONAL_EX(AE1799_EVENT_DATA, GetAe1799EventData, SKSE::RUNTIME_SSE_1_7_99, 0x388);
 #endif
 
+		// Engine offsets of the queue's head/tail links. As with the cached event arrays
+		// below, RUNTIME_DATA's compiled offsets can't supply these in a cross-VR build.
+		static constexpr std::ptrdiff_t kQueueHeadSE = 0x380;
+		static constexpr std::ptrdiff_t kQueueHeadAE1799 = 0x558;
+		static constexpr std::ptrdiff_t kQueueTailSE = 0x388;
+		static constexpr std::ptrdiff_t kQueueTailAE1799 = 0x560;
+		static constexpr std::ptrdiff_t kQueueHeadVR = 0x570;
+		static constexpr std::ptrdiff_t kQueueTailVR = 0x578;
+
 #if defined(EXCLUSIVE_SKYRIM_VR)
 		[[nodiscard]] inline InputEvent*& GetQueueHead() noexcept
 		{
@@ -188,27 +200,27 @@ namespace RE
 		[[nodiscard]] inline InputEvent*& GetQueueHead() noexcept
 		{
 			if (REL::Module::IsVR()) {
-				return GetRuntimeData().queueHead;
+				return REL::RelocateMember<InputEvent*>(this, 0, kQueueHeadVR);
 			}
-			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, 0x380, 0x558);
+			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, kQueueHeadSE, kQueueHeadAE1799);
 		}
 
 		[[nodiscard]] inline InputEvent*& GetQueueTail() noexcept
 		{
 			if (REL::Module::IsVR()) {
-				return GetRuntimeData().queueTail;
+				return REL::RelocateMember<InputEvent*>(this, 0, kQueueTailVR);
 			}
-			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, 0x388, 0x560);
+			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, kQueueTailSE, kQueueTailAE1799);
 		}
 #else                            // SE-only, AE-only, or flat -- no VR possible
 		[[nodiscard]] inline InputEvent*& GetQueueHead() noexcept
 		{
-			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, 0x380, 0x558);
+			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, kQueueHeadSE, kQueueHeadAE1799);
 		}
 
 		[[nodiscard]] inline InputEvent*& GetQueueTail() noexcept
 		{
-			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, 0x388, 0x560);
+			return REL::RelocateMemberIfNewer<InputEvent*>(SKSE::RUNTIME_SSE_1_7_99, this, kQueueTailSE, kQueueTailAE1799);
 		}
 #endif
 
@@ -235,7 +247,7 @@ namespace RE
 			if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
 				return nullptr;
 			} else {
-				return &REL::RelocateMember<VRTOUCHPADEVENT_DATA>(this, 0, 0x320);
+				return &REL::RelocateMember<VRTOUCHPADEVENT_DATA>(this, 0, 0x3D8);
 			}
 		}
 
@@ -244,11 +256,48 @@ namespace RE
 			if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
 				return nullptr;
 			} else {
-				return &REL::RelocateMember<VRTOUCHPADEVENT_DATA>(this, 0, 0x320);
+				return &REL::RelocateMember<VRTOUCHPADEVENT_DATA>(this, 0, 0x3D8);
 			}
 		}
 
 	private:
+		// Per-runtime layout of each cached event array, taken from the engine's
+		// Enqueue<Type>Event functions. RUNTIME_DATA can't supply these: in a cross-VR
+		// build the event types inherit a common base, so their compile-time sizes -- and
+		// therefore every following array's offset -- differ from the engine's.
+		struct CachedEventArray
+		{
+			std::ptrdiff_t flatSE;      // SE 1.5.97, and AE below 1.7.99
+			std::ptrdiff_t flatAE1799;  // AE 1.7.99 and above
+			std::ptrdiff_t vr;
+			std::ptrdiff_t flatStride;
+			std::ptrdiff_t vrStride;
+
+			[[nodiscard]] SKYRIM_REL std::ptrdiff_t Flat(std::uint32_t a_index) const noexcept
+			{
+				const auto base = REL::Module::IsAtLeast(SKSE::RUNTIME_SSE_1_7_99) ? flatAE1799 : flatSE;
+				return base + static_cast<std::ptrdiff_t>(a_index) * flatStride;
+			}
+
+			[[nodiscard]] SKYRIM_REL std::ptrdiff_t VR(std::uint32_t a_index) const noexcept
+			{
+				return vr + static_cast<std::ptrdiff_t>(a_index) * vrStride;
+			}
+		};
+
+		static constexpr CachedEventArray kButtonEventArray{ 0x20, 0x28, 0x28, 0x30, 0x38 };
+		static constexpr CachedEventArray kCharEventArray{ 0x200, 0x208, 0x258, 0x20, 0x20 };
+		static constexpr CachedEventArray kMouseEventArray{ 0x2A0, 0x2A8, 0x2F8, 0x30, 0x30 };
+		static constexpr CachedEventArray kThumbstickEventArray{ 0x2D0, 0x2D8, 0x328, 0x30, 0x30 };
+		static constexpr CachedEventArray kConnectEventArray{ 0x330, 0x338, 0x388, 0x20, 0x20 };
+		static constexpr CachedEventArray kKinectEventArray{ 0x350, 0x358, 0x3A8, 0x30, 0x30 };
+
+		template <class T>
+		[[nodiscard]] T* CachedEventAt(const CachedEventArray& a_array, std::uint32_t a_index) noexcept
+		{
+			return &REL::RelocateMember<T>(this, a_array.Flat(a_index), a_array.VR(a_index));
+		}
+
 		template <class T>
 		T* GetCachedEvent();
 
@@ -267,8 +316,21 @@ namespace RE
 	};
 #if defined(EXCLUSIVE_SKYRIM_SE)
 	static_assert(sizeof(BSInputEventQueue) == 0x390);
+	static_assert(offsetof(BSInputEventQueue, buttonEvents) == 0x20);
+	static_assert(offsetof(BSInputEventQueue, charEvents) == 0x200);
+	static_assert(offsetof(BSInputEventQueue, mouseEvents) == 0x2A0);
+	static_assert(offsetof(BSInputEventQueue, thumbstickEvents) == 0x2D0);
+	static_assert(offsetof(BSInputEventQueue, connectEvents) == 0x330);
+	static_assert(offsetof(BSInputEventQueue, kinectEvents) == 0x350);
 #elif defined(EXCLUSIVE_SKYRIM_VR)
 	static_assert(sizeof(BSInputEventQueue) == 0x580);
+	static_assert(offsetof(BSInputEventQueue, buttonEvents) == 0x28);
+	static_assert(offsetof(BSInputEventQueue, charEvents) == 0x258);
+	static_assert(offsetof(BSInputEventQueue, mouseEvents) == 0x2F8);
+	static_assert(offsetof(BSInputEventQueue, thumbstickEvents) == 0x328);
+	static_assert(offsetof(BSInputEventQueue, connectEvents) == 0x388);
+	static_assert(offsetof(BSInputEventQueue, kinectEvents) == 0x3A8);
+	static_assert(offsetof(BSInputEventQueue, vrTouchpadPositionEvents) == 0x3D8);
 #else
 	static_assert(sizeof(BSInputEventQueue) == 0x20);
 #endif

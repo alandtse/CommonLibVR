@@ -17,6 +17,7 @@ namespace RE
 	class hkpBroadPhaseBorder;
 	class hkpBroadPhaseBorderListener;
 	class hkpCdPointCollector;
+	class hkpCollidable;
 	class hkpCollisionDispatcher;
 	class hkpCollisionFilter;
 	class hkpConstraintListener;
@@ -32,6 +33,7 @@ namespace RE
 	class hkpPhantom;
 	class hkpPhantomBroadPhaseListener;
 	class hkpPhantomListener;
+	class hkpRigidBody;
 	class hkpSimulation;
 	class hkpSimulationIsland;
 	class hkpTreeWorldManager;

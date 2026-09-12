@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSInstanceTriShape.h"
+#include "RE/B/BSMultiBoundAABB.h"
 #include "REL/RuntimeDataAccessors.h"
 
 namespace RE
@@ -73,19 +74,17 @@ namespace RE
 		// override (BSInstanceTriShape)
 		const NiRTTI* GetRTTI() const override;                           // 02
 		NiObject*     CreateClone(NiCloningProcess& a_cloning) override;  // 17
-#if defined(EXCLUSIVE_SKYRIM_FLAT)
-		// The following are virtual functions past the point where VR compatibility breaks.
-		void OnVisible(NiCullingProcess& a_process, std::int32_t a_alphaGroupIndex) override;  // 34
+		// VR inserts a virtual before these slots; keep the SE/AE and VR indices paired.
+		SKYRIM_REL_VR_VIRTUAL void OnVisible(NiCullingProcess& a_process, std::int32_t a_alphaGroupIndex);  // 34/35
 
 		// overrides for BSTriShape
-		std::uint32_t GetVisibleGroupsTriangleCount() override;                                                                            // 37
-		void          BeginAddingInstances(std::uint32_t a_numFloatsPerInstance) override;                                                 // 38
-		void          AddInstances(std::uint32_t a_numFloatsPerInstance, std::uint16_t& a_instanceData) override;                          // 39
-		void          DoneAddingInstances(BSTArray<std::uint32_t>& a_instances) override;                                                  // 3A
-		bool          GetIsAddingInstances() override;                                                                                     // 3B
-		std::uint32_t AddGroup(std::uint32_t a_numInstances, std::uint16_t& a_instanceData, std::uint32_t a_arg3, float a_arg4) override;  // 3C
-		void          RemoveGroup(std::uint32_t a_numInstance) override;                                                                   // 3D
-#endif
+		SKYRIM_REL_VR_VIRTUAL std::uint32_t GetVisibleGroupsTriangleCount();                                                                            // 37/38
+		SKYRIM_REL_VR_VIRTUAL void          BeginAddingInstances(std::uint32_t a_numFloatsPerInstance);                                                 // 38/39
+		SKYRIM_REL_VR_VIRTUAL void          AddInstances(std::uint32_t a_numFloatsPerInstance, std::uint16_t& a_instanceData);                          // 39/3A
+		SKYRIM_REL_VR_VIRTUAL void          DoneAddingInstances(BSTArray<std::uint32_t>& a_instances);                                                  // 3A/3B
+		SKYRIM_REL_VR_VIRTUAL bool          GetIsAddingInstances();                                                                                     // 3B/3C
+		SKYRIM_REL_VR_VIRTUAL std::uint32_t AddGroup(std::uint32_t a_numInstances, std::uint16_t& a_instanceData, std::uint32_t a_arg3, float a_arg4);  // 3C/3D
+		SKYRIM_REL_VR_VIRTUAL void          RemoveGroup(std::uint32_t a_numInstance);                                                                   // 3D/3E
 
 		RUNTIME_DATA_ACCESSOR_EX(MULTISTREAM_TRISHAPE_RUNTIME_DATA, GetMultiStreamTrishapeRuntimeData, 0x160, 0x1A0);
 		// members

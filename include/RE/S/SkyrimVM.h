@@ -153,6 +153,10 @@ namespace RE
 #endif
 		// AE 1.7.99's Amiibo bases (real bases, see above) shift this base's data by
 		// +0x10 with no corrected accessor -- do not access it directly on that version.
+		// po3_sse/dev now inherits TESAmiiboTouchEvent/TESAmiiboForcedStopDetectionEvent as
+		// real bases (guarded #ifdef SKYRIM_SUPPORT_AE) ahead of TESPlayerBowShotEvent, which
+		// would fix this offset gap -- not adopted here, since doing so shifts every subsequent
+		// base's vtable offset and requires auditing every raw-offset accessor in this class.
 		public BSTEventSource<BSScript::StatsEvent>  // 01A8
 	{
 	public:
@@ -286,15 +290,12 @@ namespace RE
             RUNTIME_DATA2_CONTENT
 		};
 
+		static constexpr std::size_t kAE1799AmiiboShift = 0x10;
+
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
 			assert(!REL::Module::IsVR());
-			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
-				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_7_99) != std::strong_ordering::less) {
-					return REL::RelocateMember<RUNTIME_DATA>(this, 0x764);
-				}
-			}
-			return REL::RelocateMember<RUNTIME_DATA>(this, 0x754);
+			return REL::RelocateMember<RUNTIME_DATA>(this, REL::VersionShift(0x754, kAE1799AmiiboShift, SKSE::RUNTIME_SSE_1_7_99));
 		}
 
 		VR_ONLY_POINTER_ACCESSOR(VR_RUNTIME_DATA, GetVRRuntimeData, 0x754);
@@ -304,12 +305,7 @@ namespace RE
 			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
 				return REL::RelocateMember<RUNTIME_DATA2>(this, 0x780);
 			}
-			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
-				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_7_99) != std::strong_ordering::less) {
-					return REL::RelocateMember<RUNTIME_DATA2>(this, 0x770);
-				}
-			}
-			return REL::RelocateMember<RUNTIME_DATA2>(this, 0x760);
+			return REL::RelocateMember<RUNTIME_DATA2>(this, REL::VersionShift(0x760, kAE1799AmiiboShift, SKSE::RUNTIME_SSE_1_7_99));
 		}
 
 #ifdef ENABLE_SKYRIM_AE
@@ -337,46 +333,22 @@ namespace RE
 #if defined(EXCLUSIVE_SKYRIM_FLAT)
 		[[nodiscard]] BSTEventSink<TESPlayerBowShotEvent>* AsTESPlayerBowShotEventSink() noexcept
 		{
-			std::uintptr_t offset = 0x180;
-			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
-				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_7_99) != std::strong_ordering::less) {
-					offset = 0x190;
-				}
-			}
-			return reinterpret_cast<BSTEventSink<TESPlayerBowShotEvent>*>(reinterpret_cast<std::uintptr_t>(this) + offset);
+			return reinterpret_cast<BSTEventSink<TESPlayerBowShotEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::VersionShift(0x180, kAE1799AmiiboShift, SKSE::RUNTIME_SSE_1_7_99));
 		}
 
 		[[nodiscard]] BSTEventSink<TESFastTravelEndEvent>* AsTESFastTravelEndEventSink() noexcept
 		{
-			std::uintptr_t offset = 0x188;
-			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
-				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_7_99) != std::strong_ordering::less) {
-					offset = 0x198;
-				}
-			}
-			return reinterpret_cast<BSTEventSink<TESFastTravelEndEvent>*>(reinterpret_cast<std::uintptr_t>(this) + offset);
+			return reinterpret_cast<BSTEventSink<TESFastTravelEndEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::VersionShift(0x188, kAE1799AmiiboShift, SKSE::RUNTIME_SSE_1_7_99));
 		}
 
 		[[nodiscard]] BSTEventSink<PositionPlayerEvent>* AsPositionPlayerEventSink() noexcept
 		{
-			std::uintptr_t offset = 0x190;
-			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
-				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_7_99) != std::strong_ordering::less) {
-					offset = 0x1A0;
-				}
-			}
-			return reinterpret_cast<BSTEventSink<PositionPlayerEvent>*>(reinterpret_cast<std::uintptr_t>(this) + offset);
+			return reinterpret_cast<BSTEventSink<PositionPlayerEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::VersionShift(0x190, kAE1799AmiiboShift, SKSE::RUNTIME_SSE_1_7_99));
 		}
 
 		[[nodiscard]] BSTEventSink<BSScript::StatsEvent>* AsStatsEventSink() noexcept
 		{
-			std::uintptr_t offset = 0x198;
-			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
-				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_7_99) != std::strong_ordering::less) {
-					offset = 0x1A8;
-				}
-			}
-			return reinterpret_cast<BSTEventSink<BSScript::StatsEvent>*>(reinterpret_cast<std::uintptr_t>(this) + offset);
+			return reinterpret_cast<BSTEventSink<BSScript::StatsEvent>*>(reinterpret_cast<std::uintptr_t>(this) + REL::VersionShift(0x198, kAE1799AmiiboShift, SKSE::RUNTIME_SSE_1_7_99));
 		}
 #endif
 

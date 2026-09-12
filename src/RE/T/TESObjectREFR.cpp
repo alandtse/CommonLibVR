@@ -73,6 +73,13 @@ namespace RE
 		return func(this);
 	}
 
+	void TESObjectREFR::AddLockChange()
+	{
+		using func_t = decltype(&TESObjectREFR::AddLockChange);
+		static REL::Relocation<func_t> func{ RELOCATION_ID(19110, 19512) };
+		return func(this);
+	}
+
 	DoorTeleportData* TESObjectREFR::AddTeleport()
 	{
 		using func_t = decltype(&TESObjectREFR::AddTeleport);
@@ -583,7 +590,7 @@ namespace RE
 		return func(this);
 	}
 
-	NiControllerSequence* TESObjectREFR::GetSequence(stl::zstring a_name) const
+	NiControllerSequence* TESObjectREFR::GetSequence(std::string_view a_name) const
 	{
 		auto node = Get3D();
 		if (!node) {
@@ -965,7 +972,7 @@ namespace RE
 		return handle.get();
 	}
 
-	void TESObjectREFR::PlayAnimation(stl::zstring a_from, stl::zstring a_to)
+	void TESObjectREFR::PlayAnimation(std::string_view a_from, std::string_view a_to)
 	{
 		auto node = Get3D();
 		if (!node) {

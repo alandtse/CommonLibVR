@@ -15,7 +15,7 @@ namespace RE
 	{
 		using func_t = decltype(&PlayerCharacter::PlayerSkills::AdvanceLevel);
 		static REL::Relocation<func_t> func{ RELOCATION_ID(40560, 41567) };
-		return func(this, a_addThreshold);
+		func(this, a_addThreshold);
 	}
 
 	PlayerCharacter* PlayerCharacter::GetSingleton()
@@ -34,7 +34,7 @@ namespace RE
 	{
 		using func_t = decltype(&PlayerCharacter::ActivatePickRef);
 		static REL::Relocation<func_t> func{ RELOCATION_ID(39471, 40548) };
-		return func(this);
+		func(this);
 	}
 
 	void PlayerCharacter::ActivatePickRefVR(VR_DEVICE a_device)
@@ -48,7 +48,7 @@ namespace RE
 	{
 		using func_t = decltype(&PlayerCharacter::AddPlayerAddItemEvent);
 		static REL::Relocation<func_t> func{ RELOCATION_ID(39384, 40456) };
-		return func(this, a_object, a_owner, a_container, a_type);
+		func(this, a_object, a_owner, a_container, a_type);
 	}
 
 	bool PlayerCharacter::AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer)
@@ -75,11 +75,18 @@ namespace RE
 		return func(this, a_spell, a_effect, a_reason);
 	}
 
+	void PlayerCharacter::CheckPoisonWeapon(AlchemyItem* a_poison)
+	{
+		using func_t = decltype(&PlayerCharacter::CheckPoisonWeapon);
+		static REL::Relocation<func_t> func{ RELOCATION_ID(39406, 40481) };
+		func(this, a_poison);
+	}
+
 	void PlayerCharacter::DestroyMouseSprings()
 	{
 		using func_t = decltype(&PlayerCharacter::DestroyMouseSprings);
 		static REL::Relocation<func_t> func{ RELOCATION_ID(39480, 40557) };
-		return func(this);
+		func(this);
 	}
 
 	void PlayerCharacter::EndGrabObject()
@@ -94,7 +101,7 @@ namespace RE
 		if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
 			return REL::RelocateMember<ActorHandle>(this, 0, 0xE8C).get();
 		} else {
-			return REL::RelocateMemberIfNewer<ActorHandle>(SKSE::RUNTIME_SSE_1_6_629, this, 0x894, 0x89C).get();
+			return REL::RelocateMemberIfNewer<ActorHandle>(SKSE::RUNTIME_SSE_1_6_629, this, 0x894, REL::VersionShift(0x89C, kAE1799ShiftBytes, SKSE::RUNTIME_SSE_1_7_99)).get();
 		}
 	}
 
@@ -124,7 +131,7 @@ namespace RE
 		if SKYRIM_REL_CONSTEXPR (Module::IsVR()) {
 			return GetVRPlayerRuntimeData()->grabbedObjectData[a_device].grabbedObject.get();
 		} else {
-			return REL::RelocateMemberIfNewer<ObjectRefHandle>(SKSE::RUNTIME_SSE_1_6_629, this, 0x8C8, 0x8D0).get();
+			return REL::RelocateMemberIfNewer<ObjectRefHandle>(SKSE::RUNTIME_SSE_1_6_629, this, 0x8C8, REL::VersionShift(0x8D0, kAE1799ShiftBytes, SKSE::RUNTIME_SSE_1_7_99)).get();
 		}
 	}
 
@@ -192,7 +199,7 @@ namespace RE
 		if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
 			return static_cast<bool>(REL::RelocateMember<ActorHandle>(this, 0, 0xE8C));
 		} else {
-			return static_cast<bool>(REL::RelocateMemberIfNewer<ActorHandle>(SKSE::RUNTIME_SSE_1_6_629, this, 0x894, 0x89C));
+			return static_cast<bool>(REL::RelocateMemberIfNewer<ActorHandle>(SKSE::RUNTIME_SSE_1_6_629, this, 0x894, REL::VersionShift(0x89C, kAE1799ShiftBytes, SKSE::RUNTIME_SSE_1_7_99)));
 		}
 	}
 
@@ -206,7 +213,7 @@ namespace RE
 			}
 			return false;
 		} else {
-			return static_cast<bool>(REL::RelocateMemberIfNewer<ObjectRefHandle>(SKSE::RUNTIME_SSE_1_6_629, this, 0x8C8, 0x8D0));
+			return static_cast<bool>(REL::RelocateMemberIfNewer<ObjectRefHandle>(SKSE::RUNTIME_SSE_1_6_629, this, 0x8C8, REL::VersionShift(0x8D0, kAE1799ShiftBytes, SKSE::RUNTIME_SSE_1_7_99)));
 		}
 	}
 
@@ -222,21 +229,21 @@ namespace RE
 	{
 		using func_t = decltype(&PlayerCharacter::PlayMagicFailureSound);
 		static REL::Relocation<func_t> func{ RELOCATION_ID(39486, 40565) };
-		return func(this, a_spellType);
+		func(this, a_spellType);
 	}
 
 	void PlayerCharacter::SetAIDriven(bool a_enable)
 	{
 		using func_t = decltype(&PlayerCharacter::SetAIDriven);
 		static REL::Relocation<func_t> func{ RELOCATION_ID(39507, 40586) };
-		return func(this, a_enable);
+		func(this, a_enable);
 	}
 
 	void PlayerCharacter::SetEscaping(bool a_flag, bool a_escaped)
 	{
 		using func_t = decltype(&PlayerCharacter::SetEscaping);
 		static REL::Relocation<func_t> func{ RELOCATION_ID(39574, 40660) };
-		return func(this, a_flag, a_escaped);
+		func(this, a_flag, a_escaped);
 	}
 
 	void PlayerCharacter::SetGodMode(bool a_enable)
@@ -253,11 +260,18 @@ namespace RE
 		return func(this, a_device);
 	}
 
+	void PlayerCharacter::StartWaiting(std::int32_t a_hours)
+	{
+		using func_t = decltype(&PlayerCharacter::StartWaiting);
+		static REL::Relocation<func_t> func{ RELOCATION_ID(39344, 40415) };
+		return func(this, a_hours);
+	}
+
 	void PlayerCharacter::UpdateCrosshairs()
 	{
 		using func_t = decltype(&PlayerCharacter::UpdateCrosshairs);
 		static REL::Relocation<func_t> func(RELOCATION_ID(39535, 40621));
-		return func(this);
+		func(this);
 	}
 
 	void PlayerCharacter::UpdateVRComfortCheck()
@@ -287,7 +301,7 @@ namespace RE
 	{
 		using func_t = decltype(&PlayerCharacter::AddSkillExperience);
 		static REL::Relocation<func_t> func(RELOCATION_ID(39413, 40488));
-		return func(this, a_skill, a_experience);
+		func(this, a_skill, a_experience);
 	}
 
 	void PlayerCharacter::Unk_12A()

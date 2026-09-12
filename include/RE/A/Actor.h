@@ -512,24 +512,29 @@ namespace RE
 		static NiPointer<Actor> LookupByHandle(RefHandle a_refHandle);
 		static bool             LookupByHandle(RefHandle a_refHandle, NiPointer<Actor>& a_refrOut);
 
-		bool                                    AddAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
-		void                                    AddCastPower(SpellItem* a_power);
-		void                                    AddDeathItems();
-		bool                                    AddSpell(SpellItem* a_spell);
-		void                                    AddToFaction(TESFaction* a_faction, std::int8_t a_rank);
-		void                                    AddWornOutfit(BGSOutfit* a_outfit, bool a_forceUpdate);
-		void                                    AllowBleedoutDialogue(bool a_canTalk);
-		void                                    AllowPCDialogue(bool a_talk);
-		void                                    CastPermanentMagic(bool a_wornItemEnchantments, bool a_baseSpells, bool a_raceSpells, bool a_everyActorAbility);
-		[[nodiscard]] ACTOR_LOS_LOCATION        CalculateLOS(Actor* a_target, float a_viewCone);
-		[[nodiscard]] NiAVObject*               CalculateLOS(const NiPoint3& a_targetPosition, const NiPoint3& a_rayHitPosition, float a_viewCone);
-		[[nodiscard]] NiPoint3                  CalculateLOSLocation(ACTOR_LOS_LOCATION a_location);
-		[[nodiscard]] bool                      CanAttackActor(Actor* a_actor);
-		[[nodiscard]] bool                      CanFly() const;
-		[[nodiscard]] bool                      CanFlyHere() const;
-		[[nodiscard]] bool                      CanNavigateToPosition(const NiPoint3& a_pos, const NiPoint3& a_new_pos, float a_speed = 2.0f, float a_distance = 64.0f) const;
-		[[nodiscard]] bool                      CanOfferServices() const;
-		[[nodiscard]] bool                      CanPickpocket() const;
+		bool AddAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
+		void AddCastPower(SpellItem* a_power);
+		void AddDeathItems();
+		bool AddSpell(SpellItem* a_spell);
+		void AddToFaction(TESFaction* a_faction, std::int8_t a_rank);
+		void AddWornOutfit(BGSOutfit* a_outfit, bool a_forceUpdate);
+		// Decrements sleepSeconds by the iSecondsToSleepPerUpdate GMST, finishing the wait/sleep once
+		// exhausted; call it in a loop to fast-forward one without going through SleepWaitMenu at all.
+		void                             AdvanceSleepWaitTick();
+		void                             AllowBleedoutDialogue(bool a_canTalk);
+		void                             AllowPCDialogue(bool a_talk);
+		void                             CastPermanentMagic(bool a_wornItemEnchantments, bool a_baseSpells, bool a_raceSpells, bool a_everyActorAbility);
+		[[nodiscard]] ACTOR_LOS_LOCATION CalculateLOS(Actor* a_target, float a_viewCone);
+		[[nodiscard]] NiAVObject*        CalculateLOS(const NiPoint3& a_targetPosition, const NiPoint3& a_rayHitPosition, float a_viewCone);
+		[[nodiscard]] NiPoint3           CalculateLOSLocation(ACTOR_LOS_LOCATION a_location);
+		[[nodiscard]] bool               CanAttackActor(Actor* a_actor);
+		[[nodiscard]] bool               CanFly() const;
+		[[nodiscard]] bool               CanFlyHere() const;
+		[[nodiscard]] bool               CanNavigateToPosition(const NiPoint3& a_pos, const NiPoint3& a_new_pos, float a_speed = 2.0f, float a_distance = 64.0f) const;
+		[[nodiscard]] bool               CanOfferServices() const;
+		[[nodiscard]] bool               CanPickpocket() const;
+		// On false, shows the matching vanilla HUD message itself; a_bed selects "sleep" wording + bed-ownership checks, nullptr for plain "wait".
+		[[nodiscard]] bool                      CanSleepWait(TESObjectREFR* a_bed = nullptr) const;
 		[[nodiscard]] bool                      CanTalkToPlayer() const;
 		[[nodiscard]] bool                      CanUseIdle(TESIdleForm* a_idle) const;
 		void                                    ClearArrested();
@@ -561,6 +566,7 @@ namespace RE
 		[[nodiscard]] bhkCharacterController*   GetCharController() const;
 		void                                    GetCollisionFilterInfo(CFilter& a_outCollisionFilterInfo);
 		[[nodiscard]] NiPointer<Actor>          GetCommandingActor() const;
+		bool                                    GetControllingActor(NiPointer<Actor>& a_out);
 		[[nodiscard]] TESFaction*               GetCrimeFaction();
 		[[nodiscard]] const TESFaction*         GetCrimeFaction() const;
 		[[nodiscard]] TESPackage*               GetCurrentPackage();
@@ -678,25 +684,27 @@ namespace RE
 		void                                    SetLooking(float a_angle);  // SetRotationX
 		bool                                    SetSleepOutfit(BGSOutfit* a_outfit, bool a_update3D);
 		bool                                    StartCombat(Actor* a_target, CombatGroup* a_combatGroup = nullptr);
-		void                                    StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning);
-		void                                    StopAlarmOnActor();
-		void                                    StopInteractingQuick(bool a_unk02);
-		void                                    StopMoving(float a_delta);
-		void                                    SwitchRace(TESRace* a_race, bool a_player);
-		void                                    TrespassAlarm(TESObjectREFR* a_ref, TESForm* a_ownership, std::int32_t a_crime);
-		void                                    UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData);
-		void                                    UpdateAwakeSound(NiAVObject* a_obj3D);
-		void                                    Update3DModel();
-		void                                    UpdateHairColor();
-		[[nodiscard]] bool                      UpdateNavPos(const NiPoint3& a_pos, const NiPoint3& a_new_pos, float a_speed, float a_distance) const;
-		void                                    UpdateRegenDelay(ActorValue a_actorValue, float a_regenDelay);
-		void                                    UpdateSkinColor();
-		void                                    UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand);
-		void                                    VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, NiAVObject& a_obj)> a_visitor);
-		bool                                    VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor);
-		void                                    VisitSpells(ForEachSpellVisitor& a_visitor);
-		[[nodiscard]] std::uint8_t              WhoIsCasting();
-		bool                                    WouldBeStealing(const TESObjectREFR* a_target) const;
+		// Does not check whether resting is currently allowed -- callers must gate that themselves.
+		void                       StartSleeping(std::int32_t a_hours);
+		void                       StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning);
+		void                       StopAlarmOnActor();
+		void                       StopInteractingQuick(bool a_unk02);
+		void                       StopMoving(float a_delta);
+		void                       SwitchRace(TESRace* a_race, bool a_player);
+		void                       TrespassAlarm(TESObjectREFR* a_ref, TESForm* a_ownership, std::int32_t a_crime);
+		void                       UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData);
+		void                       UpdateAwakeSound(NiAVObject* a_obj3D);
+		void                       Update3DModel();
+		void                       UpdateHairColor();
+		[[nodiscard]] bool         UpdateNavPos(const NiPoint3& a_pos, const NiPoint3& a_new_pos, float a_speed, float a_distance) const;
+		void                       UpdateRegenDelay(ActorValue a_actorValue, float a_regenDelay);
+		void                       UpdateSkinColor();
+		void                       UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand);
+		void                       VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, NiAVObject& a_obj)> a_visitor);
+		bool                       VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor);
+		void                       VisitSpells(ForEachSpellVisitor& a_visitor);
+		[[nodiscard]] std::uint8_t WhoIsCasting();
+		bool                       WouldBeStealing(const TESObjectREFR* a_target) const;
 
 		struct ACTOR_RUNTIME_DATA
 		{

@@ -1,9 +1,12 @@
 #pragma once
 
+#include <cstddef>
+
 #include "RE/B/BSShader.h"
 #include "RE/B/BSShaderRenderTargets.h"
 #include "RE/N/NiTexture.h"
 #include "RE/R/RenderTargetData.h"
+#include "RE/R/RenderTargetProperties.h"
 #include "RE/T/TextureFileFormat.h"
 #include <SKSE/Version.h>
 
@@ -13,8 +16,13 @@
 
 namespace RE
 {
+	class BSShaderAccumulator;
+	class NiCamera;
+
 	namespace BSGraphics
 	{
+		enum SetRenderTargetMode : std::uint32_t;
+
 		struct RendererWindow
 		{
 		public:
@@ -182,17 +190,22 @@ namespace RE
 				return dummy;
 			}
 
-			void CreateSwapChain(REX::W32::HWND* a_window, bool a_setCurrent);
-			void KillWindow(std::uint32_t a_windowID);
-			void Lock();
-			void Unlock();
-			void ResizeWindow(std::uint32_t a_windowID, std::uint32_t a_width, std::uint32_t a_height, bool a_fullscreen, bool a_borderless);
-			void RequestWindowResize(std::uint32_t a_width, std::uint32_t a_height);
-			void SetWindowPosition(std::uint32_t a_windowID, std::int32_t a_x, std::int32_t a_y);
-			void SetWindowActiveState(bool a_show);
-			void WindowSizeChanged(std::uint32_t a_windowID);
-			void ResetWindow(std::uint32_t a_windowID);
-			void UpdateViewPort(std::uint32_t a_unk1, std::uint32_t a_unk2, bool a_unk3);
+			void        CreateSwapChain(REX::W32::HWND* a_window, bool a_setCurrent);
+			void        KillWindow(std::uint32_t a_windowID);
+			void        Lock();
+			void        Unlock();
+			void        ResizeWindow(std::uint32_t a_windowID, std::uint32_t a_width, std::uint32_t a_height, bool a_fullscreen, bool a_borderless);
+			void        RequestWindowResize(std::uint32_t a_width, std::uint32_t a_height);
+			void        SetWindowPosition(std::uint32_t a_windowID, std::int32_t a_x, std::int32_t a_y);
+			void        SetWindowActiveState(bool a_show);
+			void        WindowSizeChanged(std::uint32_t a_windowID);
+			void        ResetWindow(std::uint32_t a_windowID);
+			void        SetRenderTarget(std::uint32_t a_renderTargetSlot, RENDER_TARGET a_renderTarget, SetRenderTargetMode a_mode, bool a_updateViewport);
+			void        UpdateViewPort(std::uint32_t a_unk1, std::uint32_t a_unk2, bool a_unk3);
+			void        ApplyState(bool a_arg2);
+			static void SubmitAccumulator(NiCamera* a_camera, BSShaderAccumulator* a_accumulator, std::uint32_t a_renderFlags);
+			static void StartAccumulating(NiCamera* a_camera, BSShaderAccumulator* a_accumulator, std::uint32_t a_renderFlags);
+			static void FinishAccumulatingPostResolveDepth(NiCamera* a_unusedCamera, BSShaderAccumulator* a_accumulator, std::uint32_t a_renderFlags);
 
 			[[nodiscard]] NiTexture::RendererData* CreateRenderTexture(std::uint32_t a_width, std::uint32_t a_height);
 			void                                   SaveRenderTargetToFile(RENDER_TARGET a_renderTarget, const char* a_filePath, TextureFileFormat a_textureFileFormat);

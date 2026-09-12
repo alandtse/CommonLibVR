@@ -36,23 +36,16 @@ endif()
 # /EHsc belongs here rather than in the consumer's flags because vcpkg
 # builds each dependency in an isolated configure that inherits only this
 # file, and clang-cl otherwise defaults to exceptions disabled.
+set(_xwin_compile_flags "--target=x86_64-pc-windows-msvc /winsysroot${_xwin_sysroot}")
+
 if(NOT CMAKE_CXX_FLAGS MATCHES "winsysroot")
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} --target=x86_64-pc-windows-msvc /winsysroot${_xwin_sysroot}" CACHE STRING "" FORCE)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --target=x86_64-pc-windows-msvc /winsysroot${_xwin_sysroot} /EHsc" CACHE STRING "" FORCE)
+    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} ${_xwin_compile_flags}" CACHE STRING "" FORCE)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${_xwin_compile_flags} /EHsc" CACHE STRING "" FORCE)
     set(CMAKE_EXE_LINKER_FLAGS    "${CMAKE_EXE_LINKER_FLAGS} /winsysroot:${_xwin_sysroot}" CACHE STRING "" FORCE)
     set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /winsysroot:${_xwin_sysroot}" CACHE STRING "" FORCE)
 endif()
 
-# RC is commonly `enable_language()`d well after C/CXX (e.g. only once a
-# target with a .rc source is actually declared), by which point the guard
-# above has already gone false -- so this needs its own independent guard,
-# not reuse of the C/CXX one, or it silently never runs.
-#
-# CMake's built-in RC-compile rule (cmake_llvm_rc) preprocesses the .rc file
-# via clang-cl in -E mode using CMAKE_RC_FLAGS, a separate variable from
-# CMAKE_C_FLAGS/CMAKE_CXX_FLAGS above -- without this, a resource file that
-# includes Windows SDK headers (e.g. winres.h) fails with "file not found"
-# since the preprocessing step never gets the sysroot's include paths.
+# CMAKE_RC_FLAGS is separate from CMAKE_C_FLAGS/CMAKE_CXX_FLAGS; needs its own sysroot guard or winres.h etc. fail to resolve.
 if(NOT CMAKE_RC_FLAGS MATCHES "winsysroot")
-    set(CMAKE_RC_FLAGS "${CMAKE_RC_FLAGS} --target=x86_64-pc-windows-msvc /winsysroot${_xwin_sysroot}" CACHE STRING "" FORCE)
+    set(CMAKE_RC_FLAGS "${CMAKE_RC_FLAGS} ${_xwin_compile_flags}" CACHE STRING "" FORCE)
 endif()

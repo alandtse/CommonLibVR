@@ -219,7 +219,7 @@ for setup and usage.
 
 ## License
 
-[GPL-3.0-or-later](COPYING) WITH [Modding Exception AND GPL-3.0 Linking Exception (with Corresponding Source)](EXCEPTIONS.md).
+[GPL-3.0-or-later](COPYING.txt) WITH [Modding Exception AND GPL-3.0 Linking Exception (with Corresponding Source)](EXCEPTIONS.md).
 Specifically, the Modded Code includes:
 
 - Skyrim (and its variants)
@@ -237,4 +237,4 @@ The Modding Libraries include:
 > forms a combined work with it and must itself be licensed under the GPL-3.0-or-later (or a GPL-compatible
 > license); see [EXCEPTIONS.md](EXCEPTIONS.md) for the exact terms.
 
-Originally based on code under [MIT](licenses/LICENSE-MIT).
+Originally based on code under [MIT](licenses/LICENSE-MIT.txt).

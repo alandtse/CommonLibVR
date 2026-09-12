@@ -32,10 +32,11 @@ namespace SKSE
 	inline constexpr REL::Version RUNTIME_SSE_1_6_678(1, 6, 678, 0);  // Epic
 	inline constexpr REL::Version RUNTIME_SSE_1_6_1130(1, 6, 1130, 0);
 	inline constexpr REL::Version RUNTIME_SSE_1_6_1170(1, 6, 1170, 0);
-	inline constexpr REL::Version RUNTIME_1_6_1179(1, 6, 1179, 0);  // GOG
+	inline constexpr REL::Version RUNTIME_SSE_1_6_1179(1, 6, 1179, 0);  // GOG
 	inline constexpr REL::Version RUNTIME_SSE_1_7_99(1, 7, 99, 0);
+	inline constexpr REL::Version RUNTIME_SSE_1_7_104(1, 7, 104, 0);
 
-	inline constexpr auto RUNTIME_SSE_LATEST_AE = RUNTIME_SSE_1_7_99;
+	inline constexpr auto RUNTIME_SSE_LATEST_AE = RUNTIME_SSE_1_7_104;
 	inline constexpr auto RUNTIME_SSE_LATEST_SE = RUNTIME_SSE_1_5_97;
 	inline constexpr auto RUNTIME_SSE_LATEST = RUNTIME_SSE_LATEST_AE;
 
