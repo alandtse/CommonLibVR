@@ -87,7 +87,7 @@ namespace RE
 		void CopyMembers(NiCamera* a_target, NiCloningProcess& a_cloning);
 
 		RUNTIME_DATA_ACCESSOR(RUNTIME_DATA, 0x110, 0);
-		RUNTIME_DATA_ACCESSOR_EX(RUNTIME_DATA2, GetRuntimeData2, 0x150, 0x1D0);
+		RUNTIME_DATA_ACCESSOR_EX(RUNTIME_DATA2, GetRuntimeData2, 0x150, 0x1CC);
 		VR_RUNTIME_DATA_ACCESSOR(RUNTIME_DATA_VR, GetVRRuntimeData, 0x138);
 
 		// return left in VR
