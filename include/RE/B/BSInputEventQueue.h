@@ -128,7 +128,7 @@ namespace RE
 		ThumbstickEvent    thumbstickEvents[MAX_THUMBSTICK_EVENTS]; /* 328*/ \
 		DeviceConnectEvent connectEvents[MAX_CONNECT_EVENTS];       /* 388*/ \
 		KinectEvent        kinectEvents[MAX_KINECT_EVENTS];         /* 3A8*/ \
-		VRTOUCHPADEVENT_DATA_CONTENT;                               /* 380*/ \
+		VRTOUCHPADEVENT_DATA_CONTENT;                               /* 3D8*/ \
 		InputEvent* queueHead;                                      /* 570*/ \
 		InputEvent* queueTail;                                      /* 578*/
 #endif
@@ -238,7 +238,7 @@ namespace RE
 			if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
 				return nullptr;
 			} else {
-				return &REL::RelocateMember<VRTOUCHPADEVENT_DATA>(this, 0, 0x320);
+				return &REL::RelocateMember<VRTOUCHPADEVENT_DATA>(this, 0, 0x3D8);
 			}
 		}
 
@@ -247,7 +247,7 @@ namespace RE
 			if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
 				return nullptr;
 			} else {
-				return &REL::RelocateMember<VRTOUCHPADEVENT_DATA>(this, 0, 0x320);
+				return &REL::RelocateMember<VRTOUCHPADEVENT_DATA>(this, 0, 0x3D8);
 			}
 		}
 
@@ -281,6 +281,7 @@ namespace RE
 		static constexpr CachedEventArray kMouseEventArray{ 0x2A0, 0x2A8, 0x2F8, 0x30, 0x30 };
 		static constexpr CachedEventArray kThumbstickEventArray{ 0x2D0, 0x2D8, 0x328, 0x30, 0x30 };
 		static constexpr CachedEventArray kConnectEventArray{ 0x330, 0x338, 0x388, 0x20, 0x20 };
+		static constexpr CachedEventArray kKinectEventArray{ 0x350, 0x358, 0x3A8, 0x30, 0x30 };
 
 		template <class T>
 		[[nodiscard]] T* CachedEventAt(const CachedEventArray& a_array, std::uint32_t a_index) noexcept
@@ -320,6 +321,7 @@ namespace RE
 	static_assert(offsetof(BSInputEventQueue, thumbstickEvents) == 0x328);
 	static_assert(offsetof(BSInputEventQueue, connectEvents) == 0x388);
 	static_assert(offsetof(BSInputEventQueue, kinectEvents) == 0x3A8);
+	static_assert(offsetof(BSInputEventQueue, vrTouchpadPositionEvents) == 0x3D8);
 #else
 	static_assert(sizeof(BSInputEventQueue) == 0x20);
 #endif

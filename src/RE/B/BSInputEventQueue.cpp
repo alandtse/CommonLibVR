@@ -59,6 +59,16 @@ namespace RE
 	}
 
 	template <>
+	KinectEvent* BSInputEventQueue::GetCachedEvent<KinectEvent>()
+	{
+		if (kinectEventCount < MAX_KINECT_EVENTS) {
+			return CachedEventAt<KinectEvent>(kKinectEventArray, kinectEventCount);
+		}
+
+		return nullptr;
+	}
+
+	template <>
 	void BSInputEventQueue::AdvanceCount<ButtonEvent>()
 	{
 		++buttonEventCount;

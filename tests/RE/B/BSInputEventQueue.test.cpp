@@ -145,4 +145,30 @@ TEST_CASE("BSInputEventQueue/SiblingCaches", "[unit][input-queue]")
 		CHECK(*tail == expected);
 	}
 }
+
+TEST_CASE("BSInputEventQueue/KinectAndTouchpad", "[unit][input-queue]")
+{
+	using Runtime = REL::Module::Runtime;
+	const auto [version, runtime, kinectBase, touchpadBase] = GENERATE(
+		std::tuple{ SKSE::RUNTIME_SSE_1_5_97, Runtime::SE, 0x350, 0 },
+		std::tuple{ SKSE::RUNTIME_SSE_1_6_1170, Runtime::AE, 0x350, 0 },
+		std::tuple{ REL::Version{ 1, 7, 104, 0 }, Runtime::AE, 0x358, 0 },
+		std::tuple{ SKSE::RUNTIME_VR_1_4_15, Runtime::VR, 0x3A8, 0x3D8 });
+	CAPTURE(version.string());
+	QueueFixture fixture(version, runtime);
+	auto*        queue = reinterpret_cast<RE::BSInputEventQueue*>(fixture.storage.data());
+	auto**       tail = &queue->GetQueueTail();
+
+	auto* expected = reinterpret_cast<RE::InputEvent*>(fixture.storage.data() + kinectBase);
+	queue->AddKinectEvent(RE::BSFixedString{ "userEvent" }, RE::BSFixedString{ "heard" });
+	REQUIRE(queue->kinectEventCount == 1);
+	CHECK(*tail == expected);
+
+	if (runtime == Runtime::VR) {
+		CHECK(reinterpret_cast<std::byte*>(queue->GetVRTouchpadEventData()) ==
+			  fixture.storage.data() + touchpadBase);
+	} else {
+		CHECK(queue->GetVRTouchpadEventData() == nullptr);
+	}
+}
 #endif
